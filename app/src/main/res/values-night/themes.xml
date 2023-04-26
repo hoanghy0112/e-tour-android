@@ -2,15 +2,23 @@
     <!-- Base application theme. -->
     <style name="Theme.ETour" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/blue_dark</item>
+        <item name="colorPrimary">#92CCFF</item>
+        <item name="colorPrimaryVariant">#004B73</item>
+        <item name="colorPrimaryContainer">#004B73</item>
+        <item name="colorOnPrimaryContainer">#CCE5FF</item>
+        <item name="colorOnPrimary">#003351</item>
         <!-- Secondary brand color. -->
-        <item name="colorSecondary">@color/white</item>
-        <item name="colorSecondaryVariant">@color/white</item>
-        <item name="colorOnSecondary">#001221</item>
+        <item name="colorSecondary">#B8C8DA</item>
+        <item name="colorSecondaryVariant">#394857</item>
+        <item name="colorOnSecondary">#23323F</item>
+        <item name="colorSecondaryContainer">#394857</item>
+        <item name="colorOnSecondaryContainer">#D4E4F6</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
+        <item name="colorTertiary">#D1BFE7</item>
+        <item name="colorOnTertiary">#372A4A</item>
+        <item name="colorTertiaryContainer">#4E4162</item>
+        <item name="colorOnTertiaryContainer">#EDDCFF</item>
     </style>
 </resources>

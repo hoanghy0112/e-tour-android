@@ -4,62 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".OnBoarding">
+    android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/circle_image"
-        android:contentDescription="@string/hero_image"
-        android:layout_marginTop="-120dp"
-        android:scaleType="fitStart"
-        android:src="@drawable/hero" />
-
-    <LinearLayout
-        android:id="@+id/on_boarding"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical">
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/welcome_to"
-            android:textSize="22sp"/>
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/e_tour"
-            android:contentDescription="@string/e_tour_string" />
-
-        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:gravity="center"
-            android:layout_marginHorizontal="30dp"
-            android:text="@string/app_description"
-            android:textSize="16sp"/>
+            android:layout_marginTop="-120dp"
+            android:background="@drawable/circle_image"
+            android:contentDescription="@string/hero_image"
+            android:scaleType="fitStart"
+            android:src="@drawable/hero" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginVertical="40dp"
-            android:text="Get started"
+        <LinearLayout
+            android:id="@+id/on_boarding"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="?colorOnPrimary"
-            android:backgroundTint="?colorSecondary"
-            android:textAllCaps="false"
-            android:textSize="20sp"
-            android:paddingHorizontal="45dp"
-            android:paddingVertical="13dp"
-            tools:ignore="HardcodedText"
-            style="@style/Widget.Material3.Button.IconButton.Filled"/>
-    </LinearLayout>
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/welcome_to"
+                android:textSize="22sp" />
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/e_tour_string"
+                android:src="@drawable/e_tour" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="30dp"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:text="@string/app_description"
+                android:textSize="16sp" />
+
+            <Button
+                android:id="@+id/get_started_button"
+                style="@style/Widget.Material3.Button.IconButton.Filled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="40dp"
+                android:backgroundTint="?colorSecondary"
+                android:paddingHorizontal="45dp"
+                android:paddingVertical="13dp"
+                android:text="Get started"
+                android:textAllCaps="false"
+                android:textColor="?colorOnPrimary"
+                android:textSize="20sp"
+                tools:ignore="HardcodedText" />
+        </LinearLayout>
 </RelativeLayout>

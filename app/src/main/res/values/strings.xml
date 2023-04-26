@@ -13,4 +13,14 @@
     <string name="welcome_to">Welcome to</string>
     <string name="e_tour_string">E-Tour string</string>
     <string name="app_description">Lorem ipsum dolor sit amet consectetur. Ut ornare adipiscing sed purus neque gravida.</string>
+    <string name="username_placeholder">Enter your username</string>
+    <string name="password_placeholder">Enter your password</string>
+    <string name="password_label">Password</string>
+    <string name="username_label">Username</string>
+    <string name="forgot_password">Forgot password</string>
+    <string name="signin_button_text">Let\'s go</string>
+    <string name="don_t_have_an_account">Don’t have an account?</string>
+    <string name="sign_up_here">Sign up here</string>
+    <string name="or">or</string>
+    <string name="sign_in_with_google">Sign in with Google</string>
 </resources>
