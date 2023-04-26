@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".OnBoarding">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/circle_image"
+        android:contentDescription="@string/hero_image"
+        android:layout_marginTop="-120dp"
+        android:scaleType="fitStart"
+        android:src="@drawable/hero" />
+
+    <LinearLayout
+        android:id="@+id/on_boarding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/welcome_to"
+            android:textSize="22sp"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/e_tour"
+            android:contentDescription="@string/e_tour_string" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:gravity="center"
+            android:layout_marginHorizontal="30dp"
+            android:text="@string/app_description"
+            android:textSize="16sp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginVertical="40dp"
+            android:text="Get started"
+            android:layout_height="wrap_content"
+            android:textColor="?colorOnPrimary"
+            android:backgroundTint="?colorSecondary"
+            android:textAllCaps="false"
+            android:textSize="20sp"
+            android:paddingHorizontal="45dp"
+            android:paddingVertical="13dp"
+            tools:ignore="HardcodedText"
+            style="@style/Widget.Material3.Button.IconButton.Filled"/>
+    </LinearLayout>
+
+
+
+</RelativeLayout>
