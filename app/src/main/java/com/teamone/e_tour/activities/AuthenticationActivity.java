@@ -26,6 +26,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class AuthenticationActivity extends AppCompatActivity {
+    private Context context = this;
     ActivityAuthenticationBinding activityAuthenticationBinding;
     AuthenticationInfo viewmodel = new AuthenticationInfo();
 
@@ -46,7 +47,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                 public void onResponse(@NonNull Call<SignInWithPasswordApiResult> call, @NonNull Response<SignInWithPasswordApiResult> response) {
                     if (response.code() == 200 && response.body() != null) {
                         SignInWithPasswordApiResult result = response.body();
-                        CredentialToken.getInstance().setCredential(result.getUserId(), result.getAccessToken(), result.getRefreshToken());
+                        CredentialToken.getInstance(context).setCredential(result.getUserId(), result.getAccessToken(), result.getRefreshToken());
                         startActivity(new Intent(AuthenticationActivity.this, HomeActivity.class));
 
                     } else {
@@ -75,5 +76,6 @@ public class AuthenticationActivity extends AppCompatActivity {
         activityAuthenticationBinding = ActivityAuthenticationBinding.inflate(getLayoutInflater());
         activityAuthenticationBinding.setViewModel(viewmodel);
         setContentView(activityAuthenticationBinding.getRoot());
+        Log.e("user id", CredentialToken.getInstance(this).getId());
     }
 }

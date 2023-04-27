@@ -1,22 +1,34 @@
 package com.teamone.e_tour.models;
 
+import android.content.Context;
+
+import com.teamone.e_tour.utils.MySharedPreferences;
+
 public class CredentialToken {
+    private Context context;
     private static CredentialToken instance;
     private String id;
     private String accessToken;
+    private String refreshToken;
 
     public String getRefreshToken() {
         return refreshToken;
     }
 
-    private String refreshToken;
-
     public CredentialToken() {
     }
 
-    public static CredentialToken getInstance() {
+    public CredentialToken(Context context) {
+        this.context = context;
+        MySharedPreferences mySharedPreferences = new MySharedPreferences(context);
+        this.id = mySharedPreferences.getSharedPreferences().getString("id", "");
+        this.accessToken = mySharedPreferences.getSharedPreferences().getString("accessToken", "");
+        this.refreshToken = mySharedPreferences.getSharedPreferences().getString("refreshToken", "");
+    }
+
+    public static CredentialToken getInstance(Context context) {
         if (instance == null) {
-            instance = new CredentialToken();
+            instance = new CredentialToken(context);
         }
         return instance;
     }
@@ -33,6 +45,11 @@ public class CredentialToken {
         this.id = id;
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
+
+        MySharedPreferences mySharedPreferences = new MySharedPreferences(context);
+        mySharedPreferences.getEditor().putString("id", id);
+        mySharedPreferences.getEditor().putString("accessToken", accessToken);
+        mySharedPreferences.getEditor().putString("refreshToken", refreshToken);
     }
 
     public void refresh() {

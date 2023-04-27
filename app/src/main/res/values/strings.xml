@@ -26,4 +26,15 @@
     <string name="chevron_left">Chevron left</string>
     <string name="confirm_password_label">Confirm password</string>
     <string name="please_set_up_some_basic_information">Please set up some basic information!</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="full_name">Full name</string>
+    <string name="email">Email</string>
+    <string name="phone_number">Phone number</string>
+    <string name="address">Address</string>
+    <string name="id_passport">ID/Passport</string>
+    <string name="sign_up_now">Sign up now</string>
+    <string name="is_foreigner">Is Foreigner</string>
+    <string name="let_s_go">Let\'s go</string>
+    <string name="successfully_created_account_enjoy_e_tour_now">Successfully created account, enjoy E-Tour now</string>
 </resources>

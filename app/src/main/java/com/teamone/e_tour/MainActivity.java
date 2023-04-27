@@ -2,6 +2,8 @@ package com.teamone.e_tour;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import com.teamone.e_tour.activities.AuthenticationActivity;
 import com.teamone.e_tour.databinding.ActivityMainBinding;
+import com.teamone.e_tour.models.CredentialToken;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -2,15 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activities.RegistrationNextActivity">
+    tools:context=".fragments.AccountRegistrationFragment">
 
     <data>
-
-        <import type="androidx.databinding.Observable" />
-
         <variable
             name="viewModel"
-            type="com.teamone.e_tour.activities.AuthenticationActivity.AuthenticationInfo" />
+            type="com.teamone.e_tour.viewmodels.RegistrationViewModel" />
     </data>
 
     <LinearLayout
@@ -18,7 +15,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="30dp"
-        android:paddingTop="70dp">
+    android:paddingTop="70dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -35,18 +32,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Sign in"
+                android:text="Sign up"
                 android:textSize="36sp"
                 tools:ignore="HardcodedText" />
         </RelativeLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:textSize="16dp"
-            android:gravity="center"
-            android:text="@string/please_set_up_some_basic_information"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -101,19 +90,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:text="@={viewModel.password}"
+                android:text="@={viewModel.confirmedPassword}"
                 android:textColor="?colorOnPrimary"
                 android:textCursorDrawable="@null" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
+            android:id="@+id/account_registration_next_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
             android:backgroundTint="@color/primary_40"
-            android:onClick="@{() -> viewModel.onSignIn()}"
             android:paddingVertical="8dp"
-            android:text="@string/signin_button_text"
+            android:text="@string/next"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />

@@ -2,6 +2,30 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph">
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/accountRegistrationFragment">
 
+    <fragment
+        android:id="@+id/accountRegistrationFragment"
+        android:name="com.teamone.e_tour.fragments.AccountRegistrationFragment"
+        android:label="fragment_account_registration"
+        tools:layout="@layout/fragment_account_registration" >
+        <action
+            android:id="@+id/action_accountRegistrationFragment_to_basicInforRegistrationFragment"
+            app:destination="@id/basicInforRegistrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/basicInforRegistrationFragment"
+        android:name="com.teamone.e_tour.fragments.BasicInforRegistrationFragment"
+        android:label="fragment_basic_infor_registration"
+        tools:layout="@layout/fragment_basic_infor_registration" >
+        <action
+            android:id="@+id/action_basicInforRegistrationFragment_to_postRegistrationFragment"
+            app:destination="@id/postRegistrationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/postRegistrationFragment"
+        android:name="com.teamone.e_tour.fragments.PostRegistrationFragment"
+        android:label="fragment_post_registration"
+        tools:layout="@layout/fragment_post_registration" />
 </navigation>
