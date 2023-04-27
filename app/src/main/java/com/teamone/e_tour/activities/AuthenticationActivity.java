@@ -1,16 +1,25 @@
 package com.teamone.e_tour.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.ObservableField;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.teamone.e_tour.api.account.authentication.AuthenticationAPI;
+import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiError;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiResult;
 import com.teamone.e_tour.databinding.ActivityAuthenticationBinding;
+import com.teamone.e_tour.models.CredentialToken;
+
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -24,22 +33,33 @@ public class AuthenticationActivity extends AppCompatActivity {
         public AuthenticationInfo() {
         }
 
-        public ObservableField<String> username = new ObservableField<String>();
-        public ObservableField<String> password = new ObservableField<String>();
+        public ObservableField<String> username = new ObservableField<>();
+        public ObservableField<String> password = new ObservableField<>();
 
         public void onSignIn() {
             AuthenticationAPI.api.signInWithPassword(new AuthenticationAPI.Credential(username.get(), password.get())).enqueue(new Callback<SignInWithPasswordApiResult>() {
                 @Override
-                public void onResponse(Call<SignInWithPasswordApiResult> call, Response<SignInWithPasswordApiResult> response) {
-                    Toast.makeText(AuthenticationActivity.this, "Call API successfully", Toast.LENGTH_SHORT).show();
-                    SignInWithPasswordApiResult result = response.body();
-                    if (result != null && result.getStatusCode().equals("10000")) {
-                        // set user information
+                public void onResponse(@NonNull Call<SignInWithPasswordApiResult> call, @NonNull Response<SignInWithPasswordApiResult> response) {
+                    if (response.code() == 200 && response.body() != null) {
+                        SignInWithPasswordApiResult result = response.body();
+                        CredentialToken.getInstance().setCredential(result.getUserId(), result.getAccessToken(), result.getRefreshToken());
+                        startActivity(new Intent(AuthenticationActivity.this, HomeActivity.class));
+
+                    } else {
+                        Gson gson = new GsonBuilder().create();
+                        try {
+                            assert response.errorBody() != null;
+                            SignInWithPasswordApiError error = gson.fromJson(response.errorBody().string(), SignInWithPasswordApiError.class);
+                            Toast.makeText(AuthenticationActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                     }
+
                 }
 
                 @Override
-                public void onFailure(Call<SignInWithPasswordApiResult> call, Throwable t) {
+                public void onFailure(@NonNull Call<SignInWithPasswordApiResult> call, @NonNull Throwable t) {
                     Toast.makeText(AuthenticationActivity.this, "Call API failure", Toast.LENGTH_SHORT).show();
                 }
             });
