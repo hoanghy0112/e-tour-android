@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.navigation.ui.AppBarConfiguration;
 
-import com.teamone.e_tour.activities.OnBoarding;
+import com.teamone.e_tour.activities.AuthenticationActivity;
 import com.teamone.e_tour.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent intent = new Intent(this, OnBoarding.class);
+        Intent intent = new Intent(this, AuthenticationActivity.class);
         startActivity(intent);
         finish();
     }

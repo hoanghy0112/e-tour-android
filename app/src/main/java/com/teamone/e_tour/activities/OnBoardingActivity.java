@@ -3,14 +3,12 @@ package com.teamone.e_tour.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.Observable;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.teamone.e_tour.databinding.ActivityOnBoardingBinding;
 
-public class OnBoarding extends AppCompatActivity {
+public class OnBoardingActivity extends AppCompatActivity {
     ActivityOnBoardingBinding activityOnBoardingBinding;
 
     @Override
@@ -28,7 +26,7 @@ public class OnBoarding extends AppCompatActivity {
     }
     
     public void onGetStartedClicked() {
-        startActivity(new Intent(this, Authentication.class));
+        startActivity(new Intent(this, AuthenticationActivity.class));
         finish();
     }
 }
