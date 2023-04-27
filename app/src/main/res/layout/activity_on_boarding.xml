@@ -52,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginVertical="40dp"
-                android:backgroundTint="?colorSecondary"
+                android:backgroundTint="?colorOnPrimaryContainer"
                 android:paddingHorizontal="45dp"
                 android:paddingVertical="13dp"
                 android:text="Get started"

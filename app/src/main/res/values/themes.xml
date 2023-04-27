@@ -15,6 +15,9 @@
         <item name="colorOnSecondaryContainer">#0D1D2A</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="background">@color/white</item>
+        <item name="textFillColor">@color/blue_dark</item>
+        <item name="strokeColor">@color/blue_dark</item>
         <!-- Customize your theme here. -->
         <item name="colorTertiary">#66587B</item>
         <item name="colorOnTertiary">#FFFFFF</item>

@@ -36,6 +36,10 @@ public class AuthenticationActivity extends AppCompatActivity {
         public ObservableField<String> username = new ObservableField<>();
         public ObservableField<String> password = new ObservableField<>();
 
+        public void onSignUp() {
+            startActivity(new Intent(AuthenticationActivity.this, RegistrationActivity.class));
+        }
+
         public void onSignIn() {
             AuthenticationAPI.api.signInWithPassword(new AuthenticationAPI.Credential(username.get(), password.get())).enqueue(new Callback<SignInWithPasswordApiResult>() {
                 @Override
@@ -55,7 +59,6 @@ public class AuthenticationActivity extends AppCompatActivity {
                             throw new RuntimeException(e);
                         }
                     }
-
                 }
 
                 @Override

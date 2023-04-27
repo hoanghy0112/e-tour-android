@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activities.AuthenticationActivity">
+    tools:context=".activities.RegistrationActivity">
 
     <data>
 
@@ -20,13 +20,24 @@
         android:paddingHorizontal="30dp"
         android:paddingTop="70dp">
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Sign in"
-            android:textSize="36sp"
-            tools:ignore="HardcodedText" />
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/chevron_left"
+                android:layout_centerVertical="true"
+                android:src="@drawable/chevron_left"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Sign up"
+                android:textSize="36sp"
+                tools:ignore="HardcodedText" />
+        </RelativeLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -35,7 +46,7 @@
             android:layout_marginBottom="25dp"
             android:hint="@string/username_label"
             android:textColorHint="?colorOnPrimary"
-            app:boxBackgroundColor="?colorSecondary"
+            app:boxBackgroundColor="?colorOnPrimaryContainer"
             app:hintTextColor="?colorOnPrimary">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -52,8 +63,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/password_label"
             android:textColorHint="?colorOnPrimary"
-            android:background="?colorSecondary"
-            app:boxBackgroundColor="?colorSecondary"
+            app:boxBackgroundColor="?colorOnPrimaryContainer"
             app:endIconMode="password_toggle"
             app:endIconTint="?colorOnPrimary"
             app:hintTextColor="?colorOnPrimary">
@@ -67,77 +77,38 @@
                 android:textCursorDrawable="@null" />
         </com.google.android.material.textfield.TextInputLayout>
 
-        <TextView
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="21dp"
-            android:gravity="end"
-            android:text="@string/forgot_password"
-            android:textColor="?colorPrimary" />
+            android:layout_marginTop="25dp"
+            android:hint="@string/confirm_password_label"
+            android:textColorHint="?colorOnPrimary"
+            app:boxBackgroundColor="?colorOnPrimaryContainer"
+            app:endIconMode="password_toggle"
+            app:endIconTint="?colorOnPrimary"
+            app:hintTextColor="?colorOnPrimary">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:text="@={viewModel.password}"
+                android:textColor="?colorOnPrimary"
+                android:textCursorDrawable="@null" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="48dp"
-            android:backgroundTint="@color/primary_20"
+            android:backgroundTint="@color/primary_40"
             android:onClick="@{() -> viewModel.onSignIn()}"
             android:paddingVertical="8dp"
-            android:text="@string/signin_button_text"
+            android:text="@string/next"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:orientation="vertical"
-                android:paddingTop="50dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="-10dp"
-                    android:gravity="center">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/don_t_have_an_account" />
-
-                    <Button
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:letterSpacing="0.05"
-                        android:text="@string/sign_up_here"
-                        android:textAllCaps="false"
-                        android:onClick="@{() -> viewModel.onSignUp()}"/>
-
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="-10dp"
-                    android:gravity="center"
-                    android:text="@string/or" />
-
-                <Button
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:letterSpacing="0.05"
-                    android:text="@string/sign_in_with_google"
-                    android:textAllCaps="false" />
-
-            </LinearLayout>
-        </RelativeLayout>
     </LinearLayout>
 
 </layout>

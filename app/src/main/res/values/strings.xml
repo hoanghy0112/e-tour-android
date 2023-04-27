@@ -23,4 +23,7 @@
     <string name="sign_up_here">Sign up here</string>
     <string name="or">or</string>
     <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="chevron_left">Chevron left</string>
+    <string name="confirm_password_label">Confirm password</string>
+    <string name="please_set_up_some_basic_information">Please set up some basic information!</string>
 </resources>
