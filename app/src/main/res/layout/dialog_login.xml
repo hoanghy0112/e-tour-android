@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_marginHorizontal="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/login_dialog_border"
+    android:padding="40dp">
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/login_dialog_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="30dp"
+        android:indeterminate="true" />
+    <TextView
+        android:id="@+id/login_dialog_message"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:lineHeight="25dp"
+        android:text="@string/fail_to_sign_in" />
+</LinearLayout>

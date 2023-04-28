@@ -37,4 +37,6 @@
     <string name="is_foreigner">Is Foreigner</string>
     <string name="let_s_go">Let\'s go</string>
     <string name="successfully_created_account_enjoy_e_tour_now">Successfully created account, enjoy E-Tour now</string>
+    <string name="please_wait_we_are_signing_in_for_you">Please wait, we are signing in for you...</string>
+    <string name="fail_to_sign_in">Fail to sign in</string>
 </resources>

@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -17,6 +18,7 @@ import com.teamone.e_tour.api.account.authentication.AuthenticationAPI;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiError;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiResult;
 import com.teamone.e_tour.databinding.ActivityAuthenticationBinding;
+import com.teamone.e_tour.dialogs.LoginDialog;
 import com.teamone.e_tour.models.CredentialToken;
 
 import java.io.IOException;
@@ -42,6 +44,9 @@ public class AuthenticationActivity extends AppCompatActivity {
         }
 
         public void onSignIn() {
+            LoginDialog dialog = new LoginDialog(AuthenticationActivity.this);
+            dialog.showLoading();
+
             AuthenticationAPI.api.signInWithPassword(new AuthenticationAPI.Credential(username.get(), password.get())).enqueue(new Callback<SignInWithPasswordApiResult>() {
                 @Override
                 public void onResponse(@NonNull Call<SignInWithPasswordApiResult> call, @NonNull Response<SignInWithPasswordApiResult> response) {
@@ -49,13 +54,13 @@ public class AuthenticationActivity extends AppCompatActivity {
                         SignInWithPasswordApiResult result = response.body();
                         CredentialToken.getInstance(context).setCredential(result.getUserId(), result.getAccessToken(), result.getRefreshToken());
                         startActivity(new Intent(AuthenticationActivity.this, HomeActivity.class));
-
+                        dialog.dismiss();
                     } else {
                         Gson gson = new GsonBuilder().create();
                         try {
                             assert response.errorBody() != null;
                             SignInWithPasswordApiError error = gson.fromJson(response.errorBody().string(), SignInWithPasswordApiError.class);
-                            Toast.makeText(AuthenticationActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                            dialog.showError(error.getMessage());
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
