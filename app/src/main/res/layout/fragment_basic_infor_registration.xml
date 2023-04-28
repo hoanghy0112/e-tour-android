@@ -30,6 +30,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/back_btn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -41,6 +42,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Sign up"
+                    android:textColor="?textFillColor"
                     android:textSize="36sp"
                     tools:ignore="HardcodedText" />
             </RelativeLayout>
@@ -50,6 +52,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
                 android:gravity="center"
+                android:textColor="?textFillColor"
                 android:text="@string/please_set_up_some_basic_information"
                 android:textSize="16sp" />
 

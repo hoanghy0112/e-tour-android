@@ -55,6 +55,13 @@ public class BasicInforRegistrationFragment extends Fragment {
             }
         });
 
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(BasicInforRegistrationFragment.this).navigate(R.id.action_basicInforRegistrationFragment_to_accountRegistrationFragment);
+            }
+        });
+
         return binding.getRoot();
     }
 

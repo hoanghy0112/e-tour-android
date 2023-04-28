@@ -53,6 +53,14 @@ public class AccountRegistrationFragment extends Fragment {
                 NavHostFragment.findNavController(AccountRegistrationFragment.this).navigate(R.id.action_accountRegistrationFragment_to_basicInforRegistrationFragment);
             }
         });
+
+        binding.backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().finish();
+            }
+        });
+
         return binding.getRoot();
     }
 }

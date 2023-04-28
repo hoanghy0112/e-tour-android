@@ -5,6 +5,7 @@
     tools:context=".fragments.AccountRegistrationFragment">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.teamone.e_tour.viewmodels.RegistrationViewModel" />
@@ -15,7 +16,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:paddingHorizontal="30dp"
-    android:paddingTop="70dp">
+        android:paddingTop="70dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -28,11 +29,13 @@
                 android:contentDescription="@string/chevron_left"
                 android:src="@drawable/chevron_left" />
 
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Sign up"
+                android:textColor="?textFillColor"
                 android:textSize="36sp"
                 tools:ignore="HardcodedText" />
         </RelativeLayout>
