@@ -19,6 +19,7 @@ import com.teamone.e_tour.activities.RegistrationActivity;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiError;
 import com.teamone.e_tour.api.account.registration.RegistrationAPI;
 import com.teamone.e_tour.databinding.FragmentBasicInforRegistrationBinding;
+import com.teamone.e_tour.dialogs.RegistrationDialog;
 import com.teamone.e_tour.models.CredentialToken;
 import com.teamone.e_tour.viewmodels.RegistrationViewModel;
 
@@ -66,6 +67,9 @@ public class BasicInforRegistrationFragment extends Fragment {
     }
 
     public void onRegistration() {
+        RegistrationDialog dialog = new RegistrationDialog(getActivity());
+        dialog.showLoading();
+
         RegistrationAPI.api.registerWithPassword(new RegistrationAPI.RegistrationForm(
                 viewModel.fullname.get(),
                 viewModel.id.get(),
@@ -82,12 +86,13 @@ public class BasicInforRegistrationFragment extends Fragment {
                     RegistrationAPI.RegistrationWithPasswordSuccess result = response.body();
                     CredentialToken.getInstance(context).setCredential(result.getUserId(), result.getAccessToken(), result.getRefreshToken());
                     NavHostFragment.findNavController(BasicInforRegistrationFragment.this).navigate(R.id.action_basicInforRegistrationFragment_to_postRegistrationFragment);
+                    dialog.dismiss();
                 } else {
                     Gson gson = new GsonBuilder().create();
                     try {
                         assert response.errorBody() != null;
                         SignInWithPasswordApiError error = gson.fromJson(response.errorBody().string(), SignInWithPasswordApiError.class);
-                        Toast.makeText(getActivity(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                        dialog.showError(error.getMessage());
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

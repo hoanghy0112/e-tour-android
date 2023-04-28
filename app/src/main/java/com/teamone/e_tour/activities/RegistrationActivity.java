@@ -22,26 +22,8 @@ public class RegistrationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        registrationViewModel = new RegistrationViewModel(this);
 
         ActivityRegistrationActivitiesBinding binding = ActivityRegistrationActivitiesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-    }
-
-    public void navigateToAccountRegistration() {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.registration_wrapper, new AccountRegistrationFragment(this, new AccountRegistrationFragment.INavigate() {
-            @Override
-            public void onNavigate() {
-                navigateToBasicInfoRegistration();
-            }
-        }));
-        fragmentTransaction.commitAllowingStateLoss();
-    }
-
-    public void navigateToBasicInfoRegistration() {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.registration_wrapper, new BasicInforRegistrationFragment());
-        fragmentTransaction.commitAllowingStateLoss();
     }
 }
