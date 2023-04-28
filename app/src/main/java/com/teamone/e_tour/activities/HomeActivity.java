@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
+import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.CredentialToken;
 
 public class HomeActivity extends AppCompatActivity {
@@ -16,6 +17,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActivityHomeBinding binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        AppManagement.getInstance(this).setFirstTime(false);
 
         binding.homeText.setText(CredentialToken.getInstance(this).getId());
     }

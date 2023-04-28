@@ -4,9 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.teamone.e_tour.databinding.ActivityOnBoardingBinding;
+import com.teamone.e_tour.models.CredentialToken;
 
 public class OnBoardingActivity extends AppCompatActivity {
     ActivityOnBoardingBinding activityOnBoardingBinding;
@@ -17,6 +19,8 @@ public class OnBoardingActivity extends AppCompatActivity {
         activityOnBoardingBinding = ActivityOnBoardingBinding.inflate(getLayoutInflater());
         setContentView(activityOnBoardingBinding.getRoot());
 
+
+        Log.e("id", CredentialToken.getInstance(this).getId());
         activityOnBoardingBinding.getStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
