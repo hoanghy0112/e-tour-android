@@ -13,7 +13,7 @@ public class RegistrationViewModel {
     public final ObservableField<String> email = new ObservableField<>();
     public final ObservableField<String> phoneNumber = new ObservableField<>();
     public final ObservableField<String> address = new ObservableField<>();
-    public final ObservableField<Boolean> isForeigner = new ObservableField<>();
+    public final ObservableField<Boolean> isForeigner = new ObservableField<>(false);
     public final ObservableField<String> id = new ObservableField<>();
 
     private Context context;
