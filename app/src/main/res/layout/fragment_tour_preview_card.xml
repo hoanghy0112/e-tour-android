@@ -1,79 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="150dp"
     android:layout_height="wrap_content"
-    android:background="@drawable/tour_preview_card"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:elevation="50dp"
+    android:layout_marginHorizontal="10dp"
     tools:context=".fragments.TourPreviewCard">
 
-    <LinearLayout
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/white"
+        app:strokeColor="@color/blue"
+        app:cardCornerRadius="6dp"
+        app:strokeWidth="1dp"
+        android:elevation="5dp">
 
-        <ImageView
-            android:id="@+id/card_image"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/tour_preview_card">
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/etourlogo" />
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingHorizontal="10dp"
-            android:paddingVertical="15dp">
-
-            <TextView
-                android:id="@+id/name"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:text="HCMC - Da Lat"
-                android:textColor="@color/blue"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            android:layout_height="250dp"
+            android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/add_favourite_btn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:src="@drawable/save" />
-
-            <LinearLayout
+                android:id="@+id/card_image"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:orientation="vertical">
+                android:layout_height="130dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/etourlogo" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="15dp">
 
                 <TextView
-                    android:id="@+id/old_price"
+                    android:id="@+id/name"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="HCMC - Da Lat"
+                    android:textColor="@color/blue"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/add_favourite_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/save" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="15.000.000 VND "
-                    android:textSize="8sp" />
+                    android:layout_alignParentBottom="true"
+                    android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/new_price"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="5.000.000 VND "
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-            </LinearLayout>
-        </RelativeLayout>
+                    <TextView
+                        android:id="@+id/old_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="15.000.000 VND "
+                        android:textSize="8sp" />
 
-    </LinearLayout>
+                    <TextView
+                        android:id="@+id/new_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5.000.000 VND "
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+                </LinearLayout>
+            </RelativeLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/route_type_domestic"
-        android:paddingHorizontal="10dp"
-        android:paddingVertical="5dp"
-        android:text="Domestic"
-        android:textColor="@color/white" />
+        </LinearLayout>
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/route_type_domestic"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="5dp"
+            android:text="Domestic"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

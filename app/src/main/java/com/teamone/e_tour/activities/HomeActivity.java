@@ -2,10 +2,15 @@ package com.teamone.e_tour.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.HorizontalScrollView;
 
+import com.teamone.e_tour.R;
+import com.teamone.e_tour.adapters.RecommendedRouteListAdapter;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.AppManagement;
@@ -26,13 +31,5 @@ public class HomeActivity extends AppCompatActivity {
 
         UserProfileManager.getInstance(this).fetchUserProfile();
 
-        RecommendedRouteManager.getInstance(this).fetchData(3);
-
-        RecommendedRouteManager.getInstance(this).getRouteList().observe(this, new Observer<ArrayList<TouristRoute>>() {
-            @Override
-            public void onChanged(ArrayList<TouristRoute> touristRoutes) {
-                Log.e("Tourist routes length: ", String.valueOf(touristRoutes.size()));
-            }
-        });
     }
 }

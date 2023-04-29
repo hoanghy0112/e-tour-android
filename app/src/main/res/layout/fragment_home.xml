@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/orange_white"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragments.HomeFragment">
@@ -79,9 +79,13 @@
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginStart="-10dp"
+            android:padding="15dp"
+            android:id="@+id/recommend_list"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:clipToPadding="false"
             android:orientation="horizontal">
 
         </androidx.recyclerview.widget.RecyclerView>

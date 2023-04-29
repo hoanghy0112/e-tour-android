@@ -4,16 +4,26 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.teamone.e_tour.R;
+import com.teamone.e_tour.adapters.RecommendedRouteListAdapter;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
 import com.teamone.e_tour.databinding.FragmentHomeBinding;
+import com.teamone.e_tour.entities.TouristRoute;
+import com.teamone.e_tour.models.RecommendedRouteManager;
+
+import java.util.ArrayList;
 
 public class HomeFragment extends Fragment {
+    private Context context = getActivity();
+    private RecyclerView recommendList;
 
     public HomeFragment() {
     }
@@ -27,6 +37,22 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
+
+
+        RecommendedRouteManager.getInstance(context).fetchData(3);
+
+        recommendList = binding.getRoot().findViewById(R.id.recommend_list);
+
+        RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>());
+        recommendList.setAdapter(adapter);
+        recommendList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
+        RecommendedRouteManager.getInstance(context).getRouteList().observe(getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
+            @Override
+            public void onChanged(ArrayList<TouristRoute> touristRoutes) {
+                adapter.setRouteList(touristRoutes);
+            }
+        });
 
         return binding.getRoot();
     }
