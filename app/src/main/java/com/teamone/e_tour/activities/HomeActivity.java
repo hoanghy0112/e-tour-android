@@ -13,6 +13,7 @@ import com.teamone.e_tour.R;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
 import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.CredentialToken;
+import com.teamone.e_tour.utils.SocketManager;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -24,19 +25,6 @@ public class HomeActivity extends AppCompatActivity {
 
         AppManagement.getInstance(this).setFirstTime(false);
 
-//        binding.bottomNavigation.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//                switch (item.getItemId()) {
-//                    case R.id.item_1:
-//                        item.setIcon(getResources().getDrawable(R.drawable.home_focus, getTheme()));
-//                        break;
-//                }
-//
-//                binding.bottomNavigation.
-//
-//                return true;
-//            }
-//        });
+        SocketManager.getInstance(this);
     }
 }
