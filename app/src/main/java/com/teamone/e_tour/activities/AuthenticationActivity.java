@@ -81,6 +81,5 @@ public class AuthenticationActivity extends AppCompatActivity {
         activityAuthenticationBinding = ActivityAuthenticationBinding.inflate(getLayoutInflater());
         activityAuthenticationBinding.setViewModel(viewmodel);
         setContentView(activityAuthenticationBinding.getRoot());
-        Log.e("user id", CredentialToken.getInstance(this).getId());
     }
 }

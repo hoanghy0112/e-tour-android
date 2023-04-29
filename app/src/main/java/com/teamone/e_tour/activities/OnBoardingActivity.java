@@ -20,7 +20,6 @@ public class OnBoardingActivity extends AppCompatActivity {
         setContentView(activityOnBoardingBinding.getRoot());
 
 
-        Log.e("id", CredentialToken.getInstance(this).getId());
         activityOnBoardingBinding.getStartedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
