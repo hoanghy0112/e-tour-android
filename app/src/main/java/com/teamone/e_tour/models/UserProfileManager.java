@@ -36,7 +36,7 @@ public class UserProfileManager {
     public void onUserProfileUpdated(IUserProfileUpdateCallback callback) {
         SocketManager socket = SocketManager.getInstance(context);
 
-        socket.on(SocketMessage.Server.USER_PROFILE, new Emitter.Listener() {
+        socket.on(ViewUserProfile.serverResponseEvent, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
                 String stringResponse = String.valueOf(args[0]);
@@ -51,7 +51,7 @@ public class UserProfileManager {
         });
     }
 
-    public void watch() {
+    public void fetchUserProfile() {
         SocketManager socket = SocketManager.getInstance(context);
         socket.emit(SocketMessage.Client.VIEW_USER_PROFILE);
     }

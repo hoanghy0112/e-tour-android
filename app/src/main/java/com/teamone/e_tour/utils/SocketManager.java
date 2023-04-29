@@ -45,7 +45,7 @@ public class SocketManager {
         } else {
             socket.on(Socket.EVENT_CONNECT, new Emitter.Listener() {
                 @Override
-                public void call(Object... args) {
+                public void call(Object... _) {
                     socket.emit(eventName, args);
                 }
             });

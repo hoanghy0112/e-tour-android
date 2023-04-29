@@ -7,5 +7,6 @@ public class SocketMessage {
 
     public static class Server {
         public static final String USER_PROFILE = "user-profile";
+        public static final String ERROR = "error";
     }
 }
