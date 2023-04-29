@@ -54,7 +54,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp">
+        android:paddingVertical="10dp"
+        android:orientation="vertical">
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -76,6 +77,14 @@
                 app:iconTint="@color/blue"
                 android:layout_height="wrap_content" />
         </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+        </androidx.recyclerview.widget.RecyclerView>
     </LinearLayout>
 
 </LinearLayout>
