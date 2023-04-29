@@ -5,10 +5,6 @@
     android:layout_width="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/registration_wrapper"
         android:name="androidx.navigation.fragment.NavHostFragment"

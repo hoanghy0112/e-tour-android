@@ -12,7 +12,7 @@
         <item name="colorSecondaryVariant">#D4E4F6</item>
         <item name="colorOnSecondary">#FFFFFF</item>
         <item name="colorSecondaryContainer">#D4E4F6</item>
-        <item name="colorOnSecondaryContainer">#0D1D2A</item>
+        <item name="colorOnSecondaryContainer">@color/blue_dark</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <item name="background">@color/white</item>
@@ -23,6 +23,9 @@
         <item name="colorOnTertiary">#FFFFFF</item>
         <item name="colorTertiaryContainer">#EDDCFF</item>
         <item name="colorOnTertiaryContainer">#221534</item>
+
+        <item name="colorOnSurface">@color/blue_dark</item>
+        <item name="colorOnSurfaceVariant">@color/placeholder</item>
     </style>
 
     <style name="Theme.ETour.NoActionBar">

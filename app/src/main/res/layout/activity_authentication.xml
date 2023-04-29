@@ -25,8 +25,8 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="Sign in"
-            android:textSize="36sp"
             android:textColor="?textFillColor"
+            android:textSize="36sp"
             tools:ignore="HardcodedText" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -51,9 +51,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="?colorSecondary"
             android:hint="@string/password_label"
             android:textColorHint="?colorOnPrimary"
-            android:background="?colorSecondary"
             app:boxBackgroundColor="?colorSecondary"
             app:endIconMode="password_toggle"
             app:endIconTint="?colorOnPrimary"
@@ -74,7 +74,7 @@
             android:layout_marginTop="21dp"
             android:gravity="end"
             android:text="@string/forgot_password"
-            android:textColor="?colorPrimary" />
+            android:textColor="@color/blue" />
 
         <Button
             android:layout_width="match_parent"
@@ -115,9 +115,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:letterSpacing="0.05"
+                        android:onClick="@{() -> viewModel.onSignUp()}"
                         android:text="@string/sign_up_here"
                         android:textAllCaps="false"
-                        android:onClick="@{() -> viewModel.onSignUp()}"/>
+                        android:textColor="@color/blue" />
 
                 </LinearLayout>
 
@@ -135,7 +136,8 @@
                     android:gravity="center"
                     android:letterSpacing="0.05"
                     android:text="@string/sign_in_with_google"
-                    android:textAllCaps="false" />
+                    android:textAllCaps="false"
+                    android:textColor="@color/blue" />
 
             </LinearLayout>
         </RelativeLayout>

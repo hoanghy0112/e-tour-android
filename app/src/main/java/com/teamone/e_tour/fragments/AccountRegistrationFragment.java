@@ -20,18 +20,8 @@ import java.util.Objects;
 
 public class AccountRegistrationFragment extends Fragment {
     private Context context;
-    private INavigate navigate;
 
     public AccountRegistrationFragment() {
-    }
-
-    public AccountRegistrationFragment(Context context, INavigate navigate) {
-        this.context = context;
-        this.navigate = navigate;
-    }
-
-    public interface INavigate {
-        void onNavigate();
     }
 
     private FragmentAccountRegistrationBinding binding;

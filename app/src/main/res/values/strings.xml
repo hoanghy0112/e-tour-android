@@ -41,4 +41,9 @@
     <string name="fail_to_sign_in">Fail to sign in</string>
     <string name="failed_to_sign_up">Failed to sign up</string>
     <string name="please_wait_while_we_are_signing_up_for_you">Please wait while we are signing up for you...</string>
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="account">Account</string>
+    <string name="saved">Saved</string>
+    <string name="discover_new_experiences">Discover new experiences</string>
 </resources>

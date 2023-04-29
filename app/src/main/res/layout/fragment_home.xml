@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".fragments.HomeFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:paddingVertical="12dp"
+        android:paddingHorizontal="20dp"
+        android:background="@color/blue_dark">
+        <RelativeLayout
+            android:layout_toStartOf="@+id/notification_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <ImageView
+                android:id="@+id/etour_logo"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/e_tour"
+                android:scaleType="fitStart"
+                />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@+id/etour_logo"
+                android:background="@drawable/top_bar_home"
+                android:hint="@string/discover_new_experiences"
+                android:padding="8dp"
+                android:gravity="center_vertical"
+                android:drawablePadding="8dp"
+                android:textColorHint="@color/placeholder"
+                android:drawableLeft="@drawable/search"
+                android:layout_marginStart="15dp"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/notification_icon"
+            android:layout_marginStart="12dp"
+            android:layout_alignParentEnd="true"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:src="@drawable/fi_rr_bell"/>
+    </RelativeLayout>
+
+</FrameLayout>
