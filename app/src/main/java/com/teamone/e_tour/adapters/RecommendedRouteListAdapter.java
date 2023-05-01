@@ -8,14 +8,19 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.card.MaterialCardView;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.entities.TouristRoute;
+import com.teamone.e_tour.fragments.HomeFragment;
 
 import java.util.ArrayList;
 
 public class RecommendedRouteListAdapter extends RecyclerView.Adapter<RecommendedRouteListAdapter.ViewHolder> {
+    Fragment context;
     private ArrayList<TouristRoute> routeList = new ArrayList<>();
 
     public ArrayList<TouristRoute> getRouteList() {
@@ -27,8 +32,9 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         notifyDataSetChanged();
     }
 
-    public RecommendedRouteListAdapter(ArrayList<TouristRoute> routeList) {
+    public RecommendedRouteListAdapter(ArrayList<TouristRoute> routeList, Fragment context) {
         this.routeList = routeList;
+        this.context = context;
     }
 
     @NonNull
@@ -46,6 +52,12 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         holder.name.setText(route.getName());
         holder.newPrice.setText(route.getReservationFee().toString());
         holder.oldPrice.setText(route.getImages().toString());
+        holder.card.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(context).navigate(R.id.action_homeFragment_to_detailTourFragment);
+            }
+        });
     }
 
     @Override
@@ -59,6 +71,7 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         TextView oldPrice;
         TextView newPrice;
         ImageView addToFavourite;
+        MaterialCardView card;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -67,6 +80,7 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
             oldPrice = itemView.findViewById(R.id.old_price);
             newPrice = itemView.findViewById(R.id.new_price);
             addToFavourite = itemView.findViewById(R.id.add_favourite_btn);
+            card = itemView.findViewById(R.id.tourist_route_card);
         }
     }
 }

@@ -3,6 +3,7 @@ package com.teamone.e_tour.fragments;
 import android.content.Context;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.adapters.RecommendedRouteListAdapter;
@@ -43,7 +46,7 @@ public class HomeFragment extends Fragment {
 
         recommendList = binding.getRoot().findViewById(R.id.recommend_list);
 
-        RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>());
+        RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>(), HomeFragment.this);
         recommendList.setAdapter(adapter);
         recommendList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
@@ -53,6 +56,12 @@ public class HomeFragment extends Fragment {
                 adapter.setRouteList(touristRoutes);
             }
         });
+
+
+        Window window = getActivity().getWindow();
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(ContextCompat.getColor(getActivity() ,R.color.blue_dark));
 
         return binding.getRoot();
     }

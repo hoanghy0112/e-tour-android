@@ -9,5 +9,14 @@
         android:id="@+id/homeFragment"
         android:name="com.teamone.e_tour.fragments.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_detailTourFragment"
+            app:destination="@id/detailTourFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailTourFragment"
+        android:name="com.teamone.e_tour.fragments.DetailTourFragment"
+        android:label="fragment_detail_tour"
+        tools:layout="@layout/fragment_detail_tour" />
 </navigation>

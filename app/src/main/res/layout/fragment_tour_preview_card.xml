@@ -8,6 +8,7 @@
     tools:context=".fragments.TourPreviewCard">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tourist_route_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:cardBackgroundColor="@color/white"

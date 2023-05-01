@@ -47,4 +47,9 @@
     <string name="saved">Saved</string>
     <string name="discover_new_experiences">Discover new experiences</string>
     <string name="for_you">For you</string>
+    <string name="description">Description</string>
+    <string name="you_ll_experience">You\'ll experience</string>
+    <string name="comment">Comment</string>
+    <string name="view_all">View all</string>
+    <string name="book_ticket">Book ticket</string>
 </resources>

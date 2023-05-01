@@ -55,6 +55,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                         CredentialToken.getInstance(context).setCredential(result.getUserId(), result.getAccessToken(), result.getRefreshToken());
                         startActivity(new Intent(AuthenticationActivity.this, HomeActivity.class));
                         dialog.dismiss();
+                        finish();
                     } else {
                         Gson gson = new GsonBuilder().create();
                         try {
