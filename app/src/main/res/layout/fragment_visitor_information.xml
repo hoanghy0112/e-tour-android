@@ -122,6 +122,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/next_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"

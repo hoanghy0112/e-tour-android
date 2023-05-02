@@ -46,6 +46,8 @@ public class InputInformationFragment extends Fragment {
             }
         });
 
+        BookTicketFragment.viewFirstTab();
+
         return binding.getRoot();
     }
 }

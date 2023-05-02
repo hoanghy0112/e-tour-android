@@ -3,21 +3,20 @@ package com.teamone.e_tour.fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.teamone.e_tour.R;
-import com.teamone.e_tour.databinding.FragmentVisitorInformationBinding;
+import com.teamone.e_tour.databinding.FragmentReceiptBinding;
 
-public class VisitorInformationFragment extends Fragment {
+public class ReceiptFragment extends Fragment {
 
-    public VisitorInformationFragment() {
+    public ReceiptFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,12 +26,13 @@ public class VisitorInformationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentVisitorInformationBinding binding = FragmentVisitorInformationBinding.inflate(inflater, container, false);
+        FragmentReceiptBinding binding = FragmentReceiptBinding.inflate(inflater, container, false);
+        BookTicketFragment.viewThirdTab();
 
-        binding.nextBtn.setOnClickListener(new View.OnClickListener() {
+        binding.backToHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavHostFragment.findNavController(VisitorInformationFragment.this).navigate(R.id.action_visitorInformationFragment2_to_bookTicketFragment);
+                Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.action_bookTicketFragment_to_homeFragment);
             }
         });
 

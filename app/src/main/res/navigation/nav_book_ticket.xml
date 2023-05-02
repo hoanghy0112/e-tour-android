@@ -18,5 +18,14 @@
         android:id="@+id/checkoutFragment"
         android:name="com.teamone.e_tour.fragments.CheckoutFragment"
         android:label="fragment_checkout"
-        tools:layout="@layout/fragment_checkout" />
+        tools:layout="@layout/fragment_checkout" >
+        <action
+            android:id="@+id/action_checkoutFragment_to_receiptFragment"
+            app:destination="@id/receiptFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/receiptFragment"
+        android:name="com.teamone.e_tour.fragments.ReceiptFragment"
+        android:label="fragment_receipt"
+        tools:layout="@layout/fragment_receipt" />
 </navigation>

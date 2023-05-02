@@ -14,14 +14,14 @@
         android:background="@color/gray"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp">
+        android:paddingVertical="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/contact_information"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textStyle="bold" />
 
         <Button
@@ -38,7 +38,7 @@
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/visitor_information"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textStyle="bold" />
 
         <Button
@@ -62,7 +62,7 @@
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/black"
-            android:textSize="12sp" />
+            android:textSize="13sp" />
 
         <Button
             android:layout_width="match_parent"
@@ -84,7 +84,7 @@
             android:layout_marginTop="10dp"
             android:text="Special requirements"
             android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textStyle="bold" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -101,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/special_requirement"
                 android:textColor="@color/black"
-                android:textSize="12sp"
+                android:textSize="13sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -131,53 +131,62 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:background="@drawable/number_circle"
-            android:orientation="vertical"
-            android:paddingTop="15dp"
-            android:paddingBottom="5dp">
+            android:orientation="vertical">
 
-            <RelativeLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/materialDivider">
+                app:cardCornerRadius="10dp"
+                app:cardElevation="0dp"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/white">
 
-                <ImageView
-                    android:id="@+id/location_icon"
-                    android:layout_width="wrap_content"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginStart="10dp"
-                    android:src="@drawable/location" />
+                    android:paddingVertical="15dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/materialDivider">
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@id/location_icon"
-                    android:text="@string/pickup_location"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toEndOf="@+id/location_icon"
-                    app:layout_constraintTop_toTopOf="@+id/location_icon" />
+                    <ImageView
+                        android:id="@+id/location_icon"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="10dp"
+                        android:src="@drawable/location" />
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="15dp"
-                    android:scaleX="1.3"
-                    android:scaleY="1.3"
-                    android:src="@drawable/collapse" />
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_toEndOf="@id/location_icon"
+                        android:text="@string/pickup_location"
+                        android:textColor="@color/black"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/location_icon"
+                        app:layout_constraintTop_toTopOf="@+id/location_icon" />
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="15dp"
+                        android:scaleX="1.3"
+                        android:scaleY="1.3"
+                        android:src="@drawable/collapse" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/materialDivider"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp" />
+                android:layout_height="wrap_content" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -201,7 +210,7 @@
         android:layout_marginTop="10dp"
         android:text="@string/detail_price"
         android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textSize="13sp"
         android:textStyle="bold" />
 
 

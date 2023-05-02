@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/orange_white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.CheckoutFragment">
@@ -27,6 +28,9 @@
             android:layout_marginTop="18dp"
             android:layout_marginBottom="15dp"
             android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/white"
             app:cardElevation="10dp">
 
             <LinearLayout
@@ -54,10 +58,13 @@
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="12dp"
             android:layout_marginBottom="15dp"
             android:checkable="true"
+            android:clickable="true"
+            android:focusable="true"
             app:cardElevation="10dp">
 
             <LinearLayout
@@ -116,6 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/change"
+                android:textColor="@color/blue"
                 android:textSize="15sp"
                 android:textAllCaps="false"
                 style="@style/Widget.Material3.Button.TextButton"/>
@@ -127,6 +135,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/placeholder"
             android:layout_marginTop="10dp"
             android:layout_marginStart="35dp"
             android:text="@string/you_have_1_voucher"/>
@@ -139,6 +148,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="@color/placeholder"
                 android:text="@string/total_price"/>
             <TextView
                 android:layout_alignParentEnd="true"
@@ -150,6 +160,7 @@
         </RelativeLayout>
 
         <Button
+            android:id="@+id/checkout_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"

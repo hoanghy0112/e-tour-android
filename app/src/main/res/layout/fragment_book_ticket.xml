@@ -11,11 +11,13 @@
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/top_bar"
+        app:elevation="0dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
+            app:elevation="0dp"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/blue"
@@ -40,19 +42,23 @@
             android:gravity="center_horizontal">
 
             <TextView
+                android:id="@+id/num_1"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:background="@drawable/number_circle"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="1"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/text_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@string/information"
                 android:textColor="@color/white"
+                android:background="@color/transparent"
                 android:textSize="12sp" />
 
             <ImageView
@@ -63,18 +69,22 @@
                 android:src="@drawable/checkout_line" />
 
             <TextView
+                android:id="@+id/num_2"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
+                android:textColor="@color/black"
                 android:background="@drawable/number_circle_unfocus"
                 android:gravity="center"
                 android:text="2"
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/text_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@string/checkout"
+                android:background="@color/transparent"
                 android:textColor="@color/blue_white"
                 android:textSize="12sp" />
 
@@ -86,7 +96,9 @@
                 android:src="@drawable/checkout_line" />
 
             <TextView
+                android:id="@+id/num_3"
                 android:layout_width="20dp"
+                android:textColor="@color/black"
                 android:layout_height="20dp"
                 android:background="@drawable/number_circle_unfocus"
                 android:gravity="center"
@@ -94,10 +106,12 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/text_3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@string/receipt"
+                android:background="@color/transparent"
                 android:textColor="@color/blue_white"
                 android:textSize="12sp" />
 
@@ -121,7 +135,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:padding="10dp">
+                    android:paddingVertical="20dp"
+                    android:paddingHorizontal="15dp">
 
                     <TextView
                         android:layout_width="match_parent"
@@ -179,16 +194,14 @@
                             app:layout_constraintStart_toStartOf="@+id/textView"
                             app:layout_constraintTop_toBottomOf="@+id/textView2" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
-
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/light_green"
-                    android:paddingVertical="5dp"
-                    android:paddingStart="10dp">
+                    android:paddingVertical="8dp"
+                    android:paddingStart="13dp">
 
                     <ImageView
                         android:layout_width="15dp"

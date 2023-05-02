@@ -84,4 +84,10 @@
     <string name="change">Change</string>
     <string name="you_have_1_voucher">You have 1 voucher</string>
     <string name="check_out">Check out</string>
+    <string name="ticket_id">Ticket id</string>
+    <string name="back_to_home">Back to home</string>
+    <string name="booking_date">Booking date</string>
+    <string name="customer_name">Customer name</string>
+    <string name="choose_payment_method_and_checkout">Choose payment method and checkout</string>
+    <string name="receipt_information">Receipt information</string>
 </resources>
