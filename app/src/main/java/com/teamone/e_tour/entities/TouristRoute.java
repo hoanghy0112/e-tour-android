@@ -27,6 +27,9 @@ public class TouristRoute {
         return _id;
     }
 
+    public TouristRoute() {
+    }
+
     public void set_id(String _id) {
         this._id = _id;
     }

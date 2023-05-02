@@ -8,17 +8,16 @@ import androidx.databinding.ObservableField;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.teamone.e_tour.R;
 import com.teamone.e_tour.api.account.authentication.AuthenticationAPI;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiError;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiResult;
 import com.teamone.e_tour.databinding.ActivityAuthenticationBinding;
-import com.teamone.e_tour.dialogs.LoginDialog;
+import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.models.CredentialToken;
 
 import java.io.IOException;
@@ -44,8 +43,8 @@ public class AuthenticationActivity extends AppCompatActivity {
         }
 
         public void onSignIn() {
-            LoginDialog dialog = new LoginDialog(AuthenticationActivity.this);
-            dialog.showLoading();
+            LoadingDialog dialog = new LoadingDialog(AuthenticationActivity.this);
+            dialog.showLoading(context.getResources().getText(R.string.please_wait_we_are_signing_in_for_you).toString());
 
             AuthenticationAPI.api.signInWithPassword(new AuthenticationAPI.Credential(username.get(), password.get())).enqueue(new Callback<SignInWithPasswordApiResult>() {
                 @Override
@@ -61,7 +60,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                         try {
                             assert response.errorBody() != null;
                             SignInWithPasswordApiError error = gson.fromJson(response.errorBody().string(), SignInWithPasswordApiError.class);
-                            dialog.showError(error.getMessage());
+                            dialog.showError(context.getResources().getText(R.string.fail_to_sign_in).toString() + "\nError message: " + error.getMessage());
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }

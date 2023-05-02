@@ -19,6 +19,10 @@ public class SocketManager {
     private Context context;
     private Socket socket = null;
 
+    public Socket getSocket() {
+        return socket;
+    }
+
     public SocketManager(Context context) {
         this.context = context;
 

@@ -48,8 +48,14 @@
     <string name="discover_new_experiences">Discover new experiences</string>
     <string name="for_you">For you</string>
     <string name="description">Description</string>
-    <string name="you_ll_experience">You\'ll experience</string>
     <string name="comment">Comment</string>
     <string name="view_all">View all</string>
     <string name="book_ticket">Book ticket</string>
+    <string name="loading_tourist_route">Loading tourist route...</string>
+    <string name="route_destinations">Route destinations</string>
+    <string name="depart_at">Depart at</string>
+    <string name="tour_type">Tour type</string>
+    <string name="view_detail_information">View detail information</string>
+    <string name="normal_tour">Normal</string>
+    <string name="promotion_tour">Promotion</string>
 </resources>

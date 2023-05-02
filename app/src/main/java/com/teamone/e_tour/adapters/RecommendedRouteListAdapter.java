@@ -1,5 +1,6 @@
 package com.teamone.e_tour.adapters;
 
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +56,9 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavHostFragment.findNavController(context).navigate(R.id.action_homeFragment_to_detailTourFragment);
+                Bundle bundle = new Bundle();
+                bundle.putString("id", route.get_id());
+                NavHostFragment.findNavController(context).navigate(R.id.action_homeFragment_to_detailTourFragment, bundle);
             }
         });
     }

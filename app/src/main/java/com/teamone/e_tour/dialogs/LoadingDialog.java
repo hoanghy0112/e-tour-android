@@ -2,9 +2,9 @@ package com.teamone.e_tour.dialogs;
 
 import static com.teamone.e_tour.R.color.transparent;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
-import android.graphics.drawable.ClipDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.view.WindowManager;
@@ -13,19 +13,17 @@ import androidx.annotation.NonNull;
 
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.activities.AuthenticationActivity;
-import com.teamone.e_tour.databinding.DialogLoginBinding;
+import com.teamone.e_tour.databinding.DialogLoadingBinding;
 
-import java.util.Objects;
-
-public class LoginDialog extends Dialog {
-    DialogLoginBinding binding;
+public class LoadingDialog extends Dialog {
+    DialogLoadingBinding binding;
     Context context;
 
-    public LoginDialog(@NonNull Context context) {
+    public LoadingDialog(@NonNull Context context) {
         super(context);
         this.setCancelable(true);
         this.context = context;
-        binding = DialogLoginBinding.inflate(((AuthenticationActivity) context).getLayoutInflater());
+        binding = DialogLoadingBinding.inflate(((Activity) context).getLayoutInflater());
         setContentView(binding.getRoot());
 
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -37,6 +35,12 @@ public class LoginDialog extends Dialog {
         getWindow().setBackgroundDrawable(new ColorDrawable(context.getResources().getColor(transparent, context.getTheme())));
     }
 
+    public void showLoading(String text) {
+        if (isShowing()) return;
+        binding.loginDialogProgress.setVisibility(View.VISIBLE);
+        binding.loginDialogMessage.setText(text);
+        show();
+    }
 
     public void showLoading() {
         if (isShowing()) return;
@@ -48,7 +52,7 @@ public class LoginDialog extends Dialog {
     public void showError(String error) {
         if (isShowing()) dismiss();
         binding.getRoot().removeView(binding.loginDialogProgress);
-        binding.loginDialogMessage.setText(context.getResources().getText(R.string.fail_to_sign_in).toString() + "\nError message: " + error);
+        binding.loginDialogMessage.setText(error);
         show();
     }
 }

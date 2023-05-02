@@ -16,9 +16,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 
 import com.teamone.e_tour.R;
-import com.teamone.e_tour.activities.AuthenticationActivity;
 import com.teamone.e_tour.activities.RegistrationActivity;
-import com.teamone.e_tour.databinding.DialogLoginBinding;
 import com.teamone.e_tour.databinding.DialogRegistrationBinding;
 
 public class RegistrationDialog extends Dialog {

@@ -19,6 +19,7 @@ import com.teamone.e_tour.R;
 import com.teamone.e_tour.adapters.RecommendedRouteListAdapter;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
 import com.teamone.e_tour.databinding.FragmentHomeBinding;
+import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.RecommendedRouteManager;
 
@@ -41,8 +42,7 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
 
-
-        RecommendedRouteManager.getInstance(context).fetchData(3);
+        RecommendedRouteManager.getInstance(context).fetchData(10);
 
         recommendList = binding.getRoot().findViewById(R.id.recommend_list);
 
@@ -50,9 +50,13 @@ public class HomeFragment extends Fragment {
         recommendList.setAdapter(adapter);
         recommendList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
+        LoadingDialog dialog = new LoadingDialog(getActivity());
+        dialog.showLoading("Fetching data");
+
         RecommendedRouteManager.getInstance(context).getRouteList().observe(getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
             @Override
             public void onChanged(ArrayList<TouristRoute> touristRoutes) {
+                dialog.dismiss();
                 adapter.setRouteList(touristRoutes);
             }
         });
