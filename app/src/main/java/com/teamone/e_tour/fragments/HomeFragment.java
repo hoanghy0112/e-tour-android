@@ -35,14 +35,14 @@ public class HomeFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        RecommendedRouteManager.getInstance(getActivity()).fetchData(10);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
-
-        RecommendedRouteManager.getInstance(context).fetchData(10);
 
         recommendList = binding.getRoot().findViewById(R.id.recommend_list);
 
@@ -53,9 +53,11 @@ public class HomeFragment extends Fragment {
         LoadingDialog dialog = new LoadingDialog(getActivity());
         dialog.showLoading("Fetching data");
 
+
         RecommendedRouteManager.getInstance(context).getRouteList().observe(getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
             @Override
             public void onChanged(ArrayList<TouristRoute> touristRoutes) {
+                if (touristRoutes.size() <= 0) return;
                 dialog.dismiss();
                 adapter.setRouteList(touristRoutes);
             }
@@ -65,7 +67,7 @@ public class HomeFragment extends Fragment {
         Window window = getActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(getActivity() ,R.color.blue_dark));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.blue_dark));
 
         return binding.getRoot();
     }

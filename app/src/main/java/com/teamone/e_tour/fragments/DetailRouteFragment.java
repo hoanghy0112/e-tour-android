@@ -22,14 +22,18 @@ import com.teamone.e_tour.entities.TouristRoute;
 
 public class DetailRouteFragment extends Fragment {
 
+    ViewDetailRouteApi api;
+
     public DetailRouteFragment() {
-        // Required empty public constructor
     }
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        String routeId = getArguments().getString("id");
+        api = new ViewDetailRouteApi(getActivity());
+        api.fetchData(routeId);
     }
 
     @Override
@@ -51,9 +55,6 @@ public class DetailRouteFragment extends Fragment {
             }
         });
 
-        String routeId = getArguments().getString("id");
-        ViewDetailRouteApi api = new ViewDetailRouteApi(getActivity());
-        api.fetchData(routeId);
 
         LoadingDialog dialog = new LoadingDialog(getActivity());
         dialog.showLoading(getString(R.string.loading_tourist_route));
@@ -71,6 +72,8 @@ public class DetailRouteFragment extends Fragment {
                 binding.bookTicketBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        String routeId = getArguments().getString("id");
+
                         Bundle bundle = new Bundle();
                         bundle.putString("id", routeId);
                         bundle.putString("name", touristRoute.getName());
