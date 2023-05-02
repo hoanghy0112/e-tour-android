@@ -65,4 +65,16 @@
     <string name="choose_payment_method">Choose payment method</string>
     <string name="using_credit_card">Using credit card</string>
     <string name="using_cash">Using cash</string>
+    <string name="contact_information">Contact information</string>
+    <string name="please_enter_contact_information">Please enter contact information</string>
+    <string name="first_visitor">First visitor</string>
+    <string name="visitor_information">Visitor information</string>
+    <string name="add_new_vistor">Add new vistor</string>
+    <string name="options">Options</string>
+    <string name="special_requirement">Special requirement</string>
+    <string name="pickup_location">Pickup location</string>
+    <string name="enter_pickup_location_here">Enter pickup location here</string>
+    <string name="detail_price">Detail price</string>
+    <string name="total_price">Total price</string>
+    <string name="surname">Surname</string>
 </resources>

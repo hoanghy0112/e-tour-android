@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray"
     tools:context=".fragments.BookTicketFragment">
 
 
@@ -109,7 +110,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="15dp"
-            android:background="@color/white"
+            app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="8dp"
             app:cardElevation="10dp">
 
@@ -213,8 +214,9 @@
         android:id="@+id/home_wrapper"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:defaultNavHost="true"
+        app:layout_constraintTop_toBottomOf="@+id/tour_preview"
         app:navGraph="@navigation/nav_book_ticket" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

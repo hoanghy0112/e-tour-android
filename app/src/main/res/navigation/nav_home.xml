@@ -30,11 +30,38 @@
         tools:layout="@layout/fragment_tour_list" >
         <action
             android:id="@+id/action_tourListFragment_to_bookTicketFragment"
-            app:destination="@id/bookTicketFragment" />
+            app:destination="@id/navigation2" />
     </fragment>
     <fragment
-        android:id="@+id/bookTicketFragment"
-        android:name="com.teamone.e_tour.fragments.BookTicketFragment"
-        android:label="fragment_book_ticket"
-        tools:layout="@layout/fragment_book_ticket" />
+        android:id="@+id/visitorInformationFragment2"
+        android:name="com.teamone.e_tour.fragments.VisitorInformationFragment"
+        android:label="fragment_visitor_information"
+        tools:layout="@layout/fragment_visitor_information" />
+    <navigation android:id="@+id/navigation2"
+        app:startDestination="@id/bookTicketFragment">
+        <fragment
+            android:id="@+id/bookTicketFragment"
+            android:name="com.teamone.e_tour.fragments.BookTicketFragment"
+            android:label="fragment_book_ticket"
+            tools:layout="@layout/fragment_book_ticket" >
+            <action
+                android:id="@+id/action_bookTicketFragment_to_checkoutFragment2"
+                app:destination="@id/checkoutFragment2" />
+            <action
+                android:id="@+id/action_bookTicketFragment_to_visitorInformationFragment2"
+                app:destination="@id/visitorInformationFragment2" />
+        </fragment>
+        <fragment
+            android:id="@+id/checkoutFragment2"
+            android:name="com.teamone.e_tour.fragments.CheckoutFragment"
+            android:label="fragment_checkout"
+            tools:layout="@layout/fragment_checkout" >
+            <action
+                android:id="@+id/action_checkoutFragment2_to_visitorInformationFragment2"
+                app:destination="@id/visitorInformationFragment2" />
+        </fragment>
+        <action
+            android:id="@+id/action_global_visitorInformationFragment2"
+            app:destination="@id/visitorInformationFragment2" />
+    </navigation>
 </navigation>
