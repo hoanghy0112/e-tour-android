@@ -1,219 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/gray"
+    android:orientation="vertical"
     tools:context=".fragments.InputInformationFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/gray"
-            android:orientation="vertical"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="10dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/contact_information"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/contact_information"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:backgroundTint="@color/white"
-                android:drawableLeft="@drawable/envelope"
-                android:drawableRight="@drawable/small_chevron_right"
-                android:fontFamily="sans-serif"
-                android:letterSpacing="0.01"
-                android:text="@string/please_enter_contact_information"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/visitor_information"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:backgroundTint="@color/white"
-                android:drawableLeft="@drawable/user"
-                android:drawableRight="@drawable/small_chevron_right"
-                android:fontFamily="sans-serif"
-                android:letterSpacing="0.02"
-                android:text="@string/first_visitor"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:backgroundTint="@color/white"
-                android:drawableLeft="@drawable/add_user"
-                android:fontFamily="sans-serif"
-                android:letterSpacing="0.02"
-                android:text="@string/add_new_vistor"
-                android:textAlignment="textStart"
-                android:textAllCaps="false"
-                android:textColor="@color/placeholder"
-                android:textSize="12sp" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="Special requirements"
-                android:textColor="@color/black"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/number_circle"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="8dp">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/special_requirement"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:text="@string/options"
-                    android:textColor="@color/placeholder"
-                    android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/plus"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <LinearLayout
-                android:id="@+id/pickup_location"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/number_circle"
-                android:orientation="vertical"
-                android:paddingTop="15dp"
-                android:paddingBottom="5dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/materialDivider">
-
-                    <ImageView
-                        android:id="@+id/location_icon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentStart="true"
-                        android:layout_marginStart="10dp"
-                        android:src="@drawable/location" />
-
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="10dp"
-                        android:layout_toEndOf="@id/location_icon"
-                        android:text="@string/pickup_location"
-                        android:textColor="@color/black"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toEndOf="@+id/location_icon"
-                        app:layout_constraintTop_toTopOf="@+id/location_icon" />
-
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="15dp"
-                        android:scaleX="1.3"
-                        android:scaleY="1.3"
-                        android:src="@drawable/collapse" />
-                </RelativeLayout>
-
-
-                <com.google.android.material.divider.MaterialDivider
-                    android:id="@+id/materialDivider"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp" />
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="10dp"
-                    android:hint="@string/enter_pickup_location_here"
-                    android:inputType="text"
-                    android:textColor="@color/black"
-                    android:textColorHint="@color/placeholder"
-                    android:textCursorDrawable="@null"
-                    android:textSize="13sp"
-                    app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
-
-            </LinearLayout>
-        </LinearLayout>
+        android:background="@color/gray"
+        android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="@string/detail_price"
+            android:text="@string/contact_information"
             android:textColor="@color/black"
             android:textSize="12sp"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/contact_information"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/envelope"
+            android:drawableRight="@drawable/small_chevron_right"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.01"
+            android:text="@string/please_enter_contact_information"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
 
-        <LinearLayout
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="@string/visitor_information"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/user"
+            android:drawableRight="@drawable/small_chevron_right"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.02"
+            android:text="@string/first_visitor"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/add_user"
+            android:fontFamily="sans-serif"
+            android:letterSpacing="0.02"
+            android:text="@string/add_new_vistor"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/placeholder"
+            android:textSize="12sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Special requirements"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@color/white"
+            android:background="@drawable/number_circle"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="8dp">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/special_requirement"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="@string/options"
+                android:textColor="@color/placeholder"
+                android:textSize="12sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/plus"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/pickup_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/number_circle"
             android:orientation="vertical"
             android:paddingTop="15dp"
             android:paddingBottom="5dp">
@@ -225,75 +142,154 @@
                 app:layout_constraintTop_toTopOf="@+id/materialDivider">
 
                 <ImageView
-                    android:id="@+id/location_icon2"
+                    android:id="@+id/location_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="5dp"
-                    android:src="@drawable/collapse" />
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/location" />
 
                 <TextView
+                    android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="10dp"
-                    android:layout_toEndOf="@id/location_icon2"
-                    android:text="@string/total_price"
+                    android:layout_toEndOf="@id/location_icon"
+                    android:text="@string/pickup_location"
                     android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@+id/location_icon"
+                    app:layout_constraintTop_toTopOf="@+id/location_icon" />
 
-                <TextView
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginEnd="20dp"
-                    android:text="VND 950.000"
-                    android:textColor="@color/black"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:layout_marginEnd="15dp"
+                    android:scaleX="1.3"
+                    android:scaleY="1.3"
+                    android:src="@drawable/collapse" />
             </RelativeLayout>
 
 
             <com.google.android.material.divider.MaterialDivider
+                android:id="@+id/materialDivider"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp" />
 
-            <RelativeLayout
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="40dp"
-                    android:text="Adult x2"
-                    android:textColor="@color/placeholder" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="10dp"
-                    android:text="VND 950.000"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
-            </RelativeLayout>
+                android:layout_marginHorizontal="10dp"
+                android:hint="@string/enter_pickup_location_here"
+                android:inputType="text"
+                android:textColor="@color/black"
+                android:textColorHint="@color/placeholder"
+                android:textCursorDrawable="@null"
+                android:textSize="13sp"
+                app:layout_constraintTop_toBottomOf="@+id/materialDivider" />
 
         </LinearLayout>
+    </LinearLayout>
 
-        <Button
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/detail_price"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingTop="15dp"
+        android:paddingBottom="5dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="35dp"
-            android:backgroundTint="@color/blue"
-            android:text="@string/next"
-            android:textAllCaps="false"
-            android:textColor="@color/white" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/materialDivider">
+
+            <ImageView
+                android:id="@+id/location_icon2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/collapse" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_toEndOf="@id/location_icon2"
+                android:text="@string/total_price"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="20dp"
+                android:text="VND 950.000"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+        <com.google.android.material.divider.MaterialDivider
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="Adult x2"
+                android:textColor="@color/placeholder" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="10dp"
+                android:text="VND 950.000"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+        </RelativeLayout>
 
     </LinearLayout>
-</ScrollView>
+
+    <Button
+        android:id="@+id/next_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginVertical="35dp"
+        android:backgroundTint="@color/blue"
+        android:text="@string/next"
+        android:textAllCaps="false"
+        android:textColor="@color/white" />
+
+</LinearLayout>

@@ -39,6 +39,13 @@ public class InputInformationFragment extends Fragment {
             }
         });
 
+        binding.nextBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(InputInformationFragment.this).navigate(R.id.action_inputInformationFragment_to_checkoutFragment);
+            }
+        });
+
         return binding.getRoot();
     }
 }

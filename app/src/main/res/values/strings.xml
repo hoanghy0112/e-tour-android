@@ -77,4 +77,11 @@
     <string name="detail_price">Detail price</string>
     <string name="total_price">Total price</string>
     <string name="surname">Surname</string>
+    <string name="in_your_id_passport">In your id/passport</string>
+    <string name="example_email_example_com">Example: email@example.com</string>
+    <string name="choose_voucher">Choose voucher</string>
+    <string name="voucher">Discount voucher</string>
+    <string name="change">Change</string>
+    <string name="you_have_1_voucher">You have 1 voucher</string>
+    <string name="check_out">Check out</string>
 </resources>
