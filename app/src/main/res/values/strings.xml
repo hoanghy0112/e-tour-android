@@ -92,4 +92,6 @@
     <string name="receipt_information">Receipt information</string>
     <string name="edit_visitor_information">Edit visitor information</string>
     <string name="age">Age</string>
+    <string name="untitled_tour">Untitled tour</string>
+    <string name="no_description">No description</string>
 </resources>

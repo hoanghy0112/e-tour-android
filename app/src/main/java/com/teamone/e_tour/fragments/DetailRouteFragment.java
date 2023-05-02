@@ -85,4 +85,10 @@ public class DetailRouteFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        api.finish();
+    }
 }

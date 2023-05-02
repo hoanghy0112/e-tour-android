@@ -26,13 +26,22 @@
             android:paddingBottom="0dp">
 
             <TextView
-                android:id="@+id/route_name"
+                android:id="@+id/tour_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Tour name"
                 android:textColor="@color/black"
                 android:textSize="15sp"
                 android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tour_description"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tour description"
+                android:textColor="@color/placeholder"
+                android:textSize="14sp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

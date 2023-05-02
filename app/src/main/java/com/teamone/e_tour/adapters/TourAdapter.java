@@ -45,7 +45,8 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Tour tour = tourList.get(position);
 
-        holder.name.setText(tour.getName());
+        holder.name.setText(tour.getName().length() != 0 ? tour.getName() : context.getString(R.string.untitled_tour));
+        holder.description.setText(tour.getDescription().length() != 0 ? tour.getDescription() : context.getString(R.string.no_description));
         holder.from.setText(tour.getFrom().toString());
         holder.type.setText(tour.getType() == "normal" ? context.getString(R.string.normal_tour) : context.getString(R.string.promotion_tour));
         holder.price.setText("VND " + tour.getPrice().toString());
@@ -73,11 +74,13 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
         TextView from;
         TextView type;
         TextView name;
+        TextView description;
         Button bookBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.route_name);
+            name = itemView.findViewById(R.id.tour_name);
+            description = itemView.findViewById(R.id.tour_description);
             price = itemView.findViewById(R.id.price);
             from = itemView.findViewById(R.id.departure_time);
             type = itemView.findViewById(R.id.tour_type);
