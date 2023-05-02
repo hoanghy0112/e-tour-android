@@ -52,5 +52,16 @@
         <action
             android:id="@+id/action_bookTicketFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
+        <action
+            android:id="@+id/action_bookTicketFragment_to_contactInformationFragment"
+            app:destination="@id/contactInformationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/contactInformationFragment"
+        android:name="com.teamone.e_tour.fragments.ContactInformationFragment"
+        android:label="ContactInformationFragment" >
+        <action
+            android:id="@+id/action_contactInformationFragment_to_bookTicketFragment"
+            app:destination="@id/bookTicketFragment" />
     </fragment>
 </navigation>

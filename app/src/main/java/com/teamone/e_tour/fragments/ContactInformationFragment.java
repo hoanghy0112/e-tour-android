@@ -10,14 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.teamone.e_tour.R;
-import com.teamone.e_tour.databinding.FragmentVisitorInformationBinding;
+import com.teamone.e_tour.databinding.FragmentContactInformationBinding;
 
-public class VisitorInformationFragment extends Fragment {
+public class ContactInformationFragment extends Fragment {
 
-    public VisitorInformationFragment() {
+    public ContactInformationFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,19 +26,19 @@ public class VisitorInformationFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentVisitorInformationBinding binding = FragmentVisitorInformationBinding.inflate(inflater, container, false);
+        FragmentContactInformationBinding binding = FragmentContactInformationBinding.inflate(inflater, container, false);
 
         binding.nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavHostFragment.findNavController(VisitorInformationFragment.this).navigate(R.id.action_visitorInformationFragment2_to_bookTicketFragment);
+                NavHostFragment.findNavController(ContactInformationFragment.this).navigate(R.id.action_contactInformationFragment_to_bookTicketFragment);
             }
         });
 
         binding.topAppBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                NavHostFragment.findNavController(VisitorInformationFragment.this).popBackStack();
+                NavHostFragment.findNavController(ContactInformationFragment.this).popBackStack();
             }
         });
 

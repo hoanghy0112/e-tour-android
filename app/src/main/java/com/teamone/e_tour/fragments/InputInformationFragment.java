@@ -32,10 +32,17 @@ public class InputInformationFragment extends Fragment {
         // Inflate the layout for this fragment
         FragmentInputInformationBinding binding = FragmentInputInformationBinding.inflate(inflater, container, false);
 
-        binding.contactInformation.setOnClickListener(new View.OnClickListener() {
+        binding.visitorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.action_bookTicketFragment_to_visitorInformationFragment2);
+            }
+        });
+
+        binding.contactInformation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.action_bookTicketFragment_to_contactInformationFragment);
             }
         });
 

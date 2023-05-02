@@ -33,6 +33,7 @@
         android:layout_height="wrap_content"
         android:background="@color/blue"
         android:orientation="vertical"
+        android:paddingBottom="10dp"
         android:paddingTop="10dp">
 
         <LinearLayout
@@ -127,16 +128,16 @@
             app:cardElevation="10dp">
 
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_width="372dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:paddingVertical="20dp"
-                    android:paddingHorizontal="15dp">
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="20dp">
 
                     <TextView
                         android:layout_width="match_parent"
