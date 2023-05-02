@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_book_ticket"
+    app:startDestination="@id/inputInformationFragment">
+
+    <fragment
+        android:id="@+id/inputInformationFragment"
+        android:name="com.teamone.e_tour.fragments.InputInformationFragment"
+        android:label="fragment_input_information"
+        tools:layout="@layout/fragment_input_information" >
+        <action
+            android:id="@+id/action_inputInformationFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.teamone.e_tour.fragments.CheckoutFragment"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout" />
+</navigation>

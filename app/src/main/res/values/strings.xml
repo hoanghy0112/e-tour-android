@@ -58,4 +58,11 @@
     <string name="view_detail_information">View detail information</string>
     <string name="normal_tour">Normal</string>
     <string name="promotion_tour">Promotion</string>
+    <string name="information">Information</string>
+    <string name="checkout">Checkout</string>
+    <string name="receipt">Receipt</string>
+    <string name="you_can_use_it_from">You can use it from</string>
+    <string name="choose_payment_method">Choose payment method</string>
+    <string name="using_credit_card">Using credit card</string>
+    <string name="using_cash">Using cash</string>
 </resources>

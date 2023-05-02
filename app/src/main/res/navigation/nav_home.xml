@@ -27,5 +27,14 @@
         android:id="@+id/tourListFragment"
         android:name="com.teamone.e_tour.fragments.TourListFragment"
         android:label="fragment_tour_list"
-        tools:layout="@layout/fragment_tour_list" />
+        tools:layout="@layout/fragment_tour_list" >
+        <action
+            android:id="@+id/action_tourListFragment_to_bookTicketFragment"
+            app:destination="@id/bookTicketFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookTicketFragment"
+        android:name="com.teamone.e_tour.fragments.BookTicketFragment"
+        android:label="fragment_book_ticket"
+        tools:layout="@layout/fragment_book_ticket" />
 </navigation>
