@@ -18,6 +18,7 @@ import com.teamone.e_tour.R;
 import com.teamone.e_tour.adapters.TourAdapter;
 import com.teamone.e_tour.api.tour.ViewTourListOfRouteApi;
 import com.teamone.e_tour.databinding.FragmentTourListBinding;
+import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.Tour;
 
 import java.util.ArrayList;
@@ -33,6 +34,10 @@ public class TourListFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        String id = getArguments().getString("id");
+        api = new ViewTourListOfRouteApi(getActivity());
+        api.fetchData(id);
     }
 
     @Override
@@ -54,19 +59,21 @@ public class TourListFragment extends Fragment {
             }
         });
 
-        String id = getArguments().getString("id");
         String routeName = getArguments().getString("name");
-        api = new ViewTourListOfRouteApi(getActivity());
-        api.fetchData(id);
 
         TourAdapter adapter = new TourAdapter(TourListFragment.this);
         adapter.setRouteName(routeName);
         binding.tourList.setAdapter(adapter);
         binding.tourList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
+        LoadingDialog dialog = new LoadingDialog(getActivity());
+        dialog.showLoading(getString(R.string.fetching_tour_list_of_route));
+
         api.getTourList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Tour>>() {
             @Override
             public void onChanged(ArrayList<Tour> tours) {
+                if (tours.size() == 0) return;
+                dialog.dismiss();
                 adapter.setTourList(tours);
             }
         });
@@ -77,6 +84,11 @@ public class TourListFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
         api.finish();
     }
 }

@@ -59,7 +59,6 @@ public class ViewTourListOfRouteApi {
         socket.on(ViewTourListOfRouteApi.serverResponseEvent, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                Log.e("api", String.valueOf(args[0]));
                 Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").create();
                 ViewTourListOfRouteApi.ResponseData response = gson.fromJson(String.valueOf(args[0]), ViewTourListOfRouteApi.ResponseData.class);
                 if (response.status == 200) {

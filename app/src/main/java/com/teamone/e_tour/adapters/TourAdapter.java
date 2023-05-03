@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.card.MaterialCardView;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.entities.Tour;
+import com.teamone.e_tour.models.BookingDataManager;
 
 import java.util.ArrayList;
 
@@ -54,6 +55,11 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
         holder.bookBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                BookingDataManager bookingDataManager = BookingDataManager.getInstance();
+                bookingDataManager.getTicketData().ticketInfo.setTourId(tour.get_id());
+                bookingDataManager.setTourName(tour.getName());
+                bookingDataManager.setRouteName(routeName);
+                bookingDataManager.setDepartureDate(tour.getFrom());
                 NavHostFragment.findNavController(context).navigate(R.id.action_tourListFragment_to_bookTicketFragment);
             }
         });

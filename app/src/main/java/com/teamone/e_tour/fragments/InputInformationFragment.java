@@ -13,6 +13,7 @@ import android.widget.Button;
 
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.databinding.FragmentInputInformationBinding;
+import com.teamone.e_tour.models.BookingDataManager;
 
 public class InputInformationFragment extends Fragment {
 
@@ -31,6 +32,9 @@ public class InputInformationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         FragmentInputInformationBinding binding = FragmentInputInformationBinding.inflate(inflater, container, false);
+
+        String fullName =BookingDataManager.getInstance().getTicketData().ticketInfo.getFullName();
+        binding.contactInformation.setText(fullName.length() != 0 ? fullName : getActivity().getResources().getString(R.string.please_enter_contact_information));
 
         binding.visitorBtn.setOnClickListener(new View.OnClickListener() {
             @Override

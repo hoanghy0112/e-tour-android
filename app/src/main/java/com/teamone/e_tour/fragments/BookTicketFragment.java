@@ -14,7 +14,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.teamone.e_tour.R;
+import com.teamone.e_tour.api.ticket.BookTicketApi;
 import com.teamone.e_tour.databinding.FragmentBookTicketBinding;
+import com.teamone.e_tour.models.BookingDataManager;
 
 public class BookTicketFragment extends Fragment {
 
@@ -39,6 +41,12 @@ public class BookTicketFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentBookTicketBinding.inflate(inflater, container, false);
         context = getActivity();
+
+        BookTicketApi.RequestBody.TicketInfo ticketInfo = BookingDataManager.getInstance().getTicketData().ticketInfo;
+        binding.departureTime.setText(BookingDataManager.getInstance().getDepartureDate().toString());
+        binding.tourName.setText(BookingDataManager.getInstance().getTourName());
+        binding.routeName.setText(BookingDataManager.getInstance().getRouteName());
+
         return binding.getRoot();
     }
 
