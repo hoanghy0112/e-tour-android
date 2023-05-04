@@ -118,6 +118,8 @@ public class InputInformationFragment extends Fragment {
             @Override
             public void onChanged(BookTicketApi.RequestBody requestBody) {
                 adapter.setVisitors(requestBody.ticketInfo.getVisitors());
+                BookingDataManager.getInstance().setNumOfVisitor(requestBody.ticketInfo.getVisitors().size());
+                binding.totalPrice.setText("VND " + String.valueOf(BookingDataManager.getInstance().getNumOfVisitor() * BookingDataManager.getInstance().getPrice()));
             }
         });
 

@@ -31,6 +31,8 @@ public class CheckoutFragment extends Fragment {
         BookTicketFragment.viewSecondTab();
         FragmentCheckoutBinding binding = FragmentCheckoutBinding.inflate(inflater, container, false);
 
+        binding.totalPrice.setText("VND " + String.valueOf(BookingDataManager.getInstance().getNumOfVisitor() * BookingDataManager.getInstance().getPrice()));
+
         binding.checkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

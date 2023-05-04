@@ -24,7 +24,7 @@ public class Tour implements Serializable {
         this.description = description;
     }
 
-    private Number price;
+    private long price;
     private Date from;
     private Date to;
     private String type;
@@ -41,11 +41,11 @@ public class Tour implements Serializable {
         this._id = _id;
     }
 
-    public Number getPrice() {
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(Number price) {
+    public void setPrice(long price) {
         this.price = price;
     }
 

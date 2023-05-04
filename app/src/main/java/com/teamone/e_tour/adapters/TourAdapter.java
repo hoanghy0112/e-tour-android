@@ -50,13 +50,15 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
         holder.description.setText(tour.getDescription().length() != 0 ? tour.getDescription() : context.getString(R.string.no_description));
         holder.from.setText(tour.getFrom().toString());
         holder.type.setText(tour.getType() == "normal" ? context.getString(R.string.normal_tour) : context.getString(R.string.promotion_tour));
-        holder.price.setText("VND " + tour.getPrice().toString());
+        holder.price.setText("VND " + String.valueOf(tour.getPrice()));
 
         holder.bookBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BookingDataManager bookingDataManager = BookingDataManager.getInstance();
                 bookingDataManager.getTicketData().ticketInfo.setTourId(tour.get_id());
+                bookingDataManager.setPrice(tour.getPrice());
+                bookingDataManager.setNumOfVisitor(0);
                 bookingDataManager.setTourName(tour.getName());
                 bookingDataManager.setRouteName(routeName);
                 bookingDataManager.setDepartureDate(tour.getFrom());

@@ -15,6 +15,24 @@ public class BookingDataManager {
     private String tourName;
     private String description;
     private Date departureDate;
+    private int numOfVisitor;
+    private long price;
+
+    public int getNumOfVisitor() {
+        return numOfVisitor;
+    }
+
+    public void setNumOfVisitor(int numOfVisitor) {
+        this.numOfVisitor = numOfVisitor;
+    }
+
+    public long getPrice() {
+        return price;
+    }
+
+    public void setPrice(long price) {
+        this.price = price;
+    }
 
     private MutableLiveData<BookTicketApi.RequestBody> ticketData = new MutableLiveData<>(new BookTicketApi.RequestBody());
 

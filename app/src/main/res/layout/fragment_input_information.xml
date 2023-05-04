@@ -281,6 +281,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/total_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -303,21 +304,21 @@
             android:layout_height="wrap_content"
             android:padding="10dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:text="Adult x2"
-                android:textColor="@color/placeholder" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginStart="40dp"-->
+<!--                android:text="Adult x2"-->
+<!--                android:textColor="@color/placeholder" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:text="VND 950.000"
-                android:textColor="@color/black"
-                android:textSize="12sp" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_alignParentEnd="true"-->
+<!--                android:layout_marginEnd="10dp"-->
+<!--                android:text="VND 950.000"-->
+<!--                android:textColor="@color/black"-->
+<!--                android:textSize="12sp" />-->
         </RelativeLayout>
 
     </LinearLayout>
