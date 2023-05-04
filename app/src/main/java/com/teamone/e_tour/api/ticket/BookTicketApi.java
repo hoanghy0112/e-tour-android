@@ -152,7 +152,6 @@ public class BookTicketApi {
         try {
             String jsonString = gson.toJson(body);
             object = new JSONObject(jsonString);
-            Log.e("json", jsonString);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -163,20 +162,10 @@ public class BookTicketApi {
         socket.on(serverResponseEvent, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                Log.e("response", String.valueOf((args[0])));
                 ResponseData response = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
                 if (response.status == 200) {
                     data.postValue(response.data);
                 }
-            }
-        });
-
-        socket.on("error", new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                Log.e("response", String.valueOf((args[0])));
-                ResponseData response = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
-                Log.e("message", response.message);
             }
         });
     }

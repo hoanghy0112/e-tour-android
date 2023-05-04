@@ -60,45 +60,9 @@ public class InputInformationFragment extends Fragment {
         binding.nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BookTicketApi.getInstance(getActivity()).send(BookingDataManager.getInstance().getTicketData());
-                BookTicketApi.getInstance(getActivity()).getData().observe(getViewLifecycleOwner(), new Observer<Ticket>() {
-                    @Override
-                    public void onChanged(Ticket ticket) {
-                        Log.e("ticket", ticket.get_id() == null ? "no-id" : ticket.get_id());
-                    }
-                });
                 NavHostFragment.findNavController(InputInformationFragment.this).navigate(R.id.action_inputInformationFragment_to_checkoutFragment);
             }
         });
-
-//        binding.materialDivider2.setVisibility(View.INVISIBLE);
-//        binding.textInputEditText.setVisibility(View.INVISIBLE);
-//        binding.materialDivider2.getLayoutParams().width = 0;
-//        binding.materialDivider2.getLayoutParams().height = 0;
-//        binding.textInputEditText.getLayoutParams().width = 0;
-//        binding.textInputEditText.getLayoutParams().height = 0;
-//        ((ImageView) binding.specialRequirementExpand).setImageDrawable(requireActivity().getDrawable(R.drawable.plus));
-//        binding.specialRequirementCard.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (!isSpecialRequirementVisible) {
-//                    binding.materialDivider2.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-//                    binding.materialDivider2.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-//                    binding.textInputEditText.getLayoutParams().width = ViewGroup.LayoutParams.WRAP_CONTENT;
-//                    binding.textInputEditText.getLayoutParams().height = ViewGroup.LayoutParams.WRAP_CONTENT;
-//                    binding.materialDivider2.setVisibility(View.VISIBLE);
-//                    binding.textInputEditText.setVisibility(View.VISIBLE);
-//                    ((ImageView) binding.specialRequirementExpand).setImageDrawable(requireActivity().getDrawable(R.drawable.minus));
-//                } else {
-//                    binding.materialDivider2.getLayoutParams().width = 0;
-//                    binding.materialDivider2.getLayoutParams().height = 0;
-//                    binding.textInputEditText.getLayoutParams().width = 0;
-//                    binding.textInputEditText.getLayoutParams().height = 0;
-//                    ((ImageView) binding.specialRequirementExpand).setImageDrawable(requireActivity().getDrawable(R.drawable.plus));
-//                }
-//                isSpecialRequirementVisible = !isSpecialRequirementVisible;
-//            }
-//        });
 
         ((EditText) binding.specialRequirementEdit).addTextChangedListener(new TextWatcher() {
             @Override
@@ -164,7 +128,6 @@ public class InputInformationFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
-        BookTicketApi.getInstance(getActivity()).finish();
         super.onDestroyView();
     }
 }
