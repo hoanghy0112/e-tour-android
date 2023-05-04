@@ -1,8 +1,13 @@
 package com.teamone.e_tour.models;
 
-import com.teamone.e_tour.api.ticket.BookTicketApi;
+import androidx.lifecycle.MutableLiveData;
 
+import com.teamone.e_tour.api.ticket.BookTicketApi;
+import com.teamone.e_tour.entities.Ticket;
+
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
 
 public class BookingDataManager {
     private static BookingDataManager instance;
@@ -11,14 +16,13 @@ public class BookingDataManager {
     private String description;
     private Date departureDate;
 
-    private BookTicketApi.RequestBody ticketData;
+    private MutableLiveData<BookTicketApi.RequestBody> ticketData = new MutableLiveData<>(new BookTicketApi.RequestBody());
 
     public BookingDataManager() {
         routeName = "";
         tourName = "";
         description = "";
         departureDate = new Date();
-        ticketData = new BookTicketApi.RequestBody();
     }
 
     public static BookingDataManager getInstance() {
@@ -61,10 +65,32 @@ public class BookingDataManager {
     }
 
     public BookTicketApi.RequestBody getTicketData() {
-        return ticketData;
+        return ticketData.getValue();
+    }
+
+    public void addNewVisitor() {
+        ArrayList<Ticket.Visitor> visitors = Objects.requireNonNull(ticketData.getValue()).ticketInfo.getVisitors();
+        visitors.add(new Ticket.Visitor());
+
+        BookTicketApi.RequestBody oldTicketData = ticketData.getValue();
+        oldTicketData.ticketInfo.setVisitors(visitors);
+        ticketData.postValue(oldTicketData);
+    }
+
+    public  void changeVisitorInfo(int index, Ticket.Visitor visitorInfo) {
+        ArrayList<Ticket.Visitor> visitors = Objects.requireNonNull(ticketData.getValue()).ticketInfo.getVisitors();
+        visitors.set(index, visitorInfo);
+
+        BookTicketApi.RequestBody oldTicketData = ticketData.getValue();
+        oldTicketData.ticketInfo.setVisitors(visitors);
+        ticketData.postValue(oldTicketData);
+    }
+
+    public MutableLiveData<BookTicketApi.RequestBody> getTicketLiveData() {
+        return  ticketData;
     }
 
     public void setTicketData(BookTicketApi.RequestBody ticketData) {
-        this.ticketData = ticketData;
+        this.ticketData.postValue(ticketData);
     }
 }

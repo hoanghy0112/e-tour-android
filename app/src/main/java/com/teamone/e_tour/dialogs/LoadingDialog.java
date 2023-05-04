@@ -21,7 +21,7 @@ public class LoadingDialog extends Dialog {
 
     public LoadingDialog(@NonNull Context context) {
         super(context);
-        this.setCancelable(true);
+        this.setCancelable(false);
         this.context = context;
         binding = DialogLoadingBinding.inflate(((Activity) context).getLayoutInflater());
         setContentView(binding.getRoot());

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/visitor_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="2dp"
+        android:paddingVertical="10dp"
+        android:backgroundTint="@color/white"
+        android:drawableLeft="@drawable/user"
+        android:drawableRight="@drawable/small_chevron_right"
+        android:fontFamily="sans-serif"
+        android:letterSpacing="0.02"
+        android:text="@string/new_visitor"
+        android:textAlignment="textStart"
+        android:textAllCaps="false"
+        android:textColor="@color/black" />
+</LinearLayout>

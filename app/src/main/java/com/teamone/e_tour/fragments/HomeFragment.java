@@ -53,7 +53,6 @@ public class HomeFragment extends Fragment {
         LoadingDialog dialog = new LoadingDialog(getActivity());
         dialog.showLoading("Fetching data");
 
-
         RecommendedRouteManager.getInstance(context).getRouteList().observe(getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
             @Override
             public void onChanged(ArrayList<TouristRoute> touristRoutes) {

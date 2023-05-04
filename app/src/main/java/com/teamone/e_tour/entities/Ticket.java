@@ -89,14 +89,22 @@ public class Ticket implements Serializable {
         this.visitors = visitors;
     }
 
-    public class Visitor implements Serializable {
+    public static class Visitor implements Serializable {
         private String name;
         private int age;
         private String address;
         private String phoneNumber;
-        private String request;
+//        private String request;
 
         public Visitor() {
+            name = "";
+        }
+
+        public Visitor(String name, int age, String address, String phoneNumber) {
+            this.name = name;
+            this.age = age;
+            this.address = address;
+            this.phoneNumber = phoneNumber;
         }
 
         public String getName() {
@@ -130,13 +138,13 @@ public class Ticket implements Serializable {
         public void setPhoneNumber(String phoneNumber) {
             this.phoneNumber = phoneNumber;
         }
-
-        public String getRequest() {
-            return request;
-        }
-
-        public void setRequest(String request) {
-            this.request = request;
-        }
+//
+//        public String getRequest() {
+//            return request;
+//        }
+//
+//        public void setRequest(String request) {
+//            this.request = request;
+//        }
     }
 }

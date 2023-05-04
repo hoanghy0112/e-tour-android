@@ -44,6 +44,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -69,6 +70,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -88,6 +90,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="text"
@@ -107,6 +110,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/age"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberSigned"
@@ -126,6 +130,7 @@
             app:hintTextColor="@color/black">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/special_requirement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberSigned"
