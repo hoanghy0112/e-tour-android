@@ -40,7 +40,8 @@ public class ContactInformationFragment extends Fragment {
                 bookingDataManager.getTicketData().ticketInfo.setFullName(binding.fullName.getText().toString());
                 bookingDataManager.getTicketData().ticketInfo.setPhoneNumber(binding.phoneNumber.getText().toString());
                 bookingDataManager.getTicketData().ticketInfo.setEmail(binding.email.getText().toString());
-                NavHostFragment.findNavController(ContactInformationFragment.this).navigate(R.id.action_contactInformationFragment_to_bookTicketFragment);
+//                NavHostFragment.findNavController(ContactInformationFragment.this).navigate(R.id.action_contactInformationFragment_to_bookTicketFragment);
+                NavHostFragment.findNavController(ContactInformationFragment.this).popBackStack();
             }
         });
 

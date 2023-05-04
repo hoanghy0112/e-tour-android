@@ -73,7 +73,7 @@
                 android:id="@+id/phone_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text"
+                android:inputType="numberSigned"
                 android:textColor="@color/black"
                 android:paddingBottom="0dp"
                 android:textCursorDrawable="@null" />
@@ -133,7 +133,7 @@
                 android:id="@+id/special_requirement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="numberSigned"
+                android:inputType="text"
                 android:textColor="@color/black"
                 android:paddingBottom="0dp"
                 android:textCursorDrawable="@null" />
@@ -148,6 +148,17 @@
         android:layout_margin="20dp"
         android:text="@string/next"
         android:backgroundTint="@color/blue"
+        android:textColor="@color/white"
+        android:textAllCaps="false"/>
+    <Button
+        android:id="@+id/remove_visitor_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-15dp"
+        android:layout_marginHorizontal="20dp"
+        android:drawableTint="@color/white"
+        android:text="@string/remove_visitor"
+        android:backgroundTint="@color/orange"
         android:textColor="@color/white"
         android:textAllCaps="false"/>
 </LinearLayout>

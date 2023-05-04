@@ -70,7 +70,7 @@
     <string name="first_visitor">First visitor</string>
     <string name="visitor_information">Visitor information</string>
     <string name="add_new_vistor">Add new vistor</string>
-    <string name="options">Options</string>
+    <string name="options">Add options</string>
     <string name="special_requirement">Special requirement</string>
     <string name="pickup_location">Pickup location</string>
     <string name="enter_pickup_location_here">Enter pickup location here</string>
@@ -97,4 +97,7 @@
     <string name="fetching_tour_list_of_route">Fetching tour list of route</string>
     <string name="special_requirements">Special requirements</string>
     <string name="new_visitor">New visitor</string>
+    <string name="remove_visitor">Remove</string>
+    <string name="more_requirements">More requirements</string>
+    <string name="enter_special_requirements_here">Enter special requirements here</string>
 </resources>

@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class VisitorAdapter extends RecyclerView.Adapter<VisitorAdapter.ViewHolder> {
     private Activity context;
-    private ArrayList<Ticket.Visitor> visitors;
+    private ArrayList<Ticket.Visitor> visitors = new ArrayList<>();
 
     public VisitorAdapter(Activity context) {
         this.context = context;

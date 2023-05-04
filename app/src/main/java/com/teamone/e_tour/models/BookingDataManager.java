@@ -77,6 +77,15 @@ public class BookingDataManager {
         ticketData.postValue(oldTicketData);
     }
 
+    public void removeVisitor(int index) {
+        ArrayList<Ticket.Visitor> visitors = Objects.requireNonNull(ticketData.getValue()).ticketInfo.getVisitors();
+        visitors.remove(index);
+
+        BookTicketApi.RequestBody oldTicketData = ticketData.getValue();
+        oldTicketData.ticketInfo.setVisitors(visitors);
+        ticketData.postValue(oldTicketData);
+    }
+
     public  void changeVisitorInfo(int index, Ticket.Visitor visitorInfo) {
         ArrayList<Ticket.Visitor> visitors = Objects.requireNonNull(ticketData.getValue()).ticketInfo.getVisitors();
         visitors.set(index, visitorInfo);

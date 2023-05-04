@@ -52,7 +52,18 @@ public class VisitorInformationFragment extends Fragment {
                 String phoneNumber = binding.phoneNumber.getText().toString();
                 BookingDataManager.getInstance().changeVisitorInfo(index, new Ticket.Visitor(name, age, address, phoneNumber));
 
-                NavHostFragment.findNavController(VisitorInformationFragment.this).navigate(R.id.action_visitorInformationFragment2_to_bookTicketFragment);
+//                NavHostFragment.findNavController(VisitorInformationFragment.this).navigate(R.id.action_visitorInformationFragment2_to_bookTicketFragment);
+                NavHostFragment.findNavController(VisitorInformationFragment.this).popBackStack();
+            }
+        });
+
+        binding.removeVisitorBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int index = getArguments().getInt("index");
+                BookingDataManager.getInstance().removeVisitor(index);
+
+                NavHostFragment.findNavController(VisitorInformationFragment.this).popBackStack();
             }
         });
 

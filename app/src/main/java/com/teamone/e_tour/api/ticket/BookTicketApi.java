@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import io.socket.emitter.Emitter;
 
 public class BookTicketApi {
+    public static BookTicketApi instance;
     public static final String emitEvent = "book-ticket";
     public static final String serverResponseEvent = "booked-ticket";
 
@@ -38,6 +39,25 @@ public class BookTicketApi {
             private String fullName;
             private String email;
             private String phoneNumber;
+            private String specialRequirement;
+            private String pickupLocation;
+
+            public String getSpecialRequirement() {
+                return specialRequirement;
+            }
+
+            public void setSpecialRequirement(String specialRequirement) {
+                this.specialRequirement = specialRequirement;
+            }
+
+            public String getPickupLocation() {
+                return pickupLocation;
+            }
+
+            public void setPickupLocation(String pickupLocation) {
+                this.pickupLocation = pickupLocation;
+            }
+
             private ArrayList<Ticket.Visitor> visitors = new ArrayList<>();
 
             public String getTourId() {
@@ -118,6 +138,12 @@ public class BookTicketApi {
         this.context = context;
     }
 
+    public static BookTicketApi getInstance(Context context) {
+        if (instance == null) {
+            instance = new BookTicketApi(context);
+        }
+        return instance;
+    }
 
     public void send(RequestBody body) {
         JSONObject object;
@@ -126,6 +152,7 @@ public class BookTicketApi {
         try {
             String jsonString = gson.toJson(body);
             object = new JSONObject(jsonString);
+            Log.e("json", jsonString);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -136,10 +163,20 @@ public class BookTicketApi {
         socket.on(serverResponseEvent, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
+                Log.e("response", String.valueOf((args[0])));
                 ResponseData response = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
                 if (response.status == 200) {
                     data.postValue(response.data);
                 }
+            }
+        });
+
+        socket.on("error", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                Log.e("response", String.valueOf((args[0])));
+                ResponseData response = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
+                Log.e("message", response.message);
             }
         });
     }
