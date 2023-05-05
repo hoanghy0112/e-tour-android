@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,8 +36,9 @@ public class TourListFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        String id = getArguments().getString("id");
         api = new ViewTourListOfRouteApi(getActivity());
+
+        String id = getArguments().getString("id");
         api.fetchData(id);
     }
 
@@ -46,6 +48,7 @@ public class TourListFragment extends Fragment {
         FragmentTourListBinding binding = FragmentTourListBinding.inflate(inflater, container, false);
 
         getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+
 
         Window window = getActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -68,6 +71,12 @@ public class TourListFragment extends Fragment {
 
         LoadingDialog dialog = new LoadingDialog(getActivity());
         dialog.showLoading(getString(R.string.fetching_tour_list_of_route));
+
+        ArrayList<Tour> tours = api.getTourList().getValue();
+        if (tours.size() != 0) {
+            dialog.dismiss();
+            adapter.setTourList(tours);
+        }
 
         api.getTourList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Tour>>() {
             @Override

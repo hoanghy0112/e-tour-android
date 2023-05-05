@@ -46,6 +46,7 @@ public class ViewTourListOfRouteApi {
 
     public void fetchData(String id) {
         JSONObject object = new JSONObject();
+        Log.e("fetch", "Have a fetch");
 
         try {
             object.put("touristRoute", id);
@@ -53,7 +54,7 @@ public class ViewTourListOfRouteApi {
             throw new RuntimeException(e);
         }
 
-        socket = new SocketManager(context);
+        socket = SocketManager.getInstance(context);
         socket.emit(ViewTourListOfRouteApi.emitEvent, object);
 
         socket.on(ViewTourListOfRouteApi.serverResponseEvent, new Emitter.Listener() {
@@ -69,7 +70,7 @@ public class ViewTourListOfRouteApi {
     }
 
     public void finish() {
-        if (socket != null && socket.getSocket() != null)
-            socket.getSocket().disconnect();
+//        if (socket != null && socket.getSocket() != null)
+//            socket.getSocket().disconnect();
     }
 }

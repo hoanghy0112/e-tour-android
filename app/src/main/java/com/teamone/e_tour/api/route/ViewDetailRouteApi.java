@@ -49,7 +49,7 @@ public class ViewDetailRouteApi {
             throw new RuntimeException(e);
         }
 
-        socket = new SocketManager(context);
+        socket = SocketManager.getInstance(context);
         socket.emit(ViewDetailRouteApi.emitEvent, object);
 
         socket.on(ViewDetailRouteApi.serverResponseEvent, new Emitter.Listener() {
@@ -65,7 +65,7 @@ public class ViewDetailRouteApi {
     }
 
     public void finish() {
-        if (socket != null && socket.getSocket() != null)
-            socket.getSocket().disconnect();
+//        if (socket != null && socket.getSocket() != null)
+//            socket.getSocket().disconnect();
     }
 }
