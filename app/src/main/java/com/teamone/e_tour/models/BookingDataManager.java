@@ -17,6 +17,29 @@ public class BookingDataManager {
     private Date departureDate;
     private int numOfVisitor;
     private long price;
+    private MutableLiveData<String> errorMessage = new MutableLiveData<>("");
+
+    public MutableLiveData<String> getErrorMessage() {
+        return errorMessage;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage.postValue(errorMessage);
+    }
+
+    public void setBookedTicket(MutableLiveData<Ticket> bookedTicket) {
+        this.bookedTicket = bookedTicket;
+    }
+
+    private MutableLiveData<Ticket> bookedTicket = new MutableLiveData<>(null);
+
+    public MutableLiveData<Ticket> getBookedTicket() {
+        return bookedTicket;
+    }
+
+    public void setBookedTicket(Ticket bookedTicket) {
+        this.bookedTicket.postValue(bookedTicket);
+    }
 
     public int getNumOfVisitor() {
         return numOfVisitor;

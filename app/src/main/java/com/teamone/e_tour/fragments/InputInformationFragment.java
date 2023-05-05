@@ -1,5 +1,6 @@
 package com.teamone.e_tour.fragments;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -23,6 +24,7 @@ import com.teamone.e_tour.R;
 import com.teamone.e_tour.adapters.VisitorAdapter;
 import com.teamone.e_tour.api.ticket.BookTicketApi;
 import com.teamone.e_tour.databinding.FragmentInputInformationBinding;
+import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.Ticket;
 import com.teamone.e_tour.models.BookingDataManager;
 
@@ -120,6 +122,21 @@ public class InputInformationFragment extends Fragment {
                 adapter.setVisitors(requestBody.ticketInfo.getVisitors());
                 BookingDataManager.getInstance().setNumOfVisitor(requestBody.ticketInfo.getVisitors().size());
                 binding.totalPrice.setText("VND " + String.valueOf(BookingDataManager.getInstance().getNumOfVisitor() * BookingDataManager.getInstance().getPrice()));
+            }
+        });
+
+
+        BookingDataManager.getInstance().getErrorMessage().observe(getViewLifecycleOwner(), new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                if (s.length() == 0) return;
+                LoadingDialog dialog = new LoadingDialog(getActivity());
+                dialog.showError(s).setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialog) {
+                        BookingDataManager.getInstance().setErrorMessage("");
+                    }
+                });
             }
         });
 

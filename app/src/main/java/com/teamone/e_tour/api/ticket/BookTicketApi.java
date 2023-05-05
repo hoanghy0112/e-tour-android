@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import com.teamone.e_tour.api.tour.ViewTourListOfRouteApi;
 import com.teamone.e_tour.entities.Ticket;
 import com.teamone.e_tour.entities.Tour;
+import com.teamone.e_tour.models.BookingDataManager;
 import com.teamone.e_tour.utils.SocketManager;
 
 import org.json.JSONException;
@@ -131,7 +132,7 @@ public class BookTicketApi {
         return data;
     }
 
-    private MutableLiveData<Ticket> data = new MutableLiveData<>(new Ticket());
+    private MutableLiveData<Ticket> data = new MutableLiveData<>(null);
 
 
     public BookTicketApi(Context context) {
@@ -166,6 +167,14 @@ public class BookTicketApi {
                 if (response.status == 200) {
                     data.postValue(response.data);
                 }
+            }
+        });
+
+        socket.on("error", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                ResponseData response = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
+                BookingDataManager.getInstance().setErrorMessage(response.message);
             }
         });
     }

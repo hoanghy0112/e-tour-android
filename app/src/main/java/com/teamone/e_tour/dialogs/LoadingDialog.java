@@ -35,24 +35,30 @@ public class LoadingDialog extends Dialog {
         getWindow().setBackgroundDrawable(new ColorDrawable(context.getResources().getColor(transparent, context.getTheme())));
     }
 
-    public void showLoading(String text) {
-        if (isShowing()) return;
+    public Dialog showLoading(String text) {
+        if (isShowing()) return this;
+        this.setCancelable(false);
         binding.loginDialogProgress.setVisibility(View.VISIBLE);
         binding.loginDialogMessage.setText(text);
         show();
+        return this;
     }
 
-    public void showLoading() {
-        if (isShowing()) return;
+    public Dialog showLoading() {
+        if (isShowing()) return this;
+        this.setCancelable(false);
         binding.loginDialogProgress.setVisibility(View.VISIBLE);
         binding.loginDialogMessage.setText(context.getResources().getText(R.string.please_wait_we_are_signing_in_for_you));
         show();
+        return this;
     }
 
-    public void showError(String error) {
+    public Dialog showError(String error) {
         if (isShowing()) dismiss();
+        this.setCancelable(true);
         binding.getRoot().removeView(binding.loginDialogProgress);
         binding.loginDialogMessage.setText(error);
         show();
+        return this;
     }
 }

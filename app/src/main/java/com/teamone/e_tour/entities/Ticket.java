@@ -2,6 +2,7 @@ package com.teamone.e_tour.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class Ticket implements Serializable {
     private String _id;
@@ -13,6 +14,12 @@ public class Ticket implements Serializable {
     private String email;
     private long price;
     private ArrayList<Visitor> visitors;
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    private Date createdAt;
 
     public Ticket() {
     }
