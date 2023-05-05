@@ -1,5 +1,6 @@
 package com.teamone.e_tour.adapters;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,8 +20,10 @@ import com.teamone.e_tour.R;
 import com.teamone.e_tour.entities.Image;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.fragments.HomeFragment;
+import com.teamone.e_tour.utils.Formatter;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class RecommendedRouteListAdapter extends RecyclerView.Adapter<RecommendedRouteListAdapter.ViewHolder> {
     Fragment context;
@@ -48,13 +51,14 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         return new ViewHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TouristRoute route = routeList.get(position);
 
         holder.name.setText(route.getName());
-        holder.newPrice.setText(route.getReservationFee().toString());
-        holder.oldPrice.setText(route.getImages().toString());
+        holder.newPrice.setText(Formatter.toCurrency(route.getReservationFee()));
+//        holder.oldPrice.setText(route.getImages().toString());
         if (route.getImages().size() > 0)
             Glide.with(context).load(new Image(route.getImages().get(0)).getImageUri()).into(holder.cardImage);
         holder.card.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +89,7 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
-            oldPrice = itemView.findViewById(R.id.old_price);
+//            oldPrice = itemView.findViewById(R.id.old_price);
             newPrice = itemView.findViewById(R.id.new_price);
             addToFavourite = itemView.findViewById(R.id.add_favourite_btn);
             cardImage = itemView.findViewById(R.id.card_image);

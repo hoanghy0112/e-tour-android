@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
@@ -16,12 +17,16 @@ import android.view.WindowManager;
 
 import com.bumptech.glide.Glide;
 import com.teamone.e_tour.R;
+import com.teamone.e_tour.adapters.DestinationAdapter;
 import com.teamone.e_tour.adapters.ImageAdapter;
 import com.teamone.e_tour.api.route.ViewDetailRouteApi;
 import com.teamone.e_tour.databinding.FragmentDetailRouteBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.BookingDataManager;
+import com.teamone.e_tour.utils.Formatter;
+
+import java.util.Locale;
 
 import me.relex.circleindicator.CircleIndicator;
 
@@ -63,6 +68,11 @@ public class DetailRouteFragment extends Fragment {
         routeImageIndicator.setViewPager(routeImageList);
         imageAdapter.registerDataSetObserver(routeImageIndicator.getDataSetObserver());
 
+        DestinationAdapter destinationAdapter = new DestinationAdapter(getActivity());
+
+        binding.destinationList.setAdapter(destinationAdapter);
+        binding.destinationList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
         binding.topAppBar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,9 +90,12 @@ public class DetailRouteFragment extends Fragment {
                 if (touristRoute.get_id() == null) return;
                 dialog.dismiss();
 
+                destinationAdapter.setDestinations(touristRoute.getRoute());
+
                 binding.topAppBar.setTitle(touristRoute.getName());
                 binding.routeName.setText(touristRoute.getName());
                 binding.description.setText(touristRoute.getDescription());
+                binding.newPrice.setText(Formatter.toCurrency(touristRoute.getReservationFee()));
 
                 if (touristRoute.getImages().size() != 0) {
                     imageAdapter.setImages(touristRoute.getImages());
