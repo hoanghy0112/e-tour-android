@@ -3,6 +3,7 @@ package com.teamone.e_tour.models;
 import androidx.lifecycle.MutableLiveData;
 
 import com.teamone.e_tour.api.ticket.BookTicketApi;
+import com.teamone.e_tour.constants.ApiEndpoint;
 import com.teamone.e_tour.entities.Ticket;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ import java.util.Objects;
 public class BookingDataManager {
     private static BookingDataManager instance;
     private String routeName;
+    private String imageUri = "";
     private String tourName;
     private String description;
     private Date departureDate;
@@ -29,6 +31,14 @@ public class BookingDataManager {
 
     public void setBookedTicket(MutableLiveData<Ticket> bookedTicket) {
         this.bookedTicket = bookedTicket;
+    }
+
+    public String getImageUri() {
+        return ApiEndpoint.baseUrl + "images/" + imageUri;
+    }
+
+    public void setImageUri(String imageUri) {
+        this.imageUri = imageUri;
     }
 
     private MutableLiveData<Ticket> bookedTicket = new MutableLiveData<>(null);

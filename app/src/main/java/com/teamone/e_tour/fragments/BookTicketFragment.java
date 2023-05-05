@@ -13,8 +13,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.api.ticket.BookTicketApi;
+import com.teamone.e_tour.constants.ApiEndpoint;
 import com.teamone.e_tour.databinding.FragmentBookTicketBinding;
 import com.teamone.e_tour.models.BookingDataManager;
 
@@ -45,7 +47,10 @@ public class BookTicketFragment extends Fragment {
         BookTicketApi.RequestBody.TicketInfo ticketInfo = BookingDataManager.getInstance().getTicketData().ticketInfo;
         binding.departureTime.setText(BookingDataManager.getInstance().getDepartureDate().toString());
         binding.tourName.setText(BookingDataManager.getInstance().getTourName());
+        binding.description.setText(BookingDataManager.getInstance().getDescription());
         binding.routeName.setText(BookingDataManager.getInstance().getRouteName());
+
+        Glide.with(getActivity()).load(BookingDataManager.getInstance().getImageUri()).into(binding.imageView);
 
         return binding.getRoot();
     }

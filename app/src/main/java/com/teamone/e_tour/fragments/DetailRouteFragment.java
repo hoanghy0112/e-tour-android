@@ -13,11 +13,14 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.bumptech.glide.Glide;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.api.route.ViewDetailRouteApi;
+import com.teamone.e_tour.constants.ApiEndpoint;
 import com.teamone.e_tour.databinding.FragmentDetailTourBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
+import com.teamone.e_tour.models.BookingDataManager;
 
 
 public class DetailRouteFragment extends Fragment {
@@ -46,7 +49,7 @@ public class DetailRouteFragment extends Fragment {
         Window window = getActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(getActivity() ,R.color.blue));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.blue));
 
         binding.topAppBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +71,9 @@ public class DetailRouteFragment extends Fragment {
                 binding.topAppBar.setTitle(touristRoute.getName());
                 binding.routeName.setText(touristRoute.getName());
                 binding.description.setText(touristRoute.getDescription());
+
+                if (touristRoute.getImages().size() != 0)
+                    BookingDataManager.getInstance().setImageUri(touristRoute.getImages().get(0));
 
                 binding.bookTicketBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
