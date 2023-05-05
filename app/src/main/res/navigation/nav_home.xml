@@ -18,7 +18,7 @@
         android:id="@+id/detailTourFragment"
         android:name="com.teamone.e_tour.fragments.DetailRouteFragment"
         android:label="fragment_detail_tour"
-        tools:layout="@layout/fragment_detail_tour" >
+        tools:layout="@layout/fragment_detail_route" >
         <action
             android:id="@+id/action_detailTourFragment_to_tourListFragment"
             app:destination="@id/tourListFragment" />

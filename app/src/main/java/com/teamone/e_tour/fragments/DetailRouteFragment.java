@@ -6,6 +6,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.navigation.fragment.NavHostFragment;
+import androidx.viewpager.widget.ViewPager;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,12 +16,14 @@ import android.view.WindowManager;
 
 import com.bumptech.glide.Glide;
 import com.teamone.e_tour.R;
+import com.teamone.e_tour.adapters.ImageAdapter;
 import com.teamone.e_tour.api.route.ViewDetailRouteApi;
-import com.teamone.e_tour.constants.ApiEndpoint;
-import com.teamone.e_tour.databinding.FragmentDetailTourBinding;
+import com.teamone.e_tour.databinding.FragmentDetailRouteBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.BookingDataManager;
+
+import me.relex.circleindicator.CircleIndicator;
 
 
 public class DetailRouteFragment extends Fragment {
@@ -42,7 +45,7 @@ public class DetailRouteFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentDetailTourBinding binding = FragmentDetailTourBinding.inflate(inflater, container, false);
+        FragmentDetailRouteBinding binding = FragmentDetailRouteBinding.inflate(inflater, container, false);
 
         getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
 
@@ -50,6 +53,15 @@ public class DetailRouteFragment extends Fragment {
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.blue));
+
+        ViewPager routeImageList = binding.routeImageList;
+        CircleIndicator routeImageIndicator = binding.routeImageIndicator;
+
+        ImageAdapter imageAdapter = new ImageAdapter(getActivity());
+        routeImageList.setAdapter(imageAdapter);
+
+        routeImageIndicator.setViewPager(routeImageList);
+        imageAdapter.registerDataSetObserver(routeImageIndicator.getDataSetObserver());
 
         binding.topAppBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,8 +84,10 @@ public class DetailRouteFragment extends Fragment {
                 binding.routeName.setText(touristRoute.getName());
                 binding.description.setText(touristRoute.getDescription());
 
-                if (touristRoute.getImages().size() != 0)
+                if (touristRoute.getImages().size() != 0) {
+                    imageAdapter.setImages(touristRoute.getImages());
                     BookingDataManager.getInstance().setImageUri(touristRoute.getImages().get(0));
+                }
 
                 binding.bookTicketBtn.setOnClickListener(new View.OnClickListener() {
                     @Override

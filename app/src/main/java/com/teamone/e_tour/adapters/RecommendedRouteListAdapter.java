@@ -13,8 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.card.MaterialCardView;
 import com.teamone.e_tour.R;
+import com.teamone.e_tour.entities.Image;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.fragments.HomeFragment;
 
@@ -53,6 +55,8 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         holder.name.setText(route.getName());
         holder.newPrice.setText(route.getReservationFee().toString());
         holder.oldPrice.setText(route.getImages().toString());
+        if (route.getImages().size() > 0)
+            Glide.with(context).load(new Image(route.getImages().get(0)).getImageUri()).into(holder.cardImage);
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,6 +78,7 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         TextView oldPrice;
         TextView newPrice;
         ImageView addToFavourite;
+        ImageView cardImage;
         MaterialCardView card;
 
         public ViewHolder(@NonNull View itemView) {
@@ -83,6 +88,7 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
             oldPrice = itemView.findViewById(R.id.old_price);
             newPrice = itemView.findViewById(R.id.new_price);
             addToFavourite = itemView.findViewById(R.id.add_favourite_btn);
+            cardImage = itemView.findViewById(R.id.card_image);
             card = itemView.findViewById(R.id.tourist_route_card);
         }
     }

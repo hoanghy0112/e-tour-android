@@ -31,25 +31,29 @@
         app:layout_constraintTop_toBottomOf="@+id/top_bar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:paddingBottom="200dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingBottom="200dp">
 
-            <ImageView
-                android:id="@+id/image"
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/route_image_list"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:scaleType="centerCrop"
-                android:src="@drawable/etourlogo"
                 app:layout_constraintDimensionRatio="H,2:1"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/route_image_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                app:layout_constraintBottom_toBottomOf="@+id/route_image_list" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/image">
+                app:layout_constraintTop_toBottomOf="@+id/route_image_list">
 
                 <TextView
                     android:id="@+id/route_name"
@@ -149,10 +153,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/orange"
-                android:textColor="@color/white"
                 android:paddingHorizontal="20dp"
                 android:paddingVertical="8dp"
                 android:text="Save VND 25.000"
+                android:textColor="@color/white"
                 android:textSize="14sp" />
 
             <RelativeLayout
