@@ -1,6 +1,7 @@
 package com.teamone.e_tour.models;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.teamone.e_tour.utils.MySharedPreferences;
 
@@ -19,7 +20,9 @@ public class AppManagement {
     public void setFirstTime(Boolean firstTime) {
         isFirstTime = firstTime;
         MySharedPreferences mySharedPreferences = new MySharedPreferences(context);
-        mySharedPreferences.getEditor().putBoolean("isFirstTime", firstTime);
+        SharedPreferences.Editor editor = mySharedPreferences.getEditor();
+        editor.putBoolean("isFirstTime", firstTime);
+        editor.apply();
     }
 
     public static AppManagement getInstance(Context context) {

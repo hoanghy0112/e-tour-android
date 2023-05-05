@@ -1,6 +1,7 @@
 package com.teamone.e_tour.models;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 
 import com.teamone.e_tour.utils.MySharedPreferences;
 
@@ -47,9 +48,11 @@ public class CredentialToken {
         this.refreshToken = refreshToken;
 
         MySharedPreferences mySharedPreferences = new MySharedPreferences(context);
-        mySharedPreferences.getEditor().putString("id", id);
-        mySharedPreferences.getEditor().putString("accessToken", accessToken);
-        mySharedPreferences.getEditor().putString("refreshToken", refreshToken);
+        SharedPreferences.Editor editor = mySharedPreferences.getEditor();
+        editor.putString("id", id);
+        editor.putString("accessToken", accessToken);
+        editor.putString("refreshToken", refreshToken);
+        editor.apply();
     }
 
     public void refresh() {

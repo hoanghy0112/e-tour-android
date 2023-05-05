@@ -19,7 +19,6 @@ import com.teamone.e_tour.models.CredentialToken;
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this,  OnBoardingActivity.class);
             startActivity(intent);
             finish();
-        } else if (CredentialToken.getInstance(this).getId() != null) {
+        } else if (CredentialToken.getInstance(this).getId().length() != 0) {
             Intent intent = new Intent(this,  HomeActivity.class);
             startActivity(intent);
             finish();

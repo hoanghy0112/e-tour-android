@@ -18,6 +18,7 @@ import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiError;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiResult;
 import com.teamone.e_tour.databinding.ActivityAuthenticationBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
+import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.CredentialToken;
 
 import java.io.IOException;
@@ -78,6 +79,7 @@ public class AuthenticationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        AppManagement.getInstance(this).setFirstTime(false);
         activityAuthenticationBinding = ActivityAuthenticationBinding.inflate(getLayoutInflater());
         activityAuthenticationBinding.setViewModel(viewmodel);
         setContentView(activityAuthenticationBinding.getRoot());
