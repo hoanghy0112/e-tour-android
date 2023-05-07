@@ -30,6 +30,16 @@ android {
         viewBinding true
         dataBinding true
     }
+
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    'src/main/res/layouts/dialogs',
+                    'src/main/res/layouts',
+                    'src/main/res'
+            ]
+        }
+    }
 }
 
 dependencies {

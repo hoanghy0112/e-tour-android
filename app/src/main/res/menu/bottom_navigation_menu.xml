@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/item_1"
+        android:id="@+id/homeFragment"
         android:enabled="true"
         android:icon="@drawable/home_item"
         android:title="@string/home"/>
     <item
-        android:id="@+id/item_2"
+        android:id="@+id/historyTab"
         android:enabled="true"
         android:icon="@drawable/history"
         android:title="@string/history"/>
     <item
-        android:id="@+id/item_3"
+        android:id="@+id/savedTab"
         android:enabled="true"
         android:icon="@drawable/saved_item"
         android:title="@string/saved"/>
     <item
-        android:id="@+id/item_4"
+        android:id="@+id/accountTab"
         android:enabled="true"
         android:icon="@drawable/account_item"
         android:title="@string/account"/>

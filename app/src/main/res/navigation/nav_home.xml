@@ -64,4 +64,19 @@
             android:id="@+id/action_contactInformationFragment_to_bookTicketFragment"
             app:destination="@id/bookTicketFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/savedTab"
+        android:name="com.teamone.e_tour.fragments.SavedTab"
+        android:label="fragment_saved_tab"
+        tools:layout="@layout/fragment_saved_tab" />
+    <fragment
+        android:id="@+id/historyTab"
+        android:name="com.teamone.e_tour.fragments.HistoryTab"
+        android:label="fragment_history_tab"
+        tools:layout="@layout/fragment_history_tab" />
+    <fragment
+        android:id="@+id/accountTab"
+        android:name="com.teamone.e_tour.fragments.AccountTab"
+        android:label="fragment_account_tab"
+        tools:layout="@layout/fragment_account_tab" />
 </navigation>
