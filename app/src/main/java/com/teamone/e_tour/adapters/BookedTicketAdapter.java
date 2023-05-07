@@ -17,7 +17,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.api.ticket.ViewBookedTicketApi;
 import com.teamone.e_tour.entities.Image;
-import com.teamone.e_tour.entities.Ticket;
+import com.teamone.e_tour.utils.Formatter;
 
 import java.util.ArrayList;
 
@@ -48,8 +48,8 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ViewBookedTicketApi.ResponseData.Ticket ticket = tickets.get(position);
 
-        holder.ticketId.setText(ticket._id);
-        holder.bookedDate.setText(ticket.createdAt.toString());
+//        holder.ticketId.setText(ticket._id);
+        holder.bookedDate.setText(Formatter.dateToString(ticket.createdAt));
         holder.routeName.setText(ticket.tourId.touristRoute.name);
         holder.tourName.setText(ticket.tourId.name);
         holder.ticketVisitor.setText(context.getString(R.string.visitor) + " x" + ticket.visitors.size());
@@ -87,7 +87,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            ticketId = itemView.findViewById(R.id.ticket_id);
+//            ticketId = itemView.findViewById(R.id.ticket_id);
             bookedDate = itemView.findViewById(R.id.booked_date);
             routeImage = itemView.findViewById(R.id.route_image);
             routeName = itemView.findViewById(R.id.route_name);
