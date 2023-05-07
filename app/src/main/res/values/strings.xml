@@ -100,4 +100,8 @@
     <string name="remove_visitor">Remove</string>
     <string name="more_requirements">More requirements</string>
     <string name="enter_special_requirements_here">Enter special requirements here</string>
+    <string name="tour_name">Tour name</string>
+    <string name="route_name">Route name</string>
+    <string name="visitor">Visitor</string>
+    <string name="booked_ticket">Booked ticket</string>
 </resources>

@@ -27,6 +27,7 @@ import com.teamone.e_tour.adapters.RecommendedRouteListAdapter;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.AppManagement;
+import com.teamone.e_tour.models.BookedTicketManager;
 import com.teamone.e_tour.models.DetailRouteManager;
 import com.teamone.e_tour.models.RecommendedRouteManager;
 import com.teamone.e_tour.models.UserProfileManager;
@@ -55,5 +56,6 @@ public class HomeActivity extends AppCompatActivity {
 
         // Initialize individual socket and connect it to server to reduce response time when fetching route
         DetailRouteManager.getInstance(this);
+        BookedTicketManager.getInstance(this);
     }
 }

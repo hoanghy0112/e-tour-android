@@ -44,6 +44,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
 
+        getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+
         recommendList = binding.getRoot().findViewById(R.id.recommend_list);
 
         RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>(), HomeFragment.this);

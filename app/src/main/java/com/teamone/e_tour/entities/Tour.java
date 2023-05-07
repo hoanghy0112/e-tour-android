@@ -7,6 +7,14 @@ public class Tour implements Serializable {
     private String _id;
     private String name;
     private String description;
+    private long price;
+    private Date from;
+    private Date to;
+    private String type;
+    private String touristRoute;
+
+    public Tour() {
+    }
 
     public String getName() {
         return name;
@@ -22,15 +30,6 @@ public class Tour implements Serializable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    private long price;
-    private Date from;
-    private Date to;
-    private String type;
-    private String touristRoute;
-
-    public Tour() {
     }
 
     public String get_id() {
