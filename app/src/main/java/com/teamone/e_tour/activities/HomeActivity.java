@@ -32,6 +32,7 @@ public class HomeActivity extends AppCompatActivity {
 
         UserProfileManager.getInstance(this).fetchUserProfile();
 
+        // Initialize individual socket and connect it to server to reduce response time when fetching route
         DetailRouteManager.getInstance(this);
     }
 }
