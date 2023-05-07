@@ -14,6 +14,7 @@ import com.teamone.e_tour.adapters.RecommendedRouteListAdapter;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.AppManagement;
+import com.teamone.e_tour.models.DetailRouteManager;
 import com.teamone.e_tour.models.RecommendedRouteManager;
 import com.teamone.e_tour.models.UserProfileManager;
 
@@ -31,5 +32,6 @@ public class HomeActivity extends AppCompatActivity {
 
         UserProfileManager.getInstance(this).fetchUserProfile();
 
+        DetailRouteManager.getInstance(this);
     }
 }
