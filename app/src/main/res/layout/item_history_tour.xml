@@ -40,13 +40,12 @@
                 android:id="@+id/booked_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintWidth_percent="0.5"
-                android:layout_marginEnd="15dp"
+                android:layout_marginRight="15dp"
                 android:text="Thứ 6, 21 tháng 4 2023"
-                android:textSize="13sp"
                 android:textColor="@color/blue"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"/>
 
             <com.google.android.material.divider.MaterialDivider
                 android:id="@+id/materialDivider3"
