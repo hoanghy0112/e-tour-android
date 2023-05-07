@@ -15,6 +15,7 @@ import com.teamone.e_tour.activities.OnBoardingActivity;
 import com.teamone.e_tour.databinding.ActivityMainBinding;
 import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.CredentialToken;
+import com.teamone.e_tour.models.DetailRouteManager;
 
 public class MainActivity extends AppCompatActivity {
 

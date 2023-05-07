@@ -2,6 +2,7 @@ package com.teamone.e_tour.fragments;
 
 import android.os.Bundle;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -9,6 +10,7 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.viewpager.widget.ViewPager;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,16 +26,16 @@ import com.teamone.e_tour.databinding.FragmentDetailRouteBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.BookingDataManager;
+import com.teamone.e_tour.models.DetailRouteManager;
 import com.teamone.e_tour.utils.Formatter;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 import me.relex.circleindicator.CircleIndicator;
 
 
 public class DetailRouteFragment extends Fragment {
-
-    ViewDetailRouteApi api;
 
     public DetailRouteFragment() {
     }
@@ -43,8 +45,7 @@ public class DetailRouteFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         String routeId = getArguments().getString("id");
-        api = new ViewDetailRouteApi(getActivity());
-        api.fetchData(routeId);
+        DetailRouteManager.getInstance((AppCompatActivity) getActivity()).viewRoute(routeId);
     }
 
     @Override
@@ -84,10 +85,14 @@ public class DetailRouteFragment extends Fragment {
         LoadingDialog dialog = new LoadingDialog(getActivity());
         dialog.showLoading(getString(R.string.loading_tourist_route));
 
-        api.getRouteData().observe(getViewLifecycleOwner(), new Observer<TouristRoute>() {
+        DetailRouteManager.getInstance((AppCompatActivity) getActivity()).getRouteInfo().observe(getViewLifecycleOwner(), new Observer<TouristRoute>() {
             @Override
             public void onChanged(TouristRoute touristRoute) {
-                if (touristRoute.get_id() == null) return;
+                if (touristRoute == null) {
+                    dialog.showLoading(getString(R.string.loading_tourist_route));
+                    return;
+                }
+
                 dialog.dismiss();
 
                 destinationAdapter.setDestinations(touristRoute.getRoute());
@@ -122,6 +127,5 @@ public class DetailRouteFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        api.finish();
     }
 }

@@ -1,6 +1,7 @@
 package com.teamone.e_tour.adapters;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,20 +19,14 @@ import java.util.function.Consumer;
 
 public class ImageAdapter extends PagerAdapter {
     private Context context;
-    private ArrayList<Image> images = new ArrayList<>();
+    private ArrayList<String> images = new ArrayList<>();
 
     public ImageAdapter(Context context) {
         this.context = context;
     }
 
     public void setImages(ArrayList<String> imageURIs) {
-        this.images = new ArrayList<>();
-        imageURIs.forEach(new Consumer<String>() {
-            @Override
-            public void accept(String s) {
-                images.add(new Image(s));
-            }
-        });
+        this.images = imageURIs;
         notifyDataSetChanged();
     }
 
@@ -41,7 +36,7 @@ public class ImageAdapter extends PagerAdapter {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.route_image_item, container, false);
         ImageView imageView = view.findViewById(R.id.image);
 
-        Image image = images.get(position);
+        Image image = new Image(images.get(position));
         Glide.with(context).load(image.getImageUri()).into(imageView);
 
         container.addView(view);
