@@ -22,20 +22,6 @@
             android:layout_height="wrap_content"
             android:paddingVertical="15dp">
 
-<!--            <TextView-->
-<!--                android:id="@+id/ticket_id"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                app:layout_constraintWidth_percent="0.4"-->
-<!--                android:layout_marginStart="15dp"-->
-<!--                android:singleLine="true"-->
-<!--                android:ellipsize="end"-->
-<!--                android:text="@string/ticket_id"-->
-<!--                android:textSize="13sp"-->
-<!--                android:textColor="@color/placeholder"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-
             <TextView
                 android:id="@+id/booked_date"
                 android:layout_width="0dp"
@@ -62,7 +48,7 @@
                 android:layout_marginTop="15dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/etourlogo"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toBottomOf="@+id/ticket_visitor"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/materialDivider3"
                 app:layout_constraintWidth_percent="0.3" />
@@ -111,6 +97,16 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/route_name"
                 app:layout_constraintTop_toBottomOf="@+id/tour_name" />
+
+            <LinearLayout
+                android:id="@+id/bottom_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginHorizontal="15dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ticket_visitor" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

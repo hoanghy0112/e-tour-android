@@ -104,4 +104,9 @@
     <string name="route_name">Route name</string>
     <string name="visitor">Visitor</string>
     <string name="booked_ticket">Booked ticket</string>
+    <string name="rate_this_tour">Rate this tour</string>
+    <string name="tourist_route_name">Tourist route name</string>
+    <string name="submit">Submit</string>
+    <string name="how_do_you_feel_about_this_tour">How do you feel about this tour?</string>
+    <string name="departure_date">Departure date</string>
 </resources>

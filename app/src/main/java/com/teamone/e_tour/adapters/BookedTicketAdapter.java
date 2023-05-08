@@ -6,10 +6,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -20,6 +23,7 @@ import com.teamone.e_tour.entities.Image;
 import com.teamone.e_tour.utils.Formatter;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapter.ViewHolder> {
     Fragment context;
@@ -39,8 +43,9 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_history_tour, parent, false);
+        View buttonView = LayoutInflater.from(parent.getContext()).inflate(R.layout.rating_button, parent, false);
 
-        return new ViewHolder(view);
+        return new ViewHolder(view, buttonView);
     }
 
     @SuppressLint("SetTextI18n")
@@ -55,16 +60,22 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
         holder.ticketVisitor.setText(context.getString(R.string.visitor) + " x" + ticket.visitors.size());
         if (ticket.tourId.touristRoute.images.size() > 0)
             Glide.with(context).load(new Image(ticket.tourId.touristRoute.images.get(0)).getImageUri()).into(holder.routeImage);
-//        holder.name.setText(tour.getName());
-//        holder.newPrice.setText(Formatter.toCurrency(tour.getReservationFee()));
-//            Glide.with(context).load(new Image(tour.getImages().get(0)).getImageUri()).into(holder.cardImage);
+
+        if (ticket.tourId.from.before(new Date())) {
+            holder.bottomView.addView(holder.buttonView);
+
+            holder.bottomView.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.action_historyTab_to_rateTour);
+                }
+            });
+        }
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Bundle bundle = new Bundle();
-//                bundle.putString("id", tour.get_id());
-//                NavHostFragment.findNavController(context).navigate(R.id.action_homeFragment_to_detailTourFragment, bundle);
+
             }
         });
     }
@@ -83,8 +94,10 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
         TextView tourName;
         TextView ticketVisitor;
         MaterialCardView card;
+        LinearLayout bottomView;
+        View buttonView;
 
-        public ViewHolder(@NonNull View itemView) {
+        public ViewHolder(@NonNull View itemView, View buttonView) {
             super(itemView);
 
 //            ticketId = itemView.findViewById(R.id.ticket_id);
@@ -94,6 +107,8 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             tourName = itemView.findViewById(R.id.tour_name);
             ticketVisitor = itemView.findViewById(R.id.ticket_visitor);
             card = itemView.findViewById(R.id.card);
+            bottomView = itemView.findViewById(R.id.bottom_view);
+            this.buttonView = buttonView;
         }
     }
 }

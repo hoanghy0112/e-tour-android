@@ -73,10 +73,19 @@
         android:id="@+id/historyTab"
         android:name="com.teamone.e_tour.fragments.HistoryTab"
         android:label="fragment_history_tab"
-        tools:layout="@layout/fragment_history_tab" />
+        tools:layout="@layout/fragment_history_tab" >
+        <action
+            android:id="@+id/action_historyTab_to_rateTour"
+            app:destination="@id/rateTour" />
+    </fragment>
     <fragment
         android:id="@+id/accountTab"
         android:name="com.teamone.e_tour.fragments.AccountTab"
         android:label="fragment_account_tab"
         tools:layout="@layout/fragment_account_tab" />
+    <fragment
+        android:id="@+id/rateTour"
+        android:name="com.teamone.e_tour.fragments.screens.RateTour"
+        android:label="fragment_rate_tour"
+        tools:layout="@layout/fragment_rate_tour" />
 </navigation>

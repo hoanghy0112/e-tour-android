@@ -36,4 +36,9 @@
     <style name="Theme.ETour.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ETour.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="ratingbar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/placeholder</item>
+        <item name="colorControlActivated">@color/orange</item>
+    </style>
 </resources>
