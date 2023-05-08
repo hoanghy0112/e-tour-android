@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_homeFragment_to_detailTourFragment"
             app:destination="@id/detailTourFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_forYou"
+            app:destination="@id/forYou" />
     </fragment>
     <fragment
         android:id="@+id/detailTourFragment"
@@ -100,5 +103,14 @@
         <action
             android:id="@+id/action_thanksForRating_to_homeFragment"
             app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/forYou"
+        android:name="com.teamone.e_tour.fragments.ForYou"
+        android:label="fragment_for_you"
+        tools:layout="@layout/fragment_for_you" >
+        <action
+            android:id="@+id/action_forYou_to_detailTourFragment"
+            app:destination="@id/detailTourFragment" />
     </fragment>
 </navigation>

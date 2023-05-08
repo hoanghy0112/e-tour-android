@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.teamone.e_tour.R;
-import com.teamone.e_tour.databinding.FragmentTourPreviewCardBinding;
+import com.teamone.e_tour.databinding.FragmentRoutePreviewCardSmallBinding;
 
 public class TourPreviewCard extends Fragment {
 
@@ -25,7 +25,7 @@ public class TourPreviewCard extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        FragmentTourPreviewCardBinding binding = FragmentTourPreviewCardBinding.inflate(inflater, container, false);
+        FragmentRoutePreviewCardSmallBinding binding = FragmentRoutePreviewCardSmallBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 }

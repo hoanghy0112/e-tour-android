@@ -79,6 +79,7 @@
                     android:textStyle="bold" />
 
                 <Button
+                    android:id="@+id/for_you_btn"
                     style="@style/Widget.Material3.Button.ElevatedButton.Icon"
                     android:layout_width="50dp"
                     android:layout_height="wrap_content"

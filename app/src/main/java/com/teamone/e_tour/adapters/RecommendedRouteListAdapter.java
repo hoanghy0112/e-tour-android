@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,14 +18,13 @@ import com.google.android.material.card.MaterialCardView;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.entities.Image;
 import com.teamone.e_tour.entities.TouristRoute;
-import com.teamone.e_tour.fragments.HomeFragment;
 import com.teamone.e_tour.utils.Formatter;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class RecommendedRouteListAdapter extends RecyclerView.Adapter<RecommendedRouteListAdapter.ViewHolder> {
     Fragment context;
+    int cardId;
     private ArrayList<TouristRoute> routeList = new ArrayList<>();
 
     public ArrayList<TouristRoute> getRouteList() {
@@ -38,15 +36,16 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         notifyDataSetChanged();
     }
 
-    public RecommendedRouteListAdapter(ArrayList<TouristRoute> routeList, Fragment context) {
+    public RecommendedRouteListAdapter(ArrayList<TouristRoute> routeList, Fragment context, int cardId) {
         this.routeList = routeList;
         this.context = context;
+        this.cardId = cardId;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_tour_preview_card, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(cardId, parent, false);
 
         return new ViewHolder(view);
     }
@@ -66,7 +65,7 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("id", route.get_id());
-                NavHostFragment.findNavController(context).navigate(R.id.action_homeFragment_to_detailTourFragment, bundle);
+                NavHostFragment.findNavController(context).navigate(R.id.detailTourFragment, bundle);
             }
         });
     }

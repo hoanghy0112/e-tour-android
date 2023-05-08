@@ -6,10 +6,10 @@ import android.os.Bundle;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +18,6 @@ import android.view.WindowManager;
 
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.adapters.RecommendedRouteListAdapter;
-import com.teamone.e_tour.databinding.ActivityHomeBinding;
 import com.teamone.e_tour.databinding.FragmentHomeBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
@@ -50,9 +49,16 @@ public class HomeFragment extends Fragment {
 
         recommendList = binding.getRoot().findViewById(R.id.recommend_list);
 
-        RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>(), HomeFragment.this);
+        RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>(), HomeFragment.this, R.layout.fragment_route_preview_card_large);
         recommendList.setAdapter(adapter);
         recommendList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
+        binding.forYouBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.action_homeFragment_to_forYou);
+            }
+        });
 
         LoadingDialog dialog = new LoadingDialog(getActivity());
         dialog.showLoading("Fetching data");

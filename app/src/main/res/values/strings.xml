@@ -114,4 +114,5 @@
     <string name="your_recent_rating">Your recent rating</string>
     <string name="user_display_name">User display name</string>
     <string name="user_comment_here">User comment here</string>
+    <string name="some_suggestion_for_you">Some suggestion for you...</string>
 </resources>
