@@ -36,7 +36,7 @@ public class ViewTourListOfRouteApi {
         return tourList;
     }
 
-    private MutableLiveData<ArrayList<Tour>> tourList = new MutableLiveData<ArrayList<Tour>>(new ArrayList<>());
+    private MutableLiveData<ArrayList<Tour>> tourList = new MutableLiveData<ArrayList<Tour>>();
 
 
     public ViewTourListOfRouteApi(Context context) {
@@ -46,7 +46,6 @@ public class ViewTourListOfRouteApi {
 
     public void fetchData(String id) {
         JSONObject object = new JSONObject();
-        Log.e("fetch", "Have a fetch");
 
         try {
             object.put("touristRoute", id);

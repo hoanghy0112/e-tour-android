@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,7 @@ public class HomeFragment extends Fragment {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
 
         getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+        getActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 180);
 
         recommendList = binding.getRoot().findViewById(R.id.recommend_list);
 

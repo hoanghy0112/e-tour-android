@@ -73,7 +73,7 @@ public class TourListFragment extends Fragment {
         dialog.showLoading(getString(R.string.fetching_tour_list_of_route));
 
         ArrayList<Tour> tours = api.getTourList().getValue();
-        if (tours.size() != 0) {
+        if (tours != null) {
             dialog.dismiss();
             adapter.setTourList(tours);
         }

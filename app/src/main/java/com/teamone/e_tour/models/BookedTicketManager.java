@@ -38,7 +38,7 @@ public class BookedTicketManager {
 
     public void viewBookedTickets() {
         api.finish();
-        bookedTickets = new MutableLiveData<>(new ArrayList<>());
+        bookedTickets = new MutableLiveData<>();
         api.fetch();
     }
 

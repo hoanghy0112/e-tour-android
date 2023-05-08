@@ -54,6 +54,7 @@ public class DetailRouteFragment extends Fragment {
         FragmentDetailRouteBinding binding = FragmentDetailRouteBinding.inflate(inflater, container, false);
 
         getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+        getActivity().findViewById(R.id.home_wrapper).setPadding(0,0, 0, 0);
 
         Window window = getActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
