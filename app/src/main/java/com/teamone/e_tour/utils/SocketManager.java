@@ -2,8 +2,12 @@ package com.teamone.e_tour.utils;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.teamone.e_tour.activities.AuthenticationActivity;
 import com.teamone.e_tour.constants.ApiEndpoint;
 import com.teamone.e_tour.models.CredentialToken;
 
@@ -36,10 +40,18 @@ public class SocketManager {
         try {
             socket = IO.socket(ApiEndpoint.baseUrl, options);
             socket.connect();
-
+            socket.on(Socket.EVENT_CONNECT_ERROR, new Emitter.Listener() {
+                @Override
+                public void call(Object... args) {
+                    context.startActivity(new Intent(context, AuthenticationActivity.class));
+                    ((AppCompatActivity)context).finish();
+                }
+            });
         } catch (URISyntaxException e) {
             Log.e("socket error", e.getMessage());
             throw new RuntimeException(e);
+        } catch (Exception e) {
+            Log.e("error socket", e.getMessage());
         }
     }
 

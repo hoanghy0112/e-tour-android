@@ -1,6 +1,7 @@
 package com.teamone.e_tour.models;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -64,6 +65,13 @@ public class UserProfileManager {
                 ViewUserProfile.ResponseData response = gson.fromJson(stringResponse, ViewUserProfile.ResponseData.class);
 
                 userProfile = response.data;
+            }
+        });
+
+        socket.on("error", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                Log.e("error", String.valueOf(args[0]));
             }
         });
     }

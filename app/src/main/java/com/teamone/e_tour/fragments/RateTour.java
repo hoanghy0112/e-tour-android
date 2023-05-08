@@ -1,4 +1,4 @@
-package com.teamone.e_tour.fragments.screens;
+package com.teamone.e_tour.fragments;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;

@@ -85,7 +85,7 @@
         tools:layout="@layout/fragment_account_tab" />
     <fragment
         android:id="@+id/rateTour"
-        android:name="com.teamone.e_tour.fragments.screens.RateTour"
+        android:name="com.teamone.e_tour.fragments.RateTour"
         android:label="fragment_rate_tour"
         tools:layout="@layout/fragment_rate_tour" >
         <action

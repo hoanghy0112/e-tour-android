@@ -12,23 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.adapters.VisitorAdapter;
 import com.teamone.e_tour.api.ticket.BookTicketApi;
 import com.teamone.e_tour.databinding.FragmentInputInformationBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
-import com.teamone.e_tour.entities.Ticket;
 import com.teamone.e_tour.models.BookingDataManager;
-
-import java.util.Objects;
 
 public class InputInformationFragment extends Fragment {
     boolean isSpecialRequirementVisible = true;
