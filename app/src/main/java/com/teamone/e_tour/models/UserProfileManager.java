@@ -54,5 +54,17 @@ public class UserProfileManager {
     public void fetchUserProfile() {
         SocketManager socket = SocketManager.getInstance(context);
         socket.emit(SocketMessage.Client.VIEW_USER_PROFILE);
+
+        socket.on(ViewUserProfile.serverResponseEvent, new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                String stringResponse = String.valueOf(args[0]);
+                Gson gson = new GsonBuilder().create();
+
+                ViewUserProfile.ResponseData response = gson.fromJson(stringResponse, ViewUserProfile.ResponseData.class);
+
+                userProfile = response.data;
+            }
+        });
     }
 }

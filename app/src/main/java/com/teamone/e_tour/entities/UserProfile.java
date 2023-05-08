@@ -1,7 +1,10 @@
 package com.teamone.e_tour.entities;
 
-public class UserProfile {
+import java.io.Serializable;
 
+public class UserProfile implements Serializable {
+
+    private String _id;
     private String fullName = "";
     private String email;
     private String image;
@@ -25,6 +28,14 @@ public class UserProfile {
         this.isForeigner = isForeigner;
         this.isPhoneVerified = isPhoneVerified;
         this.isEmailVerified = isEmailVerified;
+    }
+
+    public String get_id() {
+        return _id;
+    }
+
+    public void set_id(String _id) {
+        this._id = _id;
     }
 
     public String getFullName() {

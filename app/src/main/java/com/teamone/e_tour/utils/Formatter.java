@@ -9,8 +9,14 @@ public class Formatter {
         return String.format(Locale.ENGLISH, "%,d", currency) + " VND";
     }
 
-    static public String dateToString(Date date) {
+    static public String dateToDateWithHourString(Date date) {
         String pattern = "K:m a, EE, dd MMMM yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("vi", "VN"));
+        return simpleDateFormat.format(date);
+    }
+
+    static public String dateToDayString(Date date) {
+        String pattern = "EE, dd MMMM yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("vi", "VN"));
         return simpleDateFormat.format(date);
     }

@@ -87,5 +87,18 @@
         android:id="@+id/rateTour"
         android:name="com.teamone.e_tour.fragments.screens.RateTour"
         android:label="fragment_rate_tour"
-        tools:layout="@layout/fragment_rate_tour" />
+        tools:layout="@layout/fragment_rate_tour" >
+        <action
+            android:id="@+id/action_rateTour_to_thanksForRating"
+            app:destination="@id/thanksForRating" />
+    </fragment>
+    <fragment
+        android:id="@+id/thanksForRating"
+        android:name="com.teamone.e_tour.fragments.ThanksForRating"
+        android:label="fragment_thanks_for_rating"
+        tools:layout="@layout/fragment_thanks_for_rating" >
+        <action
+            android:id="@+id/action_thanksForRating_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

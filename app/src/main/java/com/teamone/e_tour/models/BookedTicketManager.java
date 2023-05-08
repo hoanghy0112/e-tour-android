@@ -16,6 +16,8 @@ public class BookedTicketManager {
 
     private MutableLiveData<ArrayList<ViewBookedTicketApi.ResponseData.Ticket>> bookedTickets = new MutableLiveData<>();
 
+    private String ratingTicketId;
+
     public BookedTicketManager(AppCompatActivity context) {
         this.context = context;
         this.api = new ViewBookedTicketApi(new SocketManager(context));
@@ -44,5 +46,13 @@ public class BookedTicketManager {
 
     public MutableLiveData<ArrayList<ViewBookedTicketApi.ResponseData.Ticket>> getBookedTickets() {
         return bookedTickets;
+    }
+
+    public String getRatingTicketId() {
+        return ratingTicketId;
+    }
+
+    public void setRatingTicketId(String ratingTicketId) {
+        this.ratingTicketId = ratingTicketId;
     }
 }

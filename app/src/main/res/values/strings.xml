@@ -109,4 +109,7 @@
     <string name="submit">Submit</string>
     <string name="how_do_you_feel_about_this_tour">How do you feel about this tour?</string>
     <string name="departure_date">Departure date</string>
+    <string name="departure_time">Departure time: </string>
+    <string name="thanks_for_rating">Thanks for rating</string>
+    <string name="your_recent_rating">Your recent rating</string>
 </resources>

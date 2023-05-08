@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +20,7 @@ import com.google.android.material.card.MaterialCardView;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.api.ticket.ViewBookedTicketApi;
 import com.teamone.e_tour.entities.Image;
+import com.teamone.e_tour.models.BookedTicketManager;
 import com.teamone.e_tour.utils.Formatter;
 
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
         ViewBookedTicketApi.ResponseData.Ticket ticket = tickets.get(position);
 
 //        holder.ticketId.setText(ticket._id);
-        holder.bookedDate.setText(Formatter.dateToString(ticket.createdAt));
+        holder.bookedDate.setText(Formatter.dateToDateWithHourString(ticket.createdAt));
         holder.routeName.setText(ticket.tourId.touristRoute.name);
         holder.tourName.setText(ticket.tourId.name);
         holder.ticketVisitor.setText(context.getString(R.string.visitor) + " x" + ticket.visitors.size());
@@ -62,11 +63,15 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             Glide.with(context).load(new Image(ticket.tourId.touristRoute.images.get(0)).getImageUri()).into(holder.routeImage);
 
         if (ticket.tourId.from.before(new Date())) {
+            if(holder.buttonView.getParent() != null) {
+                ((ViewGroup)holder.buttonView.getParent()).removeView(holder.buttonView);
+            }
             holder.bottomView.addView(holder.buttonView);
 
             holder.bottomView.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    BookedTicketManager.getInstance((AppCompatActivity) context.getActivity()).setRatingTicketId(ticket._id);
                     Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.action_historyTab_to_rateTour);
                 }
             });
