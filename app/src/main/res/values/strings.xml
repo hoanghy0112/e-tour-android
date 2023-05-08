@@ -112,4 +112,6 @@
     <string name="departure_time">Departure time: </string>
     <string name="thanks_for_rating">Thanks for rating</string>
     <string name="your_recent_rating">Your recent rating</string>
+    <string name="user_display_name">User display name</string>
+    <string name="user_comment_here">User comment here</string>
 </resources>
