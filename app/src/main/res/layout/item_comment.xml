@@ -19,7 +19,7 @@
             android:padding="15dp">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/user_image"
+                android:id="@+id/user_image_card"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkable="true"
@@ -30,6 +30,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
+                    android:id="@+id/user_image"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:scaleType="centerCrop"
@@ -46,9 +47,9 @@
                 android:textColor="@color/black"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/user_image"
-                app:layout_constraintStart_toEndOf="@+id/user_image"
-                app:layout_constraintTop_toTopOf="@+id/user_image" />
+                app:layout_constraintBottom_toBottomOf="@+id/user_image_card"
+                app:layout_constraintStart_toEndOf="@+id/user_image_card"
+                app:layout_constraintTop_toTopOf="@+id/user_image_card" />
 
             <TextView
                 android:id="@+id/rating_point"
@@ -58,19 +59,20 @@
                 android:textColor="@color/blue"
                 android:textSize="13sp"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/user_image"
+                app:layout_constraintBottom_toBottomOf="@+id/user_image_card"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/user_image" />
+                app:layout_constraintTop_toTopOf="@+id/user_image_card" />
 
             <TextView
+                android:id="@+id/comment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="10dp"
                 android:text="@string/user_comment_here"
                 android:textSize="13sp"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/user_image"
+                app:layout_constraintTop_toBottomOf="@+id/user_image_card"
                 tools:layout_editor_absoluteX="15dp" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
