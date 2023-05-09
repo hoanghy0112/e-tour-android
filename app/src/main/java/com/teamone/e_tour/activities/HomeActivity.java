@@ -51,6 +51,24 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        binding.bottomNavigation.setOnItemReselectedListener(new NavigationBarView.OnItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem item) {
+                if (item.getItemId() == R.id.homeFragment) {
+                    Navigation.findNavController(HomeActivity.this, R.id.home_wrapper).navigate(R.id.homeFragment);
+                }
+                if (item.getItemId() == R.id.historyTab) {
+                    Navigation.findNavController(HomeActivity.this, R.id.home_wrapper).navigate(R.id.historyTab);
+                }
+                if (item.getItemId() == R.id.savedTab) {
+                    Navigation.findNavController(HomeActivity.this, R.id.home_wrapper).navigate(R.id.savedTab);
+                }
+                if (item.getItemId() == R.id.accountTab) {
+                    Navigation.findNavController(HomeActivity.this, R.id.home_wrapper).navigate(R.id.accountTab);
+                }
+            }
+        });
+
         AppManagement.getInstance(this).setFirstTime(false);
 
         UserProfileManager.getInstance(this).fetchUserProfile();
