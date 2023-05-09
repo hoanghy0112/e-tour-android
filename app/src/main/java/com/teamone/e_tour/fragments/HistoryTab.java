@@ -30,7 +30,7 @@ public class HistoryTab extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        BookedTicketManager.getInstance((AppCompatActivity) getActivity()).viewBookedTickets();
+//        BookedTicketManager.getInstance((AppCompatActivity) getActivity()).viewBookedTickets();
     }
 
     @Override

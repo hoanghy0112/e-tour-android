@@ -22,6 +22,8 @@ public class BookedTicketManager {
         this.context = context;
         this.api = new ViewBookedTicketApi(new SocketManager(context));
 
+        viewBookedTickets();
+
         api.getResponse().observe(context, new Observer<ViewBookedTicketApi.ResponseData>() {
             @Override
             public void onChanged(ViewBookedTicketApi.ResponseData responseData) {

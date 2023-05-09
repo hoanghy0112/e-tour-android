@@ -24,6 +24,7 @@ import com.teamone.e_tour.models.BookedTicketManager;
 import com.teamone.e_tour.utils.Formatter;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Date;
 
 public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapter.ViewHolder> {
@@ -32,7 +33,12 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
 
     public void setTickets(ArrayList<ViewBookedTicketApi.ResponseData.Ticket> tickets) {
         this.tickets = tickets;
-        Log.e("size", String.valueOf(tickets.size()));
+        this.tickets.sort(new Comparator<ViewBookedTicketApi.ResponseData.Ticket>() {
+            @Override
+            public int compare(ViewBookedTicketApi.ResponseData.Ticket o1, ViewBookedTicketApi.ResponseData.Ticket o2) {
+                return o1.createdAt.before(o2.createdAt) ? 1 : -1;
+            }
+        });
         notifyDataSetChanged();
     }
 
