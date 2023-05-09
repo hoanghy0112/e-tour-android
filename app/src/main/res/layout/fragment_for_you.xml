@@ -13,13 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/blue">
+        android:background="@drawable/gradient">
 
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue"
+            android:background="@drawable/gradient"
             app:navigationIcon="@drawable/arrow_left"
             app:title="@string/for_you"
             app:titleCentered="true"

@@ -1,6 +1,9 @@
 package com.teamone.e_tour.fragments;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Shader;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
@@ -10,6 +13,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.text.TextPaint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,6 +56,13 @@ public class HomeFragment extends Fragment {
         RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>(), HomeFragment.this, R.layout.fragment_route_preview_card_large);
         recommendList.setAdapter(adapter);
         recommendList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
+        TextPaint paint = binding.textView6.getPaint();
+        float width = paint.measureText(getString(R.string.for_you));
+        Shader textShader = new LinearGradient(0, 0, width, binding.textView6.getTextSize(),
+                new int[]{Color.parseColor("#177DB9"), Color.parseColor("#E3C7B3")},
+                null, Shader.TileMode.CLAMP);
+        binding.textView6.getPaint().setShader(textShader);
 
         binding.forYouBtn.setOnClickListener(new View.OnClickListener() {
             @Override

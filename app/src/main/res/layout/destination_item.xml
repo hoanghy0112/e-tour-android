@@ -11,7 +11,8 @@
     android:focusable="true"
     app:cardBackgroundColor="@color/white"
     app:cardCornerRadius="5dp"
-    app:cardElevation="4dp">
+    app:strokeWidth="0.5dp"
+    app:strokeColor="@color/light_blue">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -27,11 +28,11 @@
             android:textStyle="bold"
             android:textColor="@color/black" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:src="@drawable/arrow_right" />
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentEnd="true"-->
+<!--            android:src="@drawable/arrow_right" />-->
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
 

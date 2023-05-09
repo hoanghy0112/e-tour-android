@@ -41,7 +41,8 @@ public class ForYou extends Fragment {
         Window window = getActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.blue));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.transparent));
+        window.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.gradient));
 
         RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>(), ForYou.this, R.layout.fragment_route_preview_card_small);
         binding.routeList.setAdapter(adapter);
