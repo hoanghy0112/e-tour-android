@@ -24,6 +24,7 @@ import com.teamone.e_tour.adapters.CommentAdapter;
 import com.teamone.e_tour.adapters.DestinationAdapter;
 import com.teamone.e_tour.adapters.ImageAdapter;
 import com.teamone.e_tour.api.route.ViewDetailRouteApi;
+import com.teamone.e_tour.constants.SocketMessage;
 import com.teamone.e_tour.databinding.FragmentDetailRouteBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.Rating;
@@ -32,6 +33,10 @@ import com.teamone.e_tour.models.BookingDataManager;
 import com.teamone.e_tour.models.DetailRouteManager;
 import com.teamone.e_tour.models.RatingManager;
 import com.teamone.e_tour.utils.Formatter;
+import com.teamone.e_tour.utils.SocketManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Locale;

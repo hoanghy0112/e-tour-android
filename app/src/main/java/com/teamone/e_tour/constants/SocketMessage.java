@@ -4,6 +4,8 @@ public class SocketMessage {
     public static class Client {
         public static final String VIEW_USER_PROFILE = "view-user-profile";
         public static final String REMOVE_LISTENER = "remove-listener";
+
+        public static final String INCREASE_POINT = "increase-point";
     }
 
     public static class Server {

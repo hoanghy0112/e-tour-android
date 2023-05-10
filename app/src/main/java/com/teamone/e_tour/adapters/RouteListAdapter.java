@@ -23,10 +23,15 @@ import com.google.android.material.checkbox.MaterialCheckBox;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.api.savedList.AddToSaveListApi;
 import com.teamone.e_tour.api.savedList.RemoveFromSaveListApi;
+import com.teamone.e_tour.constants.SocketMessage;
 import com.teamone.e_tour.entities.Image;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.SavedRouteManager;
 import com.teamone.e_tour.utils.Formatter;
+import com.teamone.e_tour.utils.SocketManager;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -62,7 +67,6 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TouristRoute route = routeList.get(position);
 
-        Log.e("route type", route.getType());
         if (route.getType().equals("country")) {
             holder.routeType.setText(R.string.domestic);
             holder.routeType.setTextColor(context.getActivity().getColor(R.color.white));
@@ -86,6 +90,15 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
                 Bundle bundle = new Bundle();
                 bundle.putString("id", route.get_id());
                 NavHostFragment.findNavController(context).navigate(R.id.detailTourFragment, bundle);
+
+                JSONObject object = new JSONObject();
+                try {
+                    object.put("routeId", route.get_id());
+                    object.put("point", 1);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+                SocketManager.getInstance(context.getActivity()).emit(SocketMessage.Client.INCREASE_POINT, object);
             }
         });
 
