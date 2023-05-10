@@ -117,4 +117,6 @@
     <string name="some_suggestion_for_you">Some suggestion for you...</string>
     <string name="reviews"> reviews</string>
     <string name="saved_tour">Saved tour</string>
+    <string name="domestic">Domestic</string>
+    <string name="international">International</string>
 </resources>

@@ -62,6 +62,17 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TouristRoute route = routeList.get(position);
 
+        Log.e("route type", route.getType());
+        if (route.getType().equals("country")) {
+            holder.routeType.setText(R.string.domestic);
+            holder.routeType.setTextColor(context.getActivity().getColor(R.color.white));
+            holder.routeType.setBackground(context.getActivity().getDrawable(R.drawable.route_type_domestic));
+        } else if (route.getType().equals("foreign")) {
+            holder.routeType.setText(R.string.international);
+            holder.routeType.setTextColor(context.getActivity().getColor(R.color.black));
+            holder.routeType.setBackground(context.getActivity().getDrawable(R.drawable.route_type_international));
+        }
+
         holder.name.setText(route.getName());
         holder.newPrice.setText(Formatter.toCurrency(route.getReservationFee()));
         holder.rating.setRating(route.getRate());
@@ -113,6 +124,7 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        TextView routeType;
         TextView name;
         TextView oldPrice;
         TextView newPrice;
@@ -126,7 +138,7 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
-//            oldPrice = itemView.findViewById(R.id.old_price);
+            routeType = itemView.findViewById(R.id.route_type);
             newPrice = itemView.findViewById(R.id.new_price);
             addToFavourite = itemView.findViewById(R.id.add_favourite_btn);
             cardImage = itemView.findViewById(R.id.card_image);
