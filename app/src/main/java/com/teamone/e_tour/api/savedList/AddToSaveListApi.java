@@ -1,6 +1,7 @@
 package com.teamone.e_tour.api.savedList;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -36,6 +37,7 @@ public class AddToSaveListApi {
 
     public AddToSaveListApi(Context context) {
         this.context = context;
+        this.socket = new SocketManager(context);
     }
 
     public static AddToSaveListApi getInstance(Context context) {
@@ -55,7 +57,6 @@ public class AddToSaveListApi {
             throw new RuntimeException(e);
         }
 
-        socket = new SocketManager(context);
         socket.emit(emitEvent, object);
 
         socket.on(serverResponseEvent, new Emitter.Listener() {
@@ -66,6 +67,7 @@ public class AddToSaveListApi {
                 }
             }
         });
+
     }
 
     public void finish() {

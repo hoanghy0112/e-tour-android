@@ -12,13 +12,10 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.teamone.e_tour.R;
-import com.teamone.e_tour.adapters.BookedTicketAdapter;
-import com.teamone.e_tour.adapters.SavedRouteAdapter;
-import com.teamone.e_tour.api.ticket.ViewBookedTicketApi;
+import com.teamone.e_tour.adapters.RouteListAdapter;
 import com.teamone.e_tour.databinding.FragmentSavedTabBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
-import com.teamone.e_tour.models.BookedTicketManager;
 import com.teamone.e_tour.models.SavedRouteManager;
 
 import java.util.ArrayList;
@@ -39,7 +36,7 @@ public class SavedTab extends Fragment {
                              Bundle savedInstanceState) {
         FragmentSavedTabBinding binding = FragmentSavedTabBinding.inflate(inflater, container, false);
 
-        SavedRouteAdapter adapter = new SavedRouteAdapter(this);
+        RouteListAdapter adapter = new RouteListAdapter(this, R.layout.fragment_route_preview_card_large);
         LoadingDialog dialog = new LoadingDialog(getActivity());
         dialog.showLoading("Loading data");
 
@@ -48,7 +45,7 @@ public class SavedTab extends Fragment {
             public void onChanged(ArrayList<TouristRoute> touristRoutes) {
                 if (touristRoutes == null) return;
                 dialog.dismiss();
-                adapter.setRoutes(touristRoutes);
+                adapter.setRouteList(touristRoutes);
             }
         });
 

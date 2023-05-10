@@ -20,6 +20,7 @@ import com.teamone.e_tour.databinding.ActivityAuthenticationBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.CredentialToken;
+import com.teamone.e_tour.utils.SocketManager;
 
 import java.io.IOException;
 
@@ -53,6 +54,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                     if (response.code() == 200 && response.body() != null) {
                         SignInWithPasswordApiResult result = response.body();
                         CredentialToken.getInstance(context).setCredential(result.getUserId(), result.getAccessToken(), result.getRefreshToken());
+                        SocketManager.reload(context);
                         startActivity(new Intent(AuthenticationActivity.this, HomeActivity.class));
                         dialog.dismiss();
                         finish();

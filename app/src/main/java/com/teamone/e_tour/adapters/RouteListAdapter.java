@@ -11,20 +11,26 @@ import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.card.MaterialCardView;
+import com.google.android.material.checkbox.MaterialCheckBox;
 import com.teamone.e_tour.R;
+import com.teamone.e_tour.api.savedList.AddToSaveListApi;
+import com.teamone.e_tour.api.savedList.RemoveFromSaveListApi;
 import com.teamone.e_tour.entities.Image;
 import com.teamone.e_tour.entities.TouristRoute;
+import com.teamone.e_tour.models.SavedRouteManager;
 import com.teamone.e_tour.utils.Formatter;
 
 import java.util.ArrayList;
 
-public class RecommendedRouteListAdapter extends RecyclerView.Adapter<RecommendedRouteListAdapter.ViewHolder> {
+public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.ViewHolder> {
     Fragment context;
     int cardId;
     private ArrayList<TouristRoute> routeList = new ArrayList<>();
@@ -38,8 +44,7 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         notifyDataSetChanged();
     }
 
-    public RecommendedRouteListAdapter(ArrayList<TouristRoute> routeList, Fragment context, int cardId) {
-        this.routeList = routeList;
+    public RouteListAdapter(Fragment context, int cardId) {
         this.context = context;
         this.cardId = cardId;
     }
@@ -72,6 +77,33 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
                 NavHostFragment.findNavController(context).navigate(R.id.detailTourFragment, bundle);
             }
         });
+
+        SavedRouteManager.getInstance((AppCompatActivity) context.getActivity()).getRoutes().observe(context.getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
+            @Override
+            public void onChanged(ArrayList<TouristRoute> touristRoutes) {
+                if (touristRoutes == null) return;
+                holder.addToFavourite.setCheckedState(MaterialCheckBox.STATE_UNCHECKED);
+                touristRoutes.forEach(touristRoute -> {
+                    if (touristRoute.get_id().equals(route.get_id())) {
+                        holder.addToFavourite.setCheckedState(MaterialCheckBox.STATE_CHECKED);
+                    }
+                });
+            }
+        });
+
+        holder.addToFavourite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (holder.addToFavourite.getCheckedState() == MaterialCheckBox.STATE_CHECKED) {
+                    AddToSaveListApi.getInstance(context.getActivity()).send(route.get_id());
+                }
+                else {
+                    RemoveFromSaveListApi.getInstance(context.getActivity()).send(route.get_id());
+//                    SavedRouteManager.getInstance((AppCompatActivity) context.getActivity()).remove(route.get_id());
+                    holder.addToFavourite.setChecked(false);
+                }
+            }
+        });
     }
 
     @Override
@@ -84,7 +116,7 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         TextView name;
         TextView oldPrice;
         TextView newPrice;
-        ImageView addToFavourite;
+        MaterialCheckBox addToFavourite;
         ImageView cardImage;
         MaterialCardView card;
         RatingBar rating;

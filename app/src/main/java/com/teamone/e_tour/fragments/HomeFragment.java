@@ -21,7 +21,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.teamone.e_tour.R;
-import com.teamone.e_tour.adapters.RecommendedRouteListAdapter;
+import com.teamone.e_tour.adapters.RouteListAdapter;
 import com.teamone.e_tour.databinding.FragmentHomeBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment {
 
         recommendList = binding.getRoot().findViewById(R.id.recommend_list);
 
-        RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>(), HomeFragment.this, R.layout.fragment_route_preview_card_large);
+        RouteListAdapter adapter = new RouteListAdapter(HomeFragment.this, R.layout.fragment_route_preview_card_large);
         recommendList.setAdapter(adapter);
         recommendList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 

@@ -44,7 +44,8 @@ public class SocketManager {
                 @Override
                 public void call(Object... args) {
                     context.startActivity(new Intent(context, AuthenticationActivity.class));
-                    ((AppCompatActivity)context).finish();
+                    ((AppCompatActivity) context).finish();
+                    socket.disconnect();
                 }
             });
         } catch (URISyntaxException e) {
@@ -76,6 +77,11 @@ public class SocketManager {
         if (instance == null) {
             instance = new SocketManager(context);
         }
+        return instance;
+    }
+
+    public static SocketManager reload(Context context) {
+        instance = new SocketManager(context);
         return instance;
     }
 }

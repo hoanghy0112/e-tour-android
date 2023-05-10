@@ -4,36 +4,20 @@ import static androidx.navigation.ui.NavigationUI.onNavDestinationSelected;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.navigation.NavController;
-import androidx.navigation.NavGraph;
-import androidx.navigation.NavInflater;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Application;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
-import android.widget.HorizontalScrollView;
 
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.android.material.navigation.NavigationView;
 import com.teamone.e_tour.R;
-import com.teamone.e_tour.adapters.RecommendedRouteListAdapter;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
-import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.BookedTicketManager;
 import com.teamone.e_tour.models.DetailRouteManager;
 import com.teamone.e_tour.models.RatingManager;
-import com.teamone.e_tour.models.RecommendedRouteManager;
+import com.teamone.e_tour.models.SavedRouteManager;
 import com.teamone.e_tour.models.UserProfileManager;
-
-import java.util.ArrayList;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -77,5 +61,6 @@ public class HomeActivity extends AppCompatActivity {
         DetailRouteManager.getInstance(this);
         BookedTicketManager.getInstance(this);
         RatingManager.getInstance(this);
+        SavedRouteManager.getInstance(this);
     }
 }

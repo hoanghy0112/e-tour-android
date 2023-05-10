@@ -44,4 +44,10 @@ public class SavedRouteManager {
     public MutableLiveData<ArrayList<TouristRoute>> getRoutes() {
         return routes;
     }
+
+    public void remove(String routeId) {
+        ArrayList<TouristRoute> newRoutes = routes.getValue();
+        newRoutes.removeIf(touristRoute -> touristRoute.get_id() == routeId);
+        routes.postValue(newRoutes);
+    }
 }

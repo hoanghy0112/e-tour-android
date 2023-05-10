@@ -15,7 +15,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.teamone.e_tour.R;
-import com.teamone.e_tour.adapters.RecommendedRouteListAdapter;
+import com.teamone.e_tour.adapters.RouteListAdapter;
 import com.teamone.e_tour.databinding.FragmentForYouBinding;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.RecommendedRouteManager;
@@ -45,7 +45,7 @@ public class ForYou extends Fragment {
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.transparent));
         window.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.gradient));
 
-        RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>(), ForYou.this, R.layout.fragment_route_preview_card_small);
+        RouteListAdapter adapter = new RouteListAdapter(ForYou.this, R.layout.fragment_route_preview_card_small);
         binding.routeList.setAdapter(adapter);
         binding.routeList.setLayoutManager(new GridLayoutManager(getActivity(), 2));
 
