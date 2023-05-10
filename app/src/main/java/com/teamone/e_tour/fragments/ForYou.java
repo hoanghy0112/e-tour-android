@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.view.LayoutInflater;
@@ -47,6 +48,13 @@ public class ForYou extends Fragment {
         RecommendedRouteListAdapter adapter = new RecommendedRouteListAdapter(new ArrayList<>(), ForYou.this, R.layout.fragment_route_preview_card_small);
         binding.routeList.setAdapter(adapter);
         binding.routeList.setLayoutManager(new GridLayoutManager(getActivity(), 2));
+
+        binding.topAppBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                NavHostFragment.findNavController(ForYou.this).popBackStack();
+            }
+        });
 
         RecommendedRouteManager.getInstance(getActivity()).getRouteList().observe(getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
             @Override

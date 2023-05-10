@@ -2,10 +2,12 @@ package com.teamone.e_tour.adapters;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -57,7 +59,9 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
 
         holder.name.setText(route.getName());
         holder.newPrice.setText(Formatter.toCurrency(route.getReservationFee()));
-//        holder.oldPrice.setText(route.getImages().toString());
+        holder.rating.setRating(route.getRate());
+        holder.numReview.setText(route.getNum() + " " + context.getString(R.string.reviews));
+
         if (route.getImages().size() > 0)
             Glide.with(context).load(new Image(route.getImages().get(0)).getImageUri()).into(holder.cardImage);
         holder.card.setOnClickListener(new View.OnClickListener() {
@@ -83,6 +87,8 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
         ImageView addToFavourite;
         ImageView cardImage;
         MaterialCardView card;
+        RatingBar rating;
+        TextView numReview;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -93,6 +99,8 @@ public class RecommendedRouteListAdapter extends RecyclerView.Adapter<Recommende
             addToFavourite = itemView.findViewById(R.id.add_favourite_btn);
             cardImage = itemView.findViewById(R.id.card_image);
             card = itemView.findViewById(R.id.tourist_route_card);
+            rating = itemView.findViewById(R.id.rating_bar);
+            numReview = itemView.findViewById(R.id.num_review);
         }
     }
 }

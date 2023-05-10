@@ -9,6 +9,8 @@ public class TouristRoute {
     private String description;
     private String type;
     private Long reservationFee;
+    private float rate;
+    private int num;
     private ArrayList<String> route;
     private ArrayList<String> images;
 
@@ -28,6 +30,22 @@ public class TouristRoute {
     }
 
     public TouristRoute() {
+    }
+
+    public float getRate() {
+        return rate;
+    }
+
+    public void setRate(float rate) {
+        this.rate = rate;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
     }
 
     public void set_id(String _id) {

@@ -62,25 +62,39 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/name" />
 
-                    <LinearLayout
-                        android:id="@+id/linearLayout"
-                        android:layout_marginTop="20dp"
+                    <TextView
+                        android:id="@+id/new_price"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:orientation="vertical"
+                        android:layout_marginTop="20dp"
+                        android:text="5.000.000 VND "
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
                         app:layout_constraintTop_toBottomOf="@+id/name"
-                        tools:layout_editor_absoluteX="10dp">
+                        tools:layout_editor_absoluteX="10dp" />
 
-                        <TextView
-                            android:id="@+id/new_price"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="5.000.000 VND "
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+                    <RatingBar
+                        android:id="@+id/rating_bar"
+                        android:layout_marginTop="5dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.AppCompat.RatingBar.Small"
+                        android:theme="@style/ratingbar"
+                        app:layout_constraintStart_toStartOf="@+id/new_price"
+                        app:layout_constraintTop_toBottomOf="@+id/new_price" />
+
+                    <TextView
+                        android:id="@+id/num_review"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="(221 reviews)"
+                        android:textColor="@color/placeholder"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/rating_bar"
+                        app:layout_constraintStart_toEndOf="@+id/rating_bar"
+                        app:layout_constraintTop_toTopOf="@+id/rating_bar" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
             </LinearLayout>
