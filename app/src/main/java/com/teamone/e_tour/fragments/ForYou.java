@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,6 +46,13 @@ public class ForYou extends Fragment {
         window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.transparent));
         window.setBackgroundDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.gradient));
 
+        binding.swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                RecommendedRouteManager.getInstance(getActivity()).fetchData(5);
+            }
+        });
+
         RouteListAdapter adapter = new RouteListAdapter(ForYou.this, R.layout.fragment_route_preview_card_small);
         binding.routeList.setAdapter(adapter);
         binding.routeList.setLayoutManager(new GridLayoutManager(getActivity(), 2));
@@ -60,6 +68,7 @@ public class ForYou extends Fragment {
             @Override
             public void onChanged(ArrayList<TouristRoute> touristRoutes) {
                 if (touristRoutes.size() <= 0) return;
+                binding.swiperefresh.setRefreshing(false);
                 adapter.setRouteList(touristRoutes);
             }
         });

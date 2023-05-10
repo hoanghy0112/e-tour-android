@@ -48,22 +48,14 @@ public class RecommendedRouteManager {
             throw new RuntimeException(e);
         }
         SocketManager.getInstance(context).emit(ViewRecommendedRoute.emitEvent, object);
-        ArrayList<TouristRoute> old = routeList.getValue();
 
         SocketManager.getInstance(context).on(ViewRecommendedRoute.serverResponseEvent, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
                 Gson gson = new GsonBuilder().create();
                 ViewRecommendedRoute.ResponseData response = gson.fromJson(String.valueOf(args[0]), ViewRecommendedRoute.ResponseData.class);
-                Log.e("debug", String.valueOf(args[0]));
                 if (response.status == 200) {
-                    response.data.forEach(new Consumer<TouristRoute>() {
-                        @Override
-                        public void accept(TouristRoute touristRoute) {
-                            old.add(touristRoute);
-                        }
-                    });
-                    routeList.postValue(old);
+                    routeList.postValue(response.data);
                 }
             }
         });
