@@ -1,6 +1,7 @@
 package com.teamone.e_tour.entities;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class TouristRoute {
     private String _id;
@@ -14,6 +15,8 @@ public class TouristRoute {
     private ArrayList<String> route;
     private ArrayList<String> images;
 
+    private Date createdAt;
+
     public TouristRoute(String _id, String companyId, String name, String description, String type, Long reservationFee, ArrayList<String> route, ArrayList<String> images) {
         this._id = _id;
         this.companyId = companyId;
@@ -23,6 +26,14 @@ public class TouristRoute {
         this.reservationFee = reservationFee;
         this.route = route;
         this.images = images;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public String get_id() {

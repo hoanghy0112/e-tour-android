@@ -34,24 +34,6 @@ public class UserProfileManager {
         return userProfile;
     }
 
-    public void onUserProfileUpdated(IUserProfileUpdateCallback callback) {
-        SocketManager socket = SocketManager.getInstance(context);
-
-        socket.on(ViewUserProfile.serverResponseEvent, new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                String stringResponse = String.valueOf(args[0]);
-                Gson gson = new GsonBuilder().create();
-
-                ViewUserProfile.ResponseData response = gson.fromJson(stringResponse, ViewUserProfile.ResponseData.class);
-
-                userProfile = response.data;
-
-                callback.onChange(userProfile);
-            }
-        });
-    }
-
     public void fetchUserProfile() {
         SocketManager socket = SocketManager.getInstance(context);
         socket.emit(SocketMessage.Client.VIEW_USER_PROFILE);
