@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_forYou"
             app:destination="@id/forYou" />
+        <action
+            android:id="@+id/action_homeFragment_to_popular"
+            app:destination="@id/popular" />
     </fragment>
     <fragment
         android:id="@+id/detailTourFragment"
@@ -113,4 +116,8 @@
             android:id="@+id/action_forYou_to_detailTourFragment"
             app:destination="@id/detailTourFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/popular"
+        android:name="com.teamone.e_tour.fragments.Popular"
+        android:label="Popular" />
 </navigation>

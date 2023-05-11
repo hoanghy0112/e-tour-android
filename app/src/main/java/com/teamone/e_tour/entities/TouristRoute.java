@@ -14,6 +14,7 @@ public class TouristRoute {
     private int num;
     private ArrayList<String> route;
     private ArrayList<String> images;
+    private int point;
 
     private Date createdAt;
 
@@ -34,6 +35,14 @@ public class TouristRoute {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public int getPoint() {
+        return point;
+    }
+
+    public void setPoint(int point) {
+        this.point = point;
     }
 
     public String get_id() {

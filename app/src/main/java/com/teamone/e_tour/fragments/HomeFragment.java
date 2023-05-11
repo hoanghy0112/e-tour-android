@@ -25,6 +25,7 @@ import com.teamone.e_tour.adapters.RouteListAdapter;
 import com.teamone.e_tour.databinding.FragmentHomeBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
+import com.teamone.e_tour.models.PopularRouteManager;
 import com.teamone.e_tour.models.RecommendedRouteManager;
 
 import java.util.ArrayList;
@@ -53,9 +54,13 @@ public class HomeFragment extends Fragment {
 
         recommendList = binding.getRoot().findViewById(R.id.recommend_list);
 
-        RouteListAdapter adapter = new RouteListAdapter(HomeFragment.this, R.layout.fragment_route_preview_card_large);
-        recommendList.setAdapter(adapter);
+        RouteListAdapter recommendAdapter = new RouteListAdapter(HomeFragment.this, R.layout.fragment_route_preview_card_large);
+        recommendList.setAdapter(recommendAdapter);
         recommendList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
+        RouteListAdapter popularAdapter = new RouteListAdapter(HomeFragment.this, R.layout.fragment_route_preview_card_large);
+        binding.popularList.setAdapter(popularAdapter);
+        binding.popularList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
         TextPaint paint = binding.textView6.getPaint();
         float width = paint.measureText(getString(R.string.for_you));
@@ -67,7 +72,14 @@ public class HomeFragment extends Fragment {
         binding.forYouBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.action_homeFragment_to_forYou);
+                Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.forYou);
+            }
+        });
+
+        binding.popularBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.popular);
             }
         });
 
@@ -79,7 +91,16 @@ public class HomeFragment extends Fragment {
             public void onChanged(ArrayList<TouristRoute> touristRoutes) {
                 if (touristRoutes.size() <= 0) return;
                 dialog.dismiss();
-                adapter.setRouteList(touristRoutes);
+                recommendAdapter.setRouteList(touristRoutes);
+            }
+        });
+
+        PopularRouteManager.getInstance(context).getRouteList().observe(getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
+            @Override
+            public void onChanged(ArrayList<TouristRoute> touristRoutes) {
+                if (touristRoutes.size() <= 0) return;
+                dialog.dismiss();
+                popularAdapter.setRouteList(touristRoutes);
             }
         });
 

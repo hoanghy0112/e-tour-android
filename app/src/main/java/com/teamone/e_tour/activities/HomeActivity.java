@@ -15,6 +15,7 @@ import com.teamone.e_tour.databinding.ActivityHomeBinding;
 import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.BookedTicketManager;
 import com.teamone.e_tour.models.DetailRouteManager;
+import com.teamone.e_tour.models.PopularRouteManager;
 import com.teamone.e_tour.models.RatingManager;
 import com.teamone.e_tour.models.SavedRouteManager;
 import com.teamone.e_tour.models.UserProfileManager;
@@ -62,5 +63,6 @@ public class HomeActivity extends AppCompatActivity {
         BookedTicketManager.getInstance(this);
         RatingManager.getInstance(this);
         SavedRouteManager.getInstance(this);
+        PopularRouteManager.getInstance(this).fetchData(5);
     }
 }
