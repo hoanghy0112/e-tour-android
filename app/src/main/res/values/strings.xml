@@ -120,4 +120,16 @@
     <string name="domestic">Domestic</string>
     <string name="international">International</string>
     <string name="popular">Popular</string>
+    <string name="other_information">Other information</string>
+    <string name="view_profile">View profile</string>
+    <string name="my_cards">My cards</string>
+    <string name="manage_your_card">Manage your card</string>
+    <string name="my_vouchers">My vouchers</string>
+    <string name="manage_your_vouchers">Manage your vouchers</string>
+    <string name="settings">Settings</string>
+    <string name="customize_your_experiences">Customize your experiences</string>
+    <string name="report_an_issue">Report an issue</string>
+    <string name="contact_support">Contact support</string>
+    <string name="contact_our_support_centre">Contact our support centre</string>
+    <string name="logout">Logout</string>
 </resources>

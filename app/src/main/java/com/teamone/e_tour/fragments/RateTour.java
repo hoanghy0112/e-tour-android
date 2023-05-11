@@ -62,6 +62,7 @@ public class RateTour extends Fragment {
                         if (ratings == null) return;
 
                         String uid = UserProfileManager.getInstance(getActivity()).getUserProfile().get_id();
+                        if (!ratings.stream().filter(rating_ -> rating_.getUserId().get_id().equals(uid)).findFirst().isPresent()) return;
                         Rating rating = ratings.stream().filter(rating_ -> rating_.getUserId().get_id().equals(uid)).findFirst().get();
                         boolean isComment = ratings.stream().anyMatch(rating_ -> rating_.getUserId().get_id().equals(uid));
 
