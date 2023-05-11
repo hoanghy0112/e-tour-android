@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="8dp"
-    android:layout_marginVertical="8dp"
+    android:layout_marginHorizontal="2dp"
+    android:layout_marginVertical="5dp"
     android:checkable="true"
     android:clickable="true"
     android:focusable="true"
@@ -14,17 +14,24 @@
     app:strokeWidth="0.5dp"
     app:strokeColor="@color/light_blue">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:paddingHorizontal="15dp"
         android:paddingVertical="10dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/location"/>
 
         <TextView
             android:id="@+id/destination"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="New destination"
+            android:layout_marginLeft="10dp"
+            android:text="@string/domestic"
             android:textStyle="bold"
             android:textColor="@color/black" />
 
@@ -33,6 +40,6 @@
 <!--            android:layout_height="wrap_content"-->
 <!--            android:layout_alignParentEnd="true"-->
 <!--            android:src="@drawable/arrow_right" />-->
-    </RelativeLayout>
+    </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
 

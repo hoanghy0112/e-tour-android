@@ -48,7 +48,7 @@ public class Popular extends Fragment {
         binding.swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                PopularRouteManager.getInstance(getActivity()).fetchData(5);
+                PopularRouteManager.getInstance(getActivity()).fetchData(10);
             }
         });
 

@@ -63,6 +63,6 @@ public class HomeActivity extends AppCompatActivity {
         BookedTicketManager.getInstance(this);
         RatingManager.getInstance(this);
         SavedRouteManager.getInstance(this);
-        PopularRouteManager.getInstance(this).fetchData(5);
+        PopularRouteManager.getInstance(this).fetchData(10);
     }
 }
