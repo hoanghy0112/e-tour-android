@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        startActivity(new Intent(this, AuthenticationActivity.class));
+        finish();
+
         if (AppManagement.getInstance(this).getFirstTime()) {
             Intent intent = new Intent(this,  OnBoardingActivity.class);
             startActivity(intent);

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1060824201583",
+    "project_id": "e-tour-387007",
+    "storage_bucket": "e-tour-387007.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1060824201583:android:2dae6417bf7f5d04d6509a",
+        "android_client_info": {
+          "package_name": "com.teamone.e_tour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1060824201583-o7cn0284hm060erdjj9vjb87mnfjuh2b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrc0bvS54_ODHnIsUF_Je8KQKnf9C4zNw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1060824201583-4j66gss1l89t9pjhm1jfp359hgfpr7ek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
