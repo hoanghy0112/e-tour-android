@@ -33,6 +33,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.api.account.authentication.AuthenticationAPI;
+import com.teamone.e_tour.api.account.authentication.SignInWithGoogleAPI;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiError;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiResult;
 import com.teamone.e_tour.databinding.ActivityAuthenticationBinding;
@@ -51,6 +52,7 @@ import retrofit2.Response;
 
 public class AuthenticationActivity extends AppCompatActivity {
     private Context context = this;
+    LoadingDialog dialog;
     ActivityAuthenticationBinding activityAuthenticationBinding;
     AuthenticationInfo viewmodel = new AuthenticationInfo();
 
@@ -70,7 +72,7 @@ public class AuthenticationActivity extends AppCompatActivity {
         }
 
         public void onSignIn() {
-            LoadingDialog dialog = new LoadingDialog(AuthenticationActivity.this);
+            dialog = new LoadingDialog(AuthenticationActivity.this);
             dialog.showLoading(context.getResources().getText(R.string.please_wait_we_are_signing_in_for_you).toString());
 
             AuthenticationAPI.api.signInWithPassword(new AuthenticationAPI.Credential(username.get(), password.get())).enqueue(new Callback<SignInWithPasswordApiResult>() {
@@ -134,11 +136,36 @@ public class AuthenticationActivity extends AppCompatActivity {
                 @Override
                 public void onSuccess(GetTokenResult getTokenResult) {
                     String token = getTokenResult.getToken();
+                    SignInWithGoogleAPI.api.signInWithGoogle(new SignInWithGoogleAPI.Credential(token)).enqueue(new Callback<SignInWithPasswordApiResult>() {
+                        @Override
+                        public void onResponse(Call<SignInWithPasswordApiResult> call, Response<SignInWithPasswordApiResult> response) {
+                            if (response.code() == 200 && response.body() != null) {
+                                SignInWithPasswordApiResult result = response.body();
+                                CredentialToken.getInstance(context).setCredential(result.getUserId(), result.getAccessToken(), result.getRefreshToken());
+                                SocketManager.reload(context);
+                                startActivity(new Intent(AuthenticationActivity.this, HomeActivity.class));
+                                if (dialog != null) dialog.dismiss();
+                                finish();
+                            } else {
+                                Gson gson = new GsonBuilder().create();
+                                try {
+                                    assert response.errorBody() != null;
+                                    SignInWithPasswordApiError error = gson.fromJson(response.errorBody().string(), SignInWithPasswordApiError.class);
+                                    if (dialog != null) dialog.showError(context.getResources().getText(R.string.fail_to_sign_in).toString() + "\nError message: " + error.getMessage());
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<SignInWithPasswordApiResult> call, Throwable t) {
+                            Toast.makeText(AuthenticationActivity.this, "Call API failure", Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }
             });
-            // ...
         } else {
-            // TODO: error handler
             Log.e("error", result.getIdpResponse().toString());
         }
     }

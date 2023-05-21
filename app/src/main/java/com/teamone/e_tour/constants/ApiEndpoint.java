@@ -6,6 +6,7 @@ public class ApiEndpoint {
 
     public static class AuthenticationApiEndpoint {
         public static final String signIn = "user/login/basic";
+        public static final String signInWithGoogle = "user/login/google";
     }
 
     public static class RegistrationApiEndpoint {
