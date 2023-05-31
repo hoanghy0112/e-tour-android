@@ -65,7 +65,7 @@ public class HomeFragment extends Fragment {
         binding.popularList.setAdapter(popularAdapter);
         binding.popularList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
-        VoucherAdapter voucherAdapter = new VoucherAdapter(getActivity());
+        VoucherAdapter voucherAdapter = new VoucherAdapter(HomeFragment.this);
         binding.hotVoucherList.setAdapter(voucherAdapter);
         binding.hotVoucherList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 

@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_popular"
             app:destination="@id/popular" />
+        <action
+            android:id="@+id/action_homeFragment_to_voucherDetailFragment"
+            app:destination="@id/voucherDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailTourFragment"
@@ -120,4 +123,9 @@
         android:id="@+id/popular"
         android:name="com.teamone.e_tour.fragments.Popular"
         android:label="Popular" />
+    <fragment
+        android:id="@+id/voucherDetailFragment"
+        android:name="com.teamone.e_tour.fragments.VoucherDetailFragment"
+        android:label="fragment_voucher_detail"
+        tools:layout="@layout/fragment_voucher_detail" />
 </navigation>

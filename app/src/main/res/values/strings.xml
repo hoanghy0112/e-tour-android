@@ -131,4 +131,7 @@
     <string name="contact_support">Contact support</string>
     <string name="contact_our_support_centre">Contact our support centre</string>
     <string name="logout">Logout</string>
+    <string name="expired_date">Expired Date</string>
+    <string name="using_condition">Using condition</string>
+    <string name="save_this_voucher">Save this voucher</string>
 </resources>

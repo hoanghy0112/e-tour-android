@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -17,10 +19,10 @@ import com.teamone.e_tour.entities.Voucher;
 import java.util.ArrayList;
 
 public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHolder> {
-    private Context context;
+    private Fragment context;
     private ArrayList<Voucher> vouchers = new ArrayList<>();
 
-    public VoucherAdapter(Context context) {
+    public VoucherAdapter(Fragment context) {
         this.context = context;
     }
 
@@ -32,7 +34,7 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_voucher_preview, parent, false);
+        View view = LayoutInflater.from(context.getContext()).inflate(R.layout.item_voucher_preview, parent, false);
         return new ViewHolder(view);
     }
 
@@ -40,6 +42,13 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHold
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Voucher voucher = vouchers.get(position);
         Glide.with(context).load(new Image(voucher.getImage()).getImageUri()).into(holder.image);
+
+        holder.image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.voucherDetailFragment);
+            }
+        });
     }
 
     @Override
