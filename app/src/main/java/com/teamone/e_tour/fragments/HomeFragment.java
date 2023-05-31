@@ -22,9 +22,12 @@ import android.view.WindowManager;
 
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.adapters.RouteListAdapter;
+import com.teamone.e_tour.adapters.VoucherAdapter;
 import com.teamone.e_tour.databinding.FragmentHomeBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
+import com.teamone.e_tour.entities.Voucher;
+import com.teamone.e_tour.models.HotVoucherManager;
 import com.teamone.e_tour.models.PopularRouteManager;
 import com.teamone.e_tour.models.RecommendedRouteManager;
 
@@ -61,6 +64,10 @@ public class HomeFragment extends Fragment {
         RouteListAdapter popularAdapter = new RouteListAdapter(HomeFragment.this, R.layout.fragment_route_preview_card_large);
         binding.popularList.setAdapter(popularAdapter);
         binding.popularList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
+        VoucherAdapter voucherAdapter = new VoucherAdapter(getActivity());
+        binding.hotVoucherList.setAdapter(voucherAdapter);
+        binding.hotVoucherList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
         TextPaint paint = binding.textView6.getPaint();
         float width = paint.measureText(getString(R.string.for_you));
@@ -101,6 +108,15 @@ public class HomeFragment extends Fragment {
                 if (touristRoutes.size() <= 0) return;
                 dialog.dismiss();
                 popularAdapter.setRouteList(touristRoutes);
+            }
+        });
+
+        HotVoucherManager.getInstance(context).getVouchers().observe(getViewLifecycleOwner(), new Observer<ArrayList<Voucher>>() {
+            @Override
+            public void onChanged(ArrayList<Voucher> vouchers) {
+                if (vouchers.size() <= 0) return;
+                dialog.dismiss();
+                voucherAdapter.setVouchers(vouchers);
             }
         });
 

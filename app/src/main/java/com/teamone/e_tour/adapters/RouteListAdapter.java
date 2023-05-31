@@ -67,7 +67,7 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         TouristRoute route = routeList.get(position);
 
-        if (route.getType().equals("country")) {
+        if (route.getType() == null || route.getType().equals("country")) {
             holder.routeType.setText(R.string.domestic);
             holder.routeType.setTextColor(context.getActivity().getColor(R.color.white));
             holder.routeType.setBackground(context.getActivity().getDrawable(R.drawable.route_type_domestic));

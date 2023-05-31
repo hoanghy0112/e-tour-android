@@ -1,9 +1,16 @@
 package com.teamone.e_tour.entities;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.util.ArrayList;
 import java.util.Date;
 
+@Entity(tableName = "touristRoutes")
 public class TouristRoute {
+    @PrimaryKey
+    @NonNull
     private String _id;
     private String companyId;
     private String name;
