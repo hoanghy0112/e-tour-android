@@ -1,5 +1,6 @@
 package com.teamone.e_tour.fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,8 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bumptech.glide.Glide;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.databinding.FragmentVoucherDetailBinding;
+import com.teamone.e_tour.entities.Image;
 
 public class VoucherDetailFragment extends Fragment {
 
@@ -23,6 +26,7 @@ public class VoucherDetailFragment extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,6 +41,17 @@ public class VoucherDetailFragment extends Fragment {
                 NavHostFragment.findNavController(VoucherDetailFragment.this).popBackStack();
             }
         });
+
+        Bundle bundle = getArguments();
+
+        assert bundle != null;
+        binding.voucherName.setText(bundle.getString("name"));
+        binding.voucherDescription.setText(bundle.getString("description"));
+        binding.usingCondition.setText(bundle.getString("usingCondition"));
+        binding.expiredDate.setText(bundle.getString("expiredAt"));
+        binding.voucherValue.setText(getActivity().getString(R.string.discount) + " " + String.valueOf((int)(bundle.getFloat("value") * 100)) + "%");
+
+        Glide.with(getActivity()).load(new Image(bundle.getString("image")).getImageUri()).into(binding.voucherImage);
 
         return binding.getRoot();
     }

@@ -134,4 +134,5 @@
     <string name="expired_date">Expired Date</string>
     <string name="using_condition">Using condition</string>
     <string name="save_this_voucher">Save this voucher</string>
+    <string name="discount">Discount </string>
 </resources>
