@@ -61,13 +61,12 @@ public class HistoryTab extends Fragment {
             }
         });
 
-        binding.bookedTicketList.setAdapter(incomingTourAdapter);
-        binding.bookedTicketList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
-
         binding.incomingTourList.setAdapter(incomingTourAdapter);
         binding.incomingTourList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.incomingTourList.setNestedScrollingEnabled(false);
         binding.visitedTourList.setAdapter(visitedTourAdapter);
         binding.visitedTourList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.visitedTourList.setNestedScrollingEnabled(false);
 
         return binding.getRoot();
     }
