@@ -20,6 +20,7 @@ import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.models.BookedTicketManager;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class HistoryTab extends Fragment {
 
@@ -38,7 +39,8 @@ public class HistoryTab extends Fragment {
                              Bundle savedInstanceState) {
         FragmentHistoryTabBinding binding = FragmentHistoryTabBinding.inflate(inflater, container, false);
 
-        BookedTicketAdapter adapter = new BookedTicketAdapter(this);
+        BookedTicketAdapter incomingTourAdapter = new BookedTicketAdapter(this);
+        BookedTicketAdapter visitedTourAdapter = new BookedTicketAdapter(this);
         LoadingDialog dialog = new LoadingDialog(getActivity());
         dialog.showLoading("Loading data");
         BookedTicketManager.getInstance((AppCompatActivity) getActivity()).getBookedTickets().observe(getViewLifecycleOwner(), new Observer<ArrayList<ViewBookedTicketApi.ResponseData.Ticket>>() {
@@ -46,12 +48,26 @@ public class HistoryTab extends Fragment {
             public void onChanged(ArrayList<ViewBookedTicketApi.ResponseData.Ticket> tickets) {
                 if (tickets == null) return;
                 dialog.dismiss();
-                adapter.setTickets(tickets);
+                ArrayList<ViewBookedTicketApi.ResponseData.Ticket> incomingTourList = new ArrayList<>();
+                ArrayList<ViewBookedTicketApi.ResponseData.Ticket> visitedTourList = new ArrayList<>();
+                tickets.forEach(ticket -> {
+                    if (ticket.tourId.from.before(new Date()))
+                        visitedTourList.add(ticket);
+                    else
+                        incomingTourList.add(ticket);
+                });
+                incomingTourAdapter.setTickets(incomingTourList);
+                visitedTourAdapter.setTickets(visitedTourList);
             }
         });
 
-        binding.bookedTicketList.setAdapter(adapter);
+        binding.bookedTicketList.setAdapter(incomingTourAdapter);
         binding.bookedTicketList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        binding.incomingTourList.setAdapter(incomingTourAdapter);
+        binding.incomingTourList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+        binding.visitedTourList.setAdapter(visitedTourAdapter);
+        binding.visitedTourList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         return binding.getRoot();
     }

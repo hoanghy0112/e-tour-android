@@ -43,7 +43,8 @@ public class AccountTab extends Fragment {
                 binding.userDisplayName.setText(userProfile.getFullName());
                 binding.email.setText(userProfile.getEmail());
                 binding.userDisplayName.setText(userProfile.getFullName());
-                Glide.with(getActivity()).load(userProfile.getImage()).into(binding.userImage);
+                if (!userProfile.getImage().equals(""))
+                    Glide.with(getActivity()).load(userProfile.getImage()).into(binding.userImage);
                 Log.e("image", userProfile.getImage());
             }
         });

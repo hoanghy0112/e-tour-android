@@ -50,6 +50,7 @@ public class ViewBookedTicketApi {
             public String description;
             public Date from;
             public String type;
+            public String image;
             public TouristRoute touristRoute;
         }
 
@@ -58,6 +59,7 @@ public class ViewBookedTicketApi {
             public String name;
             public String description;
             public String type;
+            public ArrayList<String> route;
             public ArrayList<String> images;
         }
     }

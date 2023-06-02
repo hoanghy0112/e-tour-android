@@ -60,28 +60,27 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ViewBookedTicketApi.ResponseData.Ticket ticket = tickets.get(position);
 
-//        holder.ticketId.setText(ticket._id);
-        holder.bookedDate.setText(Formatter.dateToDateWithHourString(ticket.createdAt));
+        holder.bookedDate.setText(Formatter.dateToDayString(ticket.tourId.from));
         holder.routeName.setText(ticket.tourId.touristRoute.name);
         holder.tourName.setText(ticket.tourId.name);
-        holder.ticketVisitor.setText(context.getString(R.string.visitor) + " x" + ticket.visitors.size());
-        if (ticket.tourId.touristRoute.images.size() > 0)
-            Glide.with(context).load(new Image(ticket.tourId.touristRoute.images.get(0)).getImageUri()).into(holder.routeImage);
+        holder.destinationRoute.setText(String.join(" - ", ticket.tourId.touristRoute.route));
+        if (ticket.tourId.image != null && !ticket.tourId.image.equals(""))
+            Glide.with(context).load(new Image(ticket.tourId.image).getImageUri()).into(holder.routeImage);
 
-        if (ticket.tourId.from.before(new Date())) {
-            if(holder.buttonView.getParent() != null) {
-                ((ViewGroup)holder.buttonView.getParent()).removeView(holder.buttonView);
-            }
-            holder.bottomView.addView(holder.buttonView);
-
-            holder.bottomView.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    BookedTicketManager.getInstance((AppCompatActivity) context.getActivity()).setRatingTicketId(ticket._id);
-                    Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.action_historyTab_to_rateTour);
-                }
-            });
-        }
+//        if (ticket.tourId.from.before(new Date())) {
+//            if(holder.buttonView.getParent() != null) {
+//                ((ViewGroup)holder.buttonView.getParent()).removeView(holder.buttonView);
+//            }
+//            holder.bottomView.addView(holder.buttonView);
+//
+//            holder.bottomView.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    BookedTicketManager.getInstance((AppCompatActivity) context.getActivity()).setRatingTicketId(ticket._id);
+//                    Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.action_historyTab_to_rateTour);
+//                }
+//            });
+//        }
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,9 +102,8 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
         ImageView routeImage;
         TextView routeName;
         TextView tourName;
-        TextView ticketVisitor;
+        TextView destinationRoute;
         MaterialCardView card;
-        LinearLayout bottomView;
         View buttonView;
 
         public ViewHolder(@NonNull View itemView, View buttonView) {
@@ -116,9 +114,9 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
             routeImage = itemView.findViewById(R.id.route_image);
             routeName = itemView.findViewById(R.id.route_name);
             tourName = itemView.findViewById(R.id.tour_name);
-            ticketVisitor = itemView.findViewById(R.id.ticket_visitor);
+            destinationRoute = itemView.findViewById(R.id.destination_route);
             card = itemView.findViewById(R.id.card);
-            bottomView = itemView.findViewById(R.id.bottom_view);
+//            bottomView = itemView.findViewById(R.id.bottom_view);
             this.buttonView = buttonView;
         }
     }

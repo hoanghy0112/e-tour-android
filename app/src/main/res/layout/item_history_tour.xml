@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -9,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="8dp"
+        android:layout_marginVertical="10dp"
         app:cardCornerRadius="10dp"
         app:cardBackgroundColor="@color/white"
         app:cardElevation="5dp"
@@ -19,94 +20,99 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingVertical="15dp">
-
-            <TextView
-                android:id="@+id/booked_date"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="15dp"
-                android:text="Thứ 6, 21 tháng 4 2023"
-                android:textColor="@color/blue"
-                android:textSize="13sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
-
-            <com.google.android.material.divider.MaterialDivider
-                android:id="@+id/materialDivider3"
-                android:layout_marginTop="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@+id/booked_date" />
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/route_image"
-                android:layout_width="0dp"
+                android:layout_width="130dp"
                 android:layout_height="0dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="15dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/etourlogo"
-                app:layout_constraintBottom_toBottomOf="@+id/ticket_visitor"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider3"
+                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintWidth_percent="0.3" />
-
-            <TextView
-                android:id="@+id/route_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginTop="10dp"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="@string/route_name"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/route_image"
-                app:layout_constraintTop_toBottomOf="@+id/materialDivider3" />
 
             <TextView
                 android:id="@+id/tour_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
                 android:ellipsize="end"
                 android:singleLine="true"
                 android:text="@string/tour_name"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/route_image"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/route_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textSize="15sp"
+                android:text="@string/route_name"
                 android:textColor="@color/placeholder"
-                app:layout_constraintEnd_toEndOf="@+id/route_name"
+                app:layout_constraintEnd_toEndOf="@+id/tour_name"
                 app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/tour_name"
+                app:layout_constraintTop_toBottomOf="@+id/tour_name" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/flag_small"
+                app:layout_constraintBottom_toBottomOf="@+id/destination_route"
                 app:layout_constraintStart_toStartOf="@+id/route_name"
+                app:layout_constraintTop_toTopOf="@+id/destination_route" />
+
+            <ImageView
+                android:id="@+id/imageView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/calendar_small"
+                app:layout_constraintBottom_toBottomOf="@+id/booked_date"
+                app:layout_constraintStart_toStartOf="@+id/route_name"
+                app:layout_constraintTop_toTopOf="@+id/booked_date" />
+
+            <TextView
+                android:id="@+id/destination_route"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="15dp"
+                android:text="TP HCM _HN"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
                 app:layout_constraintTop_toBottomOf="@+id/route_name" />
 
             <TextView
-                android:id="@+id/ticket_visitor"
+                android:id="@+id/booked_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:ellipsize="end"
-                android:singleLine="true"
-                android:text="Adult x1"
-                android:textColor="@color/placeholder"
-                app:layout_constraintEnd_toEndOf="@+id/route_name"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginEnd="15dp"
+                android:text="Thứ 6, 21 tháng 4 2023"
+                android:textColor="@color/black"
+                android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/route_name"
-                app:layout_constraintTop_toBottomOf="@+id/tour_name" />
-
-            <LinearLayout
-                android:id="@+id/bottom_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:layout_marginHorizontal="15dp"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ticket_visitor" />
+                app:layout_constraintStart_toEndOf="@+id/imageView5"
+                app:layout_constraintTop_toBottomOf="@+id/destination_route" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

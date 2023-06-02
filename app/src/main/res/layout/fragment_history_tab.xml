@@ -6,93 +6,44 @@
     android:background="@color/orange_white"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragments.HomeFragment">
+    tools:context=".fragments.HistoryTab">
 
-
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:background="@color/blue_dark"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="12dp"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toStartOf="@+id/notification_icon">
-
-            <ImageView
-                android:id="@+id/etour_logo"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:scaleType="fitStart"
-                android:src="@drawable/e_tour" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/etour_logo"
-                android:background="@drawable/top_bar_home"
-                android:drawableLeft="@drawable/search"
-                android:drawablePadding="8dp"
-                android:gravity="center_vertical"
-                android:hint="@string/discover_new_experiences"
-                android:padding="8dp"
-                android:textColorHint="@color/placeholder"
-                android:textSize="12sp" />
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/notification_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="12dp"
-            android:src="@drawable/fi_rr_bell" />
-    </RelativeLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="10dp"
-        android:orientation="vertical">
-        <RelativeLayout
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="30sp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
                 android:textStyle="bold"
-                android:textColor="@color/blue"
-                android:text="@string/booked_ticket"/>
+                android:text="@string/incoming_tour"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/incoming_tour_list"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:text="@string/visited_tour"/>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/visited_tour_list"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </ScrollView>
 
-            <Button
-                android:layout_alignParentEnd="true"
-                style="@style/Widget.Material3.Button.ElevatedButton.Icon"
-                app:icon="@drawable/chevron_right"
-                android:layout_width="50dp"
-                android:backgroundTint="@color/white"
-                app:iconTint="@color/blue"
-                android:layout_height="wrap_content" />
-        </RelativeLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginStart="-15dp"
-            android:padding="15dp"
-            android:id="@+id/booked_ticket_list"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:clipToPadding="false"
-            android:orientation="horizontal">
-
-        </androidx.recyclerview.widget.RecyclerView>
-    </LinearLayout>
 
 </LinearLayout>

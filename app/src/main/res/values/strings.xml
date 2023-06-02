@@ -135,4 +135,6 @@
     <string name="using_condition">Using condition</string>
     <string name="save_this_voucher">Save this voucher</string>
     <string name="discount">Discount </string>
+    <string name="incoming_tour">Incoming tour</string>
+    <string name="visited_tour">Visited tour</string>
 </resources>
