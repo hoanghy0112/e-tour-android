@@ -143,4 +143,6 @@
     <string name="contact_our_support_centre_detail_incoming_tour">Contact our support centre</string>
     <string name="report_this_tour">Report this tour</string>
     <string name="send_report">Send report</string>
+    <string name="customer_list">Customer list</string>
+    <string name="discard_this_ticket">Discard this ticket</string>
 </resources>

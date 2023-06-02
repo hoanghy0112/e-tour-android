@@ -69,10 +69,15 @@
                 android:backgroundTint="@color/blue_white"
                 android:textSize="13sp" />
 
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="20dp">
 
                 <ImageView
                     android:id="@+id/imageView6"
@@ -117,6 +122,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/destination_route" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
             <TextView
                 android:id="@+id/tour_description"
                 android:layout_width="match_parent"
@@ -129,6 +141,11 @@
                 app:layout_constraintStart_toStartOf="@+id/destination_route"
                 app:layout_constraintTop_toBottomOf="@+id/destination_route" />
 
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"/>
+
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/visitor_card"
                 android:layout_width="match_parent"
@@ -139,7 +156,7 @@
                 app:strokeColor="@color/blue"
                 app:cardBackgroundColor="@color/white"
                 app:cardCornerRadius="10dp"
-                android:layout_marginTop="30dp">
+                android:layout_marginTop="20dp">
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:padding="20dp"
                     android:layout_width="match_parent"
@@ -313,7 +330,7 @@
                 android:backgroundTint="@color/red"
                 android:textColor="@color/white"
                 android:textAllCaps="false"
-                android:text="Discard this ticket"/>
+                android:text="@string/discard_this_ticket"/>
 
         </LinearLayout>
 

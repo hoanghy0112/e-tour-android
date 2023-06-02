@@ -39,6 +39,8 @@ public class ViewBookedTicketApi {
             public String fullName;
             public String phoneNumber;
             public String email;
+            public String pickupLocation;
+            public String specialRequirement;
             public long price;
             public Date createdAt;
             public ArrayList<com.teamone.e_tour.entities.Ticket.Visitor> visitors;

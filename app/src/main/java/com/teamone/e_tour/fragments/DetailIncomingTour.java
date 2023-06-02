@@ -75,7 +75,9 @@ public class DetailIncomingTour extends Fragment {
                     binding.visitorCard.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-
+                            Bundle bundle = new Bundle();
+                            bundle.putString("id", ticketId);
+                            Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.visitorInformationDetail, bundle);
                         }
                     });
                     binding.contactCard.setOnClickListener(new View.OnClickListener() {
