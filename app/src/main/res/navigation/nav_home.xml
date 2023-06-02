@@ -86,6 +86,9 @@
         <action
             android:id="@+id/action_historyTab_to_rateTour"
             app:destination="@id/rateTour" />
+        <action
+            android:id="@+id/action_historyTab_to_detailIncomingTour"
+            app:destination="@id/detailIncomingTour" />
     </fragment>
     <fragment
         android:id="@+id/accountTab"
@@ -128,4 +131,9 @@
         android:name="com.teamone.e_tour.fragments.VoucherDetailFragment"
         android:label="fragment_voucher_detail"
         tools:layout="@layout/fragment_voucher_detail" />
+    <fragment
+        android:id="@+id/detailIncomingTour"
+        android:name="com.teamone.e_tour.fragments.DetailIncomingTour"
+        android:label="fragment_detail_incoming_tour"
+        tools:layout="@layout/fragment_detail_incoming_tour" />
 </navigation>

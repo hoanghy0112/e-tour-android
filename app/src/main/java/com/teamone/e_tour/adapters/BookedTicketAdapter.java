@@ -1,6 +1,7 @@
 package com.teamone.e_tour.adapters;
 
 import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,7 +86,9 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Bundle bundle = new Bundle();
+                bundle.putString("id", ticket._id);
+                Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.detailIncomingTour, bundle);
             }
         });
     }

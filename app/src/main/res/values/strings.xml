@@ -137,4 +137,10 @@
     <string name="discount">Discount </string>
     <string name="incoming_tour">Incoming tour</string>
     <string name="visited_tour">Visited tour</string>
+    <string name="visitors_management">Visitors management</string>
+    <string name="manage_visitor_information">Manage visitor information</string>
+    <string name="contact_support_detail_incoming_tour">Contact support</string>
+    <string name="contact_our_support_centre_detail_incoming_tour">Contact our support centre</string>
+    <string name="report_this_tour">Report this tour</string>
+    <string name="send_report">Send report</string>
 </resources>

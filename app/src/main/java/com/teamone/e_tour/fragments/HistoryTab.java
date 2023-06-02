@@ -39,6 +39,9 @@ public class HistoryTab extends Fragment {
                              Bundle savedInstanceState) {
         FragmentHistoryTabBinding binding = FragmentHistoryTabBinding.inflate(inflater, container, false);
 
+        getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+        getActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 180);
+
         BookedTicketAdapter incomingTourAdapter = new BookedTicketAdapter(this);
         BookedTicketAdapter visitedTourAdapter = new BookedTicketAdapter(this);
         LoadingDialog dialog = new LoadingDialog(getActivity());
