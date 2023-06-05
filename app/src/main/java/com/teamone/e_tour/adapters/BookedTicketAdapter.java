@@ -68,27 +68,15 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
         if (ticket.tourId.image != null && !ticket.tourId.image.equals(""))
             Glide.with(context).load(new Image(ticket.tourId.image).getImageUri()).into(holder.routeImage);
 
-//        if (ticket.tourId.from.before(new Date())) {
-//            if(holder.buttonView.getParent() != null) {
-//                ((ViewGroup)holder.buttonView.getParent()).removeView(holder.buttonView);
-//            }
-//            holder.bottomView.addView(holder.buttonView);
-//
-//            holder.bottomView.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    BookedTicketManager.getInstance((AppCompatActivity) context.getActivity()).setRatingTicketId(ticket._id);
-//                    Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.action_historyTab_to_rateTour);
-//                }
-//            });
-//        }
-
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("id", ticket._id);
-                Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.detailIncomingTour, bundle);
+                if (ticket.tourId.from.before(new Date()))
+                    Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.detailVisitedTour, bundle);
+                else
+                    Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.detailIncomingTour, bundle);
             }
         });
     }

@@ -182,8 +182,6 @@ public class UpdateTicketApi {
             @Override
             public void call(Object... args) {
                 ResponseData response = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
-//                BookingDataManager.getInstance().setErrorMessage(response.message);
-                Log.e("error", response.message);
             }
         });
     }

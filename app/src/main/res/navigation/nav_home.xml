@@ -89,6 +89,9 @@
         <action
             android:id="@+id/action_historyTab_to_detailIncomingTour"
             app:destination="@id/detailIncomingTour" />
+        <action
+            android:id="@+id/action_historyTab_to_detailVisitedTour"
+            app:destination="@id/detailVisitedTour" />
     </fragment>
     <fragment
         android:id="@+id/accountTab"
@@ -135,10 +138,27 @@
         android:id="@+id/detailIncomingTour"
         android:name="com.teamone.e_tour.fragments.DetailIncomingTour"
         android:label="fragment_detail_incoming_tour"
-        tools:layout="@layout/fragment_detail_incoming_tour" />
+        tools:layout="@layout/fragment_detail_incoming_tour" >
+        <action
+            android:id="@+id/action_detailIncomingTour_to_reportTour"
+            app:destination="@id/reportTour" />
+    </fragment>
     <fragment
         android:id="@+id/visitorInformationDetail"
         android:name="com.teamone.e_tour.fragments.VisitorInformationDetail"
         android:label="fragment_visitor_information_detail"
         tools:layout="@layout/fragment_visitor_information_detail" />
+    <fragment
+        android:id="@+id/detailVisitedTour"
+        android:name="com.teamone.e_tour.fragments.DetailVisitedTour"
+        android:label="DetailVisitedTour" >
+        <action
+            android:id="@+id/action_detailVisitedTour_to_reportTour"
+            app:destination="@id/reportTour" />
+    </fragment>
+    <fragment
+        android:id="@+id/reportTour"
+        android:name="com.teamone.e_tour.fragments.ReportTour"
+        android:label="fragment_report_tour"
+        tools:layout="@layout/fragment_report_tour" />
 </navigation>

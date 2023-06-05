@@ -145,4 +145,8 @@
     <string name="send_report">Send report</string>
     <string name="customer_list">Customer list</string>
     <string name="discard_this_ticket">Discard this ticket</string>
+    <string name="rate">Rate</string>
+    <string name="send">Send</string>
+    <string name="please_choose_type_of_report">Please choose type of report</string>
+    <string name="violate_policy">Violate policy</string>
 </resources>

@@ -6,7 +6,7 @@
     android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.RateTour">
+    tools:context=".fragments.ReportTour">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -27,7 +27,7 @@
                 android:layout_height="?attr/actionBarSize"
                 android:background="@color/blue"
                 app:navigationIcon="@drawable/chevron_left"
-                app:title="Rating tour"
+                app:title="Report tour"
                 app:titleTextColor="@color/white" />
 
         </com.google.android.material.appbar.AppBarLayout>
@@ -37,61 +37,60 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="@string/how_do_you_feel_about_this_tour"
+            android:text="@string/please_choose_type_of_report"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginTop="40dp"
             app:layout_constraintTop_toBottomOf="@+id/top_bar" />
 
-        <RatingBar
-            android:id="@+id/ratingBar"
-            android:layout_width="wrap_content"
+        <Button
+            android:id="@+id/violate_policy"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:numStars="5"
-            android:stepSize="0.5"
-            android:theme="@style/ratingbar"
+            android:layout_marginHorizontal="40dp"
+            android:backgroundTint="@color/blue_5_percent"
+            android:text="@string/violate_policy"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="14sp"
+            android:layout_marginTop="40dp"
+            android:elevation="0dp"
+            android:textAlignment="textStart"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+        <Button
+            android:id="@+id/fake_tour"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="15dp"
-            android:hint="@string/comment"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeWidth="2dp"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/comment_text"
-                style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lines="3"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+            android:layout_marginHorizontal="40dp"
+            android:backgroundTint="@color/blue_5_percent"
+            android:elevation="0dp"
+            android:text="Fake tour"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/violate_policy" />
 
         <Button
             android:id="@+id/submit_btn"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginHorizontal="40dp"
             android:backgroundTint="@color/blue"
             android:text="@string/send"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/outlinedTextField"
-            app:layout_constraintStart_toStartOf="@+id/outlinedTextField"
-            app:layout_constraintTop_toBottomOf="@+id/outlinedTextField" />
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fake_tour" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
