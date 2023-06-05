@@ -55,21 +55,21 @@ public class RateTour extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void onChanged(ArrayList<ViewBookedTicketApi.ResponseData.Ticket> tickets) {
-//                String ticketId = BookedTicketManager.getInstance((AppCompatActivity) getActivity()).getRatingTicketId();
-//                ViewBookedTicketApi.ResponseData.Ticket ticket = tickets.stream().filter(ticket_ -> ticket_._id == ticketId).findFirst().get();
+                if (id == null) return;
+                ViewBookedTicketApi.ResponseData.Ticket ticket = tickets.stream().filter(ticket_ -> ticket_._id == id).findFirst().get();
 
-//                RatingManager.getInstance((AppCompatActivity) getActivity()).viewRating(ticket.tourId.touristRoute._id);
-//
-//                RatingManager.getInstance((AppCompatActivity) getActivity()).getRating().observe(getViewLifecycleOwner(), new Observer<ArrayList<Rating>>() {
-//                    @Override
-//                    public void onChanged(ArrayList<Rating> ratings) {
-//                        if (ratings == null) return;
-//
-//                        String uid = UserProfileManager.getInstance(getActivity()).getUserProfile().get_id();
-//                        if (!ratings.stream().filter(rating_ -> rating_.getUserId().get_id().equals(uid)).findFirst().isPresent()) return;
-//                        Rating rating = ratings.stream().filter(rating_ -> rating_.getUserId().get_id().equals(uid)).findFirst().get();
-//                        boolean isComment = ratings.stream().anyMatch(rating_ -> rating_.getUserId().get_id().equals(uid));
-//
+                RatingManager.getInstance((AppCompatActivity) getActivity()).viewRating(ticket.tourId.touristRoute._id);
+
+                RatingManager.getInstance((AppCompatActivity) getActivity()).getRating().observe(getViewLifecycleOwner(), new Observer<ArrayList<Rating>>() {
+                    @Override
+                    public void onChanged(ArrayList<Rating> ratings) {
+                        if (ratings == null) return;
+
+                        String uid = UserProfileManager.getInstance(getActivity()).getUserProfile().get_id();
+                        if (!ratings.stream().filter(rating_ -> rating_.getUserId().get_id().equals(uid)).findFirst().isPresent()) return;
+                        Rating rating = ratings.stream().filter(rating_ -> rating_.getUserId().get_id().equals(uid)).findFirst().get();
+                        boolean isComment = ratings.stream().anyMatch(rating_ -> rating_.getUserId().get_id().equals(uid));
+
 //                        if (isComment) {
 //                            View view = LayoutInflater.from(getActivity()).inflate(R.layout.your_rating, container, false);
 //                            if (view.getParent() != null) {
@@ -79,19 +79,6 @@ public class RateTour extends Fragment {
 //                            ((RatingBar)view.findViewById(R.id.rating_bar)).setRating(rating.getStar());
 //                            binding.yourRating.addView(view);
 //                        }
-//                    }
-//                });
-                binding.submitBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        float rating = binding.ratingBar.getRating();
-                        String comment = binding.commentText.getText().toString();
-
-                        CreateNewRateApi api = new CreateNewRateApi(getActivity());
-//                        api.send(rating, comment, ticket.tourId.touristRoute._id);
-                        api.send(rating, comment, id);
-
-                        Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.action_rateTour_to_thanksForRating);
                     }
                 });
             }

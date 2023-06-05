@@ -3,9 +3,9 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:background="@drawable/bottom_sheet_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".fragments.ReportTour">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,18 +19,7 @@
             android:id="@+id/top_bar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/blue"
-                app:navigationIcon="@drawable/chevron_left"
-                app:title="Report tour"
-                app:titleTextColor="@color/white" />
-
-        </com.google.android.material.appbar.AppBarLayout>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <TextView
             android:id="@+id/textView4"
@@ -68,7 +57,7 @@
             android:layout_marginHorizontal="40dp"
             android:backgroundTint="@color/blue_5_percent"
             android:elevation="0dp"
-            android:text="Fake tour"
+            android:text="@string/fake_tour"
             android:textAlignment="textStart"
             android:textAllCaps="false"
             android:textColor="@color/blue"
@@ -78,19 +67,35 @@
             app:layout_constraintTop_toBottomOf="@+id/violate_policy" />
 
         <Button
-            android:id="@+id/submit_btn"
+            android:id="@+id/scam"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="40dp"
-            android:backgroundTint="@color/blue"
-            android:text="@string/send"
+            android:backgroundTint="@color/blue_5_percent"
+            android:elevation="0dp"
+            android:text="@string/scam"
+            android:textAlignment="textStart"
             android:textAllCaps="false"
-            android:textColor="@color/white"
+            android:textColor="@color/blue"
             android:textSize="14sp"
-            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fake_tour" />
+
+<!--        <Button-->
+<!--            android:id="@+id/submit_btn"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="40dp"-->
+<!--            android:backgroundTint="@color/blue"-->
+<!--            android:text="@string/send"-->
+<!--            android:textAllCaps="false"-->
+<!--            android:textColor="@color/white"-->
+<!--            android:textSize="14sp"-->
+<!--            android:layout_marginTop="40dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/fake_tour" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -3,95 +3,99 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/white"
+    android:background="@drawable/bottom_sheet_container"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".fragments.RateTour">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="50dp"
-        android:orientation="vertical">
+        android:paddingHorizontal="50dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="30dp">
 
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/top_bar"
+        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+            android:id="@+id/bottomSheetDragHandleView"
             android:layout_width="match_parent"
+            android:layout_height="7dp"
+            android:src="@drawable/bottom_sheet_drag_handler"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/image_card"
+            android:layout_marginTop="30dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.appbar.MaterialToolbar
-                android:id="@+id/topAppBar"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                android:background="@color/blue"
-                app:navigationIcon="@drawable/chevron_left"
-                app:title="Rating tour"
-                app:titleTextColor="@color/white" />
-
-        </com.google.android.material.appbar.AppBarLayout>
+            <ImageView
+                android:id="@+id/avatar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/etourlogo" />
+        </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/textView4"
-            android:layout_width="match_parent"
+            android:id="@+id/user_display_name"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/how_do_you_feel_about_this_tour"
+            android:layout_marginStart="20dp"
             android:textColor="@color/black"
-            android:textSize="20sp"
             android:textStyle="bold"
-            android:layout_marginTop="40dp"
-            app:layout_constraintTop_toBottomOf="@+id/top_bar" />
-
+            android:text="@string/nguyen_hoang_hy"
+            app:layout_constraintStart_toEndOf="@+id/image_card"
+            app:layout_constraintTop_toTopOf="@+id/image_card" />
+        <TextView
+            android:id="@+id/edit_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/_06_05_2023"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/blue"
+            app:layout_constraintStart_toEndOf="@+id/user_display_name"
+            app:layout_constraintTop_toTopOf="@+id/image_card" />
         <RatingBar
             android:id="@+id/ratingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:numStars="5"
             android:stepSize="0.5"
             android:theme="@style/ratingbar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+            android:scaleX="0.4"
+            android:scaleY="0.4"
+            android:transformPivotX="0dp"
+            android:transformPivotY="0dp"
+            android:layout_marginTop="10dp"
+            android:isIndicator="true"
+            app:layout_constraintStart_toStartOf="@+id/user_display_name"
+            app:layout_constraintTop_toBottomOf="@+id/user_display_name" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="30dp"
-            android:layout_marginTop="15dp"
-            android:hint="@string/comment"
-            app:boxBackgroundColor="@color/white"
-            app:boxStrokeWidth="2dp"
-            app:layout_constraintTop_toBottomOf="@+id/ratingBar">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/comment_text"
-                style="@style/ThemeOverlay.Material3.TextInputEditText.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:lines="3"
-                android:textColor="@color/black" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <Button
-            android:id="@+id/submit_btn"
+        <TextView
+            android:id="@+id/comment_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:backgroundTint="@color/blue"
-            android:text="@string/send"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/outlinedTextField"
-            app:layout_constraintStart_toStartOf="@+id/outlinedTextField"
-            app:layout_constraintTop_toBottomOf="@+id/outlinedTextField" />
+            android:layout_marginTop="-20dp"
+            android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_eiusmod_tempor_incididunt_ut_labore_et_dolore_magna_aliqua_ut_enim_ad_minim_veniam_quis_nostrud_exercitation_ullamco_laboris_nisi_ut_aliquip_ex_ea_commodo_consequat"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/ratingBar"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
+        <Button
+            android:id="@+id/edit_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/blue_white"
+            android:letterSpacing="0.02"
+            android:text="@string/edit_public_rating"
+            android:textAlignment="textStart"
+            android:textAllCaps="false"
+            android:textColor="@color/blue"
+            app:layout_constraintStart_toStartOf="@+id/comment_text"
+            app:layout_constraintTop_toBottomOf="@+id/comment_text" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
