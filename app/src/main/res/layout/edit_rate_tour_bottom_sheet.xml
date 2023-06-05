@@ -24,6 +24,7 @@
         android:layout_marginTop="15dp"
         android:backgroundTint="@color/white"
         android:drawableLeft="@drawable/chevron_left"
+        android:drawableTint="@color/black"
         android:letterSpacing="0.01"
         android:text="@string/back"
         android:textAllCaps="false"
