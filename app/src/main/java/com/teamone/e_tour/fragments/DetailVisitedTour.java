@@ -126,7 +126,7 @@ public class DetailVisitedTour extends Fragment {
                 });
             }
         });
-        bottomSheetDialog = new BottomSheetDialog(DetailVisitedTour.this.getActivity());
+        bottomSheetDialog = new BottomSheetDialog(DetailVisitedTour.this.getActivity(), R.style.SheetDialog);
 
         return binding.getRoot();
     }

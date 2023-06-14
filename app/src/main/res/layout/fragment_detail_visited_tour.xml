@@ -63,7 +63,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="5dp"
-                    android:backgroundTint="@color/blue_white"
+                    android:backgroundTint="@color/blue_5_percent"
                     android:clickable="true"
                     android:text="Route name"
                     android:textAlignment="textStart"

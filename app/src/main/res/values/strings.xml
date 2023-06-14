@@ -159,4 +159,8 @@
     <string name="scam">Scam</string>
     <string name="thank_for_your_report">Thank for your report</string>
     <string name="your_report_is_being_reviewed_by_our_staff">Your report is being reviewed by our staff</string>
+    <string name="change_staff">Change staff</string>
+    <string name="enter_your_message_here">Enter your message here...</string>
+    <string name="subscription_route_channel_name">Subscription tourist route</string>
+    <string name="subscription_route_channel_description">New update about tourist route that you subscribe</string>
 </resources>

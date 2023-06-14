@@ -45,7 +45,7 @@ public class DetailIncomingTour extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentDetailIncomingTourBinding binding = FragmentDetailIncomingTourBinding.inflate(inflater, container, false);
-        bottomSheetDialog = new BottomSheetDialog(DetailIncomingTour.this.getActivity());
+        bottomSheetDialog = new BottomSheetDialog(DetailIncomingTour.this.getActivity(), R.style.SheetDialog);
 
         getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
         getActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 0);
@@ -88,7 +88,9 @@ public class DetailIncomingTour extends Fragment {
                 binding.contactCard.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        Bundle bundle = new Bundle();
+                        bundle.putString("id", ticketId);
+                        Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.contactSupportFragment, bundle);
                     }
                 });
                 binding.reportCard.setOnClickListener(new View.OnClickListener() {

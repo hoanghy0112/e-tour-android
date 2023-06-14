@@ -66,7 +66,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/blue"
                 android:textAllCaps="false"
-                android:backgroundTint="@color/blue_white"
+                android:backgroundTint="@color/blue_5_percent"
                 android:textSize="13sp" />
 
             <com.google.android.material.divider.MaterialDivider

@@ -161,4 +161,9 @@
         android:name="com.teamone.e_tour.fragments.ReportTour"
         android:label="fragment_report_tour"
         tools:layout="@layout/fragment_report_tour" />
+    <fragment
+        android:id="@+id/contactSupportFragment"
+        android:name="com.teamone.e_tour.fragments.ContactSupportFragment"
+        android:label="fragment_contact_support"
+        tools:layout="@layout/fragment_contact_support" />
 </navigation>
