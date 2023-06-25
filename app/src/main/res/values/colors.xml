@@ -27,6 +27,7 @@
     <color name="light_gray">#F1F1F1</color>
     <color name="brown">#E3C7B3</color>
     <color name="ocean_blue">#177DB9</color>
+    <color name="chat_blue">#6992FC</color>
     <color name="popular">#9E77D2</color>
     <color name="red">#FF3737</color>
 </resources>

@@ -26,19 +26,20 @@
             android:paddingHorizontal="10dp"
             android:paddingVertical="10dp">
 
-            <ImageView
-                android:id="@+id/back_btn"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/chevron_left"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+<!--            <ImageView-->
+<!--                android:id="@+id/back_btn"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:src="@drawable/chevron_left"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
             <ImageView
                 android:id="@+id/staff_avatar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:src="@drawable/etourlogo"
+                android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -68,6 +69,7 @@
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/chat_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="20dp"
@@ -130,16 +132,16 @@
         android:id="@+id/report_staff_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingVertical="15dp"
         android:layout_marginHorizontal="20dp"
         android:backgroundTint="@color/orange_5_percent"
         android:drawableLeft="@drawable/report"
         android:elevation="0dp"
         android:stateListAnimator="@null"
-        android:text="@string/change_staff"
+        android:text="@string/report_staff"
         android:textAlignment="textStart"
         android:textAllCaps="false"
         android:textColor="@color/orange"
-        android:textStyle="bold"
         android:letterSpacing="0.02"
         app:layout_constraintBottom_toTopOf="@+id/change_staff_btn"
         tools:layout_editor_absoluteX="24dp" />
@@ -149,6 +151,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
+        android:paddingVertical="15dp"
         android:stateListAnimator="@null"
         android:elevation="0dp"
         android:drawableLeft="@drawable/change_staff"
@@ -157,7 +160,6 @@
         android:text="@string/change_staff"
         android:textColor="@color/blue"
         android:textAllCaps="false"
-        android:textStyle="bold"
         android:letterSpacing="0.02"
         app:layout_constraintBottom_toBottomOf="parent" />
 

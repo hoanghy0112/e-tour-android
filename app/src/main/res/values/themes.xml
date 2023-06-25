@@ -52,4 +52,8 @@
         <item name="android:windowFrame">@null</item>
         <item name="android:windowIsFloating">true</item>
     </style>
+
+    <style name="cardButton" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+
+    </style>
 </resources>

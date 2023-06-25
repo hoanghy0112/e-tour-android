@@ -22,7 +22,9 @@ import com.teamone.e_tour.databinding.FragmentTourListBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.Tour;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class TourListFragment extends Fragment {
     ViewTourListOfRouteApi api;
@@ -82,8 +84,14 @@ public class TourListFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<Tour> tours) {
                 if (tours.size() == 0) return;
+                ArrayList<Tour> newTours = new ArrayList<>();
+                tours.forEach(tour -> {
+                    if (tour.getFrom().after(new Date())) {
+                        newTours.add(tour);
+                    }
+                });
                 dialog.dismiss();
-                adapter.setTourList(tours);
+                adapter.setTourList(newTours);
             }
         });
 
