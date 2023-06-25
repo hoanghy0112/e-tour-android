@@ -24,6 +24,8 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
 import com.teamone.e_tour.entities.NotificationItem;
@@ -72,18 +74,20 @@ public class HomeActivity extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        final String notiType = notificationItem.link.split("-")[0];
-        final String remaining = notificationItem.link.split("-")[1];
-        final String id = remaining.split("/")[0];
-        final String subType = remaining.split("/")[1];
+        Gson gson = new GsonBuilder().create();
+//        Log.e("notification-item", gson.toJson(notificationItem));
+//        final String notiType = notificationItem.link.split("-")[0];
+//        final String remaining = notificationItem.link.split("-")[1];
+//        final String id = remaining.split("/")[0];
+//        final String subType = remaining.split("/")[1];
 
-        Log.e("notiType", notiType);
-        Log.e("equals", notiType.equals("route") ? "True" : "False");
+//        Log.e("notiType", notiType);
+//        Log.e("equals", notiType.equals("route") ? "True" : "False");
         Intent intent = new Intent(this, NewTouristRoute.class);
-        if (notiType.equals("route")) {
-            intent.putExtra("routeId", id);
-            intent.putExtra("type", subType);
-        }
+//        if (notiType.equals("route")) {
+//            intent.putExtra("routeId", id);
+//            intent.putExtra("type", subType);
+//        }
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
 
@@ -92,7 +96,7 @@ public class HomeActivity extends AppCompatActivity {
                 .setContentTitle(notificationItem.title)
                 .setContentText(notificationItem.content)
                 .setContentIntent(pendingIntent)
-                .setWhen(notificationItem.createdAt.getTime())
+//                .setWhen(notificationItem.createdAt.getTime())
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true);
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);

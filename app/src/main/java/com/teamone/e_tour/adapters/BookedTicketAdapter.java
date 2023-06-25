@@ -62,13 +62,22 @@ public class BookedTicketAdapter extends RecyclerView.Adapter<BookedTicketAdapte
         ViewBookedTicketApi.ResponseData.Ticket ticket = tickets.get(position);
 
         holder.bookedDate.setText(Formatter.dateToDayString(ticket.tourId.from));
-        holder.routeName.setText(ticket.tourId.touristRoute.name);
+        if (ticket.tourId.touristRoute != null)
+            holder.routeName.setText(ticket.tourId.touristRoute.name);
+        else
+            holder.routeName.setText("");
         holder.tourName.setText(ticket.tourId.name);
-        holder.destinationRoute.setText(String.join(" - ", ticket.tourId.touristRoute.route));
+
+
+        if (ticket.tourId.touristRoute != null)
+            holder.destinationRoute.setText(String.join(" - ", ticket.tourId.touristRoute.route));
+        else
+            holder.destinationRoute.setText("No data");
         if (ticket.tourId.image != null && !ticket.tourId.image.equals(""))
             Glide.with(context).load(new Image(ticket.tourId.image).getImageUri()).into(holder.routeImage);
 
-        holder.card.setOnClickListener(new View.OnClickListener() {
+        if (ticket.tourId.touristRoute != null)
+            holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();

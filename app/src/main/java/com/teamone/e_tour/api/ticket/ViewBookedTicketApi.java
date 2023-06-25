@@ -98,6 +98,7 @@ public class ViewBookedTicketApi {
         socket.on(serverResponseEvent, new Emitter.Listener() {
             @Override
             public void call(Object... args) {
+                Log.e("booked-ticket", String.valueOf(args[0]));
                 ResponseData responseData = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
                 if (responseData.status == 200) {
                     response.postValue(responseData);

@@ -54,7 +54,7 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHold
                 bundle.putString("name", voucher.getName());
                 bundle.putString("description", voucher.getDescription());
                 bundle.putString("usingCondition", voucher.getUsingCondition());
-                bundle.putString("companyId", voucher.getCompanyId());
+                bundle.putString("companyId", voucher.getCompanyId()._id);
                 bundle.putFloat("value", voucher.getValue());
                 bundle.putString("expiredAt", Formatter.dateToDateWithHourString(voucher.getExpiredAt()));
                 Navigation.findNavController(context.getActivity(), R.id.home_wrapper).navigate(R.id.voucherDetailFragment, bundle);

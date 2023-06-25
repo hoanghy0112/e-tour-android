@@ -10,7 +10,7 @@ public class Voucher {
     private String description;
     private String usingCondition;
     private String image;
-    private String companyId;
+    private Company companyId;
     private float value;
     private int num;
     private Date createdAt;
@@ -71,11 +71,11 @@ public class Voucher {
         this.image = image;
     }
 
-    public String getCompanyId() {
+    public Company getCompanyId() {
         return companyId;
     }
 
-    public void setCompanyId(String companyId) {
+    public void setCompanyId(Company companyId) {
         this.companyId = companyId;
     }
 

@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.ObservableField;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -41,6 +42,8 @@ import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.CredentialToken;
 import com.teamone.e_tour.utils.SocketManager;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -106,6 +109,7 @@ public class AuthenticationActivity extends AppCompatActivity {
     }
 
     private void goToSignIn() {
+        Log.e("sign in with google", "signing in");
         // Choose authentication providers
         List<AuthUI.IdpConfig> providers = Arrays.asList(new AuthUI.IdpConfig.GoogleBuilder().build());
         // Create and launch sign-in intent
@@ -131,11 +135,12 @@ public class AuthenticationActivity extends AppCompatActivity {
         if (result.getResultCode() == RESULT_OK) {
             // Successfully signed in
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            Toast.makeText(AuthenticationActivity.this, result.getResultCode().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(AuthenticationActivity.this, response.getEmail(), Toast.LENGTH_SHORT).show();
             user.getIdToken(true).addOnSuccessListener(new OnSuccessListener<GetTokenResult>() {
                 @Override
                 public void onSuccess(GetTokenResult getTokenResult) {
                     String token = getTokenResult.getToken();
+                    Log.e("token", token);
                     SignInWithGoogleAPI.api.signInWithGoogle(new SignInWithGoogleAPI.Credential(token)).enqueue(new Callback<SignInWithPasswordApiResult>() {
                         @Override
                         public void onResponse(Call<SignInWithPasswordApiResult> call, Response<SignInWithPasswordApiResult> response) {
@@ -148,10 +153,16 @@ public class AuthenticationActivity extends AppCompatActivity {
                                 finish();
                             } else {
                                 Gson gson = new GsonBuilder().create();
+
                                 try {
                                     assert response.errorBody() != null;
-                                    SignInWithPasswordApiError error = gson.fromJson(response.errorBody().string(), SignInWithPasswordApiError.class);
-                                    if (dialog != null) dialog.showError(context.getResources().getText(R.string.fail_to_sign_in).toString() + "\nError message: " + error.getMessage());
+                                    String errorBody = String.valueOf(response.errorBody().string());
+                                    Log.e("errorbody", errorBody);
+                                    SignInWithPasswordApiError result = gson.fromJson(errorBody.toString(), SignInWithPasswordApiError.class);
+                                    Log.e("message", result.getMessage());
+                                    if (dialog != null)
+                                        dialog.showError(context.getResources().getText(R.string.fail_to_sign_in).toString() + "\nError message: " + result.getMessage());
+
                                 } catch (IOException e) {
                                     throw new RuntimeException(e);
                                 }

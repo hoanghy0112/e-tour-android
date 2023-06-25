@@ -1,6 +1,7 @@
 package com.teamone.e_tour.models;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -44,6 +45,7 @@ public class NotificationManager {
         SocketManager.getInstance(context).on("new-notification-list", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
+                Log.e("response-data", String.valueOf(args[0]));
                 ResponseData responseData = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
                 if (responseData.status == 200) {
                     notificationItems.postValue(responseData.data);
