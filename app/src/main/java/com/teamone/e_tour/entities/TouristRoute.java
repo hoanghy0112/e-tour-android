@@ -22,8 +22,9 @@ public class TouristRoute {
     private ArrayList<String> route;
     private ArrayList<String> images;
     private int point;
-
     private Date createdAt;
+    private boolean isFollowing;
+    private boolean isSaved;
 
     public TouristRoute(String _id, String companyId, String name, String description, String type, Long reservationFee, ArrayList<String> route, ArrayList<String> images) {
         this._id = _id;
@@ -133,5 +134,21 @@ public class TouristRoute {
 
     public void setImages(ArrayList<String> images) {
         this.images = images;
+    }
+
+    public boolean isFollowing() {
+        return isFollowing;
+    }
+
+    public void setFollowing(boolean following) {
+        isFollowing = following;
+    }
+
+    public boolean isSaved() {
+        return isSaved;
+    }
+
+    public void setSaved(boolean saved) {
+        isSaved = saved;
     }
 }

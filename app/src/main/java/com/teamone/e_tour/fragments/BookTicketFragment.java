@@ -8,6 +8,7 @@ import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,6 +52,13 @@ public class BookTicketFragment extends Fragment {
         binding.routeName.setText(BookingDataManager.getInstance().getRouteName());
 
         Glide.with(getActivity()).load(BookingDataManager.getInstance().getImageUri()).into(binding.imageView);
+
+        binding.topAppBar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(getActivity(), R.id.home_wrapper).popBackStack();
+            }
+        });
 
         return binding.getRoot();
     }

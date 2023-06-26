@@ -165,4 +165,7 @@
     <string name="subscription_route_channel_description">New update about tourist route that you subscribe</string>
     <string name="report_staff">Report staff</string>
     <string name="placeholder">Placeholder</string>
+    <string name="follow">Follow</string>
+    <string name="unfollow">Unfollow</string>
+    <string name="add_to_saved">Add to saved</string>
 </resources>

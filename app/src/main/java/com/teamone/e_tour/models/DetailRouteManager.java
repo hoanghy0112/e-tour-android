@@ -2,6 +2,7 @@ package com.teamone.e_tour.models;
 
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -27,7 +28,7 @@ public class DetailRouteManager {
 
     public DetailRouteManager(AppCompatActivity context) {
         this.context = context;
-        this.api = new ViewDetailRouteApi(new SocketManager(context));
+        this.api = new ViewDetailRouteApi(SocketManager.getInstance(context));
 
         api.getResponse().observe(context, new Observer<ViewDetailRouteApi.ResponseData>() {
             @Override

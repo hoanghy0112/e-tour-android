@@ -3,12 +3,14 @@ package com.teamone.e_tour.activities;
 import static androidx.navigation.ui.NavigationUI.onNavDestinationSelected;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
+import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.Navigation;
 
 import android.Manifest;
@@ -16,18 +18,25 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
+import com.bumptech.glide.request.FutureTarget;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.teamone.e_tour.R;
+import com.teamone.e_tour.broadcastReceiver.NotificationBroadcastReceiver;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
+import com.teamone.e_tour.entities.Image;
 import com.teamone.e_tour.entities.NotificationItem;
 import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.BookedTicketManager;
@@ -40,6 +49,10 @@ import com.teamone.e_tour.models.UserProfileManager;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Objects;
+import java.util.concurrent.ExecutionException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -74,31 +87,47 @@ public class HomeActivity extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
             return;
         }
-        Gson gson = new GsonBuilder().create();
-//        Log.e("notification-item", gson.toJson(notificationItem));
-//        final String notiType = notificationItem.link.split("-")[0];
-//        final String remaining = notificationItem.link.split("-")[1];
-//        final String id = remaining.split("/")[0];
-//        final String subType = remaining.split("/")[1];
 
-//        Log.e("notiType", notiType);
-//        Log.e("equals", notiType.equals("route") ? "True" : "False");
-        Intent intent = new Intent(this, NewTouristRoute.class);
-//        if (notiType.equals("route")) {
-//            intent.putExtra("routeId", id);
-//            intent.putExtra("type", subType);
-//        }
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        Pattern pattern = Pattern.compile("(?<type>\\w+)-(?<mainId>\\w+)/(?<subId>\\w+)");
+        Matcher matcher = pattern.matcher(notificationItem.link);
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "1")
                 .setSmallIcon(R.drawable.fi_rr_bell)
                 .setContentTitle(notificationItem.title)
-                .setContentText(notificationItem.content)
-                .setContentIntent(pendingIntent)
-//                .setWhen(notificationItem.createdAt.getTime())
+                .setContentText(notificationItem.content != null ? (notificationItem.content.split("\n").length > 1 ? notificationItem.content.split("\n")[0] : notificationItem.content) : "")
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(notificationItem.content))
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-                .setAutoCancel(true);
+                .setAutoCancel(true)
+                .setDeleteIntent(getDeleteIntent(index, notificationItem._id));
+
+        if (matcher.find()) {
+            String type = matcher.group("type");
+            String mainId = matcher.group("mainId");
+            String subId = matcher.group("subId");
+
+            PendingIntent pendingIntent = new NavDeepLinkBuilder(this)
+                    .setGraph(R.navigation.nav_home)
+                    .setDestination(R.id.homeFragment)
+                    .createPendingIntent();
+            ;
+
+            assert type != null;
+            if (type.equals("route")) {
+                Bundle bundle = new Bundle();
+                bundle.putString("id", mainId);
+
+                pendingIntent = new NavDeepLinkBuilder(HomeActivity.this)
+                        .setGraph(R.navigation.nav_home)
+                        .setDestination(R.id.detailTourFragment)
+                        .setArguments(bundle)
+                        .createPendingIntent();
+            }
+
+            builder.setContentIntent(pendingIntent);
+        }
+
+        if (notificationItem.createdAt != null)
+            builder.setWhen(notificationItem.createdAt.getTime());
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
         notificationManager.notify(index, builder.build());
     }
@@ -106,6 +135,7 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         ActivityHomeBinding binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -158,5 +188,15 @@ public class HomeActivity extends AppCompatActivity {
         PopularRouteManager.getInstance(this).fetchData(10);
         HotVoucherManager.getInstance(this).fetchData(10);
         com.teamone.e_tour.models.NotificationManager.getInstance(this).fetchData();
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.S)
+    protected PendingIntent getDeleteIntent(int index, String id) {
+        Intent intent = new Intent(this, NotificationBroadcastReceiver.class);
+        intent.putExtra("id", id);
+        intent.putExtra("index", index);
+        intent.setAction("notification_cancelled");
+//        return PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+        return PendingIntent.getBroadcast(this, index, intent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
     }
 }

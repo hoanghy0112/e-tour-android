@@ -1,10 +1,13 @@
 package com.teamone.e_tour.fragments;
 
+import android.annotation.SuppressLint;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -40,11 +43,16 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Objects;
 
 import me.relex.circleindicator.CircleIndicator;
 
 
 public class DetailRouteFragment extends Fragment {
+    DetailRouteManager detailRouteManager;
+    RatingManager ratingManager;
+    String routeId;
+    MutableLiveData<TouristRoute> route = new MutableLiveData<>();
 
     public DetailRouteFragment() {
     }
@@ -53,9 +61,11 @@ public class DetailRouteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        String routeId = getArguments().getString("id");
-        DetailRouteManager.getInstance((AppCompatActivity) getActivity()).viewRoute(routeId);
-        RatingManager.getInstance((AppCompatActivity) getActivity()).viewRating(routeId);
+        routeId = getArguments().getString("id");
+        detailRouteManager = new DetailRouteManager((AppCompatActivity) getActivity());
+        ratingManager = new RatingManager((AppCompatActivity) getActivity());
+        detailRouteManager.viewRoute(routeId);
+        ratingManager.viewRating(routeId);
     }
 
     @Override
@@ -101,7 +111,38 @@ public class DetailRouteFragment extends Fragment {
         binding.commentList.setAdapter(adapter);
         binding.commentList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
 
-        RatingManager.getInstance((AppCompatActivity) getActivity()).getRating().observe(getViewLifecycleOwner(), new Observer<ArrayList<Rating>>() {
+        binding.followBtn.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("UseCompatTextViewDrawableApis")
+            @Override
+            public void onClick(View v) {
+                TouristRoute t = route.getValue();
+                if (t == null) return;
+
+                if (t.isFollowing()) {
+                    JSONObject object = new JSONObject();
+                    try {
+                        object.put("routeId", routeId);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                    SocketManager.getInstance(getActivity()).emit("unfollow-tourist-route", object);
+                } else {
+                    JSONObject object = new JSONObject();
+                    try {
+                        object.put("routeId", routeId);
+                        object.put("notificationType", "all");
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                    SocketManager.getInstance(getActivity()).emit("follow-tourist-route", object);
+                }
+
+                t.setFollowing(!t.isFollowing());
+                route.postValue(t);
+            }
+        });
+
+        ratingManager.getRating().observe(getViewLifecycleOwner(), new Observer<ArrayList<Rating>>() {
             @Override
             public void onChanged(ArrayList<Rating> ratings) {
                 if (ratings != null)
@@ -109,7 +150,16 @@ public class DetailRouteFragment extends Fragment {
             }
         });
 
-        DetailRouteManager.getInstance((AppCompatActivity) getActivity()).getRouteInfo().observe(getViewLifecycleOwner(), new Observer<TouristRoute>() {
+        detailRouteManager.getRouteInfo().observe(getViewLifecycleOwner(), new Observer<TouristRoute>() {
+            @Override
+            public void onChanged(TouristRoute touristRoute) {
+                if (touristRoute != null && touristRoute.get_id().equals(routeId))
+                    route.postValue(touristRoute);
+            }
+        });
+
+        route.observe(getViewLifecycleOwner(), new Observer<TouristRoute>() {
+            @SuppressLint({"UseCompatTextViewDrawableApis", "UseCompatLoadingForDrawables"})
             @Override
             public void onChanged(TouristRoute touristRoute) {
                 if (touristRoute == null) {
@@ -129,6 +179,20 @@ public class DetailRouteFragment extends Fragment {
                 if (touristRoute.getImages().size() != 0) {
                     imageAdapter.setImages(touristRoute.getImages());
                     BookingDataManager.getInstance().setImageUri(touristRoute.getImages().get(0));
+                }
+
+                if (touristRoute.isFollowing()) {
+                    binding.followBtn.setBackgroundColor(requireActivity().getColor(R.color.blue));
+                    binding.followBtn.setCompoundDrawableTintList(ColorStateList.valueOf(requireActivity().getColor(R.color.white)));
+                    binding.followBtn.setTextColor(requireActivity().getColor(R.color.white));
+                    binding.followBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(requireActivity().getDrawable(R.drawable.minus), null, null, null);
+                    binding.followBtn.setText(requireActivity().getString(R.string.unfollow));
+                } else {
+                    binding.followBtn.setBackgroundColor(requireActivity().getColor(R.color.blue_5_percent));
+                    binding.followBtn.setCompoundDrawableTintList(ColorStateList.valueOf(requireActivity().getColor(R.color.chat_blue)));
+                    binding.followBtn.setTextColor(requireActivity().getColor(R.color.chat_blue));
+                    binding.followBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(requireActivity().getDrawable(R.drawable.plus), null, null, null);
+                    binding.followBtn.setText(requireActivity().getString(R.string.follow));
                 }
 
                 binding.bookTicketBtn.setOnClickListener(new View.OnClickListener() {

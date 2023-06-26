@@ -35,6 +35,7 @@
             android:layout_height="wrap_content"
             android:paddingBottom="200dp">
 
+
             <androidx.viewpager.widget.ViewPager
                 android:id="@+id/route_image_list"
                 android:layout_width="match_parent"
@@ -63,6 +64,56 @@
                     android:textColor="@color/black"
                     android:textSize="24sp"
                     android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/follow_btn"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:backgroundTint="@color/blue_5_percent"
+                        android:drawableLeft="@drawable/plus"
+                        android:drawableTint="@color/chat_blue"
+                        android:elevation="0dp"
+                        android:letterSpacing="0.02"
+                        android:paddingVertical="13dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="30dp"
+                        android:text="@string/follow"
+                        android:textAllCaps="false"
+                        android:textColor="@color/chat_blue"
+                        app:cornerRadius="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/route_image_list"
+                        tools:ignore="RtlSymmetry" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/add_favourite_btn"
+                        style="?android:attr/buttonBarButtonStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:backgroundTint="@color/blue_5_percent"
+                        android:drawableLeft="@drawable/save"
+                        android:drawableTint="@color/chat_blue"
+                        android:letterSpacing="0.02"
+                        android:paddingVertical="15dp"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="30dp"
+                        android:text="@string/add_to_saved"
+                        android:textAllCaps="false"
+                        android:textColor="@color/chat_blue"
+                        app:cornerRadius="10dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/route_image_list"
+                        tools:ignore="RtlSymmetry" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -93,9 +144,9 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/destination_list"
-                    android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -172,13 +223,13 @@
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
-<!--                    <TextView-->
-<!--                        android:id="@+id/old_price"-->
-<!--                        android:layout_width="wrap_content"-->
-<!--                        android:layout_height="wrap_content"-->
-<!--                        android:text="VND 950.000"-->
-<!--                        android:textColor="@color/placeholder"-->
-<!--                        android:textSize="12sp" />-->
+                    <!--                    <TextView-->
+                    <!--                        android:id="@+id/old_price"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:text="VND 950.000"-->
+                    <!--                        android:textColor="@color/placeholder"-->
+                    <!--                        android:textSize="12sp" />-->
 
                     <TextView
                         android:id="@+id/new_price"

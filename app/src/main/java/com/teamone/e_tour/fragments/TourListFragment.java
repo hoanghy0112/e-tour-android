@@ -55,7 +55,7 @@ public class TourListFragment extends Fragment {
         Window window = getActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(getActivity() , R.color.blue));
+        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.blue));
 
         binding.topAppBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,7 +83,7 @@ public class TourListFragment extends Fragment {
         api.getTourList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Tour>>() {
             @Override
             public void onChanged(ArrayList<Tour> tours) {
-                if (tours.size() == 0) return;
+                if (tours == null) return;
                 ArrayList<Tour> newTours = new ArrayList<>();
                 tours.forEach(tour -> {
                     if (tour.getFrom().after(new Date())) {
