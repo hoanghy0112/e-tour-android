@@ -8,6 +8,22 @@
     android:orientation="vertical"
     tools:context=".fragments.DetailRouteFragment">
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/back_btn"
+        android:layout_width="60dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="20dp"
+        android:backgroundTint="@color/transparent"
+        android:drawableLeft="@drawable/arrow_left"
+        android:elevation="0dp"
+        app:cornerRadius="100dp"
+        app:elevation="0dp"
+        android:clickable="true"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/transparent"
+        app:strokeWidth="0dp" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -17,7 +33,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="200dp">
+            android:paddingBottom="100dp">
 
 
             <androidx.viewpager.widget.ViewPager
@@ -195,7 +211,7 @@
                 style="?android:attr/buttonBarButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="35dp"
                 android:layout_marginEnd="20dp"
                 android:backgroundTint="@color/blue_5_percent"
                 android:drawableLeft="@drawable/bell"
@@ -325,7 +341,7 @@
         android:layout_marginBottom="30dp"
         android:backgroundTint="@color/staff_chat_blue"
         android:drawableTint="@color/blue_5_percent"
-        android:elevation="5dp"
+        android:elevation="8dp"
         android:fontFamily="@font/manrope_semibold"
         android:gravity="center"
         android:letterSpacing="0.02"
