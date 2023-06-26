@@ -25,6 +25,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -138,6 +140,9 @@ public class HomeActivity extends AppCompatActivity {
 
         ActivityHomeBinding binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Window w = getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         createNotificationChannel();
         com.teamone.e_tour.models.NotificationManager.getInstance(this).getNotificationItems().observe(this, new Observer<ArrayList<NotificationItem>>() {

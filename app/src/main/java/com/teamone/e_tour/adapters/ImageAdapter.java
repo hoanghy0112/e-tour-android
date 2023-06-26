@@ -1,6 +1,7 @@
 package com.teamone.e_tour.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,7 @@ public class ImageAdapter extends PagerAdapter {
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
         View view = LayoutInflater.from(container.getContext()).inflate(R.layout.route_image_item, container, false);
         ImageView imageView = view.findViewById(R.id.image);
+//        imageView.setColorFilter(Color.argb(100, 0, 0, 0));
 
         Image image = new Image(images.get(position));
         Glide.with(context).load(image.getImageUri()).into(imageView);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
@@ -9,15 +9,17 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardCornerRadius="10dp"
+        app:cardCornerRadius="0dp"
         app:strokeWidth="0.5dp"
-        app:strokeColor="@color/light_blue"
+        android:elevation="0dp"
+        app:cardElevation="0dp"
+        app:strokeColor="@color/light_title_gray"
         app:cardBackgroundColor="@color/white">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="15dp">
+            android:paddingVertical="25dp"
+            android:paddingHorizontal="40dp">
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/user_image_card"
@@ -32,8 +34,8 @@
 
                 <ImageView
                     android:id="@+id/user_image"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/etourlogo" />
 
@@ -43,12 +45,12 @@
                 android:id="@+id/user_display_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
                 android:text="@string/user_display_name"
                 android:textColor="@color/black"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/user_image_card"
+                android:textSize="15sp"
+                android:fontFamily="@font/manrope_bold"
                 app:layout_constraintStart_toEndOf="@+id/user_image_card"
                 app:layout_constraintTop_toTopOf="@+id/user_image_card" />
 
@@ -56,25 +58,38 @@
                 android:id="@+id/rating_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10/10"
+                android:text="@string/_10_10"
+                android:fontFamily="@font/manrope_bold"
                 android:textColor="@color/blue"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/user_image_card"
+                android:textSize="15sp"
+                app:layout_constraintBottom_toBottomOf="@+id/user_display_name"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/user_image_card" />
+                app:layout_constraintTop_toTopOf="@+id/user_display_name" />
+
+            <TextView
+                android:id="@+id/createdAt"
+                android:layout_marginTop="7dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/user_comment_here"
+                android:textColor="@color/title_gray"
+                android:textSize="13sp"
+                android:fontFamily="@font/manrope_regular"
+                app:layout_constraintStart_toStartOf="@+id/user_display_name"
+                app:layout_constraintTop_toBottomOf="@+id/user_display_name" />
 
             <TextView
                 android:id="@+id/comment"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/manrope_regular"
                 android:text="@string/user_comment_here"
-                android:textSize="13sp"
                 android:textColor="@color/black"
-                app:layout_constraintTop_toBottomOf="@+id/user_image_card"
-                tools:layout_editor_absoluteX="15dp" />
+                android:textSize="15sp"
+                app:layout_constraintEnd_toStartOf="@+id/rating_point"
+                app:layout_constraintStart_toStartOf="@+id/user_display_name"
+                app:layout_constraintTop_toBottomOf="@+id/createdAt" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 

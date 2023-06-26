@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.entities.Rating;
+import com.teamone.e_tour.utils.Formatter;
 
 import java.util.ArrayList;
 
@@ -45,6 +46,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.comment.setText(rating.getDescription());
         holder.ratingPoint.setText(String.valueOf(rating.getStar()));
         holder.userDisplayName.setText(rating.getUserId().getFullName());
+        holder.createdAt.setText(Formatter.dateToDateWithHourString(rating.getCreatedAt()));
         Glide.with(context).load(rating.getUserId().getImage()).into(holder.userImage);
     }
 
@@ -58,6 +60,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         TextView userDisplayName;
         TextView ratingPoint;
         TextView comment;
+        TextView createdAt;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -66,6 +69,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             userDisplayName = itemView.findViewById(R.id.user_display_name);
             ratingPoint = itemView.findViewById(R.id.rating_point);
             comment = itemView.findViewById(R.id.comment);
+            createdAt = itemView.findViewById(R.id.createdAt);
         }
     }
 }

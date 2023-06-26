@@ -76,10 +76,8 @@ public class DetailRouteFragment extends Fragment {
         getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
         getActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 0);
 
-        Window window = getActivity().getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.blue));
+        Window w = getActivity().getWindow();
+        w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         ViewPager routeImageList = binding.routeImageList;
         CircleIndicator routeImageIndicator = binding.routeImageIndicator;
@@ -95,12 +93,6 @@ public class DetailRouteFragment extends Fragment {
         binding.destinationList.setAdapter(destinationAdapter);
         binding.destinationList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
-        binding.topAppBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                NavHostFragment.findNavController(DetailRouteFragment.this).popBackStack();
-            }
-        });
 
 
         LoadingDialog dialog = new LoadingDialog(getActivity());
@@ -109,7 +101,7 @@ public class DetailRouteFragment extends Fragment {
         CommentAdapter adapter = new CommentAdapter(this);
 
         binding.commentList.setAdapter(adapter);
-        binding.commentList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.HORIZONTAL, false));
+        binding.commentList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
 
         binding.followBtn.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("UseCompatTextViewDrawableApis")
@@ -171,10 +163,12 @@ public class DetailRouteFragment extends Fragment {
 
                 destinationAdapter.setDestinations(touristRoute.getRoute());
 
-                binding.topAppBar.setTitle(touristRoute.getName());
                 binding.routeName.setText(touristRoute.getName());
+                binding.companyName.setText(touristRoute.getCompany().name);
+                binding.routeType.setText(touristRoute.getType().equals("country") ? "Domestic" : "International");
+                binding.reservationFee.setText(Formatter.toCurrency(touristRoute.getReservationFee()));
                 binding.description.setText(touristRoute.getDescription());
-                binding.newPrice.setText(Formatter.toCurrency(touristRoute.getReservationFee()));
+//                binding.newPrice.setText(Formatter.toCurrency(touristRoute.getReservationFee()));
 
                 if (touristRoute.getImages().size() != 0) {
                     imageAdapter.setImages(touristRoute.getImages());
@@ -185,13 +179,13 @@ public class DetailRouteFragment extends Fragment {
                     binding.followBtn.setBackgroundColor(requireActivity().getColor(R.color.blue));
                     binding.followBtn.setCompoundDrawableTintList(ColorStateList.valueOf(requireActivity().getColor(R.color.white)));
                     binding.followBtn.setTextColor(requireActivity().getColor(R.color.white));
-                    binding.followBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(requireActivity().getDrawable(R.drawable.minus), null, null, null);
+                    binding.followBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(requireActivity().getDrawable(R.drawable.bell_active), null, null, null);
                     binding.followBtn.setText(requireActivity().getString(R.string.unfollow));
                 } else {
                     binding.followBtn.setBackgroundColor(requireActivity().getColor(R.color.blue_5_percent));
                     binding.followBtn.setCompoundDrawableTintList(ColorStateList.valueOf(requireActivity().getColor(R.color.chat_blue)));
                     binding.followBtn.setTextColor(requireActivity().getColor(R.color.chat_blue));
-                    binding.followBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(requireActivity().getDrawable(R.drawable.plus), null, null, null);
+                    binding.followBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(requireActivity().getDrawable(R.drawable.bell), null, null, null);
                     binding.followBtn.setText(requireActivity().getString(R.string.follow));
                 }
 

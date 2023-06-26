@@ -1,12 +1,14 @@
 package com.teamone.e_tour.entities;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Rating implements Serializable {
     private String _id;
     private float star;
     private String description;
     private UserProfile userId;
+    private Date createdAt;
 
     public String get_id() {
         return _id;
@@ -34,6 +36,14 @@ public class Rating implements Serializable {
 
     public UserProfile getUserId() {
         return userId;
+    }
+
+    public Date getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 
     public void setUserId(UserProfile userId) {

@@ -1,5 +1,8 @@
 package com.teamone.e_tour.entities;
 
-public class Company {
+import java.io.Serializable;
+
+public class Company implements Serializable {
     public String _id;
+    public String name;
 }

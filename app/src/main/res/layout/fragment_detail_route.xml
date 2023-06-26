@@ -4,31 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange_white"
+    android:background="@color/white"
     android:orientation="vertical"
     tools:context=".fragments.DetailRouteFragment">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/top_bar"
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue"
-            app:navigationIcon="@drawable/chevron_left"
-            app:title="Detail Tour"
-            app:titleTextColor="@color/white" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/top_bar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -40,221 +24,395 @@
                 android:id="@+id/route_image_list"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                app:layout_constraintDimensionRatio="H,2:1"
+                app:layout_constraintDimensionRatio="H,10:14"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="50dp"
+                android:src="@drawable/gradient_route"
+                android:translationZ="2dp"
+                app:layout_constraintBottom_toBottomOf="@+id/route_image_list"
+                app:layout_constraintTop_toTopOf="@+id/route_image_list" />
 
             <me.relex.circleindicator.CircleIndicator
                 android:id="@+id/route_image_indicator"
                 android:layout_width="match_parent"
                 android:layout_height="30dp"
+                android:layout_marginBottom="20dp"
+                android:translationZ="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/route_image_list" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/route_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="20dp"
-                app:layout_constraintTop_toBottomOf="@+id/route_image_list">
-
-                <TextView
-                    android:id="@+id/route_name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tourist route name"
-                    android:textColor="@color/black"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:orientation="horizontal">
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/follow_btn"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="20dp"
-                        android:backgroundTint="@color/blue_5_percent"
-                        android:drawableLeft="@drawable/plus"
-                        android:drawableTint="@color/chat_blue"
-                        android:elevation="0dp"
-                        android:letterSpacing="0.02"
-                        android:paddingVertical="13dp"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="30dp"
-                        android:text="@string/follow"
-                        android:textAllCaps="false"
-                        android:textColor="@color/chat_blue"
-                        app:cornerRadius="10dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/route_image_list"
-                        tools:ignore="RtlSymmetry" />
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/add_favourite_btn"
-                        style="?android:attr/buttonBarButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
-                        android:backgroundTint="@color/blue_5_percent"
-                        android:drawableLeft="@drawable/save"
-                        android:drawableTint="@color/chat_blue"
-                        android:letterSpacing="0.02"
-                        android:paddingVertical="15dp"
-                        android:paddingStart="20dp"
-                        android:paddingEnd="30dp"
-                        android:text="@string/add_to_saved"
-                        android:textAllCaps="false"
-                        android:textColor="@color/chat_blue"
-                        app:cornerRadius="10dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/route_image_list"
-                        tools:ignore="RtlSymmetry" />
-                </LinearLayout>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:text="@string/description"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
-                    android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-                    android:textColor="@color/black" />
-
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:text="@string/route_destinations"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/destination_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:paddingRight="20dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/comment"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/view_all_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="@string/view_all"
-                        android:textColor="@color/orange" />
-                </RelativeLayout>
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/comment_list"
-                    android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:layout_marginTop="20dp" />
-            </LinearLayout>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
-
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical"
-        app:cardBackgroundColor="@color/orange_white"
-        app:cardCornerRadius="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:strokeColor="@color/orange"
-        app:strokeWidth="1dp"
-        tools:layout_editor_absoluteX="5dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+                android:layout_marginStart="30dp"
+                android:layout_marginEnd="120dp"
+                android:layout_marginBottom="50dp"
+                android:fontFamily="@font/manrope_medium"
+                android:text="@string/tourist_route_name"
+                android:textColor="@color/white"
+                android:textSize="30sp"
+                android:translationZ="3dp"
+                app:layout_constraintBottom_toTopOf="@+id/route_image_indicator" />
 
             <TextView
-                android:id="@+id/saved_money"
+                android:id="@+id/company_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/orange"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="8dp"
-                android:text="Save VND 25.000"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="120dp"
+                android:layout_marginBottom="50dp"
+                android:fontFamily="@font/manrope_extralight"
+                android:text="@string/tourist_route_name"
                 android:textColor="@color/white"
-                android:textSize="14sp" />
+                android:textSize="17sp"
+                android:translationZ="3dp"
+                app:layout_constraintTop_toBottomOf="@+id/route_name" />
 
-            <RelativeLayout
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/add_favourite_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_marginEnd="25dp"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@drawable/save"
+                android:drawableTint="@color/chat_blue"
+                android:elevation="8dp"
+                android:letterSpacing="0.02"
+                android:paddingVertical="15dp"
+                android:paddingStart="25dp"
+                android:paddingEnd="0dp"
+                android:textAllCaps="false"
+                android:textColor="@color/chat_blue"
+                android:translationZ="3dp"
+                app:cornerRadius="15dp"
+                app:elevation="5dp"
+                app:layout_constraintBottom_toBottomOf="@+id/route_image_list"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/route_image_list"
+                tools:ignore="RtlSymmetry" />
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/manrope_light"
+                android:text="@string/type"
+                android:textColor="@color/title_gray"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/route_image_list" />
+
+            <TextView
+                android:id="@+id/route_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="@string/country"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/vertical_guideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.52" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/manrope_light"
+                android:text="@string/route_destinations"
+                android:textColor="@color/title_gray"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@id/vertical_guideline"
+                app:layout_constraintTop_toTopOf="@+id/textView8" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/destination_list"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="35dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/vertical_guideline"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:fontFamily="@font/manrope_light"
+                android:text="@string/reservation_fee"
+                android:textColor="@color/title_gray"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/textView8"
+                app:layout_constraintTop_toBottomOf="@+id/route_type" />
+
+            <TextView
+                android:id="@+id/reservation_fee"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="@string/country"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintStart_toStartOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+            <TextView
+                android:id="@+id/description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="16dp">
+                android:layout_marginHorizontal="35dp"
+                android:layout_marginTop="50dp"
+                android:fontFamily="@font/manrope_regular"
+                android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_eiusmod_tempor_incididunt_ut_labore_et_dolore_magna_aliqua_ut_enim_ad_minim_veniam_quis_nostrud_exercitation_ullamco_laboris_nisi_ut_aliquip_ex_ea_commodo_consequat_duis_aute_irure_dolor_in_reprehenderit_in_voluptate_velit_esse_cillum_dolore_eu_fugiat_nulla_pariatur_excepteur_sint_occaecat_cupidatat_non_proident_sunt_in_culpa_qui_officia_deserunt_mollit_anim_id_est_laborum"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintTop_toBottomOf="@+id/reservation_fee" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/follow_btn"
+                style="?android:attr/buttonBarButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="20dp"
+                android:backgroundTint="@color/blue_5_percent"
+                android:drawableLeft="@drawable/bell"
+                android:drawableTint="@color/chat_blue"
+                android:elevation="0dp"
+                android:letterSpacing="0.02"
+                android:paddingVertical="18dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="30dp"
+                android:text="@string/follow"
+                android:textAllCaps="false"
+                android:textColor="@color/chat_blue"
+                app:cornerRadius="10dp"
+                app:layout_constraintStart_toStartOf="@+id/description"
+                app:layout_constraintTop_toBottomOf="@+id/description"
+                tools:ignore="RtlSymmetry" />
 
-                    <!--                    <TextView-->
-                    <!--                        android:id="@+id/old_price"-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:text="VND 950.000"-->
-                    <!--                        android:textColor="@color/placeholder"-->
-                    <!--                        android:textSize="12sp" />-->
 
-                    <TextView
-                        android:id="@+id/new_price"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp"
-                        android:text="VND 920.000"
-                        android:textColor="@color/orange"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_marginTop="40dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/comments"
+                android:textColor="@color/black"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="@+id/textView10"
+                app:layout_constraintTop_toBottomOf="@+id/follow_btn" />
 
-                <Button
-                    android:id="@+id/book_ticket_btn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_alignParentEnd="true"
-                    android:backgroundTint="@color/orange"
-                    android:text="@string/book_ticket"
-                    android:textAllCaps="false"
-                    android:textColor="@color/white"
-                    android:textSize="13sp" />
-            </RelativeLayout>
-        </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/comment_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
-    </com.google.android.material.card.MaterialCardView>
+
+            <!--            <LinearLayout-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:orientation="vertical"-->
+            <!--                android:padding="20dp"-->
+            <!--                app:layout_constraintTop_toBottomOf="@+id/route_image_list">-->
+
+
+            <!--                <LinearLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:orientation="horizontal">-->
+
+            <!--                    <com.google.android.material.button.MaterialButton-->
+            <!--                        android:id="@+id/follow_btn"-->
+            <!--                        style="?android:attr/buttonBarButtonStyle"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginEnd="20dp"-->
+            <!--                        android:backgroundTint="@color/blue_5_percent"-->
+            <!--                        android:drawableLeft="@drawable/plus"-->
+            <!--                        android:drawableTint="@color/chat_blue"-->
+            <!--                        android:elevation="0dp"-->
+            <!--                        android:letterSpacing="0.02"-->
+            <!--                        android:paddingVertical="13dp"-->
+            <!--                        android:paddingStart="15dp"-->
+            <!--                        android:paddingEnd="30dp"-->
+            <!--                        android:text="@string/follow"-->
+            <!--                        android:textAllCaps="false"-->
+            <!--                        android:textColor="@color/chat_blue"-->
+            <!--                        app:cornerRadius="10dp"-->
+            <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                        app:layout_constraintTop_toBottomOf="@+id/route_image_list"-->
+            <!--                        tools:ignore="RtlSymmetry" />-->
+
+            <!--                </LinearLayout>-->
+
+
+            <!--                <TextView-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginTop="25dp"-->
+            <!--                    android:text="@string/route_destinations"-->
+            <!--                    android:textColor="@color/black"-->
+            <!--                    android:textSize="16sp"-->
+            <!--                    android:textStyle="bold" />-->
+
+            <!--                <androidx.recyclerview.widget.RecyclerView-->
+            <!--                    android:id="@+id/destination_list"-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginTop="10dp" />-->
+
+            <!--                <RelativeLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:layout_marginTop="16dp"-->
+            <!--                    android:paddingRight="20dp">-->
+
+            <!--                    <TextView-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:text="@string/comment"-->
+            <!--                        android:textColor="@color/black"-->
+            <!--                        android:textSize="16sp"-->
+            <!--                        android:textStyle="bold" />-->
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/view_all_btn"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_alignParentEnd="true"-->
+            <!--                        android:text="@string/view_all"-->
+            <!--                        android:textColor="@color/orange" />-->
+            <!--                </RelativeLayout>-->
+
+            <!--            </LinearLayout>-->
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/book_ticket_btn"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="30dp"
+        android:backgroundTint="@color/staff_chat_blue"
+        android:drawableTint="@color/blue_5_percent"
+        android:elevation="5dp"
+        android:fontFamily="@font/manrope_semibold"
+        android:gravity="center"
+        android:letterSpacing="0.02"
+        android:paddingVertical="20dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp"
+        android:text="@string/book_ticket_now"
+        android:textAllCaps="false"
+        android:textColor="@color/blue_5_percent"
+        android:textSize="15sp"
+        app:cornerRadius="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="RtlSymmetry" />
+    <!--    <com.google.android.material.card.MaterialCardView-->
+    <!--        android:id="@+id/materialCardView2"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_margin="5dp"-->
+    <!--        android:orientation="vertical"-->
+    <!--        app:cardBackgroundColor="@color/orange_white"-->
+    <!--        app:cardCornerRadius="10dp"-->
+    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--        app:strokeColor="@color/orange"-->
+    <!--        app:strokeWidth="1dp"-->
+    <!--        tools:layout_editor_absoluteX="5dp">-->
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:orientation="vertical">-->
+
+    <!--            <TextView-->
+    <!--                android:id="@+id/saved_money"-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:background="@color/orange"-->
+    <!--                android:paddingHorizontal="20dp"-->
+    <!--                android:paddingVertical="8dp"-->
+    <!--                android:text="Save VND 25.000"-->
+    <!--                android:textColor="@color/white"-->
+    <!--                android:textSize="14sp" />-->
+
+    <!--            <RelativeLayout-->
+    <!--                android:layout_width="match_parent"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:paddingHorizontal="20dp"-->
+    <!--                android:paddingVertical="16dp">-->
+
+    <!--                <LinearLayout-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="50dp"-->
+    <!--                    android:gravity="center_vertical"-->
+    <!--                    android:orientation="vertical">-->
+
+    <!--                    &lt;!&ndash;                    <TextView&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                        android:id="@+id/old_price"&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                        android:layout_width="wrap_content"&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                        android:layout_height="wrap_content"&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                        android:text="VND 950.000"&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                        android:textColor="@color/placeholder"&ndash;&gt;-->
+    <!--                    &lt;!&ndash;                        android:textSize="12sp" />&ndash;&gt;-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/new_price"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_marginTop="5dp"-->
+    <!--                        android:text="VND 920.000"-->
+    <!--                        android:textColor="@color/orange"-->
+    <!--                        android:textSize="18sp"-->
+    <!--                        android:textStyle="bold" />-->
+    <!--                </LinearLayout>-->
+
+    <!--                <Button-->
+    <!--                    android:id="@+id/book_ticket_btn"-->
+    <!--                    android:layout_width="wrap_content"-->
+    <!--                    android:layout_height="50dp"-->
+    <!--                    android:layout_alignParentEnd="true"-->
+    <!--                    android:backgroundTint="@color/orange"-->
+    <!--                    android:text="@string/book_ticket"-->
+    <!--                    android:textAllCaps="false"-->
+    <!--                    android:textColor="@color/white"-->
+    <!--                    android:textSize="13sp" />-->
+    <!--            </RelativeLayout>-->
+    <!--        </LinearLayout>-->
+
+    <!--    </com.google.android.material.card.MaterialCardView>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

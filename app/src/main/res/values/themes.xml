@@ -26,6 +26,10 @@
 
         <item name="colorOnSurface">@color/blue_dark</item>
         <item name="colorOnSurfaceVariant">@color/placeholder</item>
+
+        <item name="fontFamily">@font/manrope_regular</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
     <style name="Theme.ETour.NoActionBar">

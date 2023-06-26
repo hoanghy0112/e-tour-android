@@ -10,8 +10,8 @@ import com.teamone.e_tour.converters.StringArrayConverter;
 import com.teamone.e_tour.dataAccessObject.TouristRouteDAO;
 import com.teamone.e_tour.entities.TouristRoute;
 
-@Database(entities = {TouristRoute.class}, version = 1)
-@TypeConverters({StringArrayConverter.class, DateConverter.class})
+//@Database(entities = {TouristRoute.class}, version = 1)
+//@TypeConverters({StringArrayConverter.class, DateConverter.class})
 public abstract class AppDatabase extends RoomDatabase {
-    public abstract TouristRouteDAO touristRouteDAO();
+//    public abstract TouristRouteDAO touristRouteDAO();
 }

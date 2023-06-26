@@ -27,6 +27,8 @@
     <color name="green">#14AE5C</color>
     <color name="gray">#E1E1E1</color>
     <color name="light_gray">#F1F1F1</color>
+    <color name="title_gray">#9F9F9F</color>
+    <color name="light_title_gray">#C5C5C5</color>
     <color name="brown">#E3C7B3</color>
     <color name="ocean_blue">#177DB9</color>
     <color name="chat_blue">#457b9d</color>

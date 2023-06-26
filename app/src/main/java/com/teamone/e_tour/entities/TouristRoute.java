@@ -25,6 +25,7 @@ public class TouristRoute {
     private Date createdAt;
     private boolean isFollowing;
     private boolean isSaved;
+    private Company company;
 
     public TouristRoute(String _id, String companyId, String name, String description, String type, Long reservationFee, ArrayList<String> route, ArrayList<String> images) {
         this._id = _id;
@@ -150,5 +151,13 @@ public class TouristRoute {
 
     public void setSaved(boolean saved) {
         isSaved = saved;
+    }
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }
