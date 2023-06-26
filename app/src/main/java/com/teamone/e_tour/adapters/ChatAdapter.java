@@ -1,5 +1,6 @@
 package com.teamone.e_tour.adapters;
 
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,8 +43,19 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
 
         holder.content.setText(message.content);
         holder.createdAt.setText(Formatter.dateToDateOnlyHourString(message.createdAt));
-        if (userId != null && userId.equals(message.uid))
+//        Log.e("uid", message.uid);
+//        Log.e("userid", userId);
+        if (userId != null && userId.equals(message.uid)) {
             holder.message.setGravity(Gravity.END);
+            holder.message.setPadding(100, 0, 0, 0);
+            holder.messageBox.setGravity(Gravity.END);
+            holder.messageBox.setBackgroundColor(context.getActivity().getColor(R.color.chat_blue));
+        } else {
+            holder.message.setGravity(Gravity.START);
+            holder.message.setPadding(0, 0, 100, 0);
+            holder.messageBox.setGravity(Gravity.START);
+            holder.messageBox.setBackgroundColor(context.getActivity().getColor(R.color.staff_chat_blue));
+        }
     }
 
     @Override
@@ -52,17 +64,27 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
     }
 
     public void setMessages(ArrayList<ChatMessage> messages) {
-        this.messages = messages;
+        ArrayList<ChatMessage> newMessages = new ArrayList<>();
+        messages.forEach(message -> newMessages.add(message));
+        this.messages = newMessages;
+        notifyDataSetChanged();
+    }
+
+    public void addNewMessage(ChatMessage message) {
+        this.messages.add(message);
+        notifyDataSetChanged();
     }
 
     public void setUserId(String userId) {
         this.userId = userId;
+        notifyDataSetChanged();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView content;
         TextView createdAt;
         LinearLayout message;
+        LinearLayout messageBox;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -70,6 +92,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.ViewHolder> {
             content = itemView.findViewById(R.id.chat_message_content);
             createdAt = itemView.findViewById(R.id.chat_message_created_at);
             message = itemView.findViewById(R.id.chat_message);
+            messageBox = itemView.findViewById(R.id.message_box);
         }
     }
 }

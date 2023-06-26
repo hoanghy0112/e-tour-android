@@ -4,8 +4,10 @@
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
     <color name="blue">#006497</color>
-    <color name="blue_5_percent">#E2F1F6</color>
+    <color name="blue_5_percent">#E0EEF3</color>
     <color name="orange_5_percent">#FFE1E1</color>
+    <color name="report">#e63946</color>
+    <color name="report_5_p">#1AE63946</color>
     <color name="light_blue">#007EBD</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
@@ -27,7 +29,8 @@
     <color name="light_gray">#F1F1F1</color>
     <color name="brown">#E3C7B3</color>
     <color name="ocean_blue">#177DB9</color>
-    <color name="chat_blue">#6992FC</color>
+    <color name="chat_blue">#457b9d</color>
+    <color name="staff_chat_blue">#1d3557</color>
     <color name="popular">#9E77D2</color>
     <color name="red">#FF3737</color>
 </resources>

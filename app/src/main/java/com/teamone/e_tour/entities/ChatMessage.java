@@ -8,4 +8,10 @@ public class ChatMessage implements Serializable {
     public String content;
     public String _id;
     public Date createdAt;
+
+    public ChatMessage(String uid, String content, Date createdAt) {
+        this.uid = uid;
+        this.content = content;
+        this.createdAt = createdAt;
+    }
 }

@@ -16,7 +16,7 @@ public class Formatter {
     }
 
     static public String dateToDateOnlyHourString(Date date) {
-        String pattern = "K:m a";
+        String pattern = "K:mm a";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("vi", "VN"));
         return simpleDateFormat.format(date);
     }
