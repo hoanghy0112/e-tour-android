@@ -85,6 +85,13 @@ public class HomeFragment extends Fragment {
         voucherListSkeleton.setMaskCornerRadius(40);
         voucherListSkeleton.showSkeleton();
 
+        binding.notifcationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.action_homeFragment_to_notificationPage);
+            }
+        });
+
         binding.forYouBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

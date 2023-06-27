@@ -185,4 +185,10 @@
     <string name="voucher_image">Voucher image</string>
     <string name="loading">Loading…</string>
     <string name="loading_route">Loading tourist route data…</string>
+    <string name="notifications">Notifications</string>
+    <string name="back_icon">Back icon</string>
+    <string name="recent">Recent</string>
+    <string name="older_notifications">Older notifications</string>
+    <string name="notification_title">Notification title</string>
+    <string name="notification_image">Notification image</string>
 </resources>

@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.Observer;
 import androidx.navigation.NavDeepLinkBuilder;
 import androidx.navigation.Navigation;
@@ -18,27 +17,17 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.RequestBuilder;
-import com.bumptech.glide.request.FutureTarget;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.broadcastReceiver.NotificationBroadcastReceiver;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
-import com.teamone.e_tour.entities.Image;
 import com.teamone.e_tour.entities.NotificationItem;
 import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.BookedTicketManager;
@@ -50,9 +39,6 @@ import com.teamone.e_tour.models.SavedRouteManager;
 import com.teamone.e_tour.models.UserProfileManager;
 
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -145,7 +131,7 @@ public class HomeActivity extends AppCompatActivity {
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         createNotificationChannel();
-        com.teamone.e_tour.models.NotificationManager.getInstance(this).getNotificationItems().observe(this, new Observer<ArrayList<NotificationItem>>() {
+        com.teamone.e_tour.models.NotificationManager.getInstance(this).getUnSeenNotificationItems().observe(this, new Observer<ArrayList<NotificationItem>>() {
             @Override
             public void onChanged(ArrayList<NotificationItem> notificationItems) {
                 if (notificationItems == null) return;

@@ -28,6 +28,9 @@
         <action
             android:id="@+id/action_homeFragment_to_voucherDetailFragment"
             app:destination="@id/voucherDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_notificationPage"
+            app:destination="@id/notificationPage" />
     </fragment>
     <fragment
         android:id="@+id/detailTourFragment"
@@ -181,4 +184,9 @@
         android:name="com.teamone.e_tour.fragments.ContactSupportFragment"
         android:label="fragment_contact_support"
         tools:layout="@layout/fragment_contact_support" />
+    <fragment
+        android:id="@+id/notificationPage"
+        android:name="com.teamone.e_tour.fragments.NotificationPage"
+        android:label="fragment_notification_page"
+        tools:layout="@layout/fragment_notification_page" />
 </navigation>
