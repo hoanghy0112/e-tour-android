@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.teamone.e_tour.R;
@@ -54,6 +55,8 @@ public class DetailRouteFragment extends Fragment {
     RatingManager ratingManager;
     String routeId;
     MutableLiveData<TouristRoute> route = new MutableLiveData<>();
+    View originalLayout;
+    int viewIndex;
 
     public DetailRouteFragment() {
     }
@@ -69,15 +72,16 @@ public class DetailRouteFragment extends Fragment {
         ratingManager.viewRating(routeId);
     }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentDetailRouteBinding binding = FragmentDetailRouteBinding.inflate(inflater, container, false);
 
-        getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
-        getActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 0);
+        requireActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+        requireActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 0);
 
-        Window w = getActivity().getWindow();
+        Window w = requireActivity().getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         ViewPager routeImageList = binding.routeImageList;
@@ -101,9 +105,6 @@ public class DetailRouteFragment extends Fragment {
             }
         });
 
-
-        LoadingDialog dialog = new LoadingDialog(getActivity());
-        dialog.showLoading(getString(R.string.loading_tourist_route));
 
         CommentAdapter adapter = new CommentAdapter(this);
 
@@ -157,16 +158,25 @@ public class DetailRouteFragment extends Fragment {
             }
         });
 
+        originalLayout = binding.detailRouteWrapper;
+        ViewGroup parent = (ViewGroup) originalLayout.getParent();
+        viewIndex = parent.indexOfChild(originalLayout);
+        parent.removeAllViews();
+
+        View loadingView = LayoutInflater.from(requireActivity()).inflate(R.layout.loading_fragment, parent, false);
+        ((TextView) loadingView.findViewById(R.id.loading_text)).setText(R.string.loading_route);
+        parent.addView(loadingView, viewIndex);
+
         route.observe(getViewLifecycleOwner(), new Observer<TouristRoute>() {
             @SuppressLint({"UseCompatTextViewDrawableApis", "UseCompatLoadingForDrawables"})
             @Override
             public void onChanged(TouristRoute touristRoute) {
                 if (touristRoute == null) {
-                    dialog.showLoading(getString(R.string.loading_tourist_route));
                     return;
                 }
 
-                dialog.dismiss();
+                parent.removeAllViews();
+                parent.addView(originalLayout, viewIndex);
 
                 destinationAdapter.setDestinations(touristRoute.getRoute());
 

@@ -183,4 +183,6 @@
     <string name="_221_reviews">(221 reviews)</string>
     <string name="notifcation_icon">Notifcation icon</string>
     <string name="voucher_image">Voucher image</string>
+    <string name="loading">Loading…</string>
+    <string name="loading_route">Loading tourist route data…</string>
 </resources>
