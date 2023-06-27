@@ -12,10 +12,16 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_detailTourFragment"
-            app:destination="@id/detailTourFragment" />
+            app:destination="@id/detailTourFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popEnterAnim="@anim/fui_slide_in_right"
+            app:popExitAnim="@anim/fui_slide_out_left" />
         <action
             android:id="@+id/action_homeFragment_to_forYou"
-            app:destination="@id/forYou" />
+            app:destination="@id/forYou"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left" />
         <action
             android:id="@+id/action_homeFragment_to_popular"
             app:destination="@id/popular" />
@@ -30,7 +36,11 @@
         tools:layout="@layout/fragment_detail_route" >
         <action
             android:id="@+id/action_detailTourFragment_to_tourListFragment"
-            app:destination="@id/tourListFragment" />
+            app:destination="@id/tourListFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_in_right"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
     </fragment>
     <fragment
         android:id="@+id/tourListFragment"
@@ -124,6 +134,11 @@
         <action
             android:id="@+id/action_forYou_to_detailTourFragment"
             app:destination="@id/detailTourFragment" />
+        <action
+            android:id="@+id/action_forYou_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/popular"

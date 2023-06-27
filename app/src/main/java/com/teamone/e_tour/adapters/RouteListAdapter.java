@@ -68,17 +68,17 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
         TouristRoute route = routeList.get(position);
 
         if (route.getType() == null || route.getType().equals("country")) {
-            holder.routeType.setText(R.string.domestic);
-            holder.routeType.setTextColor(context.getActivity().getColor(R.color.white));
-            holder.routeType.setBackground(context.getActivity().getDrawable(R.drawable.route_type_domestic));
+//            holder.routeType.setText(R.string.domestic);
+//            holder.routeType.setTextColor(context.getActivity().getColor(R.color.white));
+//            holder.routeType.setBackground(context.getActivity().getDrawable(R.drawable.route_type_domestic));
         } else if (route.getType().equals("foreign")) {
-            holder.routeType.setText(R.string.international);
-            holder.routeType.setTextColor(context.getActivity().getColor(R.color.black));
-            holder.routeType.setBackground(context.getActivity().getDrawable(R.drawable.route_type_international));
+//            holder.routeType.setText(R.string.international);
+//            holder.routeType.setTextColor(context.getActivity().getColor(R.color.black));
+//            holder.routeType.setBackground(context.getActivity().getDrawable(R.drawable.route_type_international));
         }
 
         holder.name.setText(route.getName());
-        holder.newPrice.setText(Formatter.toCurrency(route.getReservationFee()));
+//        holder.newPrice.setText(Formatter.toCurrency(route.getReservationFee()));
         holder.rating.setRating(route.getRate());
         holder.numReview.setText(route.getNum() + " " + context.getString(R.string.reviews));
 
@@ -106,28 +106,28 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
             @Override
             public void onChanged(ArrayList<TouristRoute> touristRoutes) {
                 if (touristRoutes == null) return;
-                holder.addToFavourite.setCheckedState(MaterialCheckBox.STATE_UNCHECKED);
-                touristRoutes.forEach(touristRoute -> {
-                    if (touristRoute.get_id().equals(route.get_id())) {
-                        holder.addToFavourite.setCheckedState(MaterialCheckBox.STATE_CHECKED);
-                    }
-                });
+//                holder.addToFavourite.setCheckedState(MaterialCheckBox.STATE_UNCHECKED);
+//                touristRoutes.forEach(touristRoute -> {
+//                    if (touristRoute.get_id().equals(route.get_id())) {
+//                        holder.addToFavourite.setCheckedState(MaterialCheckBox.STATE_CHECKED);
+//                    }
+//                });
             }
         });
 
-        holder.addToFavourite.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (holder.addToFavourite.getCheckedState() == MaterialCheckBox.STATE_CHECKED) {
-                    AddToSaveListApi.getInstance(context.getActivity()).send(route.get_id());
-                }
-                else {
-                    RemoveFromSaveListApi.getInstance(context.getActivity()).send(route.get_id());
-//                    SavedRouteManager.getInstance((AppCompatActivity) context.getActivity()).remove(route.get_id());
-                    holder.addToFavourite.setChecked(false);
-                }
-            }
-        });
+//        holder.addToFavourite.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if (holder.addToFavourite.getCheckedState() == MaterialCheckBox.STATE_CHECKED) {
+//                    AddToSaveListApi.getInstance(context.getActivity()).send(route.get_id());
+//                }
+//                else {
+//                    RemoveFromSaveListApi.getInstance(context.getActivity()).send(route.get_id());
+////                    SavedRouteManager.getInstance((AppCompatActivity) context.getActivity()).remove(route.get_id());
+//                    holder.addToFavourite.setChecked(false);
+//                }
+//            }
+//        });
     }
 
     @Override
@@ -137,11 +137,11 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView routeType;
+//        TextView routeType;
         TextView name;
-        TextView oldPrice;
-        TextView newPrice;
-        MaterialCheckBox addToFavourite;
+//        TextView oldPrice;
+//        TextView newPrice;
+//        MaterialCheckBox addToFavourite;
         ImageView cardImage;
         MaterialCardView card;
         RatingBar rating;
@@ -151,9 +151,9 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
-            routeType = itemView.findViewById(R.id.route_type);
-            newPrice = itemView.findViewById(R.id.new_price);
-            addToFavourite = itemView.findViewById(R.id.add_favourite_btn);
+//            routeType = itemView.findViewById(R.id.route_type);
+//            newPrice = itemView.findViewById(R.id.new_price);
+//            addToFavourite = itemView.findViewById(R.id.add_favourite_btn);
             cardImage = itemView.findViewById(R.id.card_image);
             card = itemView.findViewById(R.id.tourist_route_card);
             rating = itemView.findViewById(R.id.rating_bar);

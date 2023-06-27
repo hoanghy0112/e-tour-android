@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="300dp"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/transparent"
     tools:context=".fragments.TourPreviewCard">
 
     <com.google.android.material.card.MaterialCardView
@@ -15,7 +16,7 @@
         app:strokeColor="@color/transparent"
         app:cardElevation="10dp"
         android:translationZ="40dp"
-        android:layout_marginHorizontal="15dp"
+        android:layout_marginHorizontal="10dp"
         android:layout_marginVertical="20dp"
         app:strokeWidth="0dp">
 
@@ -49,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="15dp"
-                android:layout_marginEnd="50dp"
+                android:layout_marginEnd="100dp"
                 android:fontFamily="@font/manrope_bold"
                 android:text="@string/du_l_ch_l_t"
                 android:textColor="@color/white"

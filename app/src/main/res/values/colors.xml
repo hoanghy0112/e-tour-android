@@ -35,4 +35,5 @@
     <color name="staff_chat_blue">#1d3557</color>
     <color name="popular">#9E77D2</color>
     <color name="red">#FF3737</color>
+    <color name="shadow">#26C4C4C4</color>
 </resources>

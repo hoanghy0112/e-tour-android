@@ -20,6 +20,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.faltenreich.skeletonlayout.Skeleton;
+import com.faltenreich.skeletonlayout.SkeletonLayout;
+import com.faltenreich.skeletonlayout.SkeletonLayoutUtils;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.adapters.RouteListAdapter;
 import com.teamone.e_tour.adapters.VoucherAdapter;
@@ -52,8 +55,8 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         FragmentHomeBinding binding = FragmentHomeBinding.inflate(inflater, container, false);
 
-        getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
-        getActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 180);
+        requireActivity().findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+        requireActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 180);
 
         recommendList = binding.getRoot().findViewById(R.id.recommend_list);
 
@@ -61,43 +64,47 @@ public class HomeFragment extends Fragment {
         recommendList.setAdapter(recommendAdapter);
         recommendList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
-        RouteListAdapter popularAdapter = new RouteListAdapter(HomeFragment.this, R.layout.fragment_route_preview_card_large);
+        Skeleton recommendListSkeleton = SkeletonLayoutUtils.applySkeleton(binding.recommendList, R.layout.fragment_route_preview_card_large);
+        recommendListSkeleton.setMaskCornerRadius(60);
+        recommendListSkeleton.showSkeleton();
+
+        RouteListAdapter popularAdapter = new RouteListAdapter(HomeFragment.this, R.layout.fragment_route_preview_card_large_horizontal);
         binding.popularList.setAdapter(popularAdapter);
         binding.popularList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
+
+        Skeleton popularListSkeleton = SkeletonLayoutUtils.applySkeleton(binding.popularList, R.layout.fragment_route_preview_card_large_horizontal);
+        popularListSkeleton.setMaskCornerRadius(60);
+        popularListSkeleton.showSkeleton();
 
         VoucherAdapter voucherAdapter = new VoucherAdapter(HomeFragment.this);
         binding.hotVoucherList.setAdapter(voucherAdapter);
         binding.hotVoucherList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
-        TextPaint paint = binding.textView6.getPaint();
-        float width = paint.measureText(getString(R.string.for_you));
-        Shader textShader = new LinearGradient(0, 0, width, binding.textView6.getTextSize(),
-                new int[]{Color.parseColor("#177DB9"), Color.parseColor("#E3C7B3")},
-                null, Shader.TileMode.CLAMP);
-        binding.textView6.getPaint().setShader(textShader);
+
+        Skeleton voucherListSkeleton = SkeletonLayoutUtils.applySkeleton(binding.hotVoucherList, R.layout.item_voucher_preview);
+        voucherListSkeleton.setMaskCornerRadius(40);
+        voucherListSkeleton.showSkeleton();
 
         binding.forYouBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.forYou);
+                Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.action_homeFragment_to_forYou);
             }
         });
 
         binding.popularBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.popular);
+                Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.action_homeFragment_to_popular);
             }
         });
 
-        LoadingDialog dialog = new LoadingDialog(getActivity());
-        dialog.showLoading("Fetching data");
 
         RecommendedRouteManager.getInstance(context).getRouteList().observe(getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
             @Override
             public void onChanged(ArrayList<TouristRoute> touristRoutes) {
                 if (touristRoutes.size() <= 0) return;
-                dialog.dismiss();
+                recommendListSkeleton.showOriginal();
                 recommendAdapter.setRouteList(touristRoutes);
             }
         });
@@ -106,7 +113,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<TouristRoute> touristRoutes) {
                 if (touristRoutes.size() <= 0) return;
-                dialog.dismiss();
+                popularListSkeleton.showOriginal();
                 popularAdapter.setRouteList(touristRoutes);
             }
         });
@@ -115,16 +122,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onChanged(ArrayList<Voucher> vouchers) {
                 if (vouchers.size() <= 0) return;
-                dialog.dismiss();
+                voucherListSkeleton.showOriginal();
                 voucherAdapter.setVouchers(vouchers);
             }
         });
 
-
-        Window window = getActivity().getWindow();
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.blue_dark));
 
         return binding.getRoot();
     }

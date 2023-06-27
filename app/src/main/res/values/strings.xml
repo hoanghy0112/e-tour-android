@@ -79,7 +79,7 @@
     <string name="in_your_id_passport">In your id/passport</string>
     <string name="example_email_example_com">Example: email@example.com</string>
     <string name="choose_voucher">Choose voucher</string>
-    <string name="voucher">Discount voucher</string>
+    <string name="voucher">Voucher</string>
     <string name="change">Change</string>
     <string name="you_have_1_voucher">You have 1 voucher</string>
     <string name="check_out">Check out</string>
@@ -175,4 +175,12 @@
     <string name="book_ticket_now">Book ticket now     </string>
     <string name="_10_10">10/10</string>
     <string name="comments">Comments</string>
+    <string name="hi_hy">Hi Hy,</string>
+    <string name="welcome_to_e_tour">Welcome to E-Tour</string>
+    <string name="recommend">Recommend</string>
+    <string name="see_more">See more</string>
+    <string name="du_l_ch_l_t">Du lịch Đà Lạt</string>
+    <string name="_221_reviews">(221 reviews)</string>
+    <string name="notifcation_icon">Notifcation icon</string>
+    <string name="voucher_image">Voucher image</string>
 </resources>

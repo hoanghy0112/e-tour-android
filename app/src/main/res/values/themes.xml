@@ -46,6 +46,11 @@
         <item name="colorControlActivated">@color/blue</item>
     </style>
 
+    <style name="ratingbar_route_preview" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/orange_white</item>
+        <item name="colorControlActivated">@color/yellow</item>
+    </style>
+
     <style name="SheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
         <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
         <item name="android:windowIsTranslucent">true</item>
