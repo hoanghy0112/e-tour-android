@@ -2,6 +2,7 @@ package com.teamone.e_tour.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -32,14 +33,14 @@ public class SavedTab extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentSavedTabBinding binding = FragmentSavedTabBinding.inflate(inflater, container, false);
 
-        getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+        requireActivity().findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
 
         RouteListAdapter adapter = new RouteListAdapter(this, R.layout.fragment_route_preview_card_large);
-        LoadingDialog dialog = new LoadingDialog(getActivity());
+        LoadingDialog dialog = new LoadingDialog(requireActivity());
         dialog.showLoading("Loading data");
 
         SavedRouteManager.getInstance((AppCompatActivity) getActivity()).getRoutes().observe(getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
