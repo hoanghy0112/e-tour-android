@@ -43,6 +43,11 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class HomeActivity extends AppCompatActivity {
+    int backId = -1;
+
+    public void setBackId(int backId) {
+        this.backId = backId;
+    }
 
     private void createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
@@ -189,5 +194,15 @@ public class HomeActivity extends AppCompatActivity {
         intent.setAction("notification_cancelled");
 //        return PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
         return PendingIntent.getBroadcast(this, index, intent, PendingIntent.FLAG_MUTABLE | PendingIntent.FLAG_UPDATE_CURRENT);
+    }
+
+    @Override
+    public void onBackPressed() {
+//        if (backId == 0) {
+        super.onBackPressed();
+//        } else if (backId != -1) {
+//            Navigation.findNavController(this, R.id.home_wrapper).navigate(backId);
+//            backId = 0;
+//        }
     }
 }

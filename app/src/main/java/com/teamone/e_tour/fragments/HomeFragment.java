@@ -24,6 +24,7 @@ import com.faltenreich.skeletonlayout.Skeleton;
 import com.faltenreich.skeletonlayout.SkeletonLayout;
 import com.faltenreich.skeletonlayout.SkeletonLayoutUtils;
 import com.teamone.e_tour.R;
+import com.teamone.e_tour.activities.HomeActivity;
 import com.teamone.e_tour.adapters.RouteListAdapter;
 import com.teamone.e_tour.adapters.VoucherAdapter;
 import com.teamone.e_tour.databinding.FragmentHomeBinding;
@@ -48,6 +49,8 @@ public class HomeFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         RecommendedRouteManager.getInstance(getActivity()).fetchData(10);
+
+        ((HomeActivity) requireActivity()).setBackId(-1);
     }
 
     @Override
@@ -137,4 +140,6 @@ public class HomeFragment extends Fragment {
 
         return binding.getRoot();
     }
+
+
 }

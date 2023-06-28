@@ -30,7 +30,9 @@
             app:destination="@id/voucherDetailFragment" />
         <action
             android:id="@+id/action_homeFragment_to_notificationPage"
-            app:destination="@id/notificationPage" />
+            app:destination="@id/notificationPage"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/detailTourFragment"
@@ -44,6 +46,11 @@
             app:exitAnim="@anim/fui_slide_in_right"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_detailTourFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left" />
     </fragment>
     <fragment
         android:id="@+id/tourListFragment"
@@ -188,5 +195,13 @@
         android:id="@+id/notificationPage"
         android:name="com.teamone.e_tour.fragments.NotificationPage"
         android:label="fragment_notification_page"
-        tools:layout="@layout/fragment_notification_page" />
+        tools:layout="@layout/fragment_notification_page" >
+        <action
+            android:id="@+id/action_notificationPage_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_out_left"
+            app:popUpTo="@id/homeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

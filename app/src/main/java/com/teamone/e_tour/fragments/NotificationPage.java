@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import com.faltenreich.skeletonlayout.Skeleton;
 import com.faltenreich.skeletonlayout.SkeletonLayoutUtils;
 import com.teamone.e_tour.R;
+import com.teamone.e_tour.activities.HomeActivity;
 import com.teamone.e_tour.adapters.NotificationAdapter;
 import com.teamone.e_tour.databinding.FragmentNotificationPageBinding;
 import com.teamone.e_tour.entities.NotificationItem;
@@ -36,6 +37,8 @@ public class NotificationPage extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        ((HomeActivity) requireActivity()).setBackId(R.id.action_notificationPage_to_homeFragment);
     }
 
     @Override
@@ -80,7 +83,7 @@ public class NotificationPage extends Fragment {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(requireActivity(), R.id.home_wrapper).popBackStack();
+                Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.action_notificationPage_to_homeFragment);
             }
         });
 

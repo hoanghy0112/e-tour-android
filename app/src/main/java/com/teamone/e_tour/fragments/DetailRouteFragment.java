@@ -25,6 +25,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.teamone.e_tour.R;
+import com.teamone.e_tour.activities.HomeActivity;
 import com.teamone.e_tour.adapters.CommentAdapter;
 import com.teamone.e_tour.adapters.DestinationAdapter;
 import com.teamone.e_tour.adapters.ImageAdapter;
@@ -65,11 +66,14 @@ public class DetailRouteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        assert getArguments() != null;
         routeId = getArguments().getString("id");
         detailRouteManager = new DetailRouteManager((AppCompatActivity) getActivity());
         ratingManager = new RatingManager((AppCompatActivity) getActivity());
         detailRouteManager.viewRoute(routeId);
         ratingManager.viewRating(routeId);
+
+        ((HomeActivity) requireActivity()).setBackId(R.id.action_detailTourFragment_to_homeFragment);
     }
 
     @SuppressLint("MissingInflatedId")
@@ -101,7 +105,7 @@ public class DetailRouteFragment extends Fragment {
         binding.backBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(requireActivity(), R.id.home_wrapper).popBackStack();
+                Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.action_detailTourFragment_to_homeFragment);
             }
         });
 
@@ -110,6 +114,35 @@ public class DetailRouteFragment extends Fragment {
 
         binding.commentList.setAdapter(adapter);
         binding.commentList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
+
+        binding.addFavouriteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TouristRoute t = route.getValue();
+                if (t == null) return;
+
+                if (t.isSaved()) {
+                    JSONObject object = new JSONObject();
+                    try {
+                        object.put("routeId", routeId);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                    SocketManager.getInstance(getActivity()).emit("remove-route-from-saved", object);
+                } else {
+                    JSONObject object = new JSONObject();
+                    try {
+                        object.put("routeId", routeId);
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                    SocketManager.getInstance(getActivity()).emit("save-route", object);
+                }
+
+                t.setSaved(!t.isSaved());
+                route.postValue(t);
+            }
+        });
 
         binding.followBtn.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("UseCompatTextViewDrawableApis")
@@ -206,9 +239,20 @@ public class DetailRouteFragment extends Fragment {
                     binding.followBtn.setText(requireActivity().getString(R.string.follow));
                 }
 
+                if (touristRoute.isSaved()) {
+                    binding.addFavouriteBtn.setCompoundDrawableTintList(ColorStateList.valueOf(requireActivity().getColor(R.color.white)));
+                    binding.addFavouriteBtn.setBackgroundColor(requireActivity().getColor(R.color.blue));
+//                    binding.addFavouriteBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(requireActivity().getDrawable(R.drawable.save_selected), null, null, null);
+                } else {
+                    binding.addFavouriteBtn.setCompoundDrawableTintList(ColorStateList.valueOf(requireActivity().getColor(R.color.blue)));
+                    binding.addFavouriteBtn.setBackgroundColor(requireActivity().getColor(R.color.white));
+//                    binding.addFavouriteBtn.setCompoundDrawablesRelativeWithIntrinsicBounds(requireActivity().getDrawable(R.drawable.save), null, null, null);
+                }
+
                 binding.bookTicketBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        assert getArguments() != null;
                         String routeId = getArguments().getString("id");
 
                         Bundle bundle = new Bundle();
