@@ -16,7 +16,7 @@ public class Formatter {
     }
 
     static public String dateToDateWithoutHourString(Date date) {
-        String pattern = "EE, dd MMMM yyyy";
+        String pattern = "dd MMMM yyyy";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("vi", "VN"));
         return simpleDateFormat.format(date);
     }
