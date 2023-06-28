@@ -15,6 +15,12 @@ public class Formatter {
         return simpleDateFormat.format(date);
     }
 
+    static public String dateToDateWithoutHourString(Date date) {
+        String pattern = "EE, dd MMMM yyyy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("vi", "VN"));
+        return simpleDateFormat.format(date);
+    }
+
     static public String dateToDateOnlyHourString(Date date) {
         String pattern = "K:mm a";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("vi", "VN"));

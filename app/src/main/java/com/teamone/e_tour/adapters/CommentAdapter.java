@@ -46,7 +46,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         holder.comment.setText(rating.getDescription());
         holder.ratingPoint.setText(String.valueOf(rating.getStar()));
         holder.userDisplayName.setText(rating.getUserId().getFullName());
-        holder.createdAt.setText(Formatter.dateToDateWithHourString(rating.getCreatedAt()));
+        holder.createdAt.setText(Formatter.dateToDateWithoutHourString(rating.getCreatedAt()));
         Glide.with(context).load(rating.getUserId().getImage()).into(holder.userImage);
     }
 
