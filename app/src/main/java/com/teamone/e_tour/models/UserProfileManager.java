@@ -3,6 +3,8 @@ package com.teamone.e_tour.models;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.teamone.e_tour.api.account.userProfile.ViewUserProfile;
@@ -16,7 +18,7 @@ import io.socket.emitter.Emitter;
 public class UserProfileManager {
     private static UserProfileManager instance;
     private Context context;
-    private UserProfile userProfile = new UserProfile();
+    private final MutableLiveData<UserProfile> userProfile = new MutableLiveData<>(new UserProfile());
 
     public UserProfileManager(Context context) {
         this.context = context;
@@ -31,6 +33,9 @@ public class UserProfileManager {
     }
 
     public UserProfile getUserProfile() {
+        return userProfile.getValue();
+    }
+    public MutableLiveData<UserProfile> getLiveUserProfile() {
         return userProfile;
     }
 
@@ -46,7 +51,7 @@ public class UserProfileManager {
 
                 ViewUserProfile.ResponseData response = gson.fromJson(stringResponse, ViewUserProfile.ResponseData.class);
 
-                userProfile = response.data;
+                userProfile.postValue(response.data);
             }
         });
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_sign_up_with_google"
+    app:startDestination="@id/firstSignupGoogleGreeting">
+
+    <fragment
+        android:id="@+id/firstSignupGoogleGreeting"
+        android:name="com.teamone.e_tour.fragments.FirstSignupGoogleGreeting"
+        android:label="FirstSignupGoogleGreeting" >
+        <action
+            android:id="@+id/action_firstSignupGoogleGreeting_to_inputInformationSignUpWithGoogle"
+            app:destination="@id/inputInformationSignUpWithGoogle" />
+    </fragment>
+    <fragment
+        android:id="@+id/inputInformationSignUpWithGoogle"
+        android:name="com.teamone.e_tour.fragments.InputInformationSignUpWithGoogle"
+        android:label="InputInformationSignUpWithGoogle" >
+        <action
+            android:id="@+id/action_inputInformationSignUpWithGoogle_to_firstSignupGoogleGreeting"
+            app:destination="@id/firstSignupGoogleGreeting" />
+    </fragment>
+</navigation>

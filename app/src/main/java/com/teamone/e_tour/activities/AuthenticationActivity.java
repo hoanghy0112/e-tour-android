@@ -37,6 +37,7 @@ import com.teamone.e_tour.api.account.authentication.AuthenticationAPI;
 import com.teamone.e_tour.api.account.authentication.SignInWithGoogleAPI;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiError;
 import com.teamone.e_tour.api.account.authentication.SignInWithPasswordApiResult;
+import com.teamone.e_tour.api.account.registration.SignUpWithGoogleAPI;
 import com.teamone.e_tour.databinding.ActivityAuthenticationBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.models.AppManagement;
@@ -135,6 +136,8 @@ public class AuthenticationActivity extends AppCompatActivity {
         if (result.getResultCode() == RESULT_OK) {
             // Successfully signed in
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+            assert response != null;
+            String email = response.getEmail();
             Toast.makeText(AuthenticationActivity.this, response.getEmail(), Toast.LENGTH_SHORT).show();
             user.getIdToken(true).addOnSuccessListener(new OnSuccessListener<GetTokenResult>() {
                 @Override
@@ -160,6 +163,13 @@ public class AuthenticationActivity extends AppCompatActivity {
                                     Log.e("errorbody", errorBody);
                                     SignInWithPasswordApiError result = gson.fromJson(errorBody.toString(), SignInWithPasswordApiError.class);
                                     Log.e("message", result.getMessage());
+                                    if (result.getMessage().equals("User not found")) {
+                                        // Not registered
+                                        Intent intent = new Intent(AuthenticationActivity.this, SignUpWithGoogle.class);
+                                        intent.putExtra("accessToken", token);
+                                        intent.putExtra("email", email);
+                                        startActivity(intent);
+                                    }
                                     if (dialog != null)
                                         dialog.showError(context.getResources().getText(R.string.fail_to_sign_in).toString() + "\nError message: " + result.getMessage());
 

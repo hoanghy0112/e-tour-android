@@ -1,5 +1,6 @@
 package com.teamone.e_tour.fragments;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
@@ -31,10 +32,12 @@ import com.teamone.e_tour.adapters.VoucherAdapter;
 import com.teamone.e_tour.databinding.FragmentHomeBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.TouristRoute;
+import com.teamone.e_tour.entities.UserProfile;
 import com.teamone.e_tour.entities.Voucher;
 import com.teamone.e_tour.models.HotVoucherManager;
 import com.teamone.e_tour.models.PopularRouteManager;
 import com.teamone.e_tour.models.RecommendedRouteManager;
+import com.teamone.e_tour.models.UserProfileManager;
 
 import java.util.ArrayList;
 
@@ -54,6 +57,7 @@ public class HomeFragment extends Fragment {
         ((HomeActivity) requireActivity()).setBackId(-1);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -84,10 +88,22 @@ public class HomeFragment extends Fragment {
         binding.hotVoucherList.setAdapter(voucherAdapter);
         binding.hotVoucherList.setLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false));
 
-
         Skeleton voucherListSkeleton = SkeletonLayoutUtils.applySkeleton(binding.hotVoucherList, R.layout.item_voucher_preview);
         voucherListSkeleton.setMaskCornerRadius(40);
         voucherListSkeleton.showSkeleton();
+
+        UserProfileManager.getInstance(requireActivity()).getLiveUserProfile().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
+            @Override
+            public void onChanged(UserProfile userProfile) {
+                String[] names = userProfile.getFullName().split(" ");
+                String name = names[names.length - 1];
+                binding.greeting.setText("Hi " + name + ",");
+            }
+        });
+
+        String[] names = UserProfileManager.getInstance(requireActivity()).getUserProfile().getFullName().split(" ");
+        String name = names[names.length - 1];
+        binding.greeting.setText("Hi " + names[0] + ",");
 
         binding.notifcationBtn.setOnClickListener(new View.OnClickListener() {
             @Override

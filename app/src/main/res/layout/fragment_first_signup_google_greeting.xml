@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/greeting_container"
+    android:transitionName="greeting"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/etourlogo"
+        app:layout_constraintBottom_toTopOf="@+id/textView14"
+        app:layout_constraintStart_toStartOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:fontFamily="@font/manrope_light"
+        android:text="@string/welcome_to_e_tour"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="40dp"
+        android:fontFamily="@font/manrope_light"
+        android:text="@string/this_is_your_first_time_signing_in_e_tour_please_tell_more_about_yourself"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView14"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sign_up_btn"
+        android:transitionName="sign_up_btn"
+        style="?android:attr/buttonBarButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/blue_5_percent"
+        android:drawableRight="@drawable/small_chevron_right"
+        android:drawableTint="@color/chat_blue"
+        android:elevation="0dp"
+        android:fontFamily="@font/manrope_bold"
+        android:letterSpacing="0.02"
+        android:paddingVertical="15dp"
+        android:paddingStart="30dp"
+        android:paddingEnd="15dp"
+        android:text="@string/sign_up_now"
+        android:textAllCaps="false"
+        android:textColor="@color/chat_blue"
+        app:cornerRadius="10dp"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

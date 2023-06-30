@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.SignUpWithGoogle"
+            android:exported="false" />
+        <activity
             android:name=".activities.RegistrationActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
@@ -34,11 +37,11 @@
             android:name=".broadcastReceiver.NotificationBroadcastReceiver"
             android:enabled="true"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="notification_cancelled" />
             </intent-filter>
         </receiver>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

@@ -15,5 +15,6 @@ public class ApiEndpoint {
 
     public static class RegistrationApiEndpoint {
         public static final String registerWithPassword = "user/signup/basic";
+        public static final String registerWithGoogle = "user/signup/google";
     }
 }
