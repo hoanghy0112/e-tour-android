@@ -10,6 +10,7 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.navigation.Navigation;
+import androidx.navigation.fragment.FragmentNavigator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -92,6 +93,19 @@ public class HomeFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.action_homeFragment_to_notificationPage);
+            }
+        });
+
+        binding.editText.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                try {
+                    FragmentNavigator.Extras extras = new FragmentNavigator.Extras.Builder().addSharedElement(binding.editText, "search_view").build();
+                    Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.action_homeFragment_to_inputSearch, null, null, extras);
+                    binding.editText.setOnFocusChangeListener(null);
+                } catch (IllegalArgumentException e) {
+                    //
+                }
             }
         });
 

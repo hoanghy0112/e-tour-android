@@ -33,6 +33,9 @@
             app:destination="@id/notificationPage"
             app:enterAnim="@anim/fui_slide_in_right"
             app:exitAnim="@anim/fui_slide_out_left" />
+        <action
+            android:id="@+id/action_homeFragment_to_inputSearch"
+            app:destination="@id/inputSearch" />
     </fragment>
     <fragment
         android:id="@+id/detailTourFragment"
@@ -204,4 +207,9 @@
             app:popUpTo="@id/homeFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/inputSearch"
+        android:name="com.teamone.e_tour.fragments.InputSearch"
+        android:label="fragment_input_search"
+        tools:layout="@layout/fragment_input_search" />
 </navigation>

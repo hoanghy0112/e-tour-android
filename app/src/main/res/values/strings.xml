@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">E-Tour</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
@@ -191,4 +191,7 @@
     <string name="older_notifications">Older notifications</string>
     <string name="notification_title">Notification title</string>
     <string name="notification_image">Notification image</string>
+    <string name="search">Search</string>
+    <string name="search_for_route">Searching for route...</string>
+    <string name="not_found">Not found</string>
 </resources>

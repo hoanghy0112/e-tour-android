@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/wrapper_layout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="300dp"
     android:background="@color/transparent"
     tools:context=".fragments.TourPreviewCard">
 
@@ -61,27 +61,27 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/rating_bar" />
 
-<!--            <CheckBox-->
-<!--                android:id="@+id/add_favourite_btn"-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:button="@drawable/saved_button"-->
-<!--                app:buttonTint="@color/yellow"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/name"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/name" />-->
+            <!--            <CheckBox-->
+            <!--                android:id="@+id/add_favourite_btn"-->
+            <!--                android:layout_width="30dp"-->
+            <!--                android:layout_height="30dp"-->
+            <!--                android:button="@drawable/saved_button"-->
+            <!--                app:buttonTint="@color/yellow"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/name"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/name" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/new_price"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="5dp"-->
-<!--                android:text="5.000.000 VND "-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/num_review"-->
-<!--                tools:layout_editor_absoluteX="10dp" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/new_price"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="5dp"-->
+            <!--                android:text="5.000.000 VND "-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toTopOf="@+id/num_review"-->
+            <!--                tools:layout_editor_absoluteX="10dp" />-->
 
             <RatingBar
                 android:id="@+id/rating_bar"

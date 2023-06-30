@@ -38,7 +38,7 @@ import java.util.ArrayList;
 public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.ViewHolder> {
     Fragment context;
     int cardId;
-    private ArrayList<TouristRoute> routeList = new ArrayList<>();
+    private ArrayList<TouristRoute> routeList;
 
     public ArrayList<TouristRoute> getRouteList() {
         return routeList;
@@ -54,10 +54,24 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
         this.cardId = cardId;
     }
 
+    @Override
+    public int getItemViewType(int position) {
+        if (routeList.size() == 0)
+            return 1;
+        return 0;
+    }
+
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(cardId, parent, false);
+        View view;
+
+        if (viewType == 0)
+            view = LayoutInflater.from(parent.getContext()).inflate(cardId, parent, false);
+        else {
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.not_found, parent, false);
+            ((TextView) view.findViewById(R.id.loading_text)).setText(R.string.not_found);
+        }
 
         return new ViewHolder(view);
     }
@@ -65,6 +79,10 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        if (holder.getItemViewType() == 1) {
+            return;
+        }
+
         TouristRoute route = routeList.get(position);
 
         if (route.getType() == null || route.getType().equals("country")) {
@@ -102,44 +120,26 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
             }
         });
 
-        SavedRouteManager.getInstance((AppCompatActivity) context.getActivity()).getRoutes().observe(context.getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
-            @Override
-            public void onChanged(ArrayList<TouristRoute> touristRoutes) {
-                if (touristRoutes == null) return;
-//                holder.addToFavourite.setCheckedState(MaterialCheckBox.STATE_UNCHECKED);
-//                touristRoutes.forEach(touristRoute -> {
-//                    if (touristRoute.get_id().equals(route.get_id())) {
-//                        holder.addToFavourite.setCheckedState(MaterialCheckBox.STATE_CHECKED);
-//                    }
-//                });
-            }
-        });
-
-//        holder.addToFavourite.setOnClickListener(new View.OnClickListener() {
+//        SavedRouteManager.getInstance((AppCompatActivity) context.getActivity()).getRoutes().observe(context.getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
 //            @Override
-//            public void onClick(View v) {
-//                if (holder.addToFavourite.getCheckedState() == MaterialCheckBox.STATE_CHECKED) {
-//                    AddToSaveListApi.getInstance(context.getActivity()).send(route.get_id());
-//                }
-//                else {
-//                    RemoveFromSaveListApi.getInstance(context.getActivity()).send(route.get_id());
-////                    SavedRouteManager.getInstance((AppCompatActivity) context.getActivity()).remove(route.get_id());
-//                    holder.addToFavourite.setChecked(false);
-//                }
+//            public void onChanged(ArrayList<TouristRoute> touristRoutes) {
+//                if (touristRoutes == null) return;
 //            }
 //        });
     }
 
     @Override
     public int getItemCount() {
+        if (routeList == null) return 0;
+        if (routeList.size() == 0) return 1;
         return routeList.size();
     }
 
 
     class ViewHolder extends RecyclerView.ViewHolder {
-//        TextView routeType;
+        //        TextView routeType;
         TextView name;
-//        TextView oldPrice;
+        //        TextView oldPrice;
 //        TextView newPrice;
 //        MaterialCheckBox addToFavourite;
         ImageView cardImage;

@@ -39,12 +39,12 @@ public class HistoryTab extends Fragment {
                              Bundle savedInstanceState) {
         FragmentHistoryTabBinding binding = FragmentHistoryTabBinding.inflate(inflater, container, false);
 
-        getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
-        getActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 180);
+        requireActivity().findViewById(R.id.bottom_navigation).setVisibility(View.VISIBLE);
+        requireActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 180);
 
         BookedTicketAdapter incomingTourAdapter = new BookedTicketAdapter(this);
         BookedTicketAdapter visitedTourAdapter = new BookedTicketAdapter(this);
-        LoadingDialog dialog = new LoadingDialog(getActivity());
+        LoadingDialog dialog = new LoadingDialog(requireActivity());
         dialog.showLoading("Loading data");
         BookedTicketManager.getInstance((AppCompatActivity) getActivity()).getBookedTickets().observe(getViewLifecycleOwner(), new Observer<ArrayList<ViewBookedTicketApi.ResponseData.Ticket>>() {
             @Override
