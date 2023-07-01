@@ -5,6 +5,8 @@
     android:id="@+id/wrapper_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="20dp"
     android:background="@color/transparent"
     tools:context=".fragments.TourPreviewCard">
 
@@ -12,13 +14,11 @@
         android:id="@+id/tourist_route_card"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:translationZ="40dp"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="18dp"
-        app:strokeColor="@color/transparent"
         app:cardElevation="10dp"
-        android:translationZ="40dp"
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="20dp"
+        app:strokeColor="@color/transparent"
         app:strokeWidth="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -50,8 +50,8 @@
                 android:id="@+id/name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
                 android:layout_marginEnd="100dp"
+                android:layout_marginBottom="15dp"
                 android:fontFamily="@font/manrope_bold"
                 android:text="@string/du_l_ch_l_t"
                 android:textColor="@color/white"
@@ -61,37 +61,37 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/rating_bar" />
 
-<!--            <CheckBox-->
-<!--                android:id="@+id/add_favourite_btn"-->
-<!--                android:layout_width="30dp"-->
-<!--                android:layout_height="30dp"-->
-<!--                android:button="@drawable/saved_button"-->
-<!--                app:buttonTint="@color/yellow"-->
-<!--                app:layout_constraintBottom_toBottomOf="@+id/name"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="@+id/name" />-->
+            <!--            <CheckBox-->
+            <!--                android:id="@+id/add_favourite_btn"-->
+            <!--                android:layout_width="30dp"-->
+            <!--                android:layout_height="30dp"-->
+            <!--                android:button="@drawable/saved_button"-->
+            <!--                app:buttonTint="@color/yellow"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/name"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/name" />-->
 
-<!--            <TextView-->
-<!--                android:id="@+id/new_price"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginBottom="5dp"-->
-<!--                android:text="5.000.000 VND "-->
-<!--                android:textColor="@color/black"-->
-<!--                android:textSize="16sp"-->
-<!--                android:textStyle="bold"-->
-<!--                app:layout_constraintBottom_toTopOf="@+id/num_review"-->
-<!--                tools:layout_editor_absoluteX="10dp" />-->
+            <!--            <TextView-->
+            <!--                android:id="@+id/new_price"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="5dp"-->
+            <!--                android:text="5.000.000 VND "-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toTopOf="@+id/num_review"-->
+            <!--                tools:layout_editor_absoluteX="10dp" />-->
 
             <RatingBar
                 android:id="@+id/rating_bar"
                 style="@style/Widget.AppCompat.RatingBar.Small"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:translationZ="3dp"
                 android:layout_marginStart="25dp"
                 android:layout_marginBottom="30dp"
                 android:theme="@style/ratingbar_route_preview"
+                android:translationZ="3dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -100,11 +100,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
+                android:fontFamily="@font/manrope_semibold"
                 android:text="@string/_221_reviews"
                 android:textColor="@color/white"
-                android:translationZ="3dp"
                 android:textSize="15sp"
-                android:fontFamily="@font/manrope_semibold"
+                android:translationZ="3dp"
                 app:layout_constraintBottom_toBottomOf="@+id/rating_bar"
                 app:layout_constraintStart_toEndOf="@+id/rating_bar"
                 app:layout_constraintTop_toTopOf="@+id/rating_bar" />

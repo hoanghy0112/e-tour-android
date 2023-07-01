@@ -32,14 +32,6 @@ public class BookedTicketManager {
 
         viewBookedTickets();
 
-//        api.getResponse().observe(context, new Observer<ViewBookedTicketApi.ResponseData>() {
-//            @Override
-//            public void onChanged(ViewBookedTicketApi.ResponseData responseData) {
-//                if (responseData != null)
-//                    bookedTickets.postValue(responseData.data);
-//            }
-//        });
-
         api.getSocket().on("booked-ticket-list", new Emitter.Listener() {
             @Override
             public void call(Object... args) {

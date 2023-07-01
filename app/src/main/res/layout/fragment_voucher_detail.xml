@@ -17,8 +17,8 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="30dp"
             android:background="@color/black"
+            android:paddingTop="30dp"
             app:navigationIcon="@drawable/chevron_left"
             app:title="Detail voucher"
             app:titleTextColor="@color/white" />
@@ -47,7 +47,7 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/materialCardView3"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="30dp"
                 android:layout_marginBottom="10dp"
                 app:cardBackgroundColor="@color/white"
@@ -63,7 +63,7 @@
                     <ImageView
                         android:id="@+id/voucher_image"
                         android:layout_width="120dp"
-                        android:layout_height="120dp"
+                        android:layout_height="0dp"
                         android:scaleType="centerCrop"
                         android:src="@drawable/etourlogo"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -75,7 +75,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_marginTop="20dp"
                         android:layout_marginEnd="20dp"
                         android:text="Voucher name"
                         android:textColor="@color/black"
@@ -88,14 +88,16 @@
 
                     <TextView
                         android:id="@+id/voucher_value"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
                         android:text="Discount 10%"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/voucher_name"
                         app:layout_constraintStart_toEndOf="@+id/voucher_image"
                         app:layout_constraintTop_toBottomOf="@id/voucher_name" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -117,7 +119,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="30dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="@+id/materialCardView3"
                 app:layout_constraintStart_toStartOf="@+id/materialCardView3"
@@ -162,71 +164,96 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="30dp"
-                    android:text="Company"
+                    android:text="@string/company"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
-                <com.google.android.material.card.MaterialCardView
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="4dp"
-                    android:clickable="true"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="5dp"
-                    app:cardElevation="3dp">
+                    android:layout_marginTop="10dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:padding="20dp">
+                        android:layout_marginHorizontal="-30dp"
+                        android:clickable="true"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="5dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/company_image_wrapper"
-                            android:layout_width="wrap_content"
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:cardCornerRadius="999dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            android:padding="10dp">
 
-                            <ImageView
-                                android:id="@+id/company_image"
-                                android:layout_width="50dp"
-                                android:layout_height="50dp"
-                                android:scaleType="centerCrop"
-                                android:src="@drawable/etourlogo" />
-                        </com.google.android.material.card.MaterialCardView>
+                            <com.google.android.material.card.MaterialCardView
+                                android:id="@+id/company_image_wrapper"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:cardCornerRadius="999dp"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent">
 
-                        <TextView
-                            android:id="@+id/company_name"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="15dp"
-                            android:text="Company name"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            app:layout_constraintStart_toEndOf="@+id/company_image_wrapper"
-                            app:layout_constraintTop_toTopOf="parent" />
+                                <ImageView
+                                    android:id="@+id/company_image"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
+                                    android:background="@color/white"
+                                    android:scaleType="centerCrop"
+                                    android:src="@drawable/etourlogo" />
+                            </com.google.android.material.card.MaterialCardView>
 
-                        <TextView
-                            android:id="@+id/company_description"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="This is company description"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            app:layout_constraintStart_toStartOf="@+id/company_name"
-                            app:layout_constraintTop_toBottomOf="@+id/company_name" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>
+                            <TextView
+                                android:id="@+id/company_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="15dp"
+                                android:layout_marginEnd="10dp"
+                                android:text="@string/company_name"
+                                android:textColor="@color/black"
+                                android:textSize="16sp"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toStartOf="@+id/materialButton"
+                                app:layout_constraintStart_toEndOf="@+id/company_image_wrapper"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:id="@+id/company_description"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/company_name"
+                                android:textColor="@color/black"
+                                android:textSize="12sp"
+                                app:layout_constraintEnd_toEndOf="@+id/company_name"
+                                app:layout_constraintStart_toStartOf="@+id/company_name"
+                                app:layout_constraintTop_toBottomOf="@+id/company_name" />
+
+<!--                            <com.google.android.material.button.MaterialButton-->
+<!--                                android:id="@+id/materialButton"-->
+<!--                                android:layout_width="60dp"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:backgroundTint="@color/blue_5_percent"-->
+<!--                                android:drawableLeft="@drawable/bell"-->
+<!--                                android:drawableTint="@color/light_blue"-->
+<!--                                android:paddingVertical="10dp"-->
+<!--                                android:paddingStart="18dp"-->
+<!--                                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                                app:layout_constraintTop_toTopOf="parent"-->
+<!--                                tools:ignore="RtlSymmetry" />-->
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <com.google.android.material.button.MaterialButton
-                    android:id="@+id/follow_btn"
+                    android:id="@+id/save_voucher_btn"
                     style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/orange_white"
     android:orientation="vertical"
-    tools:context=".fragments.HomeFragment">
+    tools:context=".fragments.SavedTab">
 
 
     <!--    <RelativeLayout-->
@@ -54,6 +54,7 @@
     <!--            android:src="@drawable/fi_rr_bell" />-->
     <!--    </RelativeLayout>-->
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swiperefresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -66,7 +67,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="50dp"
                 android:orientation="vertical"
-                android:paddingVertical="10dp">
+                android:paddingVertical="10dp"
+                android:paddingBottom="80dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -85,7 +87,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/for_you_btn"
+                        android:id="@+id/saved_routes_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="25dp"
@@ -129,6 +131,75 @@
                     android:padding="15dp">
 
                 </androidx.recyclerview.widget.RecyclerView>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="40dp"
+                        android:fontFamily="@font/manrope_extrabold"
+                        android:text="@string/saved_vouchers"
+                        android:textColor="@color/black"
+                        android:textSize="23sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/saved_vouchers_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="25dp"
+                        android:background="@color/transparent"
+                        android:backgroundTint="@color/transparent"
+                        android:clickable="true"
+                        android:elevation="0dp"
+                        app:cardElevation="0dp"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView13"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView13"
+                        app:strokeColor="@color/transparent"
+                        app:strokeWidth="0dp">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@color/transparent"
+                            android:orientation="vertical"
+                            android:paddingHorizontal="15dp"
+                            android:paddingVertical="10dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/manrope_medium"
+                                android:text="@string/see_more"
+                                android:textColor="@color/title_gray"
+                                android:textSize="15sp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+<!--                <com.faltenreich.skeletonlayout.SkeletonLayout-->
+<!--                    android:id="@+id/saved_vouches_skeleton"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="500dp"-->
+<!--                    android:background="@color/red">-->
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/saved_vouchers_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="10dp"
+                        android:layout_marginTop="20dp"
+                        android:orientation="vertical">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+<!--                </com.faltenreich.skeletonlayout.SkeletonLayout>-->
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

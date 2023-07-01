@@ -196,4 +196,11 @@
     <string name="not_found">Not found</string>
     <string name="this_is_your_first_time_signing_in_e_tour_please_tell_more_about_yourself">This is your first time signing in E-Tour, please tell more about yourself</string>
     <string name="saved_routes">Saved routes</string>
+    <string name="saved_vouchers">Saved vouchers</string>
+    <string name="voucher_name">Voucher name</string>
+<!--    <string name="discount_money_message">Hello, %1$s! You have %2$d new messages.</string>-->
+    <string name="discount_money_message">Discount %1$s for tour with minimum price is %2$s</string>
+    <string name="discount_percent_message">Discount %1$f maximum %3$s for tour with minimum price is %2$s</string>
+    <string name="company_name">Company name</string>
+    <string name="company">Company</string>
 </resources>

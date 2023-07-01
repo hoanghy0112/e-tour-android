@@ -1,8 +1,9 @@
 package com.teamone.e_tour.entities;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Voucher {
+public class Voucher implements Serializable {
     private String _id;
     private Date expiredAt;
     private String name;
@@ -10,9 +11,12 @@ public class Voucher {
     private String description;
     private String usingCondition;
     private String image;
+    private String backgroundImage;
     private Company companyId;
     private float value;
     private int num;
+    private int min;
+    private int max;
     private Date createdAt;
 
     public String get_id() {
@@ -101,5 +105,29 @@ public class Voucher {
 
     public void setCreatedAt(Date createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getBackgroundImage() {
+        return backgroundImage;
+    }
+
+    public void setBackgroundImage(String backgroundImage) {
+        this.backgroundImage = backgroundImage;
+    }
+
+    public int getMin() {
+        return min;
+    }
+
+    public void setMin(int min) {
+        this.min = min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    public void setMax(int max) {
+        this.max = max;
     }
 }

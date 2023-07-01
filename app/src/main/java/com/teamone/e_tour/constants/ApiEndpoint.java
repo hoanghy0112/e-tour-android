@@ -10,7 +10,11 @@ public class ApiEndpoint {
     }
 
     public static class TicketApiEndPoint {
-    public static final String remove = "ticket/{id}";
+        public static final String remove = "ticket/{id}";
+    }
+
+    public static class VoucherApiEndpoint {
+        public static final String viewAllSaved = "voucher/save?populate=true";
     }
 
     public static class RegistrationApiEndpoint {

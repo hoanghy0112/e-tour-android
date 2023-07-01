@@ -53,7 +53,6 @@ public class HistoryTab extends Fragment {
             public void onChanged(ArrayList<ViewBookedTicketApi.ResponseData.Ticket> tickets) {
                 if (tickets == null) return;
                 binding.swiperefresh.setRefreshing(false);
-                Log.e("aaaaaaaaaa", "aaaaaaaaaaaaaaaaaaaaa" );
                 dialog.dismiss();
                 ArrayList<ViewBookedTicketApi.ResponseData.Ticket> incomingTourList = new ArrayList<>();
                 ArrayList<ViewBookedTicketApi.ResponseData.Ticket> visitedTourList = new ArrayList<>();

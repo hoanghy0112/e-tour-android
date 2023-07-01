@@ -69,6 +69,10 @@ public class CredentialToken {
         return accessToken;
     }
 
+    public String getBearerAccessToken() {
+        return "Bearer " + accessToken;
+    }
+
     public MutableLiveData<UserProfile> getUserProfile() {
         return userProfile;
     }
