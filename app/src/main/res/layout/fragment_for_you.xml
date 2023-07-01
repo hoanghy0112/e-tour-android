@@ -12,6 +12,7 @@
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="30dp"
         android:background="@drawable/gradient"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -28,6 +29,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="20dp"
             android:layout_toEndOf="@+id/etour_logo"
@@ -36,7 +38,8 @@
             android:drawablePadding="8dp"
             android:gravity="center_vertical"
             android:hint="@string/discover_new_experiences"
-            android:padding="8dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="10dp"
             android:textColorHint="@color/placeholder"
             android:textSize="12sp" />
 

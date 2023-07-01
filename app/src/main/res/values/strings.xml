@@ -195,4 +195,5 @@
     <string name="search_for_route">Searching for route...</string>
     <string name="not_found">Not found</string>
     <string name="this_is_your_first_time_signing_in_e_tour_please_tell_more_about_yourself">This is your first time signing in E-Tour, please tell more about yourself</string>
+    <string name="saved_routes">Saved routes</string>
 </resources>

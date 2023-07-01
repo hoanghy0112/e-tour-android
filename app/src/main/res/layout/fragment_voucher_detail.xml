@@ -16,7 +16,8 @@
         <com.google.android.material.appbar.MaterialToolbar
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="wrap_content"
+            android:paddingTop="30dp"
             android:background="@color/black"
             app:navigationIcon="@drawable/chevron_left"
             app:title="Detail voucher"
@@ -27,12 +28,13 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white"
-            android:paddingBottom="30dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingBottom="30dp">
 
             <ImageView
                 android:id="@+id/voucher_background"
@@ -73,8 +75,8 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
                         android:layout_marginTop="10dp"
+                        android:layout_marginEnd="20dp"
                         android:text="Voucher name"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -89,8 +91,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:text="Discount 10%"
                         android:layout_marginBottom="10dp"
+                        android:text="Discount 10%"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -101,9 +103,9 @@
 
             <TextView
                 android:id="@+id/voucher_description"
-                android:layout_marginHorizontal="10dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
                 android:layout_marginTop="20dp"
                 android:text="This is voucher description"
                 android:textColor="@color/black"
@@ -166,15 +168,16 @@
                     android:textStyle="bold" />
 
                 <com.google.android.material.card.MaterialCardView
-                    app:cardBackgroundColor="@color/white"
-                    app:cardElevation="3dp"
-                    app:cardCornerRadius="5dp"
-                    android:clickable="true"
-                    android:layout_marginHorizontal="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:layout_marginTop="20dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="4dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="4dp"
+                    android:clickable="true"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="5dp"
+                    app:cardElevation="3dp">
+
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -187,21 +190,21 @@
                             app:cardCornerRadius="999dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" >
+                            app:layout_constraintTop_toTopOf="parent">
 
                             <ImageView
                                 android:id="@+id/company_image"
                                 android:layout_width="50dp"
                                 android:layout_height="50dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/etourlogo"/>
+                                android:src="@drawable/etourlogo" />
                         </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:id="@+id/company_name"
-                            android:layout_marginStart="15dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
                             android:text="Company name"
                             android:textColor="@color/black"
                             android:textSize="16sp"
@@ -222,16 +225,29 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </com.google.android.material.card.MaterialCardView>
 
-                <Button
-                    android:layout_marginTop="50dp"
-                    android:backgroundTint="@color/light_blue"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/follow_btn"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/save_this_voucher"/>
+                    android:layout_marginTop="50dp"
+                    android:backgroundTint="@color/light_blue"
+                    android:drawableLeft="@drawable/save"
+                    android:drawableTint="@color/white"
+                    android:elevation="0dp"
+                    android:letterSpacing="0.02"
+                    android:paddingVertical="18dp"
+                    android:paddingStart="15dp"
+                    android:paddingEnd="30dp"
+                    android:text="@string/save_this_voucher"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    app:cornerRadius="10dp"
+                    app:layout_constraintStart_toStartOf="@+id/description"
+                    app:layout_constraintTop_toBottomOf="@+id/description"
+                    tools:ignore="RtlSymmetry" />
             </LinearLayout>
-            
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

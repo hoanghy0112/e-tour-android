@@ -1,13 +1,21 @@
 package com.teamone.e_tour.models;
 
+import android.util.Log;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.teamone.e_tour.api.ticket.ViewBookedTicketApi;
 import com.teamone.e_tour.utils.SocketManager;
 
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+
+import io.socket.emitter.Emitter;
 
 public class BookedTicketManager {
     private static BookedTicketManager instance;
@@ -20,15 +28,29 @@ public class BookedTicketManager {
 
     public BookedTicketManager(AppCompatActivity context) {
         this.context = context;
-        this.api = new ViewBookedTicketApi(new SocketManager(context));
+        this.api = new ViewBookedTicketApi(SocketManager.getInstance(context));
 
         viewBookedTickets();
 
-        api.getResponse().observe(context, new Observer<ViewBookedTicketApi.ResponseData>() {
+//        api.getResponse().observe(context, new Observer<ViewBookedTicketApi.ResponseData>() {
+//            @Override
+//            public void onChanged(ViewBookedTicketApi.ResponseData responseData) {
+//                if (responseData != null)
+//                    bookedTickets.postValue(responseData.data);
+//            }
+//        });
+
+        api.getSocket().on("booked-ticket-list", new Emitter.Listener() {
             @Override
-            public void onChanged(ViewBookedTicketApi.ResponseData responseData) {
-                if (responseData != null)
+            public void call(Object... args) {
+                JSONObject object;
+                Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").create();
+
+                Log.e("booked-ticket", String.valueOf(args[0]));
+                ViewBookedTicketApi.ResponseData responseData = gson.fromJson(String.valueOf(args[0]), ViewBookedTicketApi.ResponseData.class);
+                if (responseData.status == 200) {
                     bookedTickets.postValue(responseData.data);
+                }
             }
         });
     }
@@ -42,7 +64,7 @@ public class BookedTicketManager {
 
     public void viewBookedTickets() {
         api.finish();
-        bookedTickets = new MutableLiveData<>();
+//        bookedTickets = new MutableLiveData<>();
         api.fetch();
     }
 

@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,6 +52,8 @@ public class HistoryTab extends Fragment {
             @Override
             public void onChanged(ArrayList<ViewBookedTicketApi.ResponseData.Ticket> tickets) {
                 if (tickets == null) return;
+                binding.swiperefresh.setRefreshing(false);
+                Log.e("aaaaaaaaaa", "aaaaaaaaaaaaaaaaaaaaa" );
                 dialog.dismiss();
                 ArrayList<ViewBookedTicketApi.ResponseData.Ticket> incomingTourList = new ArrayList<>();
                 ArrayList<ViewBookedTicketApi.ResponseData.Ticket> visitedTourList = new ArrayList<>();
@@ -70,6 +74,13 @@ public class HistoryTab extends Fragment {
         binding.visitedTourList.setAdapter(visitedTourAdapter);
         binding.visitedTourList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         binding.visitedTourList.setNestedScrollingEnabled(false);
+
+        binding.swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                BookedTicketManager.getInstance((AppCompatActivity) getActivity()).viewBookedTickets();
+            }
+        });
 
         return binding.getRoot();
     }
