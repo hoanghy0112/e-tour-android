@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card"
         android:layout_width="match_parent"
@@ -50,6 +50,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/manrope_regular"
                 android:text="@string/route_name"
+                android:layout_marginTop="5dp"
                 android:textColor="@color/title_gray"
                 android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="@+id/route_name"
@@ -60,7 +61,7 @@
                 android:id="@+id/last_message_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="14dp"
                 android:layout_marginEnd="20dp"
                 android:layout_marginBottom="14dp"
                 android:ellipsize="end"
@@ -80,13 +81,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
-                android:layout_marginTop="10dp"
                 android:fontFamily="@font/manrope_regular"
                 android:text="@string/_16_49"
                 android:textColor="@color/title_gray"
                 android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="@+id/last_message_text"
                 app:layout_constraintEnd_toEndOf="@+id/route_name"
-                app:layout_constraintTop_toBottomOf="@+id/staff_name" />
+                app:layout_constraintTop_toTopOf="@+id/last_message_text" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
 </LinearLayout>

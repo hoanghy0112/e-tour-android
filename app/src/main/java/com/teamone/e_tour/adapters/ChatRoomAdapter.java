@@ -39,7 +39,7 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.chat_room_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_room_item, parent, false);
 
         return new ViewHolder(view);
     }
@@ -56,13 +56,10 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHo
         holder.lastMessageTime.setText(Formatter.dateToHourString(chatRoom.lastChat.createdAt));
         Glide.with(context).load(new Image(chatRoom.route.getImages().get(0)).getImageUri()).into(holder.image);
 
-        holder.card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putString("routeId", chatRoom.routeId);
-                Navigation.findNavController(v).navigate(R.id.contactSupportFragment, bundle);
-            }
+        holder.card.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("routeId", chatRoom.routeId);
+            Navigation.findNavController(v).navigate(R.id.contactSupportFragment, bundle);
         });
     }
 

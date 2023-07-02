@@ -13,6 +13,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.faltenreich.skeletonlayout.Skeleton;
 import com.faltenreich.skeletonlayout.SkeletonLayoutUtils;
@@ -44,7 +45,7 @@ public class AllSupport extends Fragment {
         binding.chatRoomList.setAdapter(adapter);
         binding.chatRoomList.setLayoutManager(new LinearLayoutManager(requireActivity(), RecyclerView.VERTICAL, false));
 
-        Skeleton skeleton = SkeletonLayoutUtils.applySkeleton(binding.chatRoomList, R.layout.chat_room_item, 8);
+        Skeleton skeleton = SkeletonLayoutUtils.applySkeleton(binding.chatRoomList, R.layout.chat_room_item, 4);
         skeleton.setMaskCornerRadius(60);
         skeleton.showSkeleton();
 
@@ -54,6 +55,7 @@ public class AllSupport extends Fragment {
                 if (chatRooms == null) return;
 
                 adapter.setChatRooms(chatRooms);
+                Toast.makeText(requireActivity(), "Num: " + chatRooms.size(), Toast.LENGTH_SHORT).show();
                 skeleton.showOriginal();
                 binding.swiperefresh.setRefreshing(false);
             }

@@ -62,10 +62,17 @@ public class SavedTab extends Fragment {
 
         VoucherAdapter voucherAdapter = new VoucherAdapter(this, R.layout.item_saved_voucher_preview);
 
-//        Skeleton savedVoucherListSkeleton = SkeletonLayoutUtils.applySkeleton(binding.savedVouchersList, R.layout.item_saved_voucher_preview);
-//        savedVoucherListSkeleton.setMaskCornerRadius(60);
-//        savedVoucherListSkeleton.showSkeleton();
-//        Toast.makeText(requireActivity(), String.valueOf(savedVoucherListSkeleton.isSkeleton()), Toast.LENGTH_SHORT).show();
+        binding.savedRouteList.setAdapter(adapter);
+        binding.savedRouteList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        binding.savedVouchersList.setNestedScrollingEnabled(false);
+        binding.savedVouchersList.setAdapter(voucherAdapter);
+        binding.savedVouchersList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
+
+        Skeleton savedVoucherListSkeleton = SkeletonLayoutUtils.applySkeleton(binding.savedVouchersList, R.layout.item_saved_voucher_preview);
+        savedVoucherListSkeleton.setMaskCornerRadius(60);
+        savedVoucherListSkeleton.showSkeleton();
+        Toast.makeText(requireActivity(), String.valueOf(savedVoucherListSkeleton.isSkeleton()), Toast.LENGTH_SHORT).show();
 
         SavedRouteManager.getInstance((AppCompatActivity) getActivity()).getRoutes().observe(getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
             @Override
@@ -89,16 +96,10 @@ public class SavedTab extends Fragment {
             public void onChanged(ArrayList<Voucher> newVouchers) {
                 voucherAdapter.setVouchers(newVouchers);
                 binding.swiperefresh.setRefreshing(false);
-//                savedVoucherListSkeleton.showOriginal();
+                savedVoucherListSkeleton.showOriginal();
             }
         });
 
-        binding.savedRouteList.setAdapter(adapter);
-        binding.savedRouteList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
-
-        binding.savedVouchersList.setNestedScrollingEnabled(false);
-        binding.savedVouchersList.setAdapter(voucherAdapter);
-        binding.savedVouchersList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
         return binding.getRoot();
     }
