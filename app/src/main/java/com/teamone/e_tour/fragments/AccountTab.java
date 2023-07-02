@@ -3,6 +3,7 @@ package com.teamone.e_tour.fragments;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.navigation.Navigation;
@@ -32,7 +33,7 @@ public class AccountTab extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentAccountTabBinding binding = FragmentAccountTabBinding.inflate(inflater, container, false);
 
@@ -44,8 +45,14 @@ public class AccountTab extends Fragment {
                 binding.email.setText(userProfile.getEmail());
                 binding.userDisplayName.setText(userProfile.getFullName());
                 if (!userProfile.getImage().equals(""))
-                    Glide.with(getActivity()).load(userProfile.getImage()).into(binding.userImage);
-                Log.e("image", userProfile.getImage());
+                    Glide.with(requireActivity()).load(userProfile.getImage()).into(binding.userImage);
+            }
+        });
+
+        binding.contactSupportBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
 
@@ -54,7 +61,7 @@ public class AccountTab extends Fragment {
             public void onClick(View v) {
                 CredentialToken.getInstance(getActivity()).setCredential("", "", "");
                 startActivity(new Intent(getActivity(), AuthenticationActivity.class));
-                getActivity().finish();
+                requireActivity().finish();
             }
         });
 

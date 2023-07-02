@@ -128,8 +128,8 @@
     <string name="settings">Settings</string>
     <string name="customize_your_experiences">Customize your experiences</string>
     <string name="report_an_issue">Report an issue</string>
-    <string name="contact_support">Contact support</string>
-    <string name="contact_our_support_centre">Contact our support centre</string>
+    <string name="contact_support">View support</string>
+    <string name="contact_our_support_centre">View all support chats</string>
     <string name="logout">Logout</string>
     <string name="expired_date">Expired Date</string>
     <string name="using_condition">Using condition</string>
@@ -198,9 +198,14 @@
     <string name="saved_routes">Saved routes</string>
     <string name="saved_vouchers">Saved vouchers</string>
     <string name="voucher_name">Voucher name</string>
-<!--    <string name="discount_money_message">Hello, %1$s! You have %2$d new messages.</string>-->
+    <!--    <string name="discount_money_message">Hello, %1$s! You have %2$d new messages.</string>-->
     <string name="discount_money_message">Discount %1$s for tour with minimum price is %2$s</string>
     <string name="discount_percent_message">Discount %1$f maximum %3$s for tour with minimum price is %2$s</string>
     <string name="company_name">Company name</string>
     <string name="company">Company</string>
+    <string name="support_chats">Support chats</string>
+    <string name="route_image">Route image</string>
+    <string name="_16_49">16:49</string>
+    <string name="user_message">You: %1$s</string>
+    <string name="staff_message">Staff: %1$s</string>
 </resources>

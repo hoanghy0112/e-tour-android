@@ -17,6 +17,10 @@ public class ApiEndpoint {
         public static final String viewAllSaved = "voucher/save?populate=true";
     }
 
+    public static class RouteApiEndpoint {
+        public static final String queryRoute = "touristRoute/find";
+    }
+
     public static class RegistrationApiEndpoint {
         public static final String registerWithPassword = "user/signup/basic";
         public static final String registerWithGoogle = "user/signup/google";

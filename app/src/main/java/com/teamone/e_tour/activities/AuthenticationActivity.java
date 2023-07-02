@@ -139,11 +139,13 @@ public class AuthenticationActivity extends AppCompatActivity {
             assert response != null;
             String email = response.getEmail();
             Toast.makeText(AuthenticationActivity.this, response.getEmail(), Toast.LENGTH_SHORT).show();
+            assert user != null;
             user.getIdToken(true).addOnSuccessListener(new OnSuccessListener<GetTokenResult>() {
                 @Override
                 public void onSuccess(GetTokenResult getTokenResult) {
                     String token = getTokenResult.getToken();
                     Log.e("token", token);
+//                    Toast.makeText(AuthenticationActivity.this, token, Toast.LENGTH_SHORT).show();
                     SignInWithGoogleAPI.api.signInWithGoogle(new SignInWithGoogleAPI.Credential(token)).enqueue(new Callback<SignInWithPasswordApiResult>() {
                         @Override
                         public void onResponse(Call<SignInWithPasswordApiResult> call, Response<SignInWithPasswordApiResult> response) {
@@ -163,6 +165,7 @@ public class AuthenticationActivity extends AppCompatActivity {
                                     Log.e("errorbody", errorBody);
                                     SignInWithPasswordApiError result = gson.fromJson(errorBody.toString(), SignInWithPasswordApiError.class);
                                     Log.e("message", result.getMessage());
+                                    Toast.makeText(AuthenticationActivity.this, result.getMessage(), Toast.LENGTH_SHORT).show();
                                     if (result.getMessage().equals("User not found")) {
                                         // Not registered
                                         Intent intent = new Intent(AuthenticationActivity.this, SignUpWithGoogle.class);

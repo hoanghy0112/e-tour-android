@@ -54,6 +54,9 @@
             app:destination="@id/homeFragment"
             app:enterAnim="@anim/fui_slide_in_right"
             app:exitAnim="@anim/fui_slide_out_left" />
+        <action
+            android:id="@+id/action_detailTourFragment_to_detailDestination"
+            app:destination="@id/detailDestination" />
     </fragment>
     <fragment
         android:id="@+id/tourListFragment"
@@ -212,4 +215,9 @@
         android:name="com.teamone.e_tour.fragments.InputSearch"
         android:label="fragment_input_search"
         tools:layout="@layout/fragment_input_search" />
+    <fragment
+        android:id="@+id/detailDestination"
+        android:name="com.teamone.e_tour.fragments.DetailDestination"
+        android:label="fragment_detail_destination"
+        tools:layout="@layout/fragment_detail_destination" />
 </navigation>

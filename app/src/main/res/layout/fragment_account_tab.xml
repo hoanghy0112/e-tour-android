@@ -7,53 +7,11 @@
     android:orientation="vertical"
     tools:context=".fragments.AccountTab">
 
-    <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="match_parent"
-        android:layout_height="54dp"
-        android:background="@color/blue_dark"
-        android:paddingHorizontal="20dp"
-        android:paddingVertical="12dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_toStartOf="@+id/notification_icon">
-
-            <ImageView
-                android:id="@+id/etour_logo"
-                android:layout_width="80dp"
-                android:layout_height="wrap_content"
-                android:scaleType="fitStart"
-                android:src="@drawable/e_tour" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
-                android:layout_toEndOf="@+id/etour_logo"
-                android:background="@drawable/top_bar_home"
-                android:drawableLeft="@drawable/search"
-                android:drawablePadding="8dp"
-                android:gravity="center_vertical"
-                android:hint="@string/discover_new_experiences"
-                android:padding="8dp"
-                android:textColorHint="@color/placeholder"
-                android:textSize="12sp" />
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/notification_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_marginStart="12dp"
-            android:src="@drawable/fi_rr_bell" />
-    </RelativeLayout>
-
     <ScrollView
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
         <LinearLayout
             android:orientation="vertical"
             android:paddingBottom="30dp"
@@ -361,6 +319,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/contact_support_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="20dp"

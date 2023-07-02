@@ -38,4 +38,10 @@ public class Formatter {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("vi", "VN"));
         return simpleDateFormat.format(date);
     }
+
+    static public String dateToHourString(Date date) {
+        String pattern = "K:mm a";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("vi", "VN"));
+        return simpleDateFormat.format(date);
+    }
 }

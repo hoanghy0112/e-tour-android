@@ -2,6 +2,7 @@
 
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/destination_card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="2dp"
@@ -27,7 +28,7 @@
 <!--            android:src="@drawable/location"/>-->
 
         <TextView
-            android:id="@+id/destination"
+            android:id="@+id/title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/domestic"

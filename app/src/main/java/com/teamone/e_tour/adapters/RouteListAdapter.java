@@ -95,8 +95,11 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
 //            holder.routeType.setBackground(context.getActivity().getDrawable(R.drawable.route_type_international));
         }
 
+        if (holder.companyName != null) {
+            holder.companyName.setText(route.getCompany().name);
+        }
+
         holder.name.setText(route.getName());
-//        holder.newPrice.setText(Formatter.toCurrency(route.getReservationFee()));
         holder.rating.setRating(route.getRate());
         holder.numReview.setText(route.getNum() + " " + context.getString(R.string.reviews));
 
@@ -136,12 +139,9 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
     }
 
 
-    class ViewHolder extends RecyclerView.ViewHolder {
-        //        TextView routeType;
+    static class ViewHolder extends RecyclerView.ViewHolder {
         TextView name;
-        //        TextView oldPrice;
-//        TextView newPrice;
-//        MaterialCheckBox addToFavourite;
+        TextView companyName;
         ImageView cardImage;
         MaterialCardView card;
         RatingBar rating;
@@ -151,9 +151,7 @@ public class RouteListAdapter extends RecyclerView.Adapter<RouteListAdapter.View
             super(itemView);
 
             name = itemView.findViewById(R.id.name);
-//            routeType = itemView.findViewById(R.id.route_type);
-//            newPrice = itemView.findViewById(R.id.new_price);
-//            addToFavourite = itemView.findViewById(R.id.add_favourite_btn);
+            companyName = itemView.findViewById(R.id.company_name);
             cardImage = itemView.findViewById(R.id.card_image);
             card = itemView.findViewById(R.id.tourist_route_card);
             rating = itemView.findViewById(R.id.rating_bar);

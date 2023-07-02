@@ -35,10 +35,8 @@ public class BookedTicketManager {
         api.getSocket().on("booked-ticket-list", new Emitter.Listener() {
             @Override
             public void call(Object... args) {
-                JSONObject object;
                 Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").create();
 
-                Log.e("booked-ticket", String.valueOf(args[0]));
                 ViewBookedTicketApi.ResponseData responseData = gson.fromJson(String.valueOf(args[0]), ViewBookedTicketApi.ResponseData.class);
                 if (responseData.status == 200) {
                     bookedTickets.postValue(responseData.data);

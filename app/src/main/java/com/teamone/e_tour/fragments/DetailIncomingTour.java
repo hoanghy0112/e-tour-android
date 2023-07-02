@@ -2,6 +2,7 @@ package com.teamone.e_tour.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -22,6 +23,7 @@ import com.teamone.e_tour.api.ticket.ViewBookedTicketApi;
 import com.teamone.e_tour.databinding.FragmentDetailIncomingTourBinding;
 import com.teamone.e_tour.databinding.FragmentReportTourBinding;
 import com.teamone.e_tour.databinding.ReportResultBinding;
+import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.ApiResponse;
 import com.teamone.e_tour.entities.Image;
 import com.teamone.e_tour.models.BookedTicketManager;
@@ -52,12 +54,12 @@ public class DetailIncomingTour extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         FragmentDetailIncomingTourBinding binding = FragmentDetailIncomingTourBinding.inflate(inflater, container, false);
-        bottomSheetDialog = new BottomSheetDialog(DetailIncomingTour.this.getActivity(), R.style.SheetDialog);
+        bottomSheetDialog = new BottomSheetDialog(DetailIncomingTour.this.requireActivity(), R.style.SheetDialog);
 
-        getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
-        getActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 0);
+        requireActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+        requireActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 0);
 
         binding.topAppBar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,7 +82,7 @@ public class DetailIncomingTour extends Fragment {
                 binding.departureTime.setText(Formatter.dateToDayString(ticket.tourId.from));
 
                 if (ticket.tourId.image != null && !ticket.tourId.image.equals("")) {
-                    Glide.with(getActivity()).load(new Image(ticket.tourId.image).getImageUri()).into(binding.tourImage);
+                    Glide.with(requireActivity()).load(new Image(ticket.tourId.image).getImageUri()).into(binding.tourImage);
                 }
 
                 binding.routeName.setOnClickListener(new View.OnClickListener() {
@@ -88,7 +90,7 @@ public class DetailIncomingTour extends Fragment {
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
                         bundle.putString("id", ticket.tourId.touristRoute._id);
-                        Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.detailTourFragment, bundle);
+                        Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.detailTourFragment, bundle);
                     }
                 });
 
@@ -97,7 +99,7 @@ public class DetailIncomingTour extends Fragment {
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
                         bundle.putString("id", ticketId);
-                        Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.visitorInformationDetail, bundle);
+                        Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.visitorInformationDetail, bundle);
                     }
                 });
                 binding.contactCard.setOnClickListener(new View.OnClickListener() {
@@ -106,7 +108,7 @@ public class DetailIncomingTour extends Fragment {
                         Bundle bundle = new Bundle();
                         bundle.putString("id", ticketId);
                         bundle.putString("routeId", ticket.tourId.touristRoute._id);
-                        Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.contactSupportFragment, bundle);
+                        Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.contactSupportFragment, bundle);
                     }
                 });
                 binding.reportCard.setOnClickListener(new View.OnClickListener() {
@@ -116,22 +118,29 @@ public class DetailIncomingTour extends Fragment {
                     }
                 });
 
+                LoadingDialog dialog = new LoadingDialog(requireActivity());
                 binding.discardTicket.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        dialog.showLoading("Discarding ticket...");
                         TicketAPI.getApi(getActivity()).discardTicket(ticketId).enqueue(new Callback<ApiResponse>() {
                             @Override
-                            public void onResponse(Call<ApiResponse> call, Response<ApiResponse> response) {
+                            public void onResponse(@NonNull Call<ApiResponse> call, @NonNull Response<ApiResponse> response) {
+                                dialog.dismiss();
+                                if (getActivity() == null) return;
                                 if (response.code() == 200) {
                                     Toast.makeText(getActivity(), "Successfully discard ticket", Toast.LENGTH_SHORT).show();
-                                    Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.homeFragment);
+                                    Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.homeFragment);
                                 } else {
                                     Toast.makeText(getActivity(), "Fail to discard ticket", Toast.LENGTH_SHORT).show();
                                 }
                             }
 
                             @Override
-                            public void onFailure(Call<ApiResponse> call, Throwable t) {
+                            public void onFailure(@NonNull Call<ApiResponse> call, @NonNull Throwable t) {
+                                if (getActivity() == null) return;
+                                dialog.dismiss();
+                                Toast.makeText(getActivity(), "App error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         });
                     }

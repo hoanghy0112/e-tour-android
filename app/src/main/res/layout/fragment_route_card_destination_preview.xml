@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="280dp"
+    tools:context=".fragments.TourPreviewCard">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/tourist_route_card"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="18dp"
+        app:strokeColor="@color/transparent"
+        app:cardElevation="10dp"
+        android:translationZ="40dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
+        app:strokeWidth="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/card_image"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/etourlogo"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView8"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:src="@drawable/gradient_route"
+                android:translationZ="2dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/du_l_ch_l_t"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:translationZ="3dp"
+                app:layout_constraintBottom_toTopOf="@+id/company_name"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/rating_bar" />
+            <TextView
+                android:id="@+id/company_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="50dp"
+                android:fontFamily="@font/manrope_semibold"
+                android:text="@string/du_l_ch_l_t"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:translationZ="3dp"
+                app:layout_constraintBottom_toTopOf="@+id/rating_bar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/rating_bar" />
+
+            <!--            <CheckBox-->
+            <!--                android:id="@+id/add_favourite_btn"-->
+            <!--                android:layout_width="30dp"-->
+            <!--                android:layout_height="30dp"-->
+            <!--                android:button="@drawable/saved_button"-->
+            <!--                app:buttonTint="@color/yellow"-->
+            <!--                app:layout_constraintBottom_toBottomOf="@+id/name"-->
+            <!--                app:layout_constraintEnd_toEndOf="parent"-->
+            <!--                app:layout_constraintTop_toTopOf="@+id/name" />-->
+
+            <!--            <TextView-->
+            <!--                android:id="@+id/new_price"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginBottom="5dp"-->
+            <!--                android:text="5.000.000 VND "-->
+            <!--                android:textColor="@color/black"-->
+            <!--                android:textSize="16sp"-->
+            <!--                android:textStyle="bold"-->
+            <!--                app:layout_constraintBottom_toTopOf="@+id/num_review"-->
+            <!--                tools:layout_editor_absoluteX="10dp" />-->
+
+            <RatingBar
+                android:id="@+id/rating_bar"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:translationZ="3dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginBottom="30dp"
+                android:theme="@style/ratingbar_route_preview"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/num_review"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/_221_reviews"
+                android:textColor="@color/white"
+                android:translationZ="3dp"
+                android:textSize="15sp"
+                android:fontFamily="@font/manrope_semibold"
+                app:layout_constraintBottom_toBottomOf="@+id/rating_bar"
+                app:layout_constraintStart_toEndOf="@+id/rating_bar"
+                app:layout_constraintTop_toTopOf="@+id/rating_bar" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

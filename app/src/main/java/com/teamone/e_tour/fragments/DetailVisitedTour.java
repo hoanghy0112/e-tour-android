@@ -61,8 +61,8 @@ public class DetailVisitedTour extends Fragment {
                              Bundle savedInstanceState) {
         FragmentDetailVisitedTourBinding binding = FragmentDetailVisitedTourBinding.inflate(inflater, container, false);
 
-        getActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
-        getActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 0);
+        requireActivity().findViewById(R.id.bottom_navigation).setVisibility(View.INVISIBLE);
+        requireActivity().findViewById(R.id.home_wrapper).setPadding(0, 0, 0, 0);
 
 
         BookedTicketManager.getInstance((AppCompatActivity) getActivity()).getBookedTickets().observe(getViewLifecycleOwner(), new Observer<ArrayList<ViewBookedTicketApi.ResponseData.Ticket>>() {
@@ -79,7 +79,7 @@ public class DetailVisitedTour extends Fragment {
                 binding.departureTime.setText(Formatter.dateToDayString(ticket.tourId.from));
 
                 if (ticket.tourId.image != null && !ticket.tourId.image.equals("")) {
-                    Glide.with(getActivity()).load(new Image(ticket.tourId.image).getImageUri()).into(binding.tourImage);
+                    Glide.with(requireActivity()).load(new Image(ticket.tourId.image).getImageUri()).into(binding.tourImage);
                 }
 
                 binding.routeName.setOnClickListener(new View.OnClickListener() {
@@ -87,7 +87,7 @@ public class DetailVisitedTour extends Fragment {
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
                         bundle.putString("id", ticket.tourId.touristRoute._id);
-                        Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.detailTourFragment, bundle);
+                        Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.detailTourFragment, bundle);
                     }
                 });
                 binding.rateCard.setOnClickListener(new View.OnClickListener() {

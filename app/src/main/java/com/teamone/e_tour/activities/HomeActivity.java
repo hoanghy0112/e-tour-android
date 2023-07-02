@@ -31,6 +31,7 @@ import com.teamone.e_tour.databinding.ActivityHomeBinding;
 import com.teamone.e_tour.entities.NotificationItem;
 import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.BookedTicketManager;
+import com.teamone.e_tour.models.ChatRoomManager;
 import com.teamone.e_tour.models.DetailRouteManager;
 import com.teamone.e_tour.models.HotVoucherManager;
 import com.teamone.e_tour.models.PopularRouteManager;
@@ -184,6 +185,7 @@ public class HomeActivity extends AppCompatActivity {
         PopularRouteManager.getInstance(this).fetchData(10);
         HotVoucherManager.getInstance(this).fetchData(10);
         com.teamone.e_tour.models.NotificationManager.getInstance(this).fetchData();
+        ChatRoomManager.getInstance().setContext(this);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.S)
