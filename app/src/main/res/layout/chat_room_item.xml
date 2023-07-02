@@ -16,7 +16,6 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="10dp"
             android:background="@color/white">
 
             <ImageView
@@ -34,8 +33,8 @@
                 android:id="@+id/route_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="14dp"
                 android:layout_marginEnd="10dp"
                 android:fontFamily="@font/manrope_bold"
                 android:text="@string/route_name"
@@ -61,14 +60,16 @@
                 android:id="@+id/last_message_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:layout_marginEnd="20dp"
                 android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="14dp"
                 android:ellipsize="end"
                 android:fontFamily="@font/manrope_regular"
+                android:singleLine="true"
                 android:text="@string/lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit_sed_do_eiusmod_tempor_incididunt_ut_labore_et_dolore_magna_aliqua_ut_enim_ad_minim_veniam_quis_nostrud_exercitation_ullamco_laboris_nisi_ut_aliquip_ex_ea_commodo_consequat"
                 android:textColor="@color/title_gray"
                 android:textSize="13sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/last_message_time"
                 app:layout_constraintStart_toStartOf="@+id/route_name"
                 app:layout_constraintTop_toBottomOf="@+id/staff_name"

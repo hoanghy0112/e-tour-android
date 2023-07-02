@@ -25,4 +25,8 @@ public class ApiEndpoint {
         public static final String registerWithPassword = "user/signup/basic";
         public static final String registerWithGoogle = "user/signup/google";
     }
+
+    public static class ChatApiEndpoint {
+        public static final String viewAllChats = "chat";
+    }
 }

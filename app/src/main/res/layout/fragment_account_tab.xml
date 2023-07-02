@@ -8,12 +8,12 @@
     tools:context=".fragments.AccountTab">
 
     <ScrollView
-        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:ignore="UselessParent">
         <LinearLayout
             android:orientation="vertical"
+            android:layout_marginTop="50dp"
             android:paddingBottom="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">

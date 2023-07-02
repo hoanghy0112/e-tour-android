@@ -84,11 +84,12 @@ public class AuthenticationActivity extends AppCompatActivity {
                 public void onResponse(@NonNull Call<SignInWithPasswordApiResult> call, @NonNull Response<SignInWithPasswordApiResult> response) {
                     if (response.code() == 200 && response.body() != null) {
                         SignInWithPasswordApiResult result = response.body();
+                        Log.e("body", result.getUserId() + " - " + result.getAccessToken());
                         CredentialToken.getInstance(context).setCredential(result.getUserId(), result.getAccessToken(), result.getRefreshToken());
                         SocketManager.reload(context);
                         startActivity(new Intent(AuthenticationActivity.this, HomeActivity.class));
                         dialog.dismiss();
-                        finish();
+                        AuthenticationActivity.this.finish();
                     } else {
                         Gson gson = new GsonBuilder().create();
                         try {

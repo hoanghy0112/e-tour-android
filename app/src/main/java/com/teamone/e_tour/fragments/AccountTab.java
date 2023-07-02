@@ -52,7 +52,7 @@ public class AccountTab extends Fragment {
         binding.contactSupportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Navigation.findNavController(v).navigate(R.id.action_accountTab_to_allSupport);
             }
         });
 

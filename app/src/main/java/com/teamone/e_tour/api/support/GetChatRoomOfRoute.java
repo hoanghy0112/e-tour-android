@@ -31,6 +31,7 @@ public class GetChatRoomOfRoute {
 
         JSONObject object = new JSONObject();
         try {
+            Log.e("routeId", routeId);
             object.put("routeId", routeId);
         } catch (JSONException e) {
 

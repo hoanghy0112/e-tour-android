@@ -38,6 +38,7 @@ import com.teamone.e_tour.models.PopularRouteManager;
 import com.teamone.e_tour.models.RatingManager;
 import com.teamone.e_tour.models.SavedRouteManager;
 import com.teamone.e_tour.models.UserProfileManager;
+import com.teamone.e_tour.utils.SocketManager;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -178,6 +179,7 @@ public class HomeActivity extends AppCompatActivity {
         UserProfileManager.getInstance(this).fetchUserProfile();
 
         // Initialize individual socket and connect it to server to reduce response time when fetching route
+        SocketManager.reload(this);
         DetailRouteManager.getInstance(this);
         BookedTicketManager.getInstance(this);
         RatingManager.getInstance(this);

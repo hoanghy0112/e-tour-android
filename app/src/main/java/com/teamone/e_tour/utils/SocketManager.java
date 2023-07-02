@@ -43,6 +43,7 @@ public class SocketManager {
             socket.on(Socket.EVENT_CONNECT_ERROR, new Emitter.Listener() {
                 @Override
                 public void call(Object... args) {
+                    Log.e("socket-error", String.valueOf(args[0]));
                     context.startActivity(new Intent(context, AuthenticationActivity.class));
                     ((AppCompatActivity) context).finish();
                     socket.disconnect();

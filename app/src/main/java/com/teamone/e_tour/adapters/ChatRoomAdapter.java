@@ -2,6 +2,7 @@ package com.teamone.e_tour.adapters;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,7 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHo
 
     public void setChatRooms(ArrayList<ChatRoomManager.ResponseData.ChatRoom> chatRooms) {
         this.chatRooms = chatRooms;
+        notifyDataSetChanged();
     }
 
     public ChatRoomAdapter(Context context) {
@@ -59,7 +61,7 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHo
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putString("routeId", chatRoom.routeId);
-                Navigation.findNavController(v).navigate(R.id.contactSupportFragment);
+                Navigation.findNavController(v).navigate(R.id.contactSupportFragment, bundle);
             }
         });
     }
