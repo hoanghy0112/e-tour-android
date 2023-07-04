@@ -101,7 +101,7 @@ public class DetailVisitedTour extends Fragment {
                                 if (ratings == null) return;
 
                                 String uid = UserProfileManager.getInstance(getActivity()).getUserProfile().get_id();
-                                if (!ratings.stream().filter(rating_ -> rating_.getUserId().get_id().equals(uid)).findFirst().isPresent()) {
+                                if (ratings.stream().noneMatch(rating_ -> rating_.getUserId().get_id().equals(uid))) {
                                     displayEditRate("", 0, ticket.tourId.touristRoute._id);
                                     return;
                                 }

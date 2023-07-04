@@ -29,4 +29,10 @@ public class ApiEndpoint {
     public static class ChatApiEndpoint {
         public static final String viewAllChats = "chat";
     }
+
+    public static class PaymentCardApiEndpoint {
+        public static final String viewAllCards = "/user/card";
+        public static final String addNewCard = "/user/card";
+        public static final String updateCardInfo = "/user/card/{id}";
+    }
 }

@@ -127,6 +127,11 @@
         <action
             android:id="@+id/action_accountTab_to_allSupport"
             app:destination="@id/allSupport" />
+        <action
+            android:id="@+id/action_accountTab_to_viewAllCardFragment"
+            app:destination="@id/viewAllCardFragment"
+            app:popUpTo="@id/accountTab"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/rateTour"
@@ -229,4 +234,15 @@
         android:name="com.teamone.e_tour.fragments.AllSupport"
         android:label="fragment_all_support"
         tools:layout="@layout/fragment_all_support" />
+    <fragment
+        android:id="@+id/viewAllCardFragment"
+        android:name="com.teamone.e_tour.fragments.ViewAllCardFragment"
+        android:label="fragment_view_all_card"
+        tools:layout="@layout/fragment_view_all_card" >
+        <action
+            android:id="@+id/action_viewAllCardFragment_to_accountTab2"
+            app:destination="@id/accountTab"
+            app:popUpTo="@id/accountTab"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

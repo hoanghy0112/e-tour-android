@@ -49,6 +49,13 @@ public class AccountTab extends Fragment {
             }
         });
 
+        binding.myCardsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Navigation.findNavController(v).navigate(R.id.action_accountTab_to_viewAllCardFragment);
+            }
+        });
+
         binding.contactSupportBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

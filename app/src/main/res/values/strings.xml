@@ -208,4 +208,14 @@
     <string name="_16_49">16:49</string>
     <string name="user_message">You: %1$s</string>
     <string name="staff_message">Staff: %1$s</string>
+    <string name="manage_cards">Manage Cards</string>
+    <string name="add_credit_debit_card">Add Credit/Debit Card</string>
+    <string name="authentication_settings">Authentication Settings</string>
+    <string name="cvv_authentication_recommended">CVV Authentication (recommended)</string>
+    <string name="e_tour_account_default_settings">E-tour Account Default Settings</string>
+    <string name="you_will_be_prompted_to_enter_the_cvv_number_each_time_you_perform_a_transaction">You will be prompted to enter the CVV number each time you perform a transaction.</string>
+    <string name="you_will_need_to_authenticate_your_account_each_time_you_perform_a_transaction">You will need to authenticate your account each time you perform a transaction.</string>
+    <string name="visa_image">Visa image</string>
+    <string name="_1234_5678_9101">1234 5678 9101</string>
+    <string name="card_number_format">**** %1$s</string>
 </resources>
