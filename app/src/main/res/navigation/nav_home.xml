@@ -247,10 +247,21 @@
         <action
             android:id="@+id/action_viewAllCardFragment_to_paymentCardDetail"
             app:destination="@id/paymentCardDetail" />
+        <action
+            android:id="@+id/action_viewAllCardFragment_to_addPaymentCard"
+            app:destination="@id/addPaymentCard" />
     </fragment>
     <fragment
         android:id="@+id/paymentCardDetail"
         android:name="com.teamone.e_tour.fragments.PaymentCardDetail"
         android:label="fragment_payment_card_detail"
-        tools:layout="@layout/fragment_payment_card_detail" />
+        tools:layout="@layout/fragment_payment_card_detail" >
+        <action
+            android:id="@+id/action_paymentCardDetail_to_addPaymentCard"
+            app:destination="@id/addPaymentCard" />
+    </fragment>
+    <fragment
+        android:id="@+id/addPaymentCard"
+        android:name="com.teamone.e_tour.fragments.AddPaymentCard"
+        android:label="AddPaymentCard" />
 </navigation>

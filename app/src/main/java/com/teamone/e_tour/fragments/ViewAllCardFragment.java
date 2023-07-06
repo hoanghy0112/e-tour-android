@@ -61,6 +61,10 @@ public class ViewAllCardFragment extends Fragment {
 
         binding.accountAuthRadio.setOnClickListener(v -> binding.radioGroup.check(binding.accountAuthRadio.getId()));
 
+        binding.addBtn.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.action_viewAllCardFragment_to_addPaymentCard);
+        });
+
         PaymentCardManager.getInstance().getCardList().observe(getViewLifecycleOwner(), paymentCards -> {
             if (paymentCards == null) return;
             binding.swiperefresh.setRefreshing(false);

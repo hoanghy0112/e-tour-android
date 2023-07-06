@@ -65,6 +65,12 @@ public class PaymentCardDetail extends Fragment {
 
             LoadingDialog dialog = new LoadingDialog(requireContext());
 
+            binding.updateBtn.setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putString("id", paymentCard._id);
+                Navigation.findNavController(v).navigate(R.id.action_paymentCardDetail_to_addPaymentCard, bundle);
+            });
+
             binding.makeDefaultBtn.setOnClickListener(v -> {
                 dialog.showLoading("Loading...");
 
@@ -75,7 +81,8 @@ public class PaymentCardDetail extends Fragment {
                         if (getActivity() == null) return;
 
                         if (response.code() == 200) {
-                            Toast.makeText(requireActivity(), "Successfully make card as default", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireActivity(), "Successfully make as default", Toast.LENGTH_SHORT).show();
+                            Navigation.findNavController(v).navigate(R.id.viewAllCardFragment);
                         } else {
                             assert response.errorBody() != null;
                             try {
@@ -106,7 +113,8 @@ public class PaymentCardDetail extends Fragment {
                         if (getActivity() == null) return;
 
                         if (response.code() == 200) {
-                            Toast.makeText(requireActivity(), "Successfully make card as default", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(requireActivity(), "Successfully remove card", Toast.LENGTH_SHORT).show();
+                            Navigation.findNavController(v).navigate(R.id.viewAllCardFragment);
                         } else {
                             assert response.errorBody() != null;
                             try {
@@ -114,7 +122,8 @@ public class PaymentCardDetail extends Fragment {
                             } catch (IOException e) {
                                 throw new RuntimeException(e);
                             }
-                        }                    }
+                        }
+                    }
 
                     @Override
                     public void onFailure(@NonNull Call<PaymentCardApi.UpdatedResponse> call, @NonNull Throwable t) {

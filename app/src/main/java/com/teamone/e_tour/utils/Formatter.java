@@ -1,8 +1,12 @@
 package com.teamone.e_tour.utils;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
+import java.util.Objects;
+import java.util.TimeZone;
 
 public class Formatter {
     static public String toCurrency(long currency) {
@@ -49,5 +53,11 @@ public class Formatter {
         String pattern = "K:mm a";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("vi", "VN"));
         return simpleDateFormat.format(date);
+    }
+
+    static public Date fromCardExp(String dateStr) throws ParseException {
+        String pattern = "MM/yy";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern, new Locale("vi", "VN"));
+        return Objects.requireNonNull(simpleDateFormat.parse(dateStr));
     }
 }

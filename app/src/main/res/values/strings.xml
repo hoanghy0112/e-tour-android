@@ -228,4 +228,8 @@
     <string name="remove_card">Remove card</string>
     <string name="make_as_default">Make as default</string>
     <string name="back_button">back button</string>
+    <string name="add_new_card">Add new card</string>
+    <string name="update_card">Update card</string>
+    <string name="cvv">CVV</string>
+    <string name="_123">123</string>
 </resources>

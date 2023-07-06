@@ -50,10 +50,15 @@ public class PaymentCardAdapter extends RecyclerView.Adapter<PaymentCardAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PaymentCard card = cards.get(position);
 
-        if (card.isDefault)
-            holder.cardNumber.setText(context.getString(R.string.card_number_default_format, card.cardNumber.substring(15, 18)));
-        else
-            holder.cardNumber.setText(context.getString(R.string.card_number_format, card.cardNumber.substring(15, 18)));
+        try {
+
+            if (card.isDefault)
+                holder.cardNumber.setText(context.getString(R.string.card_number_default_format, card.cardNumber.substring(15, 19)));
+            else
+                holder.cardNumber.setText(context.getString(R.string.card_number_format, card.cardNumber.substring(15, 19)));
+        } catch (StringIndexOutOfBoundsException e) {
+            holder.cardNumber.setText("Unknown");
+        }
 
         holder.card.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
