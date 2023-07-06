@@ -28,6 +28,7 @@ import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.entities.Voucher;
 import com.teamone.e_tour.models.CredentialToken;
 import com.teamone.e_tour.models.SavedRouteManager;
+import com.teamone.e_tour.models.VoucherManager;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,7 +38,6 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class SavedTab extends Fragment {
-    MutableLiveData<ArrayList<Voucher>> vouchers = new MutableLiveData<>();
     Skeleton savedVoucherListSkeleton;
 
     public SavedTab() {
@@ -72,7 +72,6 @@ public class SavedTab extends Fragment {
         Skeleton savedVoucherListSkeleton = SkeletonLayoutUtils.applySkeleton(binding.savedVouchersList, R.layout.item_saved_voucher_preview);
         savedVoucherListSkeleton.setMaskCornerRadius(60);
         savedVoucherListSkeleton.showSkeleton();
-        Toast.makeText(requireActivity(), String.valueOf(savedVoucherListSkeleton.isSkeleton()), Toast.LENGTH_SHORT).show();
 
         SavedRouteManager.getInstance((AppCompatActivity) getActivity()).getRoutes().observe(getViewLifecycleOwner(), new Observer<ArrayList<TouristRoute>>() {
             @Override
@@ -91,7 +90,7 @@ public class SavedTab extends Fragment {
             }
         });
 
-        vouchers.observe(getViewLifecycleOwner(), new Observer<ArrayList<Voucher>>() {
+        VoucherManager.getInstance().getSavedList().observe(getViewLifecycleOwner(), new Observer<ArrayList<Voucher>>() {
             @Override
             public void onChanged(ArrayList<Voucher> newVouchers) {
                 voucherAdapter.setVouchers(newVouchers);
@@ -112,9 +111,7 @@ public class SavedTab extends Fragment {
 
                 if (response.code() == 200) {
                     assert response.body() != null;
-//                    Toast.makeText(requireActivity(), response.body().toString(), Toast.LENGTH_SHORT).show();
-                    vouchers.postValue(response.body().data);
-//                    savedVoucherListSkeleton.showOriginal();
+                    VoucherManager.getInstance().setSavedList(response.body().data);
                 } else {
                     try {
                         assert response.errorBody() != null;

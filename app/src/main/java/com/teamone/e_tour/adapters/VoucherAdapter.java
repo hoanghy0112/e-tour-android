@@ -60,7 +60,6 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHold
 
         if (holder.name != null) {
             holder.name.setText(voucher.getName());
-//            holder.info.setText("Discount maximum " + Formatter.toCurrency(voucher.getMax()) + " for recipe from " + Formatter.toCurrency(voucher.getMin()));
             if (voucher.getType().equals("money"))
                 holder.info.setText(context.requireActivity().getString(R.string.discount_money_message, Formatter.toCurrency((long) voucher.getValue()), Formatter.toCurrency(voucher.getMin())));
             else if (voucher.getType().equals("percent"))
