@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".fragments.PaymentCardDetail">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:strokeWidth="0dp"
+        app:strokeColor="@color/transparent"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="0dp"
+        android:translationZ="0dp"
+        android:layout_marginStart="40dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView11">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:background="@color/white">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/back_button"
+                android:src="@drawable/chevron_left"
+                app:tint="@color/black" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/manrope_extrabold"
+        android:text="@string/card_information"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/back_btn"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/for_you_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:background="@color/transparent"
+        android:backgroundTint="@color/transparent"
+        android:elevation="0dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView11"
+        app:strokeColor="@color/transparent"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:orientation="vertical"
+            android:paddingHorizontal="15dp"
+            android:paddingVertical="10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/manrope_bold"
+                android:text="@string/update"
+                android:textColor="@color/light_blue"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/card_number_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:hint="@string/card_number"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/transparent"
+        app:boxStrokeWidth="0dp"
+        app:layout_constraintStart_toStartOf="@+id/back_btn"
+        app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/card_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:fontFamily="@font/manrope_extrabold"
+            android:letterSpacing="0.06"
+            android:paddingTop="35dp"
+            android:text="@string/_0123_4567_8910"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/expired_date_layout"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/expired_date"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/transparent"
+        app:boxStrokeWidth="0dp"
+        app:layout_constraintStart_toStartOf="@+id/back_btn"
+        app:layout_constraintTop_toBottomOf="@+id/card_number_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/expired_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:fontFamily="@font/manrope_semibold"
+            android:letterSpacing="0.06"
+            android:paddingTop="35dp"
+            android:text="@string/_06_05"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/card_name_layout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/card_holder_name"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/transparent"
+        app:boxStrokeWidth="0dp"
+        app:layout_constraintEnd_toEndOf="@+id/for_you_btn"
+        app:layout_constraintStart_toStartOf="@+id/back_btn"
+        app:layout_constraintTop_toBottomOf="@+id/expired_date_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/card_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            android:fontFamily="@font/manrope_semibold"
+            android:letterSpacing="0.06"
+            android:paddingTop="35dp"
+            android:text="@string/nguyen_hoang_hy"
+            android:textColor="@color/black"
+            android:textSize="18sp" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/make_default_btn"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:backgroundTint="@color/ocean_blue"
+        android:fontFamily="@font/manrope_semibold"
+        android:letterSpacing="0.03"
+        android:paddingVertical="15dp"
+        android:text="@string/make_as_default"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/card_name_layout"
+        app:layout_constraintStart_toStartOf="@+id/card_name_layout"
+        app:layout_constraintTop_toBottomOf="@+id/card_name_layout" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/remove_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/red"
+        android:fontFamily="@font/manrope_semibold"
+        android:letterSpacing="0.03"
+        android:paddingVertical="15dp"
+        android:text="@string/remove_card"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:cornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/card_name_layout"
+        app:layout_constraintStart_toStartOf="@+id/card_name_layout"
+        app:layout_constraintTop_toBottomOf="@+id/make_default_btn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

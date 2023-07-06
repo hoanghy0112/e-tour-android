@@ -244,5 +244,13 @@
             app:destination="@id/accountTab"
             app:popUpTo="@id/accountTab"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_viewAllCardFragment_to_paymentCardDetail"
+            app:destination="@id/paymentCardDetail" />
     </fragment>
+    <fragment
+        android:id="@+id/paymentCardDetail"
+        android:name="com.teamone.e_tour.fragments.PaymentCardDetail"
+        android:label="fragment_payment_card_detail"
+        tools:layout="@layout/fragment_payment_card_detail" />
 </navigation>

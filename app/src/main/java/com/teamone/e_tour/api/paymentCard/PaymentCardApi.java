@@ -13,6 +13,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.POST;
@@ -39,9 +40,23 @@ public interface PaymentCardApi {
 
     }
 
+    public class MakeDefaultBody implements Serializable {
+        public String cardId;
+
+        public MakeDefaultBody(String cardId) {
+            this.cardId = cardId;
+        }
+    }
+
 
     @GET(ApiEndpoint.PaymentCardApiEndpoint.viewAllCards)
     Call<ViewAllCardsResponse> viewAllCards(@Header("Authorization") String accessToken);
+
+    @DELETE(ApiEndpoint.PaymentCardApiEndpoint.updateCardInfo)
+    Call<UpdatedResponse> deleteCard(@Header("Authorization") String accessToken, @Path("id") String id);
+
+    @PUT(ApiEndpoint.PaymentCardApiEndpoint.defaultCard)
+    Call<UpdatedResponse> makeDefault(@Header("Authorization") String accessToken, @Body MakeDefaultBody body);
 
     @POST(ApiEndpoint.PaymentCardApiEndpoint.addNewCard)
     Call<UpdatedResponse> addNewCard(@Body PaymentCard newCard);

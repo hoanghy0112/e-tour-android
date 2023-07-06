@@ -218,4 +218,14 @@
     <string name="visa_image">Visa image</string>
     <string name="_1234_5678_9101">1234 5678 9101</string>
     <string name="card_number_format">**** %1$s</string>
+    <string name="card_number_default_format">**** %1$s (Default)</string>
+    <string name="card_information">Card information</string>
+    <string name="update">Update</string>
+    <string name="_0123_4567_8910">0123 4567 8910 1112</string>
+    <string name="card_number">Card number</string>
+    <string name="_06_05">06/05</string>
+    <string name="card_holder_name">Card holder name</string>
+    <string name="remove_card">Remove card</string>
+    <string name="make_as_default">Make as default</string>
+    <string name="back_button">back button</string>
 </resources>

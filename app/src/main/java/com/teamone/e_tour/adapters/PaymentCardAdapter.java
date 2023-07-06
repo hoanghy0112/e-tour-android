@@ -50,19 +50,21 @@ public class PaymentCardAdapter extends RecyclerView.Adapter<PaymentCardAdapter.
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         PaymentCard card = cards.get(position);
 
-        holder.cardNumber.setText(context.getString(R.string.card_number_format, card.cardNumber.substring(15, 18)));
+        if (card.isDefault)
+            holder.cardNumber.setText(context.getString(R.string.card_number_default_format, card.cardNumber.substring(15, 18)));
+        else
+            holder.cardNumber.setText(context.getString(R.string.card_number_format, card.cardNumber.substring(15, 18)));
 
-        holder.card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-            }
+        holder.card.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("id", card._id);
+
+            Navigation.findNavController(v).navigate(R.id.action_viewAllCardFragment_to_paymentCardDetail, bundle);
         });
     }
 
     @Override
     public int getItemCount() {
-//        Toast.makeText(context.requireActivity(), String.valueOf(cards.size()), Toast.LENGTH_SHORT).show();
         return cards.size();
     }
 

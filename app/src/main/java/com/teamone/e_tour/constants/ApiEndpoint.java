@@ -34,5 +34,6 @@ public class ApiEndpoint {
         public static final String viewAllCards = "/user/card";
         public static final String addNewCard = "/user/card";
         public static final String updateCardInfo = "/user/card/{id}";
+        public static final String defaultCard = "/user/card/default";
     }
 }

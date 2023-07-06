@@ -63,15 +63,13 @@ public class ViewAllCardFragment extends Fragment {
 
         PaymentCardManager.getInstance().getCardList().observe(getViewLifecycleOwner(), paymentCards -> {
             if (paymentCards == null) return;
+            binding.swiperefresh.setRefreshing(false);
             skeleton.showOriginal();
             adapter.setCards(paymentCards);
         });
 
         fetchData();
-        binding.swiperefresh.setOnRefreshListener(() -> {
-            fetchData();
-            binding.swiperefresh.setRefreshing(false);
-        });
+        binding.swiperefresh.setOnRefreshListener(this::fetchData);
 
         binding.backBtn.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_viewAllCardFragment_to_accountTab2));
 
