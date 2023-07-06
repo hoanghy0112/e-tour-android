@@ -38,15 +38,13 @@ public class GetChatRoomOfRoute {
         }
         socket.emit("get-chat-room-of-route", object);
 
-        socket.on("get-chat-room-of-route-result", new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                Gson gson = new GsonBuilder().create();
-                Log.e("chat-data", String.valueOf(args[0]));
-                ResponseData responseData = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
-                if (responseData.data.routeId.equals(routeId)) {
-                    callback.onSuccess(responseData.data);
-                }
+        socket.on("get-chat-room-of-route-result", args -> {
+            Gson gson = new GsonBuilder().create();
+            Log.e("chat-data", String.valueOf(args[0]));
+            ResponseData responseData = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
+            Log.e("get-chat-room-of-route-result", String.valueOf(args[0]));
+            if (responseData.data.routeId.equals(routeId)) {
+                callback.onSuccess(responseData.data);
             }
         });
     }

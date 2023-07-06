@@ -175,6 +175,12 @@ public class DetailRouteFragment extends Fragment {
             }
         });
 
+        binding.contactSupportBtn.setOnClickListener(v -> {
+            Bundle bundle = new Bundle();
+            bundle.putString("routeId", routeId);
+            Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.contactSupportFragment, bundle);
+        });
+
         ratingManager.getRating().observe(getViewLifecycleOwner(), new Observer<ArrayList<Rating>>() {
             @Override
             public void onChanged(ArrayList<Rating> ratings) {

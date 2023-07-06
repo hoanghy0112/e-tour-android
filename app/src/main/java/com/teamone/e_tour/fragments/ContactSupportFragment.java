@@ -27,6 +27,7 @@ import com.teamone.e_tour.entities.UserProfile;
 import com.teamone.e_tour.models.UserProfileManager;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class ContactSupportFragment extends Fragment {
     String routeId;
@@ -55,41 +56,37 @@ public class ContactSupportFragment extends Fragment {
         binding.chatList.setAdapter(adapter);
         binding.chatList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
 
-        GetChatRoomOfRoute.getChatRoom(getActivity(), routeId, new GetChatRoomOfRoute.IGetChatRoomOfRouteCallback() {
-            @Override
-            public void onSuccess(ChatRoom chatRoom) {
-                ContactSupportFragment.this.chatRoom.postValue(chatRoom);
-            }
-        });
+        GetChatRoomOfRoute.getChatRoom(getActivity(), routeId, chatRoom -> ContactSupportFragment.this.chatRoom.postValue(chatRoom));
 
 
-        chatRoom.observe(getViewLifecycleOwner(), new Observer<ChatRoom>() {
-            @Override
-            public void onChanged(ChatRoom chatRoom) {
-                if (chatRoom == null) return;
-                GetMessageList.getMessageList(getActivity(), chatRoom._id, new GetMessageList.IGetMessageListCallback() {
-                    @Override
-                    public void onGetMessageList(ArrayList<ChatMessage> messages) {
+        chatRoom.observe(getViewLifecycleOwner(), chatRoom -> {
+            if (chatRoom == null) return;
+            GetMessageList.getMessageList(getActivity(), chatRoom._id, new GetMessageList.IGetMessageListCallback() {
+                @Override
+                public void onGetMessageList(ArrayList<ChatMessage> messages) {
 //                        adapter.setMessages(messages);
-                        messageList.postValue(messages);
-                    }
+                    messageList.postValue(messages);
+                }
 
-                    @Override
-                    public void onNewMessage(ChatMessage message) {
+                @Override
+                public void onNewMessage(ChatMessage message) {
 //                        adapter.addNewMessage(message);
-                        ArrayList<ChatMessage> oldMessages = messageList.getValue();
-                        oldMessages.add(message);
-                        messageList.postValue(oldMessages);
-                    }
-                });
+                    ArrayList<ChatMessage> oldMessages = messageList.getValue();
+                    assert oldMessages != null;
+                    oldMessages.add(message);
+                    messageList.postValue(oldMessages);
+                }
+            });
 
-                Glide.with(getActivity()).load(new Image(chatRoom.staffId.image).getImageUri()).into(binding.staffAvatar);
+            if (chatRoom.staffId != null) {
+                if (chatRoom.staffId.image != null)
+                    Glide.with(requireActivity()).load(new Image(chatRoom.staffId.image).getImageUri()).into(binding.staffAvatar);
                 binding.staffName.setText(chatRoom.staffId.fullName);
                 binding.staffId.setText(chatRoom.staffId.role);
-                String userId = UserProfileManager.getInstance(getActivity()).getUserProfile().get_id();
-                adapter.setUserId(userId);
-                adapter.setMessages(chatRoom.chats);
             }
+            String userId = UserProfileManager.getInstance(getActivity()).getUserProfile().get_id();
+            adapter.setUserId(userId);
+            adapter.setMessages(chatRoom.chats);
         });
 
         messageList.observe(getViewLifecycleOwner(), new Observer<ArrayList<ChatMessage>>() {
@@ -104,9 +101,9 @@ public class ContactSupportFragment extends Fragment {
         binding.sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String content = binding.chatContent.getText().toString();
+                String content = Objects.requireNonNull(binding.chatContent.getText()).toString();
 
-                SendChatMessage.send(getActivity(), chatRoom.getValue()._id, content);
+                SendChatMessage.send(getActivity(), Objects.requireNonNull(chatRoom.getValue())._id, content);
 
                 binding.chatContent.setText("");
             }

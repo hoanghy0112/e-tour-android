@@ -212,10 +212,17 @@
                     android:textSize="16sp"
                     app:layout_constraintTop_toBottomOf="@+id/reservation_fee" />
 
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.75" />
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/follow_btn"
                     style="?android:attr/buttonBarButtonStyle"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="35dp"
                     android:layout_marginEnd="20dp"
@@ -225,14 +232,36 @@
                     android:elevation="0dp"
                     android:letterSpacing="0.02"
                     android:paddingVertical="18dp"
-                    android:paddingStart="15dp"
-                    android:paddingEnd="30dp"
                     android:text="@string/follow"
                     android:textAllCaps="false"
                     android:textColor="@color/chat_blue"
                     app:cornerRadius="10dp"
+                    app:layout_constraintEnd_toStartOf="@+id/contact_support_btn"
                     app:layout_constraintStart_toStartOf="@+id/description"
                     app:layout_constraintTop_toBottomOf="@+id/description"
+                    tools:ignore="RtlSymmetry" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/contact_support_btn"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:backgroundTint="@color/blue_5_percent"
+                    android:drawableLeft="@drawable/headset_small"
+                    android:drawableTint="@color/chat_blue"
+                    android:elevation="0dp"
+                    android:letterSpacing="0.02"
+                    android:paddingVertical="18dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="30dp"
+                    android:text=""
+                    android:textAllCaps="false"
+                    android:textColor="@color/chat_blue"
+                    app:cornerRadius="10dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/follow_btn"
+                    app:layout_constraintEnd_toEndOf="@+id/description"
+                    app:layout_constraintTop_toTopOf="@+id/follow_btn"
                     tools:ignore="RtlSymmetry" />
 
 
