@@ -18,7 +18,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="25dp"
+            android:paddingVertical="13dp"
             android:paddingHorizontal="40dp">
 
             <com.google.android.material.card.MaterialCardView
@@ -46,7 +46,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
                 android:text="@string/user_display_name"
                 android:textColor="@color/black"
                 android:textSize="15sp"
@@ -54,21 +53,37 @@
                 app:layout_constraintStart_toEndOf="@+id/user_image_card"
                 app:layout_constraintTop_toTopOf="@+id/user_image_card" />
 
-            <TextView
+<!--            <TextView-->
+<!--                android:id="@+id/rating_point"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="@string/_10_10"-->
+<!--                android:fontFamily="@font/manrope_bold"-->
+<!--                android:textColor="@color/blue"-->
+<!--                android:textSize="15sp"-->
+<!--                app:layout_constraintBottom_toBottomOf="@+id/user_display_name"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="@+id/user_display_name" />-->
+
+            <RatingBar
                 android:id="@+id/rating_point"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/_10_10"
-                android:fontFamily="@font/manrope_bold"
-                android:textColor="@color/blue"
-                android:textSize="15sp"
-                app:layout_constraintBottom_toBottomOf="@+id/user_display_name"
+                android:layout_marginEnd="-140dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:scaleX="0.4"
+                android:scaleY="0.4"
+                android:stepSize="0.5"
+                android:theme="@style/ratingbar"
+                android:transformPivotX="0dp"
+                android:transformPivotY="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/user_display_name" />
 
             <TextView
                 android:id="@+id/createdAt"
-                android:layout_marginTop="7dp"
+                android:layout_marginTop="4dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/user_comment_here"
@@ -82,7 +97,7 @@
                 android:id="@+id/comment"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:fontFamily="@font/manrope_regular"
                 android:text="@string/user_comment_here"
                 android:textColor="@color/black"

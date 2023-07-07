@@ -4,6 +4,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,7 +45,8 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         Rating rating = ratings.get(position);
 
         holder.comment.setText(rating.getDescription());
-        holder.ratingPoint.setText(String.valueOf(rating.getStar()));
+//        holder.ratingPoint.setText(String.valueOf(rating.getStar()));
+        holder.ratingPoint.setRating(rating.getStar());
         holder.userDisplayName.setText(rating.getUserId().getFullName());
         holder.createdAt.setText(Formatter.dateToDateWithoutHourString(rating.getCreatedAt()));
         Glide.with(context).load(rating.getUserId().getImage()).into(holder.userImage);
@@ -58,7 +60,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
     static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView userImage;
         TextView userDisplayName;
-        TextView ratingPoint;
+        RatingBar ratingPoint;
         TextView comment;
         TextView createdAt;
 
