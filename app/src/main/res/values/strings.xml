@@ -239,4 +239,5 @@
     <string name="report_company">Report company</string>
     <string name="follow_company">Follow company</string>
     <string name="unfollow_company">Unfollow company</string>
+    <string name="recommend_for_you">Recommend for you</string>
 </resources>

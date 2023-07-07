@@ -12,6 +12,7 @@
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="30dp"
         android:background="@color/popular"
         app:layout_constraintTop_toTopOf="parent">
 

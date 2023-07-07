@@ -2,6 +2,7 @@ package com.teamone.e_tour.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
@@ -23,6 +24,7 @@ import com.teamone.e_tour.models.PopularRouteManager;
 import com.teamone.e_tour.models.RecommendedRouteManager;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Popular extends Fragment {
 
@@ -36,14 +38,14 @@ public class Popular extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentPopularBinding binding = FragmentPopularBinding.inflate(inflater, container, false);
 
-        Window window = getActivity().getWindow();
+        Window window = requireActivity().getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(ContextCompat.getColor(getActivity(), R.color.popular));
+        window.setStatusBarColor(ContextCompat.getColor(requireActivity(), R.color.popular));
 
         binding.swiperefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override

@@ -75,6 +75,7 @@ public class CompanyDetail extends Fragment {
         binding.routeImageIndicator.setViewPager(binding.routeImageList);
         imageAdapter.registerDataSetObserver(binding.routeImageIndicator.getDataSetObserver());
 
+        binding.touristRouteList.setNestedScrollingEnabled(false);
         binding.touristRouteList.setAdapter(routeListAdapter);
         binding.touristRouteList.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
 

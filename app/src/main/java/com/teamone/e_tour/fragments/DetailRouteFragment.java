@@ -25,13 +25,19 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.faltenreich.skeletonlayout.Skeleton;
+import com.faltenreich.skeletonlayout.SkeletonLayoutUtils;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.activities.HomeActivity;
 import com.teamone.e_tour.adapters.CommentAdapter;
 import com.teamone.e_tour.adapters.DestinationAdapter;
 import com.teamone.e_tour.adapters.ImageAdapter;
+import com.teamone.e_tour.adapters.RouteListAdapter;
+import com.teamone.e_tour.api.company.CompanyApi;
+import com.teamone.e_tour.api.route.TouristRouteApi;
 import com.teamone.e_tour.api.route.ViewDetailRouteApi;
 import com.teamone.e_tour.constants.SocketMessage;
 import com.teamone.e_tour.databinding.FragmentDetailRouteBinding;
@@ -39,6 +45,7 @@ import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.Rating;
 import com.teamone.e_tour.entities.TouristRoute;
 import com.teamone.e_tour.models.BookingDataManager;
+import com.teamone.e_tour.models.CredentialToken;
 import com.teamone.e_tour.models.DetailRouteManager;
 import com.teamone.e_tour.models.RatingManager;
 import com.teamone.e_tour.utils.Formatter;
@@ -52,6 +59,9 @@ import java.util.Locale;
 import java.util.Objects;
 
 import me.relex.circleindicator.CircleIndicator;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class DetailRouteFragment extends Fragment {
@@ -59,6 +69,8 @@ public class DetailRouteFragment extends Fragment {
     RatingManager ratingManager;
     String routeId;
     MutableLiveData<TouristRoute> route = new MutableLiveData<>();
+    MutableLiveData<ArrayList<TouristRoute>> companyRoute = new MutableLiveData<>();
+    MutableLiveData<ArrayList<TouristRoute>> recommendRoute = new MutableLiveData<>();
     View originalLayout;
     int viewIndex;
 
@@ -91,6 +103,9 @@ public class DetailRouteFragment extends Fragment {
         Window w = requireActivity().getWindow();
         w.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
+        RouteListAdapter companyRouteAdapter = new RouteListAdapter(this, R.layout.fragment_route_preview_card_large);
+        RouteListAdapter recommendRouteAdapter = new RouteListAdapter(this, R.layout.search_route_regular_item);
+
         ViewPager routeImageList = binding.routeImageList;
         CircleIndicator routeImageIndicator = binding.routeImageIndicator;
 
@@ -105,46 +120,55 @@ public class DetailRouteFragment extends Fragment {
         binding.destinationList.setAdapter(destinationAdapter);
         binding.destinationList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
 
-        binding.backBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.action_detailTourFragment_to_homeFragment);
-            }
-        });
+        binding.companyRouteList.setNestedScrollingEnabled(false);
+        binding.companyRouteList.setAdapter(companyRouteAdapter);
+        binding.companyRouteList.setLayoutManager(new LinearLayoutManager(requireActivity(), RecyclerView.HORIZONTAL, false));
+        Skeleton companyRouteSkeleton = SkeletonLayoutUtils.applySkeleton(binding.companyRouteList, R.layout.fragment_route_preview_card_large, 5);
+        companyRouteSkeleton.setMaskCornerRadius(50);
+        companyRouteSkeleton.showSkeleton();
+
+        binding.recommendRouteList.setNestedScrollingEnabled(false);
+        binding.recommendRouteList.setAdapter(recommendRouteAdapter);
+        binding.recommendRouteList.setLayoutManager(new LinearLayoutManager(requireActivity(), LinearLayoutManager.VERTICAL, false));
+        Skeleton recommendRouteSkeleton = SkeletonLayoutUtils.applySkeleton(binding.recommendRouteList, R.layout.search_route_regular_item, 5);
+        recommendRouteSkeleton.setMaskCornerRadius(60);
+        recommendRouteSkeleton.showSkeleton();
+
+        binding.backBtn.setOnClickListener(v -> Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.action_detailTourFragment_to_homeFragment));
 
 
         CommentAdapter adapter = new CommentAdapter(this);
 
         binding.commentList.setAdapter(adapter);
         binding.commentList.setLayoutManager(new LinearLayoutManager(getActivity(), RecyclerView.VERTICAL, false));
+        Skeleton commentSkeleton = SkeletonLayoutUtils.applySkeleton(binding.commentList, R.layout.item_comment, 3);
+        commentSkeleton.setMaskCornerRadius(60);
+        commentSkeleton.showSkeleton();
 
-        binding.addFavouriteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TouristRoute t = route.getValue();
-                if (t == null) return;
+        binding.addFavouriteBtn.setOnClickListener(v -> {
+            TouristRoute t = route.getValue();
+            if (t == null) return;
 
-                if (t.isSaved()) {
-                    JSONObject object = new JSONObject();
-                    try {
-                        object.put("routeId", routeId);
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-                    SocketManager.getInstance(getActivity()).emit("remove-route-from-saved", object);
-                } else {
-                    JSONObject object = new JSONObject();
-                    try {
-                        object.put("routeId", routeId);
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-                    SocketManager.getInstance(getActivity()).emit("save-route", object);
+            if (t.isSaved()) {
+                JSONObject object = new JSONObject();
+                try {
+                    object.put("routeId", routeId);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
                 }
-
-                t.setSaved(!t.isSaved());
-                route.postValue(t);
+                SocketManager.getInstance(getActivity()).emit("remove-route-from-saved", object);
+            } else {
+                JSONObject object = new JSONObject();
+                try {
+                    object.put("routeId", routeId);
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+                SocketManager.getInstance(getActivity()).emit("save-route", object);
             }
+
+            t.setSaved(!t.isSaved());
+            route.postValue(t);
         });
 
         binding.followBtn.setOnClickListener(new View.OnClickListener() {
@@ -184,20 +208,15 @@ public class DetailRouteFragment extends Fragment {
             Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.contactSupportFragment, bundle);
         });
 
-        ratingManager.getRating().observe(getViewLifecycleOwner(), new Observer<ArrayList<Rating>>() {
-            @Override
-            public void onChanged(ArrayList<Rating> ratings) {
-                if (ratings != null)
-                    adapter.setRatings(ratings);
-            }
+        ratingManager.getRating().observe(getViewLifecycleOwner(), ratings -> {
+            if (ratings == null) return;
+            adapter.setRatings(ratings);
+            commentSkeleton.showOriginal();
         });
 
-        detailRouteManager.getRouteInfo().observe(getViewLifecycleOwner(), new Observer<TouristRoute>() {
-            @Override
-            public void onChanged(TouristRoute touristRoute) {
-                if (touristRoute != null && touristRoute.get_id().equals(routeId))
-                    route.postValue(touristRoute);
-            }
+        detailRouteManager.getRouteInfo().observe(getViewLifecycleOwner(), touristRoute -> {
+            if (touristRoute != null && touristRoute.get_id().equals(routeId))
+                route.postValue(touristRoute);
         });
 
         originalLayout = binding.detailRouteWrapper;
@@ -217,6 +236,8 @@ public class DetailRouteFragment extends Fragment {
                     return;
                 }
 
+                fetchData();
+
                 parent.removeAllViews();
                 parent.addView(originalLayout, viewIndex);
 
@@ -226,6 +247,7 @@ public class DetailRouteFragment extends Fragment {
                 SpannableString content = new SpannableString(touristRoute.getCompany().name);
                 content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                 binding.companyName.setText(content);
+                binding.companyNameBelow.setText(touristRoute.getName());
                 binding.routeType.setText(touristRoute.getType().equals("country") ? "Domestic" : "International");
                 binding.reservationFee.setText(Formatter.toCurrency(touristRoute.getReservationFee()));
                 binding.description.setText(touristRoute.getDescription());
@@ -280,7 +302,59 @@ public class DetailRouteFragment extends Fragment {
             }
         });
 
+        companyRoute.observe(getViewLifecycleOwner(), touristRoutes -> {
+            if (touristRoutes == null) return;
+            companyRouteAdapter.setRouteList(touristRoutes);
+            companyRouteSkeleton.showOriginal();
+        });
+
+        recommendRoute.observe(getViewLifecycleOwner(), touristRoutes -> {
+            if (touristRoutes == null) return;
+            recommendRouteAdapter.setRouteList(touristRoutes);
+            recommendRouteSkeleton.showOriginal();
+        });
+
         return binding.getRoot();
+    }
+
+    void fetchData() {
+        TouristRouteApi.api.getRecommendRouteOfCompany(Objects.requireNonNull(route.getValue()).getCompany()._id).enqueue(new Callback<TouristRouteApi.GetTouristRouteListResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<TouristRouteApi.GetTouristRouteListResponse> call, @NonNull Response<TouristRouteApi.GetTouristRouteListResponse> response) {
+                if (response.code() == 200) {
+                    assert response.body() != null;
+                    companyRoute.postValue(response.body().data);
+                } else {
+                    if (getActivity() == null) return;
+                    Toast.makeText(requireActivity(), "Error: " + response.code() + " - " + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<TouristRouteApi.GetTouristRouteListResponse> call, @NonNull Throwable t) {
+                if (getActivity() == null) return;
+                Toast.makeText(requireActivity(), "App error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        TouristRouteApi.api.getRecommendRouteOfSimilarity(routeId, CredentialToken.getInstance(requireActivity()).getBearerAccessToken()).enqueue(new Callback<TouristRouteApi.GetTouristRouteListResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<TouristRouteApi.GetTouristRouteListResponse> call, @NonNull Response<TouristRouteApi.GetTouristRouteListResponse> response) {
+                if (response.code() == 200) {
+                    assert response.body() != null;
+                    recommendRoute.postValue(response.body().data);
+                } else {
+                    if (getActivity() == null) return;
+                    Toast.makeText(requireActivity(), "Error: " + response.code() + " - " + response.message(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<TouristRouteApi.GetTouristRouteListResponse> call, @NonNull Throwable t) {
+                if (getActivity() == null) return;
+                Toast.makeText(requireActivity(), "App error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
