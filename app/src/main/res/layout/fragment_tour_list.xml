@@ -1,36 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/orange_white"
-    tools:context=".fragments.TourListFragment"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".fragments.TourListFragment">
 
 
-    <com.google.android.material.appbar.AppBarLayout
+    <!--    <com.google.android.material.appbar.AppBarLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:background="@color/blue"-->
+    <!--        android:paddingTop="30dp"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--        <com.google.android.material.appbar.MaterialToolbar-->
+    <!--            android:id="@+id/topAppBar"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="?attr/actionBarSize"-->
+    <!--            app:navigationIcon="@drawable/chevron_left"-->
+    <!--            app:title="Tour list"-->
+    <!--            app:titleTextColor="@color/white" />-->
+
+    <!--    </com.google.android.material.appbar.AppBarLayout>-->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="30dp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="50dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="horizontal">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue"
-            app:navigationIcon="@drawable/chevron_left"
-            app:title="Detail route"
-            app:titleTextColor="@color/white" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/white"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/transparent"
+            app:strokeWidth="0dp">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/tour_list"
-        android:paddingVertical="20dp"
-        android:clipToPadding="false"
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/chevron_left"
+                    app:tint="@color/black" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/manrope_semibold"
+            android:text="@string/tour_list"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/back_btn"
+            app:layout_constraintStart_toEndOf="@+id/back_btn"
+            app:layout_constraintTop_toTopOf="@+id/back_btn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scrollview"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/tour_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipToPadding="false" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 
 </LinearLayout>

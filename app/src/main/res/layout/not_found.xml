@@ -22,14 +22,14 @@
         android:id="@+id/loading_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_marginHorizontal="50dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginTop="300dp"
         android:fontFamily="@font/manrope_semibold"
+        android:gravity="center"
         android:text="@string/loading"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/lottieAnimationView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

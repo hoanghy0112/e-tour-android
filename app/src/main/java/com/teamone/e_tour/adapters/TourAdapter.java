@@ -21,6 +21,7 @@ import com.teamone.e_tour.models.BookingDataManager;
 import com.teamone.e_tour.utils.Formatter;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
     private Fragment context;
@@ -50,7 +51,7 @@ public class TourAdapter extends RecyclerView.Adapter<TourAdapter.ViewHolder> {
         holder.name.setText(tour.getName().length() != 0 ? tour.getName() : context.getString(R.string.untitled_tour));
         holder.description.setText(tour.getDescription().length() != 0 ? tour.getDescription() : context.getString(R.string.no_description));
         holder.from.setText(Formatter.dateToDateWithHourString(tour.getFrom()));
-        holder.type.setText(tour.getType() == "normal" ? context.getString(R.string.normal_tour) : context.getString(R.string.promotion_tour));
+        holder.type.setText(Objects.equals(tour.getType(), "normal") ? context.getString(R.string.normal_tour) : context.getString(R.string.promotion_tour));
         holder.price.setText(Formatter.toCurrency(tour.getPrice()));
 
         holder.bookBtn.setOnClickListener(new View.OnClickListener() {

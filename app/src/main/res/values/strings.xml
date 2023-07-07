@@ -241,4 +241,7 @@
     <string name="unfollow_company">Unfollow company</string>
     <string name="recommend_for_you">Recommend for you</string>
     <string name="empty_chat">Empty chat</string>
+    <string name="no_tour">There are currently no tours available</string>
+    <string name="tour_list">Tour list</string>
+    <string name="tour_description">Tour description</string>
 </resources>
