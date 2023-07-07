@@ -52,8 +52,13 @@ public class ChatRoomAdapter extends RecyclerView.Adapter<ChatRoomAdapter.ViewHo
 
         holder.routeName.setText(chatRoom.route.getName());
         holder.staffName.setText(chatRoom.staff.fullName);
-        holder.lastMessageText.setText(context.getString(chatRoom.lastChat.uid.equals(userId) ? R.string.user_message : R.string.staff_message, chatRoom.lastChat.content));
-        holder.lastMessageTime.setText(Formatter.dateToHourString(chatRoom.lastChat.createdAt));
+        if (chatRoom.lastChat != null) {
+            holder.lastMessageText.setText(context.getString(chatRoom.lastChat.uid.equals(userId) ? R.string.user_message : R.string.staff_message, chatRoom.lastChat.content));
+            holder.lastMessageTime.setText(Formatter.dateToHourString(chatRoom.lastChat.createdAt));
+        } else {
+            holder.lastMessageText.setText(context.getString(R.string.empty_chat));
+            holder.lastMessageTime.setText("");
+        }
         Glide.with(context).load(new Image(chatRoom.route.getImages().get(0)).getImageUri()).into(holder.image);
 
         holder.card.setOnClickListener(v -> {

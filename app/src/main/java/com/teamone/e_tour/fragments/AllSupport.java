@@ -55,7 +55,6 @@ public class AllSupport extends Fragment {
                 if (chatRooms == null) return;
 
                 adapter.setChatRooms(chatRooms);
-                Toast.makeText(requireActivity(), "Num: " + chatRooms.size(), Toast.LENGTH_SHORT).show();
                 skeleton.showOriginal();
                 binding.swiperefresh.setRefreshing(false);
             }

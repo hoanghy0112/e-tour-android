@@ -247,7 +247,7 @@ public class DetailRouteFragment extends Fragment {
                 SpannableString content = new SpannableString(touristRoute.getCompany().name);
                 content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
                 binding.companyName.setText(content);
-                binding.companyNameBelow.setText(touristRoute.getName());
+                binding.companyNameBelow.setText(touristRoute.getCompany().name);
                 binding.routeType.setText(touristRoute.getType().equals("country") ? "Domestic" : "International");
                 binding.reservationFee.setText(Formatter.toCurrency(touristRoute.getReservationFee()));
                 binding.description.setText(touristRoute.getDescription());

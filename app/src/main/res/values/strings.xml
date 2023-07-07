@@ -240,4 +240,5 @@
     <string name="follow_company">Follow company</string>
     <string name="unfollow_company">Unfollow company</string>
     <string name="recommend_for_you">Recommend for you</string>
+    <string name="empty_chat">Empty chat</string>
 </resources>
