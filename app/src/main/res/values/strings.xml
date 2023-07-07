@@ -233,4 +233,10 @@
     <string name="cvv">CVV</string>
     <string name="_123">123</string>
     <string name="contact_support_">Get help</string>
+    <string name="company_image">Company image</string>
+    <string name="contact">Contact</string>
+    <string name="tourist_route_from">From </string>
+    <string name="report_company">Report company</string>
+    <string name="follow_company">Follow company</string>
+    <string name="unfollow_company">Unfollow company</string>
 </resources>

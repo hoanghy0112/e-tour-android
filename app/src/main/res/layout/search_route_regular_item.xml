@@ -18,7 +18,8 @@
         app:cardElevation="10dp"
         android:translationZ="40dp"
         android:layout_marginHorizontal="10dp"
-        android:layout_marginVertical="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="20dp"
         app:strokeWidth="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

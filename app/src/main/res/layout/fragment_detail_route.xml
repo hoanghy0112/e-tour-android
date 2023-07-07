@@ -232,6 +232,7 @@
                     android:elevation="0dp"
                     android:letterSpacing="0.02"
                     android:paddingVertical="18dp"
+                    android:paddingStart="20dp"
                     android:text="@string/follow"
                     android:textAllCaps="false"
                     android:textColor="@color/chat_blue"

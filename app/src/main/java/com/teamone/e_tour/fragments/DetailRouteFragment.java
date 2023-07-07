@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -15,6 +16,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.text.SpannableString;
+import android.text.style.UnderlineSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -78,7 +81,7 @@ public class DetailRouteFragment extends Fragment {
 
     @SuppressLint("MissingInflatedId")
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentDetailRouteBinding binding = FragmentDetailRouteBinding.inflate(inflater, container, false);
 
@@ -220,11 +223,18 @@ public class DetailRouteFragment extends Fragment {
                 destinationAdapter.setDestinations(touristRoute.getRoute());
 
                 binding.routeName.setText(touristRoute.getName());
-                binding.companyName.setText(touristRoute.getCompany().name);
+                SpannableString content = new SpannableString(touristRoute.getCompany().name);
+                content.setSpan(new UnderlineSpan(), 0, content.length(), 0);
+                binding.companyName.setText(content);
                 binding.routeType.setText(touristRoute.getType().equals("country") ? "Domestic" : "International");
                 binding.reservationFee.setText(Formatter.toCurrency(touristRoute.getReservationFee()));
                 binding.description.setText(touristRoute.getDescription());
-//                binding.newPrice.setText(Formatter.toCurrency(touristRoute.getReservationFee()));
+
+                binding.companyName.setOnClickListener(v -> {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id", touristRoute.getCompanyId());
+                    Navigation.findNavController(v).navigate(R.id.action_detailTourFragment_to_companyDetail, bundle);
+                });
 
                 if (touristRoute.getImages().size() != 0) {
                     imageAdapter.setImages(touristRoute.getImages());

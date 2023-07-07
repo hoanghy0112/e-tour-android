@@ -57,6 +57,9 @@
         <action
             android:id="@+id/action_detailTourFragment_to_detailDestination"
             app:destination="@id/detailDestination" />
+        <action
+            android:id="@+id/action_detailTourFragment_to_companyDetail"
+            app:destination="@id/companyDetail" />
     </fragment>
     <fragment
         android:id="@+id/tourListFragment"
@@ -264,4 +267,9 @@
         android:id="@+id/addPaymentCard"
         android:name="com.teamone.e_tour.fragments.AddPaymentCard"
         android:label="AddPaymentCard" />
+    <fragment
+        android:id="@+id/companyDetail"
+        android:name="com.teamone.e_tour.fragments.CompanyDetail"
+        android:label="fragment_company_detail"
+        tools:layout="@layout/fragment_company_detail" />
 </navigation>

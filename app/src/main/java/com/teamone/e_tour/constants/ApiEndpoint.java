@@ -19,6 +19,8 @@ public class ApiEndpoint {
 
     public static class RouteApiEndpoint {
         public static final String queryRoute = "touristRoute/find";
+        public static final String recommendQuery = "touristRoute/recommend";
+        public static final String similarRoute = "touristRoute/recommend/similar";
     }
 
     public static class RegistrationApiEndpoint {
@@ -35,5 +37,9 @@ public class ApiEndpoint {
         public static final String addNewCard = "/user/card";
         public static final String updateCardInfo = "/user/card/{id}";
         public static final String defaultCard = "/user/card/default";
+    }
+
+    public static class CompanyApiEndpoint {
+        public static final String getCompanyInfo = "/company/{id}";
     }
 }
