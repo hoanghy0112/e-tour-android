@@ -17,6 +17,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,8 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.broadcastReceiver.NotificationBroadcastReceiver;
 import com.teamone.e_tour.databinding.ActivityHomeBinding;
@@ -32,17 +35,21 @@ import com.teamone.e_tour.entities.NotificationItem;
 import com.teamone.e_tour.models.AppManagement;
 import com.teamone.e_tour.models.BookedTicketManager;
 import com.teamone.e_tour.models.ChatRoomManager;
+import com.teamone.e_tour.models.CredentialToken;
 import com.teamone.e_tour.models.DetailRouteManager;
 import com.teamone.e_tour.models.HotVoucherManager;
 import com.teamone.e_tour.models.PopularRouteManager;
 import com.teamone.e_tour.models.RatingManager;
 import com.teamone.e_tour.models.SavedRouteManager;
 import com.teamone.e_tour.models.UserProfileManager;
+import com.teamone.e_tour.utils.MySharedPreferences;
 import com.teamone.e_tour.utils.SocketManager;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import io.socket.emitter.Emitter;
 
 public class HomeActivity extends AppCompatActivity {
     int backId = -1;
@@ -188,6 +195,23 @@ public class HomeActivity extends AppCompatActivity {
         HotVoucherManager.getInstance(this).fetchData(10);
         com.teamone.e_tour.models.NotificationManager.getInstance(this).fetchData();
         ChatRoomManager.getInstance().setContext(this);
+
+
+        SocketManager.getInstance(this).on("user-profile", new Emitter.Listener() {
+            @Override
+            public void call(Object... args) {
+                Gson gson = new GsonBuilder().create();
+                CredentialToken.ResponseData responseData = gson.fromJson(String.valueOf(args[0]), CredentialToken.ResponseData.class);
+
+                MySharedPreferences mySharedPreferences = new MySharedPreferences(HomeActivity.this);
+                SharedPreferences.Editor editor = mySharedPreferences.getEditor();
+                editor.putString("fullname", responseData.data.getFullName());
+                editor.putString("email", responseData.data.getEmail());
+                editor.putString("image", responseData.data.getImage());
+                editor.apply();
+                CredentialToken.getInstance(HomeActivity.this).getUserProfile().postValue(responseData.data);
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.S)

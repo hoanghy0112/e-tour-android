@@ -2,6 +2,7 @@ package com.teamone.e_tour.models;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -41,6 +42,7 @@ public class CredentialToken {
         this.id = mySharedPreferences.getSharedPreferences().getString("id", "");
         this.accessToken = mySharedPreferences.getSharedPreferences().getString("accessToken", "");
         this.refreshToken = mySharedPreferences.getSharedPreferences().getString("refreshToken", "");
+        updateUserProfile();
     }
 
     private void updateUserProfile() {
@@ -89,19 +91,6 @@ public class CredentialToken {
         editor.putString("refreshToken", refreshToken);
 
         SocketManager.getInstance(context).getSocket().emit("view-user-profile");
-        SocketManager.getInstance(context).getSocket().on("user-profile", new Emitter.Listener() {
-            @Override
-            public void call(Object... args) {
-                Gson gson = new GsonBuilder().create();
-                ResponseData responseData = gson.fromJson(String.valueOf(args[0]), ResponseData.class);
-                editor.putString("fullname", responseData.data.getFullName());
-                editor.putString("email", responseData.data.getEmail());
-                editor.putString("image", responseData.data.getImage());
-                editor.apply();
-                updateUserProfile();
-            }
-        });
-
 
         editor.apply();
     }

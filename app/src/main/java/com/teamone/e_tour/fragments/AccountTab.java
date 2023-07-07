@@ -20,6 +20,7 @@ import com.teamone.e_tour.activities.AuthenticationActivity;
 import com.teamone.e_tour.databinding.FragmentAccountTabBinding;
 import com.teamone.e_tour.entities.UserProfile;
 import com.teamone.e_tour.models.CredentialToken;
+import com.teamone.e_tour.utils.SocketManager;
 
 public class AccountTab extends Fragment {
 
@@ -37,16 +38,14 @@ public class AccountTab extends Fragment {
                              Bundle savedInstanceState) {
         FragmentAccountTabBinding binding = FragmentAccountTabBinding.inflate(inflater, container, false);
 
-        CredentialToken.getInstance(getActivity()).getUserProfile().observe(getViewLifecycleOwner(), new Observer<UserProfile>() {
-            @Override
-            public void onChanged(UserProfile userProfile) {
-                if (userProfile == null) return;
-                binding.userDisplayName.setText(userProfile.getFullName());
-                binding.email.setText(userProfile.getEmail());
-                binding.userDisplayName.setText(userProfile.getFullName());
-                if (!userProfile.getImage().equals(""))
-                    Glide.with(requireActivity()).load(userProfile.getImage()).into(binding.userImage);
-            }
+        SocketManager.getInstance(requireActivity()).emit("view-user-profile");
+        CredentialToken.getInstance(getActivity()).getUserProfile().observe(getViewLifecycleOwner(), userProfile -> {
+            if (userProfile == null) return;
+            binding.userDisplayName.setText(userProfile.getFullName());
+            binding.email.setText(userProfile.getEmail());
+            binding.userDisplayName.setText(userProfile.getFullName());
+            if (!userProfile.getImage().equals(""))
+                Glide.with(requireActivity()).load(userProfile.getImage()).into(binding.userImage);
         });
 
         binding.myCardsButton.setOnClickListener(new View.OnClickListener() {
