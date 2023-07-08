@@ -135,6 +135,7 @@
                 android:backgroundTint="@color/blue_5_percent"
                 android:textColor="@color/blue"
                 android:layout_alignParentEnd="true"
+                android:letterSpacing="0.02"
                 android:textSize="13sp"
                 android:fontFamily="@font/manrope_bold"
                 android:text="@string/book_ticket"
