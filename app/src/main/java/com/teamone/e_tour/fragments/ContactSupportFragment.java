@@ -20,6 +20,7 @@ import com.teamone.e_tour.api.support.GetChatRoomOfRoute;
 import com.teamone.e_tour.api.support.GetMessageList;
 import com.teamone.e_tour.api.support.SendChatMessage;
 import com.teamone.e_tour.databinding.FragmentContactSupportBinding;
+import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.ChatMessage;
 import com.teamone.e_tour.entities.ChatRoom;
 import com.teamone.e_tour.entities.Image;
@@ -58,9 +59,12 @@ public class ContactSupportFragment extends Fragment {
 
         GetChatRoomOfRoute.getChatRoom(getActivity(), routeId, chatRoom -> ContactSupportFragment.this.chatRoom.postValue(chatRoom));
 
+        LoadingDialog dialog = new LoadingDialog(requireActivity());
+        dialog.showLoading("Loading chatroom data...");
 
         chatRoom.observe(getViewLifecycleOwner(), chatRoom -> {
             if (chatRoom == null) return;
+            dialog.dismiss();
             GetMessageList.getMessageList(getActivity(), chatRoom._id, new GetMessageList.IGetMessageListCallback() {
                 @Override
                 public void onGetMessageList(ArrayList<ChatMessage> messages) {

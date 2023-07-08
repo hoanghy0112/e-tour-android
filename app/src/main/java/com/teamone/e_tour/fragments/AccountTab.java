@@ -48,27 +48,18 @@ public class AccountTab extends Fragment {
                 Glide.with(requireActivity()).load(userProfile.getImage()).into(binding.userImage);
         });
 
-        binding.myCardsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_accountTab_to_viewAllCardFragment);
-            }
+        binding.myCardsButton.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_accountTab_to_viewAllCardFragment));
+
+        binding.contactSupportBtn.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.action_accountTab_to_allSupport));
+
+        binding.viewProfileBtn.setOnClickListener(v -> {
+
         });
 
-        binding.contactSupportBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_accountTab_to_allSupport);
-            }
-        });
-
-        binding.logOutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                CredentialToken.getInstance(getActivity()).setCredential("", "", "");
-                startActivity(new Intent(getActivity(), AuthenticationActivity.class));
-                requireActivity().finish();
-            }
+        binding.logOutBtn.setOnClickListener(v -> {
+            CredentialToken.getInstance(getActivity()).setCredential("", "", "");
+            startActivity(new Intent(getActivity(), AuthenticationActivity.class));
+            requireActivity().finish();
         });
 
         return binding.getRoot();
