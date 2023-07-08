@@ -81,7 +81,7 @@
     <string name="choose_voucher">Choose voucher</string>
     <string name="voucher">Voucher</string>
     <string name="change">Change</string>
-    <string name="you_have_1_voucher">You have 1 voucher</string>
+    <string name="you_have_1_voucher">You have %1$d voucher</string>
     <string name="check_out">Check out</string>
     <string name="ticket_id">Ticket id</string>
     <string name="back_to_home">Back to home</string>
@@ -200,7 +200,7 @@
     <string name="voucher_name">Voucher name</string>
     <!--    <string name="discount_money_message">Hello, %1$s! You have %2$d new messages.</string>-->
     <string name="discount_money_message">Discount %1$s for tour with minimum price is %2$s</string>
-    <string name="discount_percent_message">Discount %1$f maximum %3$s for tour with minimum price is %2$s</string>
+    <string name="discount_percent_message">Discount %1$s maximum %3$s for tour with minimum price is %2$s</string>
     <string name="company_name">Company name</string>
     <string name="company">Company</string>
     <string name="support_chats">Support chats</string>
@@ -244,4 +244,7 @@
     <string name="no_tour">There are currently no tours available</string>
     <string name="tour_list">Tour list</string>
     <string name="tour_description">Tour description</string>
+    <string name="make_you_as_visitor">Make you as visitor</string>
+    <string name="use_your_contact_information">Use your contact information</string>
+    <string name="addition_options">Addition options</string>
 </resources>

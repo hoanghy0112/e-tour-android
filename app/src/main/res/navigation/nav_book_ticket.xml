@@ -12,7 +12,9 @@
         tools:layout="@layout/fragment_input_information" >
         <action
             android:id="@+id/action_inputInformationFragment_to_checkoutFragment"
-            app:destination="@id/checkoutFragment" />
+            app:destination="@id/checkoutFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_in_right" />
     </fragment>
     <fragment
         android:id="@+id/checkoutFragment"
@@ -21,7 +23,9 @@
         tools:layout="@layout/fragment_checkout" >
         <action
             android:id="@+id/action_checkoutFragment_to_receiptFragment"
-            app:destination="@id/receiptFragment" />
+            app:destination="@id/receiptFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_in_right" />
     </fragment>
     <fragment
         android:id="@+id/receiptFragment"

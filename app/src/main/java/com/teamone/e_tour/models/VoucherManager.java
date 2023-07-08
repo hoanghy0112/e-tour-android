@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class VoucherManager {
     static VoucherManager instance;
     MutableLiveData<ArrayList<Voucher>> savedList = new MutableLiveData<>();
+    MutableLiveData<Voucher> selectVoucher = new MutableLiveData<>();
 
     public static VoucherManager getInstance() {
         if (instance == null) {
@@ -23,5 +24,13 @@ public class VoucherManager {
 
     public void setSavedList(ArrayList<Voucher> savedList) {
         this.savedList.postValue(savedList);
+    }
+
+    public MutableLiveData<Voucher> getSelectVoucher() {
+        return selectVoucher;
+    }
+
+    public void setSelectVoucher(Voucher selectVoucher) {
+        this.selectVoucher.postValue(selectVoucher);
     }
 }

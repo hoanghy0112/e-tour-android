@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.navigation.fragment.NavHostFragment;
 
 import android.view.LayoutInflater;
@@ -66,16 +67,23 @@ public class VoucherDetailFragment extends Fragment {
 
         if (type.equals("money"))
             binding.voucherValue.setText(requireActivity().getString(R.string.discount_money_message, Formatter.toCurrency((long) value), Formatter.toCurrency((long) min)));
-        else if (type.equals("percent"))
-            binding.voucherValue.setText(requireActivity().getString(R.string.discount_percent_message, value * 100, Formatter.toCurrency((long) min), Formatter.toCurrency((long) max)));
-        else
-            binding.voucherValue.setText(requireActivity().getString(R.string.discount_percent_message, value * 100, Formatter.toCurrency((long) min), Formatter.toCurrency((long) max)));
+        else {
+            String s = (int)(value * 100) + "%";
+            if (type.equals("percent"))
+                binding.voucherValue.setText(requireActivity().getString(R.string.discount_percent_message, s, Formatter.toCurrency((long) min), Formatter.toCurrency((long) max)));
+            else
+                binding.voucherValue.setText(requireActivity().getString(R.string.discount_money_message, Formatter.toCurrency((long) value), Formatter.toCurrency((long) min)));
+        }
 
         Glide.with(requireActivity()).load(new Image(bundle.getString("image")).getImageUri()).into(binding.voucherImage);
 
         binding.companyName.setText(bundle.getString("companyName"));
         binding.companyDescription.setText(bundle.getString("companyEmail"));
         Glide.with(requireActivity()).load(new Image(bundle.getString("companyImage")).getImageUri()).into(binding.companyImage);
+
+        binding.companyCard.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.companyDetail);
+        });
 
         binding.saveVoucherBtn.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,6 +12,8 @@
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:paddingTop="30dp"
         app:layout_constraintBaseline_toTopOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -19,7 +21,6 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue"
             app:navigationIcon="@drawable/chevron_left"
             app:title="@string/contact_information"
             app:titleTextColor="@color/white" />
@@ -105,12 +106,32 @@
 
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/use_your_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="15dp"
+        app:cornerRadius="10dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="20dp"
+        android:text="@string/use_your_contact_information"
+        android:letterSpacing="0.02"
+        android:fontFamily="@font/manrope_semibold"
+        android:backgroundTint="@color/ocean_blue"
+        android:textColor="@color/white"
+        android:textAllCaps="false"/>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/next_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:paddingVertical="15dp"
+        app:cornerRadius="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="20dp"
         android:text="@string/next"
+        android:letterSpacing="0.02"
+        android:fontFamily="@font/manrope_semibold"
         android:backgroundTint="@color/blue"
         android:textColor="@color/white"
         android:textAllCaps="false"/>

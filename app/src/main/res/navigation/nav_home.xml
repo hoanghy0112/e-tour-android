@@ -68,7 +68,9 @@
         tools:layout="@layout/fragment_tour_list" >
         <action
             android:id="@+id/action_tourListFragment_to_bookTicketFragment"
-            app:destination="@id/bookTicketFragment" />
+            app:destination="@id/bookTicketFragment"
+            app:enterAnim="@anim/fui_slide_in_right"
+            app:exitAnim="@anim/fui_slide_in_right" />
     </fragment>
     <fragment
         android:id="@+id/visitorInformationFragment2"
@@ -93,6 +95,10 @@
         <action
             android:id="@+id/action_bookTicketFragment_to_contactInformationFragment"
             app:destination="@id/contactInformationFragment" />
+        <action
+            android:id="@+id/action_bookTicketFragment_to_chooseVoucher"
+            app:destination="@id/chooseVoucher"
+            app:enterAnim="@anim/bottom_to_top" />
     </fragment>
     <fragment
         android:id="@+id/contactInformationFragment"
@@ -272,4 +278,9 @@
         android:name="com.teamone.e_tour.fragments.CompanyDetail"
         android:label="fragment_company_detail"
         tools:layout="@layout/fragment_company_detail" />
+    <fragment
+        android:id="@+id/chooseVoucher"
+        android:name="com.teamone.e_tour.fragments.ChooseVoucher"
+        android:label="fragment_choose_voucher"
+        tools:layout="@layout/fragment_choose_voucher" />
 </navigation>

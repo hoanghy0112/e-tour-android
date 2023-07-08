@@ -17,6 +17,7 @@ import com.teamone.e_tour.databinding.FragmentReceiptBinding;
 import com.teamone.e_tour.dialogs.LoadingDialog;
 import com.teamone.e_tour.entities.Ticket;
 import com.teamone.e_tour.models.BookingDataManager;
+import com.teamone.e_tour.utils.Formatter;
 
 public class ReceiptFragment extends Fragment {
 
@@ -35,13 +36,13 @@ public class ReceiptFragment extends Fragment {
         FragmentReceiptBinding binding = FragmentReceiptBinding.inflate(inflater, container, false);
         BookTicketFragment.viewThirdTab();
 
-        LoadingDialog dialog = new LoadingDialog(getActivity());
+        LoadingDialog dialog = new LoadingDialog(requireActivity());
         dialog.showLoading("We are preparing for your ticket");
 
         binding.backToHomeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(getActivity(), R.id.home_wrapper).navigate(R.id.action_bookTicketFragment_to_homeFragment);
+                Navigation.findNavController(requireActivity(), R.id.home_wrapper).navigate(R.id.action_bookTicketFragment_to_homeFragment);
             }
         });
 
@@ -54,11 +55,11 @@ public class ReceiptFragment extends Fragment {
 
                 dialog.dismiss();
 
-                binding.totalPrice.setText(String.valueOf(ticket.getPrice()));
+                binding.totalPrice.setText(Formatter.toCurrency(ticket.getPrice()));
                 binding.ticketId.setText(ticket.get_id());
                 binding.customerName.setText(ticket.getFullName());
                 binding.phoneNumber.setText(ticket.getPhoneNumber());
-                binding.bookingDate.setText(ticket.getCreatedAt().toString());
+                binding.bookingDate.setText(Formatter.dateToDateWithHourString(ticket.getCreatedAt()));
             }
         });
 

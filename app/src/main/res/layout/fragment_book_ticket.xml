@@ -4,28 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray"
+    android:background="@color/blue"
     android:orientation="vertical"
     tools:context=".fragments.BookTicketFragment">
 
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/top_bar"
-        app:elevation="0dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:paddingHorizontal="20dp"
+        android:orientation="horizontal">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            app:elevation="0dp"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue"
-            app:navigationIcon="@drawable/chevron_left"
-            app:title="Detail route"
-            app:titleTextColor="@color/white" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/blue"
+            app:cardCornerRadius="100dp"
+            app:cardElevation="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:strokeColor="@color/transparent"
+            app:strokeWidth="0dp">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/chevron_left"
+                    app:tint="@color/white" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/top_app_bar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="@font/manrope_semibold"
+            android:text="@string/tour_list"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/back_btn"
+            app:layout_constraintStart_toEndOf="@+id/back_btn"
+            app:layout_constraintTop_toTopOf="@+id/back_btn" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
         android:id="@+id/tour_preview"
@@ -34,7 +63,7 @@
         android:background="@color/blue"
         android:orientation="vertical"
         android:paddingBottom="10dp"
-        android:paddingTop="10dp">
+        android:paddingTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -152,16 +181,23 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp">
 
-                        <ImageView
-                            android:id="@+id/imageView"
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@+id/image_card"
                             android:layout_width="0dp"
-                            android:layout_height="70dp"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/etourlogo"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="@color/white"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintWidth_percent="0.3" />
+                            app:layout_constraintWidth_percent="0.3">
+
+                            <ImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="match_parent"
+                                android:layout_height="70dp"
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/etourlogo" />
+                        </com.google.android.material.card.MaterialCardView>
 
                         <TextView
                             android:id="@+id/tour_name"
@@ -172,14 +208,14 @@
                             android:textColor="@color/black"
                             android:textSize="16sp"
                             android:textStyle="bold"
-                            app:layout_constraintStart_toEndOf="@+id/imageView"
+                            app:layout_constraintStart_toEndOf="@+id/image_card"
                             app:layout_constraintTop_toTopOf="parent" />
 
                         <TextView
                             android:id="@+id/route_name"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginTop="7dp"
                             android:text="Route name"
                             android:textColor="@color/placeholder"
                             android:textSize="13sp"

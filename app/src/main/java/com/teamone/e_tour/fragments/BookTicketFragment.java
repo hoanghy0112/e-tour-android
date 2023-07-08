@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.view.ContextThemeWrapper;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
@@ -17,9 +18,17 @@ import android.view.ViewGroup;
 import com.bumptech.glide.Glide;
 import com.teamone.e_tour.R;
 import com.teamone.e_tour.api.ticket.BookTicketApi;
+import com.teamone.e_tour.api.voucher.SavedVoucher;
 import com.teamone.e_tour.constants.ApiEndpoint;
 import com.teamone.e_tour.databinding.FragmentBookTicketBinding;
 import com.teamone.e_tour.models.BookingDataManager;
+import com.teamone.e_tour.models.CredentialToken;
+import com.teamone.e_tour.models.VoucherManager;
+import com.teamone.e_tour.utils.Formatter;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class BookTicketFragment extends Fragment {
 
@@ -37,28 +46,38 @@ public class BookTicketFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        SavedVoucher.api.viewSavedVoucher(CredentialToken.getInstance(requireActivity()).getBearerAccessToken()).enqueue(new Callback<SavedVoucher.ViewSavedVoucherResponse>() {
+            @Override
+            public void onResponse(@NonNull Call<SavedVoucher.ViewSavedVoucherResponse> call, @NonNull Response<SavedVoucher.ViewSavedVoucherResponse> response) {
+                if (response.code() == 200) {
+                    assert response.body() != null;
+                    VoucherManager.getInstance().setSavedList(response.body().data);
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<SavedVoucher.ViewSavedVoucherResponse> call, @NonNull Throwable t) {
+
+            }
+        });
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         binding = FragmentBookTicketBinding.inflate(inflater, container, false);
         context = getActivity();
 
         BookTicketApi.RequestBody.TicketInfo ticketInfo = BookingDataManager.getInstance().getTicketData().ticketInfo;
-        binding.departureTime.setText(BookingDataManager.getInstance().getDepartureDate().toString());
+        binding.departureTime.setText(Formatter.dateToDateWithoutHourString(BookingDataManager.getInstance().getDepartureDate()));
         binding.tourName.setText(BookingDataManager.getInstance().getTourName());
         binding.description.setText(BookingDataManager.getInstance().getDescription());
         binding.routeName.setText(BookingDataManager.getInstance().getRouteName());
 
-        Glide.with(getActivity()).load(BookingDataManager.getInstance().getImageUri()).into(binding.imageView);
+        Glide.with(requireActivity()).load(BookingDataManager.getInstance().getImageUri()).into(binding.imageView);
 
-        binding.topAppBar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(getActivity(), R.id.home_wrapper).popBackStack();
-            }
-        });
+        binding.backBtn.setOnClickListener(v -> Navigation.findNavController(requireActivity(), R.id.home_wrapper).popBackStack());
 
         return binding.getRoot();
     }
@@ -78,7 +97,7 @@ public class BookTicketFragment extends Fragment {
         binding.text2.setTextColor(colorInActive);
         binding.text3.setTextColor(colorInActive);
 
-        binding.topAppBar.setTitle(R.string.visitor_information);
+        binding.topAppBarTitle.setText(R.string.visitor_information);
     }
 
     public static void viewSecondTab() {
@@ -96,7 +115,7 @@ public class BookTicketFragment extends Fragment {
         binding.text2.setTextColor(colorActive);
         binding.text3.setTextColor(colorInActive);
 
-        binding.topAppBar.setTitle(R.string.choose_payment_method_and_checkout);
+        binding.topAppBarTitle.setText(R.string.choose_payment_method_and_checkout);
     }
 
     public static void viewThirdTab() {
@@ -114,6 +133,6 @@ public class BookTicketFragment extends Fragment {
         binding.text2.setTextColor(colorInActive);
         binding.text3.setTextColor(colorActive);
 
-        binding.topAppBar.setTitle(R.string.receipt_information);
+        binding.topAppBarTitle.setText(R.string.receipt_information);
     }
 }

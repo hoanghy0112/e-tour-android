@@ -252,6 +252,12 @@ public class DetailRouteFragment extends Fragment {
                 binding.reservationFee.setText(Formatter.toCurrency(touristRoute.getReservationFee()));
                 binding.description.setText(touristRoute.getDescription());
 
+                binding.companyTitle.setOnClickListener(v -> {
+                    Bundle bundle = new Bundle();
+                    bundle.putString("id", Objects.requireNonNull(route.getValue()).getCompanyId());
+                    Navigation.findNavController(v).navigate(R.id.companyDetail, bundle);
+                });
+
                 binding.companyName.setOnClickListener(v -> {
                     Bundle bundle = new Bundle();
                     bundle.putString("id", touristRoute.getCompanyId());

@@ -12,6 +12,8 @@
         android:id="@+id/top_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/blue"
+        android:paddingTop="30dp"
         app:layout_constraintBaseline_toTopOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -19,7 +21,6 @@
             android:id="@+id/topAppBar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/blue"
             app:navigationIcon="@drawable/chevron_left"
             app:title="@string/edit_visitor_information"
             app:titleTextColor="@color/white" />

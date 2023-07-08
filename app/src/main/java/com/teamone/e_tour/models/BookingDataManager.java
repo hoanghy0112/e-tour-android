@@ -1,10 +1,14 @@
 package com.teamone.e_tour.models;
 
+import android.content.Context;
+
 import androidx.lifecycle.MutableLiveData;
 
 import com.teamone.e_tour.api.ticket.BookTicketApi;
 import com.teamone.e_tour.constants.ApiEndpoint;
 import com.teamone.e_tour.entities.Ticket;
+import com.teamone.e_tour.entities.UserProfile;
+import com.teamone.e_tour.entities.Voucher;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -128,6 +132,22 @@ public class BookingDataManager {
         ticketData.postValue(oldTicketData);
     }
 
+    public void addUserAsVisitor(Context context) {
+        UserProfile userProfile = UserProfileManager.getInstance(context).getUserProfile();
+        Ticket.Visitor visitor = new Ticket.Visitor();
+        visitor.setName(userProfile.getFullName());
+        visitor.setPhoneNumber(userProfile.getPhoneNumber());
+        visitor.setAddress(userProfile.getAddress());
+        visitor.setAge(18);
+
+        ArrayList<Ticket.Visitor> visitors = Objects.requireNonNull(ticketData.getValue()).ticketInfo.getVisitors();
+        visitors.add(visitor);
+
+        BookTicketApi.RequestBody oldTicketData = ticketData.getValue();
+        oldTicketData.ticketInfo.setVisitors(visitors);
+        ticketData.postValue(oldTicketData);
+    }
+
     public void removeVisitor(int index) {
         ArrayList<Ticket.Visitor> visitors = Objects.requireNonNull(ticketData.getValue()).ticketInfo.getVisitors();
         visitors.remove(index);
@@ -137,7 +157,7 @@ public class BookingDataManager {
         ticketData.postValue(oldTicketData);
     }
 
-    public  void changeVisitorInfo(int index, Ticket.Visitor visitorInfo) {
+    public void changeVisitorInfo(int index, Ticket.Visitor visitorInfo) {
         ArrayList<Ticket.Visitor> visitors = Objects.requireNonNull(ticketData.getValue()).ticketInfo.getVisitors();
         visitors.set(index, visitorInfo);
 
@@ -147,10 +167,28 @@ public class BookingDataManager {
     }
 
     public MutableLiveData<BookTicketApi.RequestBody> getTicketLiveData() {
-        return  ticketData;
+        return ticketData;
     }
 
     public void setTicketData(BookTicketApi.RequestBody ticketData) {
         this.ticketData.postValue(ticketData);
+    }
+
+    public long getTotalPrice() {
+        long total = numOfVisitor * price;
+
+        Voucher voucher = VoucherManager.getInstance().getSelectVoucher().getValue();
+
+        if (voucher == null) {
+            return total;
+        } else {
+            if (voucher.getType().equals("money")) {
+                total -= voucher.getValue();
+            } else {
+                total -= total * voucher.getValue();
+            }
+        }
+
+        return total;
     }
 }

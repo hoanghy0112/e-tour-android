@@ -17,77 +17,93 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
             android:text="@string/choose_payment_method"
+            android:fontFamily="@font/manrope_semibold"
+            android:textSize="15sp"
             android:textColor="@color/black" />
 
-        <com.google.android.material.card.MaterialCardView
+        <RadioGroup
+            android:id="@+id/radio_group"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="18dp"
-            android:layout_marginBottom="15dp"
-            android:checkable="true"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardBackgroundColor="@color/white"
-            app:cardElevation="10dp">
+            android:layout_height="wrap_content">
 
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/using_cash_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="10dp">
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="15dp"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="5dp">
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/money" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:textColor="@color/black"
-                    android:text="@string/using_cash" />
-            </LinearLayout>
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="0dp"
+                    tools:ignore="UseCompoundDrawables">
 
-        </com.google.android.material.card.MaterialCardView>
+                    <RadioButton
+                        android:id="@+id/using_cash"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
 
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardBackgroundColor="@color/white"
-            android:layout_marginHorizontal="20dp"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="15dp"
-            android:checkable="true"
-            android:clickable="true"
-            android:focusable="true"
-            app:cardElevation="10dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/manrope_medium"
+                        android:textSize="14sp"
+                        android:text="@string/using_cash" />
+                </LinearLayout>
 
-            <LinearLayout
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/using_credit_card_card"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="10dp">
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="18dp"
+                android:layout_marginBottom="15dp"
+                android:checkable="true"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/white"
+                app:cardElevation="5dp">
 
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="match_parent"
-                    android:src="@drawable/credit_card" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:text="@string/using_credit_card"
-                    android:textColor="@color/black" />
-            </LinearLayout>
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="0dp"
+                    tools:ignore="UseCompoundDrawables">
 
-        </com.google.android.material.card.MaterialCardView>
+                    <RadioButton
+                        android:id="@+id/using_card"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/black"
+                        android:fontFamily="@font/manrope_medium"
+                        android:textSize="14sp"
+                        android:text="@string/using_credit_card" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+        </RadioGroup>
 
 
         <TextView
@@ -95,44 +111,83 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:layout_marginStart="20dp"
-            android:text="Addition options"
+            android:text="@string/addition_options"
+            android:fontFamily="@font/manrope_semibold"
+            android:textSize="15sp"
             android:textColor="@color/black" />
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <ImageView
-                android:layout_width="15dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/voucher"/>
+                android:id="@+id/imageView3"
+                android:layout_width="20dp"
+                android:layout_height="0dp"
+                android:src="@drawable/voucher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/change_btn"
+                app:layout_constraintStart_toEndOf="@+id/imageView3"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/voucher_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/voucher"
+                    android:fontFamily="@font/manrope_semibold"
+                    android:textSize="14sp"
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/voucher_name_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="10dp"
+                    android:fontFamily="@font/manrope_regular"
+                    android:textSize="12sp"
+                    android:text="@string/voucher"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
             <TextView
-                android:layout_marginLeft="10dp"
+                android:id="@+id/textView16"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="@string/voucher"/>
-
-            <TextView
-                android:layout_weight="1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_weight="1" />
 
             <Button
+                android:id="@+id/change_btn"
+                style="@style/Widget.Material3.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/change"
+                android:textAllCaps="false"
                 android:textColor="@color/blue"
                 android:textSize="15sp"
-                android:textAllCaps="false"
-                style="@style/Widget.Material3.Button.TextButton"/>
-        </LinearLayout>
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
         <com.google.android.material.divider.MaterialDivider
             android:layout_marginHorizontal="20dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
+            android:id="@+id/voucher_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/placeholder"
@@ -160,13 +215,19 @@
                 android:text="VND 950.000"/>
         </RelativeLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/checkout_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:paddingVertical="15dp"
+            app:cornerRadius="10dp"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"
             android:text="@string/check_out"
-            android:backgroundTint="@color/blue"
+            android:letterSpacing="0.02"
+            android:fontFamily="@font/manrope_semibold"
+            android:backgroundTint="@color/ocean_blue"
             android:textColor="@color/white"
             android:textAllCaps="false"/>
     </LinearLayout>

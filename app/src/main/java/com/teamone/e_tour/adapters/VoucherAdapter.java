@@ -28,6 +28,11 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHold
     private final Fragment context;
     private ArrayList<Voucher> vouchers = new ArrayList<>();
     private int cardId;
+    IOnclick onClickHandler;
+
+    public interface IOnclick {
+        void onClick(Voucher voucher);
+    }
 
     public VoucherAdapter(Fragment context) {
         this.context = context;
@@ -37,6 +42,12 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHold
     public VoucherAdapter(Fragment context, int cardId) {
         this.context = context;
         this.cardId = cardId;
+    }
+
+    public VoucherAdapter(Fragment context, int cardId, IOnclick onClickHandler) {
+        this.context = context;
+        this.cardId = cardId;
+        this.onClickHandler = onClickHandler;
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -63,16 +74,17 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHold
             if (voucher.getType().equals("money"))
                 holder.info.setText(context.requireActivity().getString(R.string.discount_money_message, Formatter.toCurrency((long) voucher.getValue()), Formatter.toCurrency(voucher.getMin())));
             else if (voucher.getType().equals("percent"))
-                holder.info.setText(context.requireActivity().getString(R.string.discount_percent_message, voucher.getValue() * 100, Formatter.toCurrency(voucher.getMin()), Formatter.toCurrency(voucher.getMax())));
+                holder.info.setText(context.requireActivity().getString(R.string.discount_percent_message, (int)(voucher.getValue() * 100) + "%", Formatter.toCurrency(voucher.getMin()), Formatter.toCurrency(voucher.getMax())));
             else
-                holder.info.setText(context.requireActivity().getString(R.string.discount_percent_message, voucher.getValue() * 100, Formatter.toCurrency(voucher.getMin()), Formatter.toCurrency(voucher.getMax())));
+                holder.info.setText(context.requireActivity().getString(R.string.discount_percent_message, (int)(voucher.getValue() * 100) + "%", Formatter.toCurrency(voucher.getMin()), Formatter.toCurrency(voucher.getMax())));
 
             holder.expired.setText("EXP: " + Formatter.dateToShortDateWithoutHourString(voucher.getExpiredAt()));
         }
 
-        holder.item.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        if (onClickHandler != null) {
+            holder.item.setOnClickListener(v -> onClickHandler.onClick(voucher));
+        } else {
+            holder.item.setOnClickListener(v -> {
                 Bundle bundle = new Bundle();
                 bundle.putString("id", voucher.get_id());
                 bundle.putString("image", voucher.getImage());
@@ -91,8 +103,8 @@ public class VoucherAdapter extends RecyclerView.Adapter<VoucherAdapter.ViewHold
                 bundle.putFloat("max", voucher.getMax());
                 bundle.putString("expiredAt", Formatter.dateToDateWithoutHourString(voucher.getExpiredAt()));
                 Navigation.findNavController(context.requireActivity(), R.id.home_wrapper).navigate(R.id.voucherDetailFragment, bundle);
-            }
-        });
+            });
+        }
     }
 
     @Override
